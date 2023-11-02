@@ -4,7 +4,7 @@ OOP project of Team 2
 
 ## Installation
 
-Use Version Control Systems such as git to install project
+Use Version Control Systems such as git to install the project
 
 ```bash
 git clone https://github.com/duchienmtp/Pupil-Management-OOP.git
