@@ -48,3 +48,13 @@ HS047-Võ Văn Hiếu-14/05/1976-47, Võ Văn Hiếu, Phường 6, Thành phố 
 HS048-Lê Thị Tuyết-08/12/1978-48, Lê Thị Tuyết, Phường 7, Thành phố Hồ Chí Minh-0832156425
 HS049-Hoàng Văn Tùng-11/01/1974-49, Hoàng Văn Tùng, Phường 8, Thành phố Hồ Chí Minh-0832156426
 HS050-Nguyễn Văn Hòa-25/04/1977-50, Nguyễn Văn Hòa, Phường 9, Thành phố Hồ Chí Minh-0832156427
+HS051-Phạm Văn Linh-01/01/1956-51, Hoàng Thị Hằng, Phường 3, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156428
+HS052-Lê Thị Hải-15/05/1958-52, Lâm Văn Dũng, Phường 2, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156429
+HS053-Phạm Thị Phương-20/09/1957-53, Trần Thị Hương, Phường 1, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156430
+HS054-Nguyễn Văn Đông-03/11/1954-54, Đặng Thị Mai, Phường 6, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156431
+HS055-Trần Thị Hà-12/12/1956-55, Trần Văn Hoàng, Phường 4, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156432
+HS056-Lê Thị Mai-09/08/1959-56, Nguyễn Văn An, Phường 5, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156433
+HS057-Đỗ Văn Hùng-28/02/1955-57, Phạm Thị Hằng, Phường 7, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156434
+HS058-Nguyễn Văn Hòa-14/06/1954-58, Trần Văn Đức, Phường 8, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156435
+HS059-Trần Thị Hòa-19/03/1955-59, Nguyễn Thị Lan, Phường 9, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156436
+HS060-Hoàng Thị Hoa-10/10/1957-60, Trịnh Văn Đông, Phường 10, Quận Tân Bình, Thành phố Hồ Chí Minh-0832156437
