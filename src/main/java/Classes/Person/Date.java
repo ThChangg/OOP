@@ -14,6 +14,13 @@ public class Date {
         this.year = year;
     }
 
+    public Date(String date) {
+        String dobParts[] = date.split("/");
+        this.date = dobParts[0];
+        this.month = dobParts[1];
+        this.year = dobParts[2];
+    }
+
     public String getDate() {
         return this.date;
     }

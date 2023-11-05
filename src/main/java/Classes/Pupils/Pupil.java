@@ -61,6 +61,6 @@ public class Pupil extends Person {
 
     @Override
     public String toString() {
-        return pupilID + "\t" + super.toStringWithoutAddress(); 
+        return pupilID + "\t" + super.toString(); 
     }
 }
