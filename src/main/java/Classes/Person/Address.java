@@ -1,5 +1,8 @@
 package Classes.Person;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Address {
     private String houseNumber;
     private String streetName;
@@ -16,6 +19,20 @@ public class Address {
         this.ward = ward;
         this.district = district;
         this.city = city;
+    }
+
+    public Address(String address) {
+        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
+        Pattern pattern = Pattern.compile(addressRegex);
+        Matcher matcher = pattern.matcher(address);
+        if (matcher.matches()) {
+            this.houseNumber = matcher.group(1);
+            this.streetName = "Duong " + matcher.group(2);
+            this.ward = "Phuong " + matcher.group(3);
+            this.district = "Quan " + matcher.group(4);
+            this.city = "Thanh pho " + matcher.group(5);
+        }
+
     }
 
     public String getHouseNumber() {

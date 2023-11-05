@@ -18,13 +18,13 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(Object obj) {
+    public void update(String ID) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public void delete(Object obj) {
+    public void delete(String ID) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
