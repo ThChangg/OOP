@@ -59,6 +59,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
+                        System.out.println(addressPart);
                         String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
                         Pattern pattern = Pattern.compile(addressRegex);
                         Matcher matcher = pattern.matcher(addressPart);
