@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-/target/
-=======
 .history/
 .vscode/
->>>>>>> 44500b1e518f54c539c49063ff82f7deb8c5409e
+.settings/
+bin
