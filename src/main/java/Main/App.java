@@ -1,6 +1,8 @@
 package Main;
 
 import java.util.Scanner;
+
+import Classes.Classroom.ClassroomManagement;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.TeacherManagement;
 public class App {
@@ -8,6 +10,7 @@ public class App {
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
         TeacherManagement teacherManagement = new TeacherManagement();
+        ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do {
@@ -28,10 +31,12 @@ public class App {
             switch (option) {
                 case 1:
                     pupilManagement.initialize();
+                    classroomManagement.initialize();
                     System.out.println("Pupil Management List is now initialized!");
                     break;
                 case 2:
                     pupilManagement.display();
+                    classroomManagement.display();
                     break;
                 case 3:
                     Helper.addPupilsToPupilManagementList(pupilManagement, sc);
