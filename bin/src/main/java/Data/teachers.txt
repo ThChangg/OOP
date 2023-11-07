@@ -1,0 +1,15 @@
+GV001-Nguyễn Vân Linh-01/01/1980-01, Nguyễn Thiện Thuật, P1, Quận Bình Thạnh, Thành phố Hồ Chí Minh-Math-1A1
+GV002-Phạm Thị Thảo-15/03/1975-02, Lê Lợi, P2, Quận 1, Thành phố Hồ Chí Minh-English-1A2
+GV003-Trần Văn Nam-25/06/1985-03, Lê Quang Định, P3, Quận Gò Vấp, Thành phố Hồ Chí Minh-P.E-1A3
+GV004-Lê Thị Hương-10/12/1970-04, Trường Đại học, P4, Quận 5, Thành phố Hồ Chí Minh-Math-2A1
+GV005-Đỗ Văn Hải-07/05/1983-05, Nguyễn Du, P5, Quận 10, Thành phố Hồ Chí Minh-Literature-2A2
+GV006-Phan Văn Tú-22/09/1979-06, Phan Đăng Lưu, P6, Quận Phú Nhuận, Thành phố Hồ Chí Minh-English-2A3
+GV007-Nguyễn Văn Thắng-14/11/1973-07, Hoàng Hoa Thám, P7, Quận Bình Thạnh, Thành phố Hồ Chí Minh-P.E-3A1
+GV008-Hoàng Thị Thu-05/07/1972-08, Nguyễn Công Trứ, P8, Quận 1, Thành phố Hồ Chí Minh-Literature-3A2
+GV009-Lê Thị Mai-18/04/1976-09, Đinh Công Tráng, P9, Quận 2, Thành phố Hồ Chí Minh-Math-3A3
+GV010-Trần Văn Đức-31/08/1982-10, Lê Thánh Tôn, P10, Quận 3, Thành phố Hồ Chí Minh-English-4A1
+GV011-Đặng Thị Hà-09/02/1971-11, Hồ Bieu Chanh, P11, Quận Tân Bình, Thành phố Hồ Chí Minh-Literature-4A2
+GV012-Nguyễn Văn Trung-03/04/1988-12, Trần Nhân Tôn, P12, Quận 4, Thành phố Hồ Chí Minh-Math-4A3
+GV013-Lâm Văn Quốc-26/07/1978-13, Lê Lai, P13, Quận 5, Thành phố Hồ Chí Minh-P.E-5A1
+GV014-Hoàng Thị Ngọc-15/09/1984-14, Phan Văn Hớn, P14, Quận 6, Thành phố Hồ Chí Minh-English-5A2
+GV015-Nguyễn Thị Linh-12/11/1975-15, Lê Đại Hành, P15, Quận 11, Thành phố Hồ Chí Minh-Math-5A3
