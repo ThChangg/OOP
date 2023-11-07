@@ -39,6 +39,4 @@ public class Grade {
 	public String toString() {
 		return  gradeNumber + "-" + gradeManagerID;
 	}
-    
-    
 }
