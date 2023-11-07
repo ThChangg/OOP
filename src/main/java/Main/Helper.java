@@ -8,6 +8,8 @@ import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
+import Classes.Teachers.Teacher;
+import Classes.Teachers.TeacherManagement;
 
 public class Helper {
     public static boolean isValidDateAndMonth(String date) {
@@ -112,4 +114,71 @@ public class Helper {
         pupilManagement.delete(ID);
         System.out.println("Delete successfully!");
     }
+    public static String createTeacherID(String lastTeacherID) {
+        String prefix = lastTeacherID.substring(0, 2);
+        int number = Integer.parseInt(lastTeacherID.substring(2));
+
+        number++;
+
+        // Format it back into the original string format, %s for a string, %03d for a
+        // number with 3 digits, and padding 0 before if a number has less than 3 digits
+        String result = String.format("%s%03d", prefix, number);
+        return result;
+    }
+
+    public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
+        char option = 'y';
+        do {
+            System.out.println("Add teachers: ");
+            System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
+            String fullName = scanner.nextLine();
+
+            String date = "";
+            do {
+                System.out.print("BirthDate: (format: 16/02/2000): ");
+                date = scanner.nextLine();
+                boolean flag = isValidDateAndMonth(date);
+
+                if (!flag) {
+                    System.out.println("BirthDate is invalid (Wrong format)!");
+                }
+            } while (!isValidDateAndMonth(date));
+            Date dob = new Date(date);
+
+            String inputAddress = "";
+            do {
+                System.out.print(
+                        "Address: (format: 18/29, Nguyen Van HOan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
+                inputAddress = scanner.nextLine();
+                boolean flag = isValidAddress(inputAddress);
+
+                if (!flag) {
+                    System.out.println("Address is invalid (Wrong format)!");
+                }
+            } while (!isValidAddress(inputAddress));
+            Address address = new Address(inputAddress);
+
+            String teacherID = createTeacherID(teacherManagement.getLastTeacherID());
+            teacherManagement.add(new Teacher (teacherID, fullName, dob, address));
+
+            System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
+            option = scanner.nextLine().charAt(0);
+        } while (option == 'y' || option == 'Y');
+
+    }
+
+    public static void updateTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
+        System.out.print("Enter teacher ID: ");
+        String ID = scanner.nextLine();
+        teacherManagement.update(ID);
+        System.out.println("Update successfully!");
+    }
+
+    public static void deletePupilData(TeacherManagement teacherManagement, Scanner scanner) {
+        System.out.print("Enter teacher ID: ");
+        String ID = scanner.nextLine();
+        teacherManagement.delete(ID);
+        System.out.println("Delete successfully!");
+    }
+
 }

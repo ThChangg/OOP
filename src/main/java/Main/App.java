@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 import Classes.Classroom.ClassroomManagement;
 import Classes.Pupils.PupilManagement;
-
+import Classes.Teachers.TeacherManagement;
 public class App {
 
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
+        TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
         int option = 0;
@@ -22,6 +23,8 @@ public class App {
             System.out.println("5. Delete person");
             System.out.println("6. Searching for the pupil information");
             System.out.println("7. Statistics");
+            System.out.println("8. Initialize Teacher data");
+            System.out.println("9. Print out Teacher data");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -50,7 +53,13 @@ public class App {
                 case 7:
 
                     break;
-
+                case 8:
+                    teacherManagement.initialize();
+                    System.out.println("Teacher Management List is now initialized!");
+                break;
+                case 9:
+                    teacherManagement.display();
+                    break;
                 default:
                     System.out.println("Exited!");
                     break;
