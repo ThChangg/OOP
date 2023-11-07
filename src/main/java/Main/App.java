@@ -1,9 +1,12 @@
 package Main;
 
+import Classes.Classroom.ClassroomManagement;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ClassroomManagement classroomManagement = new ClassroomManagement();
+        classroomManagement.initialize();
     }
 }
