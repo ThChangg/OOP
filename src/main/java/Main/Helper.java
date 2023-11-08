@@ -148,7 +148,7 @@ public class Helper {
             String inputAddress = "";
             do {
                 System.out.print(
-                        "Address: (format: 18/29, Nguyen Van HOan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
+                        "Address: (format: 18, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
                 inputAddress = scanner.nextLine();
                 boolean flag = isValidAddress(inputAddress);
 
@@ -174,7 +174,7 @@ public class Helper {
         System.out.println("Update successfully!");
     }
 
-    public static void deletePupilData(TeacherManagement teacherManagement, Scanner scanner) {
+    public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.delete(ID);

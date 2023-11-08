@@ -142,7 +142,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             }
 
             System.out.println("Old BirthDate: " + teacher.getBirthDate());
-            System.out.print("New BirthDate (Format: 25/08/2000): ");
+            System.out.print("New BirthDate (Format: 16/02/2000): ");
             String birthDate = sc.nextLine();
             if (!birthDate.isEmpty()) {
                 String dobParts[] = birthDate.split("/");
@@ -155,7 +155,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             }
 
             System.out.println("Old Address: " + teacher.getAddress());
-            System.out.print("New Address (Format: 16A, To Ky, Phuong Trung My Tay, Quan 12, Thanh pho Ho Chi Minh): ");
+            System.out.print("New Address (Format: 18, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
             String address = sc.nextLine();
             if (!address.isEmpty()) {
                 String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";

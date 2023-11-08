@@ -22,6 +22,9 @@ public class App {
             System.out.println("7. Statistics");
             System.out.println("8. Initialize Teacher data");
             System.out.println("9. Print out Teacher data");
+            System.out.println("10. Adding 1 or n teacher to");
+            System.out.println("11. Update teacher information");
+            System.out.println("12. Delete teacher");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -57,6 +60,15 @@ public class App {
                     break;
                 default:
                     System.out.println("Exited!");
+                    break;
+                case 10:
+                    Helper.addTeachersToTeacherManagementList(teacherManagement, sc);
+                    break;
+                case 11:
+                    Helper.updateTeacherData(teacherManagement, sc);
+                    break;
+                case 12:
+                    Helper.deleteTeacherData(teacherManagement, sc);
                     break;
             }
         } while (option != 0);
