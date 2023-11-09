@@ -31,7 +31,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
     }
-    
+
     @Override
     public void initialize() {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
@@ -58,7 +58,6 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        System.out.println(addressPart);
                         String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
                         Pattern pattern = Pattern.compile(addressRegex);
                         Matcher matcher = pattern.matcher(addressPart);
@@ -91,7 +90,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-   String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output2.txt";
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output2.txt";
 
         File file = new File(relativePath);
 
@@ -103,7 +102,6 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                 writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
-                    System.out.println(teacherManagement[i]);
                     writer.write(teacherManagement[i].toString());
                     writer.newLine();
                 }
@@ -121,7 +119,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void add(Object obj) {
-       if (currentIndex < teacherManagement.length) {
+        if (currentIndex < teacherManagement.length) {
             teacherManagement[currentIndex++] = (Teacher) obj;
         } else {
             System.out.println("Teacher Management List is full. Cannot add more.");
@@ -192,7 +190,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             System.out.println("Teacher with ID: " + ID + " is not found!");
         }
     }
-    
+
     public String getLastTeacherID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {

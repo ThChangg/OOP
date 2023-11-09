@@ -12,6 +12,7 @@ public class Pupil extends Person {
     private Classroom classroom;
     private Parent parents;
     private Point subjectPoints;
+    private boolean status;
 
     public Pupil() {
     }
@@ -19,12 +20,14 @@ public class Pupil extends Person {
     public Pupil(String pupilID, String fullname, Date dob, Address address) {
         super(fullname, dob, address);
         this.pupilID = pupilID;
+        this.status = true;
     }
 
     public Pupil(String pupilID, String fullname, Date dob, Address address, Classroom classroom) {
         super(fullname, dob, address);
         this.pupilID = pupilID;
         this.classroom = classroom;
+        this.status = true;
     }
 
     public String getPupilID() {
@@ -57,6 +60,19 @@ public class Pupil extends Person {
 
     public void setSubjectPoints(Point subjectPoints) {
         this.subjectPoints = subjectPoints;
+    }
+
+
+    public boolean isStatus() {
+        return this.status;
+    }
+
+    public boolean getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     @Override
