@@ -1,6 +1,6 @@
 package Classes.Classroom;
 
-import Classes.Pupils.Pupil;
+
 import Classes.Teachers.Teacher;
 
 
@@ -31,11 +31,11 @@ public class Classroom {
 		this.className = className;
 	}
 
-	public Teacher getClassManager() {
+	public Teacher getClassManagerID() {
 		return classManagerID;
 	}
 
-	public void setClassManager(Teacher classManagerID) {
+	public void setClassManagerID(Teacher classManagerID) {
 		this.classManagerID = classManagerID;
 	}
 	
@@ -49,8 +49,8 @@ public class Classroom {
 
 	@Override
 	public String toString() {
-		return className + "-" + classManagerID + "-" + grade;
+		return String.format("%-20s\t%-10s\t%-70s", className, classManagerID, grade);
 	}
-	
-     
+
+        
 }

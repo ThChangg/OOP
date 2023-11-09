@@ -37,7 +37,7 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		return  gradeNumber + "-" + gradeManagerID;
+		return String.format("%10d\t%-10s", gradeNumber, gradeManagerID);
 	}
     
     

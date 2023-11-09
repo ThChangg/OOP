@@ -5,12 +5,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.BufferedReader;
 import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-import Classes.Pupils.Pupil;
+
+import Classes.Teachers.Teacher;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
@@ -45,10 +45,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	@Override
 	public void add(Object obj) {
 		if (currentIndex < classroomManagement.length) {
-			classroomManagement[currentIndex++] = (Classroom) obj;
+			classroomManagement[currentIndex] = (Classroom) obj;
         } else {
             System.out.println("Classroom Management List is full. Cannot add more.");
         }
+		currentIndex++;
+		numberOfPupil++;
     }
     
 	@Override
@@ -69,6 +71,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         			
         			Grade grade = new Grade(gradeNumber);
         			Classroom classroom = new Classroom(className, grade);
+        			//Teacher teacher = new Teacher(classManagerID, gradeManagerID);
+        			
         			this.add(classroom);
         			
         		}
@@ -89,9 +93,9 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         
         if (file.exists()) {
         	try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
-        		bufferedWrite.write("Pupil Management List:");
+        		bufferedWrite.write("Classroom Management List:");
         		bufferedWrite.newLine();
-//        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
+        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "className", "classManagerID", "gradeNumber", "gradeManagerID"));
         		bufferedWrite.newLine();
         		for (int i = 0; i < currentIndex; i++) {
         			bufferedWrite.write(classroomManagement[i].toString());
@@ -112,13 +116,58 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	@Override
 	public void update(String ID) {
-		// TODO Auto-generated method stub
-		
+		Scanner sc = new Scanner(System.in);
+		Classroom classroom = getClassNameByID(ID);
+		if(classroom != null) {
+			System.out.println("Old Classname: " + classroom.getClassName());
+            System.out.print("New Classname: ");
+			String newClassName = sc.nextLine();
+            if (!newClassName.isEmpty()) {
+                classroom.setClassName(newClassName);
+            }
+
+
+			System.out.println("Old classManagerID: " + classroom.getClassManagerID());
+            System.out.print("New classManagerID: ");
+			String newClassManagerID = sc.nextLine();
+            if (!newClassManagerID.isEmpty()) {
+                // classroom.setClassManagerID(newClassManagerID);
+            }
+
+
+			System.out.println("Old Grade: " + classroom.getGrade());
+            System.out.print("New Grade: ");
+			String newGrade = sc.nextLine();
+            if (!newGrade.isEmpty()) {
+                // classroom.setGrade(newGrade);
+            }
+		}
+		else {
+            System.out.println("Classroom with ID: " + ID + " is not found!");
+		}
 	}
 
 	@Override
 	public void delete(String ID) {
-		// TODO Auto-generated method stub
-		
+		for(int i=0; i < currentIndex; i++) {
+			if(classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
+				classroomManagement[i] = classroomManagement[i + 1];
+				continue;
+			}
+		}
+		currentIndex--;
+		System.out.println("Classroom with ID: " + ID + " is not found!");
 	}
+
+	public Classroom getClassNameByID(String ID) {
+        Classroom classroom = null;
+        for (int i = 0; i < currentIndex; i++) {
+            if (classroomManagement[i].getClassName().equals(ID)) {
+                classroom = classroomManagement[i];
+                break;
+            }
+        }
+        return classroom;
+    }
+	
 }
