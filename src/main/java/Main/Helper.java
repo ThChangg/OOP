@@ -180,5 +180,30 @@ public class Helper {
         teacherManagement.delete(ID);
         System.out.println("Delete successfully!");
     }
-
+    
+    public static void searchTeacherID(TeacherManagement teacherManagement, Scanner scanner){
+        System.out.println("Enter teacher ID: ");
+        String ID = scanner.nextLine();
+        Teacher teacher = teacherManagement.getTeacherByID(ID);
+        System.out.println(teacher.toString());
+    }
+    
+    public static void searchTeacherName(TeacherManagement teacherManagement, Scanner scanner){
+        System.out.println("Enter teacher Name: ");
+        String fullName = scanner.nextLine();
+        Teacher teacher = teacherManagement.getTeacherByName(fullName);
+        System.out.println(teacher.toString());
+    }
+    /*public static void searchTeacherClassroom(TeacherManagement teacherManagement, Scanner scanner){
+        System.out.println("Enter teacher Classroom: ");
+        String classRoom = scanner.nextLine();
+        Teacher teacher = teacherManagement.getTeacherByClassName(classRoom);
+        System.out.println(teacher.toString());
+    }
+    public static void searchTeacherMajor(TeacherManagement teacherManagement, Scanner scanner){
+        System.out.println("Enter teacher Name: ");
+        String major = scanner.nextLine();
+        Teacher[] teacher = teacherManagement.getTeacherByMajor(major);
+        System.out.println(teacher.toString());
+    }*/
 }

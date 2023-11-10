@@ -1,8 +1,6 @@
 package Main;
 
 import java.util.Scanner;
-
-import Classes.Classroom.ClassroomManagement;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.TeacherManagement;
 public class App {
@@ -10,7 +8,6 @@ public class App {
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
         TeacherManagement teacherManagement = new TeacherManagement();
-        ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
         int option = 0;
         do {
@@ -28,18 +25,20 @@ public class App {
             System.out.println("10. Adding 1 or n teacher to");
             System.out.println("11. Update teacher information");
             System.out.println("12. Delete teacher");
+            System.out.println("13. SearchTeacherID");
+            System.out.println("14. SearchTeacherName");
+            /*System.out.println("15. SearchTeacherClassroom");
+            System.out.println("16. SearchTeacherMajor");*/
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
             switch (option) {
                 case 1:
                     pupilManagement.initialize();
-                    classroomManagement.initialize();
                     System.out.println("Pupil Management List is now initialized!");
                     break;
                 case 2:
                     pupilManagement.display();
-                    classroomManagement.display();
                     break;
                 case 3:
                     Helper.addPupilsToPupilManagementList(pupilManagement, sc);
@@ -75,6 +74,18 @@ public class App {
                 case 12:
                     Helper.deleteTeacherData(teacherManagement, sc);
                     break;
+                case 13:
+                    Helper.searchTeacherID(teacherManagement, sc);
+                    break;
+                case 14:
+                    Helper.searchTeacherName(teacherManagement, sc);
+                    break;
+                /*case 15:
+                    Helper.searchTeacherClassroom(teacherManagement, sc);
+                    break;
+                case 16:
+                    Helper.searchTeacherMajor(teacherManagement, sc);
+                    break;*/
             }
         } while (option != 0);
         sc.close();

@@ -10,6 +10,7 @@ public class Teacher extends Person {
     private String teacherID;
     private Classroom classroom;
     private String major;
+    private boolean isDeleted = false;
 
     public Teacher() {
     }
@@ -49,10 +50,17 @@ public class Teacher extends Person {
     public void setMajor(String major) {
         this.major = major;
     }
+    
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
     @Override
     public String toString() {
         return teacherID + "\t" + super.toString();
     }
-
-    }
+}

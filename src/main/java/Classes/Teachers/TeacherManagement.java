@@ -103,6 +103,9 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                 writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
+                    if(teacherManagement[i].getIsDeleted()==true){
+                        continue;
+                    }
                     System.out.println(teacherManagement[i]);
                     writer.write(teacherManagement[i].toString());
                     writer.newLine();
@@ -184,10 +187,11 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         int index = this.getTeacherArrayIndex(ID);
 
         if (index >= 0) {
-            for (int i = index; i < currentIndex - 1; i++) {
-                this.teacherManagement[i] = this.teacherManagement[i + 1];
-            }
-            this.currentIndex--;
+//            for (int i = index; i < currentIndex - 1; i++) {
+//                this.teacherManagement[i] = this.teacherManagement[i + 1];
+//            }
+//            this.currentIndex--;
+              this.teacherManagement[index].setIsDeleted(true);
         } else {
             System.out.println("Teacher with ID: " + ID + " is not found!");
         }
@@ -222,4 +226,41 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
         return index;
     }
+    
+        public Teacher getTeacherByName(String fullname) {
+        Teacher teacher = null;
+        for (int i = 0; i < currentIndex; i++) {
+            if (teacherManagement[i].getFullname().equalsIgnoreCase(fullname)) {
+                teacher = teacherManagement[i];
+                break;
+            }
+        }
+        return teacher;
+    }
+        
+        /*public Teacher getTeacherByClassName(String className) {
+        Teacher teacher = null;
+        for (int i = 0; i < currentIndex; i++) {
+            if (teacherManagement[i].getClassroom().getClassName().equalsIgnoreCase(className)) {
+                teacher = teacherManagement[i];
+                break;
+            }
+        }
+        return teacher;
+    }
+        
+        public Teacher[] getTeacherByMajor(String major) {
+        Teacher[] teacherList = new Teacher[100];
+        int index = 0;
+        for (int i = 0; i < currentIndex; i++) {
+            if (teacherManagement[i].getMajor().equalsIgnoreCase(major)) {
+                teacherList[index++] = teacherManagement[i];
+                break;
+            }
+        }
+            if (index==0){
+                return null;
+            }
+        return teacherList;
+    }*/
 }
