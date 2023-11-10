@@ -6,179 +6,82 @@ import java.util.regex.Pattern;
 
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Points.Conduct;
+import Classes.Points.Point;
+import Classes.Points.PointManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
 
 public class Helper {
-    public static boolean isValidDateAndMonth(String date) {
-        String dateParts[] = date.split("/");
-        int day = Integer.parseInt(dateParts[0]), month = Integer.parseInt(dateParts[1]);
-        if (month < 1 || month > 12) {
-            return false; // Invalid month
-        }
-
-        int[] daysInMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-        if (day < 1 || day > daysInMonth[month]) {
-            return false; // Invalid day for the given month
-        }
-
-        return true;
+    public static boolean isPoint(double value) {
+        return value >= 0 && value <= 10;
     }
-
-    public static boolean isValidAddress(String address) {
-        String addressPart = address;
-        String addressRegex = "(\\d+),\\s(.*),\\sPhường\\s(.*),\\sQuận\\s(.*),\\sThành phố\\s(.*$)";
-        Pattern pattern = Pattern.compile(addressRegex);
-        Matcher matcher = pattern.matcher(addressPart);
-        if (matcher.matches()) {
-            String streetNumber = matcher.group(1);
-            String streetName = matcher.group(2);
-            String ward = matcher.group(3);
-            String district = matcher.group(4);
-            String city = matcher.group(5);
-
-            if (streetNumber.isEmpty() || streetName.isEmpty() || ward.isEmpty() || district.isEmpty()
-                    || city.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static String createPupilID(String lastPupilID) {
-        String prefix = lastPupilID.substring(0, 2);
-        int number = Integer.parseInt(lastPupilID.substring(2));
-
-        number++;
-
-        // Format it back into the original string format, %s for a string, %03d for a
-        // number with 3 digits, and padding 0 before if a number has less than 3 digits
-        String result = String.format("%s%03d", prefix, number);
-        return result;
-    }
-
-    public static void addPupilsToPupilManagementList(PupilManagement pupilManagement, Scanner scanner) {
+    
+    public static void addPointToPointManagementList(PointManagement pointManagement, Scanner scanner) {
         char option = 'y';
         do {
-            System.out.println("Add pupils: ");
-            System.out.print("Fullname (Format: Nguyen Duc Canh): ");
-            String fullName = scanner.nextLine();
-
-            String date = "";
+            System.out.println("Add points: ");
+            System.out.print("Pupil ID: ");
+            String pupilID = scanner.nextLine();
+    
+            double literaturePoint, mathPoint, physicalEducationPoint, englishPoint;
+    
             do {
-                System.out.print("BirthDate: (format: 03/03/2017): ");
-                date = scanner.nextLine();
-                boolean flag = isValidDateAndMonth(date);
-
-                if (!flag) {
-                    System.out.println("BirthDate is invalid (Wrong format)!");
-                }
-            } while (!isValidDateAndMonth(date));
-            Date dob = new Date(date);
-
-            String inputAddress = "";
+                System.out.print("Literature Point (0-10): ");
+                literaturePoint = scanner.nextDouble();
+            } while (!isPoint(literaturePoint));
+    
             do {
-                System.out.print(
-                        "Address: (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
-                inputAddress = scanner.nextLine();
-                boolean flag = isValidAddress(inputAddress);
-
-                if (!flag) {
-                    System.out.println("Address is invalid (Wrong format)!");
-                }
-            } while (!isValidAddress(inputAddress));
-            Address address = new Address(inputAddress);
-
-            String pupilID = createPupilID(pupilManagement.getLastPupilID());
-            pupilManagement.add(new Pupil(pupilID, fullName, dob, address));
-
-            System.out.println("Do you want to add more pupils ? Yes(Y) : No(N)");
+                System.out.print("Math Point (0-10): ");
+                mathPoint = scanner.nextDouble();
+            } while (!isPoint(mathPoint));
+    
+            do {
+                System.out.print("Physical Education Point (0-10): ");
+                physicalEducationPoint = scanner.nextDouble();
+            } while (!isPoint(physicalEducationPoint));
+    
+            do {
+                System.out.print("English Point (0-10): ");
+                englishPoint = scanner.nextDouble();
+            } while (!isPoint(englishPoint));
+    
+            scanner.nextLine(); // Consume the newline character
+    
+            System.out.print("Conduct: ");
+            String conduct = scanner.nextLine();
+    
+            Point point = new Point(pupilID, literaturePoint, mathPoint, physicalEducationPoint, englishPoint, new Conduct(conduct, option), conduct);
+            pointManagement.add(point);
+    
+            System.out.println("Do you want to add more points? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
         } while (option == 'y' || option == 'Y');
-
     }
-
-    public static void updatePupilData(PupilManagement pupilManagement, Scanner scanner) {
+    
+    public static void updatePointData(PointManagement pointManagement, Scanner scanner) {
         System.out.print("Enter pupil ID: ");
         String ID = scanner.nextLine();
-        pupilManagement.update(ID);
+        pointManagement.update(ID);
         System.out.println("Update successfully!");
     }
 
-    public static void deletePupilData(PupilManagement pupilManagement, Scanner scanner) {
+    public static void deletePointData(PointManagement pointManagement, Scanner scanner) {
         System.out.print("Enter pupil ID: ");
         String ID = scanner.nextLine();
-        pupilManagement.delete(ID);
+        pointManagement.delete(ID);
         System.out.println("Delete successfully!");
     }
-    public static String createTeacherID(String lastTeacherID) {
-        String prefix = lastTeacherID.substring(0, 2);
-        int number = Integer.parseInt(lastTeacherID.substring(2));
+    public static void searchPointData(PointManagement pointManagement, Scanner scanner) {
+    System.out.print("Enter pupil ID to search: ");
+    String ID = scanner.nextLine();
+    Point foundPoint = pointManagement.searchByPupilID(ID);
 
-        number++;
-
-        // Format it back into the original string format, %s for a string, %03d for a
-        // number with 3 digits, and padding 0 before if a number has less than 3 digits
-        String result = String.format("%s%03d", prefix, number);
-        return result;
+    if (foundPoint != null) {
+        System.out.println("Point found: " + foundPoint.toString());
+    } else {
+        System.out.println("Point not found.");
     }
-
-    public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
-        char option = 'y';
-        do {
-            System.out.println("Add teachers: ");
-            System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
-            String fullName = scanner.nextLine();
-
-            String date = "";
-            do {
-                System.out.print("BirthDate: (format: 16/02/2000): ");
-                date = scanner.nextLine();
-                boolean flag = isValidDateAndMonth(date);
-
-                if (!flag) {
-                    System.out.println("BirthDate is invalid (Wrong format)!");
-                }
-            } while (!isValidDateAndMonth(date));
-            Date dob = new Date(date);
-
-            String inputAddress = "";
-            do {
-                System.out.print(
-                        "Address: (format: 18/29, Nguyen Van HOan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
-                inputAddress = scanner.nextLine();
-                boolean flag = isValidAddress(inputAddress);
-
-                if (!flag) {
-                    System.out.println("Address is invalid (Wrong format)!");
-                }
-            } while (!isValidAddress(inputAddress));
-            Address address = new Address(inputAddress);
-
-            String teacherID = createTeacherID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher (teacherID, fullName, dob, address));
-
-            System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
-            option = scanner.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
-
-    }
-
-    public static void updateTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
-        System.out.print("Enter teacher ID: ");
-        String ID = scanner.nextLine();
-        teacherManagement.update(ID);
-        System.out.println("Update successfully!");
-    }
-
-    public static void deletePupilData(TeacherManagement teacherManagement, Scanner scanner) {
-        System.out.print("Enter teacher ID: ");
-        String ID = scanner.nextLine();
-        teacherManagement.delete(ID);
-        System.out.println("Delete successfully!");
-    }
-
-}
+}}
