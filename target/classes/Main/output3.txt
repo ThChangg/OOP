@@ -1,0 +1,13 @@
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
