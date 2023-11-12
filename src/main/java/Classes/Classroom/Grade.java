@@ -6,6 +6,7 @@ public class Grade {
     private int gradeNumber;
     private Teacher gradeManagerID;
 	private boolean status = true;
+
     
     
 	public Grade() {

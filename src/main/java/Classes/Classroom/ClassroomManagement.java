@@ -33,7 +33,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.classroomManagement = classroomManagement;
 	}
 
-	public int getCurrentIndex() {
+
+    public int getCurrentIndex() {
 		return currentIndex;
 	}
 
@@ -49,28 +50,30 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		ClassroomManagement.numberOfPupil = numberOfPupil;
 	}
 
-
+	
+    
 	@Override
-	public void initialize() {
+    public void initialize() {
 		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\classrooms.txt";
 
         File file = new File(relativePath);
-
-		if (file.exists()) {
-			try (BufferedReader bufferedRead = new BufferedReader(new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
-				String line;
-				while ((line = bufferedRead.readLine()) != null) {
-					String[] data = line.split("-");
+		
+        if (file.exists()) {
+        	try (BufferedReader bufferedRead = new BufferedReader(new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+        		String line;
+        		while ((line = bufferedRead.readLine()) != null) {
+        			String[] data = line.split("-");
 					String className = data[0];
 					String classManagerID = data[1];
 					int gradeNumber = Integer.parseInt(data[2]);
 					String gradeManagerID = data[3];
 
+
 						
 					Grade grade = new Grade(gradeNumber);
 					Classroom classroom = new Classroom(className, grade);
 					//Teacher teacher = new Teacher( classManagerID, gradeManagerID);
-						
+
 					this.add(classroom);
         		}
         	}
@@ -168,7 +171,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	@Override
 	public void delete(String ID) {
-		int index = this.getClassroomArrayIndex(ID);
+		int index = this.getClassroomArrayIndex(ID); 
         if (index >= 0) {
             for (int i = 0; i < currentIndex; i++) {
 				if(i == index) {
@@ -196,16 +199,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
             }
         }
         return classroom;
-    }
-
-	public String getLastClassNameID() {
-        String ID = "";
-        for (int i = 0; i < currentIndex; i++) {
-            if(classroomManagement[i].getStatus()) {
-				ID = classroomManagement[i].getClassName();
-			}
-        }
-        return ID;
     }
 
 	public int getClassroomArrayIndex(String ID) {

@@ -1,0 +1,84 @@
+Classroom Management List:
+className	classManagerID      	gradeNumber	gradeManagerID                                                        
+1A1-null-1-null
+1A2-null-1-null
+1A3-null-1-null
+2A1-null-2-null
+2A2-null-2-null
+2A3-null-2-null
+3A1-null-3-null
+3A2-null-3-null
+3A3-null-3-null
+4A1-null-4-null
+4A2-null-4-null
+4A3-null-4-null
+5A1-null-5-null
+5A2-null-5-null
+5A3-null-5-null
+================================================================
+Classroom Management List:
+className	classManagerID      	gradeNumber	gradeManagerID                                                        
+1A1-null-1-null
+1A2-null-1-null
+1A3-null-1-null
+2A1-null-2-null
+2A2-null-2-null
+2A3-null-2-null
+3A1-null-3-null
+3A2-null-3-null
+3A3-null-3-null
+4A1-null-4-null
+4A2-null-4-null
+4A3-null-4-null
+5A1-null-5-null
+5A2-null-5-null
+5A3-null-5-null
+6a1-null-6-null
+6a2-null-6-null
+6a3-null-6-null
+7a1-null-7-null
+================================================================
+Classroom Management List:
+className	classManagerID      	gradeNumber	gradeManagerID                                                        
+1A1-null-1-null
+1A2-null-1-null
+1A3-null-1-null
+2A1-null-2-null
+2A2-null-2-null
+2A3-null-2-null
+3A1-null-3-null
+3A2-null-3-null
+3A3-null-3-null
+4A1-null-4-null
+4A2-null-4-null
+4A3-null-4-null
+5A1-null-5-null
+5A2-null-5-null
+5A3-null-5-null
+6a1-null-6-null
+6a4-null-6-null
+6a3-null-6-null
+7a1-null-7-null
+================================================================
+Classroom Management List:
+className	classManagerID      	gradeNumber	gradeManagerID                                                        
+1A1-null-1-null
+1A2-null-1-null
+1A3-null-1-null
+2A1-null-2-null
+2A2-null-2-null
+2A3-null-2-null
+3A1-null-3-null
+3A2-null-3-null
+3A3-null-3-null
+4A1-null-4-null
+4A2-null-4-null
+4A3-null-4-null
+5A1-null-5-null
+5A2-null-5-null
+5A3-null-5-null
+6a1-null-6-null
+6a4-null-6-null
+6a3-null-6-null
+7a1-null-7-null
+================================================================
