@@ -14,14 +14,13 @@ import Classes.Teachers.Teacher;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
-
 public class ClassroomManagement implements IFileManagement, ICRUD {
-    private Classroom classroomManagement[];
-    private int currentIndex;
-    private static int numberOfPupil;
-    
-    public ClassroomManagement() {
-    	this.classroomManagement = new Classroom[100];
+	private Classroom classroomManagement[];
+	private int currentIndex;
+	private static int numberOfPupil;
+
+	public ClassroomManagement() {
+		this.classroomManagement = new Classroom[100];
 		currentIndex = 0;
 		numberOfPupil = 0;
 	}
@@ -34,7 +33,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.classroomManagement = classroomManagement;
 	}
 
-    public int getCurrentIndex() {
+	public int getCurrentIndex() {
 		return currentIndex;
 	}
 
@@ -49,26 +48,28 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public static void setNumberOfPupil(int numberOfPupil) {
 		ClassroomManagement.numberOfPupil = numberOfPupil;
 	}
-	
-    
+
+
 	@Override
-    public void initialize() {
+	public void initialize() {
 		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\classrooms.txt";
+
         File file = new File(relativePath);
-		
-        if (file.exists()) {
-        	try (BufferedReader bufferedRead = new BufferedReader(new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
-        		String line;
-        		while ((line = bufferedRead.readLine()) != null) {
-        			String[] data = line.split("-");
+
+		if (file.exists()) {
+			try (BufferedReader bufferedRead = new BufferedReader(new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+				String line;
+				while ((line = bufferedRead.readLine()) != null) {
+					String[] data = line.split("-");
 					String className = data[0];
 					String classManagerID = data[1];
 					int gradeNumber = Integer.parseInt(data[2]);
 					String gradeManagerID = data[3];
+
 						
 					Grade grade = new Grade(gradeNumber);
 					Classroom classroom = new Classroom(className, grade);
-					//Teacher teacher = new Teacher(className, classroom, classManagerID, gradeManagerID);
+					//Teacher teacher = new Teacher( classManagerID, gradeManagerID);
 						
 					this.add(classroom);
         		}
@@ -162,12 +163,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		else {
 			System.out.println("Classroom with ID: " + ID + " is not found!");
 		}
+
 	}
 
 	@Override
 	public void delete(String ID) {
 		int index = this.getClassroomArrayIndex(ID);
-
         if (index >= 0) {
             for (int i = 0; i < currentIndex; i++) {
 				if(i == index) {

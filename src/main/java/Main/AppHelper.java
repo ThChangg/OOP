@@ -4,20 +4,140 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Classes.Classroom.Classroom;
-import Classes.Classroom.ClassroomManagement;
+
+
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
-//import Classes.Classroom.Classroom;
-//import Classes.Classroom.ClassroomManagement;
+import Classes.Classroom.Classroom;
+import Classes.Classroom.ClassroomManagement;
 import Classes.Classroom.Grade;
 
 
-public class Helper {
+public class AppHelper {
+    public static void Menu() {
+        PupilManagement pupilManagement = new PupilManagement();
+        TeacherManagement teacherManagement = new TeacherManagement();
+        ClassroomManagement classroomManagement = new ClassroomManagement();
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+        do {
+            System.out.println("========================== Menu ==========================");
+            System.out.println("Please select: ");
+            System.out.println("1. Initialize data");
+            System.out.println("2. Print out data");
+            System.out.println("3. Adding 1 or n person to");
+            System.out.println("4. Update person information");
+            System.out.println("5. Delete person");
+            System.out.println("6. Searching for the person information");
+            System.out.println("7. Statistics");
+            System.out.println("0. Exit");
+
+            option = Integer.parseInt(sc.nextLine());
+            switch (option) {
+                case 1:
+                    appInitialize(pupilManagement, classroomManagement, teacherManagement);
+                    break;
+                case 2:
+                    appDisplay(sc, pupilManagement, classroomManagement, teacherManagement);
+                    break;
+                case 3:
+                    //addPupilsToPupilManagementList(pupilManagement, sc);
+                    addClassroomsToClassroomManagementList(classroomManagement, sc);
+                    break;
+                case 4:
+                    //updatePupilData(pupilManagement, sc);
+                    updateClassroomData(classroomManagement, sc);
+                    break;
+                case 5:
+                    //deletePupilData(pupilManagement, sc);
+                    deleteClassroomData(classroomManagement, sc);
+                    break;
+                case 6:
+                    searchPupilData(pupilManagement, sc);
+                    break;
+                case 7:
+
+                    break;
+                default:
+                    System.out.println("Exited!");
+                    break;
+            }
+        } while (option != 0);
+        sc.close();
+    }
+
+    public static void appInitialize(Object... managementObjects) {
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                ((PupilManagement) managementObject).initialize();
+            } else if (managementObject instanceof ClassroomManagement) {
+                ((ClassroomManagement) managementObject).initialize();
+            } else if (managementObject instanceof TeacherManagement) {
+                ((TeacherManagement) managementObject).initialize();
+            }
+            // Add more else if blocks for other management objects
+        }
+        System.out.println("App is now initialized!");
+    }
+
+    public static void appDisplay(Scanner sc, Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        ClassroomManagement classroomManagement = null;
+        TeacherManagement teacherManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            } else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            }
+            // Add more else if blocks for other management objects
+        }
+
+        int option = 0;
+        do {
+            System.out.println("======================= Display data session =======================");
+            System.out.println("1. Display pupils data");
+            System.out.println("2. Display teachers data");
+            System.out.println("3. Display parents data");
+            System.out.println("4. Display points data");
+            System.out.println("5. Display classrooms data");
+            System.out.println("0. Exit");
+
+            option = Integer.parseInt(sc.nextLine());
+            switch (option) {
+                case 1:
+                    pupilManagement.display();
+                    break;
+
+                case 2:
+                    teacherManagement.display();
+                    break;
+
+                case 3:
+
+                    break;
+
+                case 4:
+
+                    break;
+
+                case 5:
+                    classroomManagement.display();
+                    break;
+
+                default:
+                    break;
+            }
+        } while (option != 0);
+    }
+
     public static boolean isValidDateAndMonth(String date) {
         String dateParts[] = date.split("/");
         int day = Integer.parseInt(dateParts[0]), month = Integer.parseInt(dateParts[1]);
@@ -36,22 +156,15 @@ public class Helper {
 
     public static boolean isValidAddress(String address) {
         String addressPart = address;
-        String addressRegex = "(\\d+),\\s(.*),\\sPhường\\s(.*),\\sQuận\\s(.*),\\sThành phố\\s(.*$)";
+        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
         Pattern pattern = Pattern.compile(addressRegex);
         Matcher matcher = pattern.matcher(addressPart);
-        if (matcher.matches()) {
-            String streetNumber = matcher.group(1);
-            String streetName = matcher.group(2);
-            String ward = matcher.group(3);
-            String district = matcher.group(4);
-            String city = matcher.group(5);
 
-            if (streetNumber.isEmpty() || streetName.isEmpty() || ward.isEmpty() || district.isEmpty()
-                    || city.isEmpty()) {
-                return false;
-            }
+        boolean flag = true;
+        if (!matcher.matches()) {
+            flag = false;
         }
-        return true;
+        return flag;
     }
 
     public static String createPupilID(String lastPupilID) {
@@ -111,15 +224,14 @@ public class Helper {
         System.out.print("Enter pupil ID: ");
         String ID = scanner.nextLine();
         pupilManagement.update(ID);
-        System.out.println("Update successfully!");
     }
 
     public static void deletePupilData(PupilManagement pupilManagement, Scanner scanner) {
         System.out.print("Enter pupil ID: ");
         String ID = scanner.nextLine();
         pupilManagement.delete(ID);
-        System.out.println("Delete successfully!");
     }
+
     public static String createTeacherID(String lastTeacherID) {
         String prefix = lastTeacherID.substring(0, 2);
         int number = Integer.parseInt(lastTeacherID.substring(2));
@@ -165,7 +277,7 @@ public class Helper {
             Address address = new Address(inputAddress);
 
             String teacherID = createTeacherID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher (teacherID, fullName, dob, address));
+            teacherManagement.add(new Teacher(teacherID, fullName, dob, address));
 
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
@@ -186,36 +298,33 @@ public class Helper {
         teacherManagement.delete(ID);
         System.out.println("Delete successfully!");
     }
+    
+    public static void searchPupilData(PupilManagement pupilManagement, Scanner sc) {
+        int option = 0;
+        do {
+            System.out.println("======================= Search for pupils data session =======================");
+            System.out.println("1. Search pupils data by name");
+            System.out.println("2. Search pupils data by class");
+            System.out.println("3. Search pupils data by sex");
+            System.out.println("0. Exit");
 
+            option = Integer.parseInt(sc.nextLine());
+            switch (option) {
+                case 1:
+                    System.out.print("Enter name: ");
+                    String name = sc.nextLine();
+                    pupilManagement.findPupilsByName(name);
+                    pupilManagement.display(pupilManagement.getSearchResultLength());
+                    break;
 
-
-
-
-
-
-    public static boolean isValidGrade(String grade) {
-        String data[] = grade.split("-");
-        int gradeNumber = Integer.parseInt(data[0]);
-        String gradeManagerID = data[1];
-
-        if((gradeNumber < 0 || gradeNumber > 13) && gradeManagerID == "") {
-            return false;
-        }
-        return true;
+                default:
+                    break;
+            }
+        } while (option != 0);
     }
 
 
-    public static String createClassName(String lastClassName) {
-        String prefix = lastClassName.substring(0, 2);
-        int number = Integer.parseInt(lastClassName.substring(2));
 
-        number++;
-
-        // Format it back into the original string format, %s for a string, %03d for a
-        // number with 3 digits, and padding 0 before if a number has less than 3 digits
-        String result = String.format("%s%03d", prefix, number);
-        return result;
-    }
 
     public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner scanner) {
         char option = 'y';
@@ -223,29 +332,23 @@ public class Helper {
             System.out.println("Add classrooms: ");
             System.out.print("Classname (Format: 6A1): ");
             String className = scanner.nextLine();
+            
 
 	        System.out.println("Add classManagerID: ");
             System.out.print("ClassManagerID (Format: GV0016): ");
             String classManagerID = scanner.nextLine();
             
-            String grade = "";
-            do {
-                System.out.println("Add grade: ");
-                System.out.print("GradeNumber (Format: 6): ");
-                int gradeNumber = Integer.parseInt(scanner.nextLine());
-
-                System.out.println("Add grademanager: ");
-                System.out.print("GrademanagerID (Format: GV0016): ");
-                String gradeManagerID = scanner.nextLine();
-                
-                
             
-            } while (!isValidGrade(grade));
+            System.out.println("Add grade: ");
+            System.out.print("GradeNumber (Format: 6): ");
+            int gradeNumber = Integer.parseInt(scanner.nextLine());
 
-            String className = createClassName(classroomManagement.getLastClassNameID());
-            classroomManagement.add(new Grade(gradeNumber));
-            classroomManagement.add(new Classroom(className));
-
+            System.out.println("Add grademanager: ");
+            System.out.print("GrademanagerID (Format: GV0016): ");
+            String gradeManagerID = scanner.nextLine();
+                
+            Grade grade = new Grade(gradeNumber, null);   
+            classroomManagement.add(new Classroom(className, grade));
 
             System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
@@ -263,5 +366,7 @@ public class Helper {
         System.out.print("Enter class name: ");
         String ID = scanner.nextLine();
         classroomManagement.delete(ID);
+
     }
+
 }
