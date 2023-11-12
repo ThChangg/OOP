@@ -68,12 +68,12 @@ public class Helper {
         System.out.println("Update successfully!");
     }
 
-    public static void deletePointData(PointManagement pointManagement, Scanner scanner) {
-        System.out.print("Enter pupil ID: ");
-        String ID = scanner.nextLine();
-        pointManagement.delete(ID);
-        System.out.println("Delete successfully!");
-    }
+   public static void deletePointData(PointManagement pointManagement, Scanner scanner) {
+    System.out.print("Enter pupil ID: ");
+    String ID = scanner.nextLine();
+    pointManagement.delete(ID);
+    System.out.println("Delete successfully!");
+}
     public static void searchPointData(PointManagement pointManagement, Scanner scanner) {
     System.out.print("Enter pupil ID to search: ");
     String ID = scanner.nextLine();

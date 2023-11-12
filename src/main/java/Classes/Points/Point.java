@@ -8,6 +8,7 @@ public class Point {
     private double englishPoint;
     private Conduct conduct;
     private String academics;
+    private boolean isDeleted =false;
 
     public Point() {
     }
@@ -88,6 +89,13 @@ public class Point {
 
     public void setAcademics(String academics) {
         this.academics = academics;
+    }
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     @Override
