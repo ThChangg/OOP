@@ -11,8 +11,10 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Classes.Classroom.ClassroomManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Teachers.TeacherManagement;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
@@ -252,6 +254,19 @@ public class PupilManagement implements IFileManagement, ICRUD {
         } else {
             System.out.println("Pupil with ID: " + ID + " is not found!");
         }
+    }
+
+    public void delete(String ID, Object ...managementObjects) {
+        // for (Object managementObject : managementObjects) {
+        //     if (managementObject instanceof PupilManagement) {
+        //         ((PupilManagement) managementObject).delete(ID);
+        //     } else if (managementObject instanceof ClassroomManagement) {
+        //         ((ClassroomManagement) managementObject).initialize();
+        //     } else if (managementObject instanceof TeacherManagement) {
+        //         ((TeacherManagement) managementObject).initialize();
+        //     }
+        //     // Add more else if blocks for other management objects
+        // }
     }
 
     public String getLastPupilID() {
