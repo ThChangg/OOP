@@ -4,12 +4,18 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Classes.Classroom.Classroom;
+import Classes.Classroom.ClassroomManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
+//import Classes.Classroom.Classroom;
+//import Classes.Classroom.ClassroomManagement;
+import Classes.Classroom.Grade;
+
 
 public class Helper {
     public static boolean isValidDateAndMonth(String date) {
@@ -181,4 +187,81 @@ public class Helper {
         System.out.println("Delete successfully!");
     }
 
+
+
+
+
+
+
+    public static boolean isValidGrade(String grade) {
+        String data[] = grade.split("-");
+        int gradeNumber = Integer.parseInt(data[0]);
+        String gradeManagerID = data[1];
+
+        if((gradeNumber < 0 || gradeNumber > 13) && gradeManagerID == "") {
+            return false;
+        }
+        return true;
+    }
+
+
+    public static String createClassName(String lastClassName) {
+        String prefix = lastClassName.substring(0, 2);
+        int number = Integer.parseInt(lastClassName.substring(2));
+
+        number++;
+
+        // Format it back into the original string format, %s for a string, %03d for a
+        // number with 3 digits, and padding 0 before if a number has less than 3 digits
+        String result = String.format("%s%03d", prefix, number);
+        return result;
+    }
+
+    public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner scanner) {
+        char option = 'y';
+        do {
+            System.out.println("Add classrooms: ");
+            System.out.print("Classname (Format: 6A1): ");
+            String className = scanner.nextLine();
+
+	        System.out.println("Add classManagerID: ");
+            System.out.print("ClassManagerID (Format: GV0016): ");
+            String classManagerID = scanner.nextLine();
+            
+            String grade = "";
+            do {
+                System.out.println("Add grade: ");
+                System.out.print("GradeNumber (Format: 6): ");
+                int gradeNumber = Integer.parseInt(scanner.nextLine());
+
+                System.out.println("Add grademanager: ");
+                System.out.print("GrademanagerID (Format: GV0016): ");
+                String gradeManagerID = scanner.nextLine();
+                
+                
+            
+            } while (!isValidGrade(grade));
+
+            String className = createClassName(classroomManagement.getLastClassNameID());
+            classroomManagement.add(new Grade(gradeNumber));
+            classroomManagement.add(new Classroom(className));
+
+
+            System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
+            option = scanner.nextLine().charAt(0);
+        } while (option == 'y' || option == 'Y');
+
+    }
+
+    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
+        System.out.print("Enter class name: ");
+        String ID = scanner.nextLine();
+        classroomManagement.update(ID);
+    }
+
+    public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
+        System.out.print("Enter class name: ");
+        String ID = scanner.nextLine();
+        classroomManagement.delete(ID);
+    }
 }

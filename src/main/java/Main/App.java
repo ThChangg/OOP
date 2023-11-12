@@ -30,22 +30,25 @@ public class App {
             option = Integer.parseInt(sc.nextLine());
             switch (option) {
                 case 1:
-                    pupilManagement.initialize();
+                    //pupilManagement.initialize();
                     classroomManagement.initialize();
-                    System.out.println("Pupil Management List is now initialized!");
+                    //System.out.println("Pupil Management List is now initialized!");
                     break;
                 case 2:
-                    pupilManagement.display();
+                    //pupilManagement.display();
                     classroomManagement.display();
                     break;
                 case 3:
-                    Helper.addPupilsToPupilManagementList(pupilManagement, sc);
+                    //Helper.addPupilsToPupilManagementList(pupilManagement, sc);
+                    Helper.addClassroomsToClassroomManagementList(classroomManagement, sc);
                     break;
                 case 4:
-                    Helper.updatePupilData(pupilManagement, sc);
+                    //Helper.updatePupilData(pupilManagement, sc);
+                    Helper.updateClassroomData(classroomManagement, sc);
                     break;
                 case 5:
-                    Helper.deletePupilData(pupilManagement, sc);
+                    //Helper.deletePupilData(pupilManagement, sc);
+                    Helper.deleteClassroomData(classroomManagement, sc);
                     break;
                 case 6:
 
