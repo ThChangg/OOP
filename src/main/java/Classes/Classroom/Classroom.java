@@ -26,6 +26,11 @@ public class Classroom {
 		this.grade = grade;
 	}
 
+	public Classroom(String ClassName, Teacher classManagerID) {
+		this.className = className;
+		this.classManagerID = classManagerID;
+	}
+
 	public Classroom(String className, Grade grade) {
 		this.className = className;
 		this.grade = grade;
@@ -57,10 +62,6 @@ public class Classroom {
 
 	public void setGrade(Grade grade) {
 		this.grade = grade;
-	}
-
-	public boolean isStatus() {
-		return status;
 	}
 
 	public boolean getStatus() {

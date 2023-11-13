@@ -16,11 +16,14 @@ import Interfaces.IFileManagement;
 
 public class ClassroomManagement implements IFileManagement, ICRUD {
 	private Classroom classroomManagement[];
+	private Classroom searchList[];
 	private int currentIndex;
+	private int searchClassroomLength;
 	private static int numberOfPupil;
 
 	public ClassroomManagement() {
-		this.classroomManagement = new Classroom[100];
+		classroomManagement = new Classroom[100];
+		searchList = new Classroom[100];
 		currentIndex = 0;
 		numberOfPupil = 0;
 	}
@@ -29,10 +32,17 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		return classroomManagement;
 	}
 
+	public Classroom[] getSearchList() {
+		return searchList;
+	}
+
+	public void setSearchList(Classroom[] searchList) {
+		this.searchList = searchList;
+	}
+
 	public void setClassroomManagement(Classroom classroomManagement[]) {
 		this.classroomManagement = classroomManagement;
 	}
-
 
     public int getCurrentIndex() {
 		return currentIndex;
@@ -40,6 +50,14 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	public void setCurrentIndex(int currentIndex) {
 		this.currentIndex = currentIndex;
+	}
+
+	public int getSearchClassroomLength() {
+		return searchClassroomLength;
+	}
+
+	public void setSearchClassroomLength(int searchClassroomLength) {
+		this.searchClassroomLength = searchClassroomLength;
 	}
 
 	public static int getNumberOfPupil() {
@@ -69,10 +87,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					String gradeManagerID = data[3];
 
 
-						
+					// Teacher classTeacher = new Teacher(classManagerID);
+					// Teacher gradeTeacher = new Teacher(gradeManagerID);
 					Grade grade = new Grade(gradeNumber);
 					Classroom classroom = new Classroom(className, grade);
-					//Teacher teacher = new Teacher( classManagerID, gradeManagerID);
+					
 
 					this.add(classroom);
         		}
@@ -99,8 +118,10 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         		bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "className", "classManagerID", "gradeNumber", "gradeManagerID"));
         		bufferedWrite.newLine();
         		for (int i = 0; i < currentIndex; i++) {
-					bufferedWrite.write(classroomManagement[i].toString());
-					bufferedWrite.newLine();
+					if(classroomManagement[i].getStatus()) {
+						bufferedWrite.write(classroomManagement[i].toString());
+						bufferedWrite.newLine();
+					}
                 }
         		bufferedWrite.write("================================================================");
         		bufferedWrite.newLine();
@@ -115,6 +136,38 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         	System.out.println("File does not exist.");
         }
     }
+
+	
+	public void fileSearchList(int arrayLength) {
+		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
+        File file = new File(relativePath);
+        
+        if (file.exists()) {
+        	try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
+        		bufferedWrite.write("Search List:");
+        		bufferedWrite.newLine();
+        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "className", "classManagerID", "gradeNumber", "gradeManagerID"));
+        		bufferedWrite.newLine();
+        		for (int i = 0; i < arrayLength; i++) {
+					if(searchList[i].getStatus()) {
+						bufferedWrite.write(searchList[i].toString());
+						bufferedWrite.newLine();
+					}
+				
+                }
+        		bufferedWrite.write("================================================================");
+        		bufferedWrite.newLine();
+        		System.out.println("Data written to " + relativePath);
+        	} 
+        	catch (IOException e) {
+        		e.printStackTrace();
+        	}
+        	System.out.println("\"File exists.\"");
+        } 
+		else {
+        	System.out.println("File does not exist.");
+        }
+	}
 
 
 	@Override
@@ -146,6 +199,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			System.out.print("New ClassmanagerID: ");
 			String newClassManagerID = sc.nextLine();
 			if (!newClassManagerID.isEmpty()) {
+				//Teacher classManager = new Teacher(newClassManagerID);
 				classroom.setClassManagerID(null);
 			}
 
@@ -157,6 +211,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				int gradeNumber = Integer.parseInt(data[0]);
 				String gradeManagerID = data[1]; 
 
+				//Teacher teacher = new Teacher(gradeManagerID);
 				Grade newGrade = new Grade(gradeNumber, null);
 				classroom.setGrade(newGrade);
 			}
@@ -214,4 +269,20 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         return index;
     }
 	
+	public void searchClassName(String className) {
+		for(int i = 0; i < currentIndex; i++) {
+			if(classroomManagement[i].getClassName().equalsIgnoreCase(className)) {
+				if(classroomManagement[i].getStatus()) {
+					searchList[searchClassroomLength] = classroomManagement[i];
+					searchClassroomLength++;
+				}
+				else {
+					System.out.println("ClassName does not exist!");
+				}	
+			}
+		}
+		
+	}
+
+
 }
