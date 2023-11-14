@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 
 import Classes.Person.Address;
 import Classes.Person.Date;
-import Classes.Pupils.Pupil;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
@@ -60,59 +59,62 @@ public class ParentManagement implements IFileManagement, ICRUD {
             this.searchResultLength = searchResultLength;
         }
 	
-    @Override
-    public void initialize() {
-    	String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
-        File file = new File(relativePath);
-
-        if (file.exists()) {
-            // File exists, you can work with it
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
-                String line = "";
-                while ((line = br.readLine()) != null) {
-                    String parts[] = line.split("-");
-                    if (parts.length >= 5) {
-                        String parentID = parts[0];
-                        String fullName = parts[1];
-                        String dobString = parts[2];
-                        String dobParts[] = dobString.split("/");
-                        String date = dobParts[0];
-                        String month = dobParts[1];
-                        String year = dobParts[2];
-
-                        Date dob = new Date(date, month, year);
-
-                        String addressPart = parts[3];
-                        System.out.println(addressPart);
-                        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
-                        Pattern pattern = Pattern.compile(addressRegex);
-                        Matcher matcher = pattern.matcher(addressPart);
-                        if (matcher.matches()) {
-                            String streetNumber = matcher.group(1);
-                            String streetName = "Duong " + matcher.group(2);
-                            String ward = "Phuong " + matcher.group(3);
-                            String district = "Quan " + matcher.group(4);
-                            String city = "Thanh pho " + matcher.group(5);
-
-                            Address address = new Address(streetNumber, streetName, ward, district, city);
-                            Parent parent = new Parent(parentID, fullName, dob, address);
-                            this.add(parent);
+        @Override
+        public void initialize() {
+            String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
+            File file = new File(relativePath);
+        
+            if (file.exists()) {
+                // File exists, you can work with it
+                try (BufferedReader br = new BufferedReader(
+                        new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+                    String line = "";
+                    while ((line = br.readLine()) != null) {
+                        String parts[] = line.split("-");
+                        if (parts.length >= 5) {
+                            String parentID = parts[0];
+                            String fullName = parts[1];
+                            String dobString = parts[2];
+                            String dobParts[] = dobString.split("/");
+                            String date = dobParts[0];
+                            String month = dobParts[1];
+                            String year = dobParts[2];
+        
+                            Date dob = new Date(date, month, year);
+        
+                            String addressPart = parts[3];
+                            System.out.println(addressPart);
+                            String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
+                            Pattern pattern = Pattern.compile(addressRegex);
+                            Matcher matcher = pattern.matcher(addressPart);
+                            if (matcher.matches()) {
+                                String streetNumber = matcher.group(1);
+                                String streetName = "Duong " + matcher.group(2);
+                                String ward = "Phuong " + matcher.group(3);
+                                String district = "Quan " + matcher.group(4);
+                                String city = "Thanh pho " + matcher.group(5);
+        
+                                Address address = new Address(streetNumber, streetName, ward, district, city);
+                                Parent parent = new Parent(parentID, fullName, dob, address);
+                                this.add(parent);
+        
+                                // Hiển thị thông tin đối tượng Parent
+                                System.out.println(parent.toString());
+                            } else {
+                                System.out.println("Your address is invalid!");
+                            }
                         } else {
-                            System.out.println("Your address is invalid!");
+                            System.out.println("Record does not have enough information");
                         }
-                    } else {
-                        System.out.println("Record does not have enough information");
                     }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                ((Throwable) e).printStackTrace();
+                System.out.println("File exists.");
+            } else {
+                System.out.println("File does not exist.");
             }
-            System.out.println("File exists.");
-        } else {
-            System.out.println("File does not exist.");
         }
-    }
     
     @Override
     public void display() {
@@ -123,7 +125,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
         if (file.exists()) {
             // File exists, you can work with it
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
-                writer.write("Pupil Management List:");
+                writer.write("Parent Management List:");
                 writer.newLine();
                 writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
                 writer.newLine();

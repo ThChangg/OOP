@@ -12,6 +12,7 @@ public class Parent extends Person {
     private Parent parents;
     private Point subjectPoints;
     private boolean status;
+    private String phoneNumber;
 
     public Parent() {
     }
@@ -71,10 +72,18 @@ public class Parent extends Person {
     public void setStatus(boolean status) {
         this.status = status;
     }
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     @Override
     public String toString() {
-        return parentID + "\t" + super.toString(); 
+        // Thêm số điện thoại vào chuỗi khi hiển thị thông tin
+        return parentID + "\t" + super.toString() + "\t" + phoneNumber; 
     }
 
 

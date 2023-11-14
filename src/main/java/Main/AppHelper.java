@@ -354,7 +354,7 @@ public class AppHelper {
         System.out.println("Update successfully!");
     }
 
-    public static void deletePupilData(TeacherManagement teacherManagement, Scanner scanner) {
+    public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.delete(ID);
