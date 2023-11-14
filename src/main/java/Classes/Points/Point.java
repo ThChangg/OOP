@@ -8,20 +8,9 @@ public class Point {
     private double englishPoint;
     private Conduct conduct;
     private String academics;
-    private boolean isDeleted =false;
+    private boolean status;
 
     public Point() {
-    }
-
-    public Point(String pupilID, double literaturePoint, double mathPoint, double physicalEducationPoint,
-            double englishPoint, Conduct conduct, String academics) {
-        this.pupilID = pupilID;
-        this.literaturePoint = literaturePoint;
-        this.mathPoint = mathPoint;
-        this.physicalEducationPoint = physicalEducationPoint;
-        this.englishPoint = englishPoint;
-        this.conduct = conduct;
-        this.academics = academics;
     }
 
     public Point(String pupilID, double literaturePoint, double mathPoint, double physicalEducationPoint,
@@ -32,7 +21,7 @@ public class Point {
         this.physicalEducationPoint = physicalEducationPoint;
         this.englishPoint = englishPoint;
         this.conduct = conduct;
-
+        this.status = true;
     }
 
     public String getPupilID() {
@@ -90,18 +79,17 @@ public class Point {
     public void setAcademics(String academics) {
         this.academics = academics;
     }
-    public boolean getIsDeleted() {
-        return isDeleted;
+    public boolean getStatus() {
+        return status;
     }
 
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return pupilID + "       " + literaturePoint + "          " + mathPoint + "          " + physicalEducationPoint
-                + "                       " + englishPoint + "                  " + conduct;
+        return pupilID + "\t" + literaturePoint + "\t" + mathPoint + "\t" + physicalEducationPoint + "\t" + englishPoint + "\t" + conduct;
     }
 
 }

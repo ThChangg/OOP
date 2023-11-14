@@ -17,12 +17,24 @@ import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
 public class PupilManagement implements IFileManagement, ICRUD {
-    private Pupil pupilManagement[];
+    private Pupil pupilList[];
+    private Pupil searchResult[];
     private int currentIndex;
+    private int searchResultLength;
 
     public PupilManagement() {
-        pupilManagement = new Pupil[100];
+        pupilList = new Pupil[100];
+        searchResult = new Pupil[100];
         currentIndex = 0;
+        searchResultLength = 0;
+    }
+
+    public Pupil[] getPupilManagement() {
+        return this.pupilList;
+    }
+
+    public void setPupilManagement(Pupil pupilManagement[]) {
+        this.pupilList = pupilManagement;
     }
 
     public int getCurrentIndex() {
@@ -31,6 +43,22 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
+    }
+
+    public Pupil[] getSearchResult() {
+        return this.searchResult;
+    }
+
+    public void setSearchResult(Pupil searchResult[]) {
+        this.searchResult = searchResult;
+    }
+
+    public int getSearchResultLength() {
+        return this.searchResultLength;
+    }
+
+    public void setSearchResultLength(int searchResultLength) {
+        this.searchResultLength = searchResultLength;
     }
 
     @Override
@@ -59,7 +87,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        System.out.println(addressPart);
                         String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
                         Pattern pattern = Pattern.compile(addressRegex);
                         Matcher matcher = pattern.matcher(addressPart);
@@ -104,7 +131,38 @@ public class PupilManagement implements IFileManagement, ICRUD {
                 writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
-                    writer.write(pupilManagement[i].toString());
+                    if (pupilList[i].getStatus()) {
+                        writer.write(pupilList[i].toString());
+                        writer.newLine();
+                    }
+                }
+                writer.write("================================================================");
+                writer.newLine();
+                System.out.println("Data written to " + relativePath);
+            } catch (IOException e) {
+                System.err.println("An error occurred while writing to the file: " + e.getMessage());
+            }
+            System.out.println("File exists.");
+        } else {
+            System.out.println("File does not exist.");
+        }
+    }
+
+    // Display method just using for searching
+    public void display(int arrayLength) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
+
+        File file = new File(relativePath);
+
+        if (file.exists()) {
+            // File exists, you can work with it
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+                writer.write("Search result:");
+                writer.newLine();
+                writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
+                writer.newLine();
+                for (int i = 0; i < arrayLength; i++) {
+                    writer.write(searchResult[i].toString());
                     writer.newLine();
                 }
                 writer.write("================================================================");
@@ -121,8 +179,8 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     @Override
     public void add(Object obj) {
-        if (currentIndex < pupilManagement.length) {
-            pupilManagement[currentIndex++] = (Pupil) obj;
+        if (currentIndex < pupilList.length) {
+            pupilList[currentIndex++] = (Pupil) obj;
         } else {
             System.out.println("Pupil Management List is full. Cannot add more.");
         }
@@ -174,6 +232,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     System.out.println("Your address is invalid!");
                 }
             }
+            System.out.println("Update successfully!");
         } else {
             System.out.println("Pupil with ID: " + ID + " is not found!");
         }
@@ -184,10 +243,12 @@ public class PupilManagement implements IFileManagement, ICRUD {
         int index = this.getPupilArrayIndex(ID);
 
         if (index >= 0) {
-            for (int i = index; i < currentIndex - 1; i++) {
-                this.pupilManagement[i] = this.pupilManagement[i + 1];
+            for (int i = 0; i < currentIndex; i++) {
+                if (i == index) {
+                    pupilList[i].setStatus(false);
+                }
             }
-            this.currentIndex--;
+            System.out.println("Delete successfully!");
         } else {
             System.out.println("Pupil with ID: " + ID + " is not found!");
         }
@@ -196,7 +257,9 @@ public class PupilManagement implements IFileManagement, ICRUD {
     public String getLastPupilID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
-            ID = pupilManagement[i].getPupilID();
+            if (pupilList[i].getStatus()) {
+                ID = pupilList[i].getPupilID();
+            }
         }
         return ID;
     }
@@ -204,20 +267,40 @@ public class PupilManagement implements IFileManagement, ICRUD {
     public Pupil getPupilByID(String ID) {
         Pupil pupil = null;
         for (int i = 0; i < currentIndex; i++) {
-            if (pupilManagement[i].getPupilID().equalsIgnoreCase(ID)) {
-                pupil = pupilManagement[i];
-                break;
+            if (pupilList[i].getPupilID().equalsIgnoreCase(ID)) {
+                if (pupilList[i].getStatus()) {
+                    pupil = pupilList[i];
+                    break;
+                } else {
+                    System.out.println("Pupil does not exist!");
+                }
             }
         }
         return pupil;
     }
 
+    public void findPupilsByName(String name) {
+        Pattern pattern = Pattern.compile(Pattern.quote(name), Pattern.CASE_INSENSITIVE);
+
+        for (int i = 0; i < currentIndex; i++) {
+            if (pattern.matcher(pupilList[i].getFullname()).find()) {
+                if (pupilList[i].getStatus()) {
+                    this.searchResult[this.searchResultLength++] = pupilList[i];
+                } else {
+                    System.out.println("Pupil does not exist!");
+                }
+            }
+        }
+    }
+
     public int getPupilArrayIndex(String ID) {
         int index = -1;
         for (int i = 0; i < currentIndex; i++) {
-            if (pupilManagement[i].getPupilID().equalsIgnoreCase(ID)) {
-                index = i;
-                break;
+            if (pupilList[i].getPupilID().equalsIgnoreCase(ID)) {
+                if (pupilList[i].getStatus()) {
+                    index = i;
+                    break;
+                }
             }
         }
         return index;
