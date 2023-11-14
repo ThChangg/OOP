@@ -4,22 +4,20 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
+import Classes.Classroom.ClassroomManagement;
+import Classes.Parents.Parent;
+import Classes.Parents.ParentManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
-import Classes.Classroom.Classroom;
-import Classes.Classroom.ClassroomManagement;
-import Classes.Classroom.Grade;
-
 
 public class AppHelper {
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
+        ParentManagement parentManagement = new ParentManagement();
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
@@ -39,25 +37,22 @@ public class AppHelper {
             option = Integer.parseInt(sc.nextLine());
             switch (option) {
                 case 1:
-                    appInitialize(pupilManagement, classroomManagement, teacherManagement);
+                    appInitialize(pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
                 case 2:
-                    appDisplay(sc, pupilManagement, classroomManagement, teacherManagement);
+                    appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
                 case 3:
-                    //addPupilsToPupilManagementList(pupilManagement, sc);
-                    addClassroomsToClassroomManagementList(classroomManagement, sc);
+                    addPupilsToPupilManagementList(pupilManagement, sc);
                     break;
                 case 4:
-                    //updatePupilData(pupilManagement, sc);
-                    updateClassroomData(classroomManagement, sc);
+                    updatePupilData(pupilManagement, sc);
                     break;
                 case 5:
-                    //deletePupilData(pupilManagement, sc);
-                    deleteClassroomData(classroomManagement, sc);
+                    deletePupilData(pupilManagement, sc);
                     break;
                 case 6:
-                    searchPupilData(pupilManagement, sc);
+                searchPupilData(pupilManagement, sc);
                     break;
                 case 7:
 
@@ -78,6 +73,8 @@ public class AppHelper {
                 ((ClassroomManagement) managementObject).initialize();
             } else if (managementObject instanceof TeacherManagement) {
                 ((TeacherManagement) managementObject).initialize();
+            }else if (managementObject instanceof ParentManagement) {
+                ((ParentManagement) managementObject).initialize();
             }
             // Add more else if blocks for other management objects
         }
@@ -88,6 +85,7 @@ public class AppHelper {
         PupilManagement pupilManagement = null;
         ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
+        ParentManagement parentManagement = null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof PupilManagement) {
@@ -96,7 +94,11 @@ public class AppHelper {
                 classroomManagement = (ClassroomManagement) managementObject;
             } else if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
+            }else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
             }
+            
+            
             // Add more else if blocks for other management objects
         }
 
@@ -121,7 +123,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-
+                    parentManagement.display();
                     break;
 
                 case 4:
@@ -166,6 +168,7 @@ public class AppHelper {
         }
         return flag;
     }
+    
 
     public static String createPupilID(String lastPupilID) {
         String prefix = lastPupilID.substring(0, 2);
@@ -292,13 +295,13 @@ public class AppHelper {
         System.out.println("Update successfully!");
     }
 
-    public static void deletePupilData(TeacherManagement teacherManagement, Scanner scanner) {
+    public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.delete(ID);
         System.out.println("Delete successfully!");
     }
-    
+
     public static void searchPupilData(PupilManagement pupilManagement, Scanner sc) {
         int option = 0;
         do {
@@ -322,51 +325,4 @@ public class AppHelper {
             }
         } while (option != 0);
     }
-
-
-
-
-    public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner scanner) {
-        char option = 'y';
-        do {
-            System.out.println("Add classrooms: ");
-            System.out.print("Classname (Format: 6A1): ");
-            String className = scanner.nextLine();
-            
-
-	        System.out.println("Add classManagerID: ");
-            System.out.print("ClassManagerID (Format: GV0016): ");
-            String classManagerID = scanner.nextLine();
-            
-            
-            System.out.println("Add grade: ");
-            System.out.print("GradeNumber (Format: 6): ");
-            int gradeNumber = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Add grademanager: ");
-            System.out.print("GrademanagerID (Format: GV0016): ");
-            String gradeManagerID = scanner.nextLine();
-                
-            Grade grade = new Grade(gradeNumber, null);   
-            classroomManagement.add(new Classroom(className, grade));
-
-            System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
-            option = scanner.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
-
-    }
-
-    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
-        System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
-        classroomManagement.update(ID);
-    }
-
-    public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
-        System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
-        classroomManagement.delete(ID);
-
-    }
-
 }
