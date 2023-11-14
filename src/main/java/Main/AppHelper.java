@@ -4,9 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
-import Classes.Classroom.Grade;
 import Classes.Parents.Parent;
 import Classes.Parents.ParentManagement;
 import Classes.Person.Address;
@@ -15,7 +13,6 @@ import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
-import Classes.Classroom.Grade;
 
 public class AppHelper {
     public static void Menu() {
@@ -46,85 +43,16 @@ public class AppHelper {
                     appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
                 case 3:
-                System.out.println("3. Adding 1 or n person to");
-                System.out.println("1) Add pupils");
-                System.out.println("2) Add parents");
-                int subOption = Integer.parseInt(sc.nextLine());
-
-                switch (subOption) {
-                    case 1:
-                        AppHelper.addPupilsToPupilManagementList(pupilManagement, sc);
-                        break;
-                    case 2:
-                        AppHelper.addParentsToParentManagementList(parentManagement, sc);
-                        break;
-                        case 3:
-                        AppHelper.addClassroomsToClassroomManagementList(classroomManagement, sc);
-                        break;
-                    default:
-                        System.out.println("Invalid sub-option");
-                        break;
-                }
+                    addPupilsToPupilManagementList(pupilManagement, sc);
                     break;
                 case 4:
-                System.out.println("4. Update person information");
-                System.out.println("1) Update pupils");
-                System.out.println("2) Update parents");
-                int subOption1 = Integer.parseInt(sc.nextLine());
-
-                switch (subOption1) {
-                    case 1:
-                        AppHelper.updatePupilData(pupilManagement, sc);
-                        break;
-                    case 2:
-                        AppHelper.updateParentData(parentManagement, sc);
-                        break;
-                        case 3:
-                        AppHelper.updateClassroomData(classroomManagement, sc);
-                        break;
-                    default:
-                        System.out.println("Invalid sub-option");
-                        break;
-                }
+                    updatePupilData(pupilManagement, sc);
                     break;
                 case 5:
-                System.out.println("5. Delete person");
-                System.out.println("1) Delete pupils");
-                System.out.println("2) Delete parents");
-                int subOption2 = Integer.parseInt(sc.nextLine());
-
-                switch (subOption2) {
-                    case 1:
-                        AppHelper.deletePupilData(pupilManagement, sc);
-                        break;
-                    case 2:
-                        AppHelper.deleteParentData(parentManagement, sc);
-                        break;
-                        case 3:
-                        AppHelper.deleteClassroomData(classroomManagement, sc);
-                        break;
-                    default:
-                        System.out.println("Invalid sub-option");
-                        break;
-                }
+                    deletePupilData(pupilManagement, sc);
                     break;
                 case 6:
-                System.out.println("6. Searching for the person information");
-                    System.out.println("1) Search pupils");
-                    System.out.println("2) Search parents");
-                    int subOption3 = Integer.parseInt(sc.nextLine());
-
-                    switch (subOption3) {
-                        case 1:
-                        	AppHelper.searchPupilData(pupilManagement, sc);
-                            break;
-                        case 2:
-                            AppHelper.searchParentData(parentManagement, sc);
-                            break;
-                        default:
-                            System.out.println("Invalid sub-option");
-                            break;
-                    }
+                searchPupilData(pupilManagement, sc);
                     break;
                 case 7:
 
@@ -240,6 +168,7 @@ public class AppHelper {
         }
         return flag;
     }
+    
 
     public static String createPupilID(String lastPupilID) {
         String prefix = lastPupilID.substring(0, 2);
@@ -395,131 +324,5 @@ public class AppHelper {
                     break;
             }
         } while (option != 0);
-    }
-    public static String createParentID(String lastParentID) {
-        String prefix = lastParentID.substring(0, 2);
-        int number = Integer.parseInt(lastParentID.substring(2));
-
-        number++;
-
-        // Format it back into the original string format, %s for a string, %03d for a
-        // number with 3 digits, and padding 0 before if a number has less than 3 digits
-        String result = String.format("%s%03d", prefix, number);
-        return result;
-    }
-    public static void addParentsToParentManagementList(ParentManagement parentManagement, Scanner scanner) {
-        char option = 'y';
-        do {
-            System.out.println("Add Parents: ");
-            System.out.print("Fullname (Format: Nguyen Duc Canh): ");
-            String fullName = scanner.nextLine();
-
-            String date = "";
-            do {
-                System.out.print("BirthDate: (format: 03/03/2017): ");
-                date = scanner.nextLine();
-                boolean flag = isValidDateAndMonth(date);
-
-                if (!flag) {
-                    System.out.println("BirthDate is invalid (Wrong format)!");
-                }
-            } while (!isValidDateAndMonth(date));
-            Date dob = new Date(date);
-
-            String inputAddress = "";
-            do {
-                System.out.print(
-                        "Address: (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
-                inputAddress = scanner.nextLine();
-                boolean flag = isValidAddress(inputAddress);
-
-                if (!flag) {
-                    System.out.println("Address is invalid (Wrong format)!");
-                }
-            } while (!isValidAddress(inputAddress));
-            Address address = new Address(inputAddress);
-
-            String parentID = createParentID(parentManagement.getLastParentID());
-          parentManagement.add(new Parent(parentID, fullName, dob, address));
-
-            System.out.println("Do you want to add more parents ? Yes(Y) : No(N)");
-            option = scanner.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
-
-    }
-    public static void updateParentData(ParentManagement parentManagement, Scanner scanner) {
-        System.out.print("Enter parent ID: ");
-        String ID = scanner.nextLine();
-        parentManagement.update(ID);
-    }
-    public static void deleteParentData(ParentManagement parentManagement, Scanner scanner) {
-        System.out.print("Enter parent ID: ");
-        String ID = scanner.nextLine();
-        parentManagement.delete(ID);
-    }
-    public static void searchParentData(ParentManagement parentManagement, Scanner sc) {
-        int option = 0;
-        do {
-            System.out.println("======================= Search for parents data session =======================");
-            System.out.println("1. Search parents data by name");
-            System.out.println("2. Search parents data by class");
-            System.out.println("3. Search parents data by sex");
-            System.out.println("0. Exit");
-
-            option = Integer.parseInt(sc.nextLine());
-            switch (option) {
-                case 1:
-                    System.out.print("Enter name: ");
-                    String name = sc.nextLine();
-                    parentManagement.findParentsByName(name);
-                    parentManagement.display(parentManagement.getSearchResultLength());
-                    break;
-
-                default:
-                    break;
-            }
-        } while (option != 0);
-    }
-    public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner scanner) {
-        char option = 'y';
-        do {
-            System.out.println("Add classrooms: ");
-            System.out.print("Classname (Format: 6A1): ");
-            String className = scanner.nextLine();
-            
-
-	        System.out.println("Add classManagerID: ");
-            System.out.print("ClassManagerID (Format: GV0016): ");
-            String classManagerID = scanner.nextLine();
-            
-            
-            System.out.println("Add grade: ");
-            System.out.print("GradeNumber (Format: 6): ");
-            int gradeNumber = Integer.parseInt(scanner.nextLine());
-
-            System.out.println("Add grademanager: ");
-            System.out.print("GrademanagerID (Format: GV0016): ");
-            String gradeManagerID = scanner.nextLine();
-                
-            Grade grade = new Grade(gradeNumber, null);   
-            classroomManagement.add(new Classroom(className, grade));
-
-            System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
-            option = scanner.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
-
-    }
-
-    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
-        System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
-        classroomManagement.update(ID);
-    }
-
-    public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
-        System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
-        classroomManagement.delete(ID);
-
     }
 }
