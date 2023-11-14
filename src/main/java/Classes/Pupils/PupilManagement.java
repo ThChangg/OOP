@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,12 +33,12 @@ public class PupilManagement implements IFileManagement, ICRUD {
         searchResultLength = 0;
     }
 
-    public Pupil[] getPupilManagement() {
+    public Pupil[] getPupilList() {
         return this.pupilList;
     }
 
-    public void setPupilManagement(Pupil pupilManagement[]) {
-        this.pupilList = pupilManagement;
+    public void setPupilList(Pupil pupilList[]) {
+        this.pupilList = pupilList;
     }
 
     public int getCurrentIndex() {
@@ -130,7 +132,8 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Pupil Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
+                writer.write(String.format("%-5s\t%-20s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "BirthDate", "Address",
+                        "Class"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     if (pupilList[i].getStatus()) {
@@ -166,6 +169,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                 for (int i = 0; i < arrayLength; i++) {
                     writer.write(searchResult[i].toString());
                     writer.newLine();
+
                 }
                 writer.write("================================================================");
                 writer.newLine();
@@ -256,19 +260,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void delete(String ID, Object ...managementObjects) {
-        // for (Object managementObject : managementObjects) {
-        //     if (managementObject instanceof PupilManagement) {
-        //         ((PupilManagement) managementObject).delete(ID);
-        //     } else if (managementObject instanceof ClassroomManagement) {
-        //         ((ClassroomManagement) managementObject).initialize();
-        //     } else if (managementObject instanceof TeacherManagement) {
-        //         ((TeacherManagement) managementObject).initialize();
-        //     }
-        //     // Add more else if blocks for other management objects
-        // }
-    }
-
     public String getLastPupilID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
@@ -294,16 +285,45 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return pupil;
     }
 
-    public void findPupilsByName(String name) {
-        Pattern pattern = Pattern.compile(Pattern.quote(name), Pattern.CASE_INSENSITIVE);
+    public void findPupilsBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass) {
+        Arrays.fill(searchResult, null);
+        searchResultLength = 0;
+        Pattern pattern = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE);
 
         for (int i = 0; i < currentIndex; i++) {
-            if (pattern.matcher(pupilList[i].getFullname()).find()) {
-                if (pupilList[i].getStatus()) {
-                    this.searchResult[this.searchResultLength++] = pupilList[i];
+            try {
+                if (nestedClass != null) {
+                    // Use reflection to get the appropriate method from the nested class
+                    Method getterMethod = nestedClass.getMethod(findBy);
+
+                    // Get the nested object from the main object
+                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName()).invoke(pupilList[i]);
+
+                    // Invoke the method on the nested object
+                    String attributeValue = (String) getterMethod.invoke(nestedObject);
+
+                    if (pattern.matcher(attributeValue).find()) {
+                        if (pupilList[i].getStatus()) {
+                            this.searchResult[this.searchResultLength++] = pupilList[i];
+                        } else {
+                            System.out.println("Pupil does not exist!");
+                        }
+                    }
                 } else {
-                    System.out.println("Pupil does not exist!");
+                    // No nested class, directly invoke the method on the main class
+                    Method getterMethod = mainClass.getMethod(findBy);
+                    String attributeValue = (String) getterMethod.invoke(pupilList[i]);
+
+                    if (pattern.matcher(attributeValue).find()) {
+                        if (pupilList[i].getStatus()) {
+                            this.searchResult[this.searchResultLength++] = pupilList[i];
+                        } else {
+                            System.out.println("Pupil does not exist!");
+                        }
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

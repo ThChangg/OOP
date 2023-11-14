@@ -40,7 +40,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("%-20s\t%-10s\t%-70s", fullname, birthDate, address);
+        return String.format("%-20s\t%-10s\t%-80s", fullname, birthDate, address);
     }
 
     public String toStringWithoutAddress() {

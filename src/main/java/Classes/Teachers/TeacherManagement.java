@@ -90,7 +90,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output2.txt";
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
 
         File file = new File(relativePath);
 

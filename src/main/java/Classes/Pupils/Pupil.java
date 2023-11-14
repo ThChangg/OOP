@@ -77,6 +77,6 @@ public class Pupil extends Person {
 
     @Override
     public String toString() {
-        return pupilID + "\t" + super.toString(); 
+        return pupilID + "\t" + super.toString() + "\t" + classroom.getClassName(); 
     }
 }
