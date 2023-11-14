@@ -4,7 +4,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
+import Classes.Classroom.Grade;
 import Classes.Parents.Parent;
 import Classes.Parents.ParentManagement;
 import Classes.Person.Address;
@@ -13,6 +15,7 @@ import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
+import Classes.Classroom.Grade;
 
 public class AppHelper {
     public static void Menu() {
@@ -55,6 +58,9 @@ public class AppHelper {
                     case 2:
                         AppHelper.addParentsToParentManagementList(parentManagement, sc);
                         break;
+                        case 3:
+                        AppHelper.addClassroomsToClassroomManagementList(classroomManagement, sc);
+                        break;
                     default:
                         System.out.println("Invalid sub-option");
                         break;
@@ -73,6 +79,9 @@ public class AppHelper {
                     case 2:
                         AppHelper.updateParentData(parentManagement, sc);
                         break;
+                        case 3:
+                        AppHelper.updateClassroomData(classroomManagement, sc);
+                        break;
                     default:
                         System.out.println("Invalid sub-option");
                         break;
@@ -90,6 +99,9 @@ public class AppHelper {
                         break;
                     case 2:
                         AppHelper.deleteParentData(parentManagement, sc);
+                        break;
+                        case 3:
+                        AppHelper.deleteClassroomData(classroomManagement, sc);
                         break;
                     default:
                         System.out.println("Invalid sub-option");
@@ -467,5 +479,47 @@ public class AppHelper {
                     break;
             }
         } while (option != 0);
+    }
+    public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner scanner) {
+        char option = 'y';
+        do {
+            System.out.println("Add classrooms: ");
+            System.out.print("Classname (Format: 6A1): ");
+            String className = scanner.nextLine();
+            
+
+	        System.out.println("Add classManagerID: ");
+            System.out.print("ClassManagerID (Format: GV0016): ");
+            String classManagerID = scanner.nextLine();
+            
+            
+            System.out.println("Add grade: ");
+            System.out.print("GradeNumber (Format: 6): ");
+            int gradeNumber = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Add grademanager: ");
+            System.out.print("GrademanagerID (Format: GV0016): ");
+            String gradeManagerID = scanner.nextLine();
+                
+            Grade grade = new Grade(gradeNumber, null);   
+            classroomManagement.add(new Classroom(className, grade));
+
+            System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
+            option = scanner.nextLine().charAt(0);
+        } while (option == 'y' || option == 'Y');
+
+    }
+
+    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
+        System.out.print("Enter class name: ");
+        String ID = scanner.nextLine();
+        classroomManagement.update(ID);
+    }
+
+    public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
+        System.out.print("Enter class name: ");
+        String ID = scanner.nextLine();
+        classroomManagement.delete(ID);
+
     }
 }
