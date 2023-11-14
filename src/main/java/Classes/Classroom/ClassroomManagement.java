@@ -169,49 +169,13 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	}
 
-	@Override
-	public void delete(String ID) {
-		int index = this.getClassroomArrayIndex(ID); 
-        if (index >= 0) {
-            for (int i = 0; i < currentIndex; i++) {
-				if(i == index) {
-            		classroomManagement[i].setStatus(false);
-				}
-            }
-			System.out.println("Delete successfully!"); 
-        } 
-		else {
-            System.out.println("Classroom with ID: " + ID + " is not found!");
-        }
+	private Classroom getClassNameByID(String iD) {
+		return null;
 	}
 
-	public Classroom getClassNameByID(String ID) {
-        Classroom classroom = null;
-        for (int i = 0; i < currentIndex; i++) {
-            if (classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
-				if(classroomManagement[i].getStatus()) {	
-					classroom = classroomManagement[i];
-                	break;
-				}
-				else {
-					System.out.println("Classroom does not exist");
-				}
-            }
-        }
-        return classroom;
-    }
+	@Override
+	public void delete(String ID) {
+		// TODO Auto-generated method stub
 
-	public int getClassroomArrayIndex(String ID) {
-        int index = -1;
-        for (int i = 0; i < currentIndex; i++) {
-            if (classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
-				if(classroomManagement[i].getStatus()) {
-					index = i;
-					break;
-				}
-            }
-        }
-        return index;
-    }
-	
+	}
 }

@@ -4,6 +4,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Points.Conduct;
@@ -17,9 +19,11 @@ import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
 import Classes.Classroom.Grade;
 
+
 public class AppHelper {
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
+        // ParentManagement parentManagement = new ParentManagement();
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         PointManagement pointManagement = new PointManagement();
@@ -108,6 +112,8 @@ public class AppHelper {
             } else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
+            
+            
             // Add more else if blocks for other management objects
         }
 
@@ -132,7 +138,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-
+                    // parentManagement.display();
                     break;
 
                 case 4:
@@ -177,6 +183,7 @@ public class AppHelper {
         }
         return flag;
     }
+    
 
     public static String createPupilID(String lastPupilID) {
         String prefix = lastPupilID.substring(0, 2);
@@ -303,7 +310,7 @@ public class AppHelper {
         System.out.println("Update successfully!");
     }
 
-    public static void deletePupilData(TeacherManagement teacherManagement, Scanner scanner) {
+    public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.delete(ID);
