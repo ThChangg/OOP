@@ -195,7 +195,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				classroom.setClassName(newClassName);
 			}
 
-			System.out.println("Old Classmanager: " + classroom.getClassManager().getTeacherID());
+			System.out.println("Old Classmanager: " + classroom.getClassManager());
 			System.out.print("New Classmanager: ");
 			String newClassManagerID = sc.nextLine();
 			if (!newClassManagerID.isEmpty()) {
@@ -223,6 +223,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		}
 
 	}
+
 
 	@Override
 	public void delete(String ID) {
@@ -285,7 +286,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	}
 
 	
-
 }
 	
 
