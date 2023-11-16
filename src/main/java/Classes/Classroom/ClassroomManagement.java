@@ -18,18 +18,23 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	private Classroom classroomManagement[];
 	private Classroom searchList[];
 	private int currentIndex;
-	private int searchClassroomLength;
+	private int searchListLength;
 	private static int numberOfPupil;
 
 	public ClassroomManagement() {
 		classroomManagement = new Classroom[100];
 		searchList = new Classroom[100];
 		currentIndex = 0;
+		searchListLength = 0;
 		numberOfPupil = 0;
 	}
     
 	public Classroom[] getClassroomManagement() {
 		return classroomManagement;
+	}
+
+	public void setClassroomManagement(Classroom classroomManagement[]) {
+		this.classroomManagement = classroomManagement;
 	}
 
 	public Classroom[] getSearchList() {
@@ -40,10 +45,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.searchList = searchList;
 	}
 
-	public void setClassroomManagement(Classroom classroomManagement[]) {
-		this.classroomManagement = classroomManagement;
-	}
-
     public int getCurrentIndex() {
 		return currentIndex;
 	}
@@ -52,12 +53,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.currentIndex = currentIndex;
 	}
 
-	public int getSearchClassroomLength() {
-		return searchClassroomLength;
+	public int getSearchListLength() {
+		return searchListLength;
 	}
 
-	public void setSearchClassroomLength(int searchClassroomLength) {
-		this.searchClassroomLength = searchClassroomLength;
+	public void setSearchListLength(int searchListLength) {
+		this.searchListLength = searchListLength;
 	}
 
 	public static int getNumberOfPupil() {
@@ -85,12 +86,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					String classManagerID = data[1];
 					int gradeNumber = Integer.parseInt(data[2]);
 					String gradeManagerID = data[3];
+					
 
-
-					// Teacher classTeacher = new Teacher(classManagerID);
-					// Teacher gradeTeacher = new Teacher(gradeManagerID);
-					Grade grade = new Grade(gradeNumber);
-					Classroom classroom = new Classroom(className, grade);
+					//Teacher classTeacher = new Teacher(classManagerID);
+					//Teacher gradeTeacher = new Teacher(gradeManagerID);
+					Grade grade = new Grade(gradeNumber, null);
+					Classroom classroom = new Classroom(className, null, grade);
 					
 
 					this.add(classroom);
@@ -115,7 +116,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         	try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
         		bufferedWrite.write("Classroom Management List:");
         		bufferedWrite.newLine();
-        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "className", "classManagerID", "gradeNumber", "gradeManagerID"));
+        		bufferedWrite.write(String.format("%-5s\t%-10s\t%-1s\t%16s", "className", "classManager", "gradeNumber", "gradeManager"));
         		bufferedWrite.newLine();
         		for (int i = 0; i < currentIndex; i++) {
 					if(classroomManagement[i].getStatus()) {
@@ -146,14 +147,13 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         	try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
         		bufferedWrite.write("Search List:");
         		bufferedWrite.newLine();
-        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "className", "classManagerID", "gradeNumber", "gradeManagerID"));
+        		bufferedWrite.write(String.format("%-5s\t%-10s\t%-1s\t%16s", "className", "classManagerID", "gradeNumber", "gradeManagerID"));
         		bufferedWrite.newLine();
         		for (int i = 0; i < arrayLength; i++) {
 					if(searchList[i].getStatus()) {
 						bufferedWrite.write(searchList[i].toString());
 						bufferedWrite.newLine();
 					}
-				
                 }
         		bufferedWrite.write("================================================================");
         		bufferedWrite.newLine();
@@ -195,12 +195,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				classroom.setClassName(newClassName);
 			}
 
-			System.out.println("Old ClassmanagerID: " + classroom.getClassManagerID());
-			System.out.print("New ClassmanagerID: ");
+			System.out.println("Old Classmanager: " + classroom.getClassManager().getTeacherID());
+			System.out.print("New Classmanager: ");
 			String newClassManagerID = sc.nextLine();
 			if (!newClassManagerID.isEmpty()) {
 				//Teacher classManager = new Teacher(newClassManagerID);
-				classroom.setClassManagerID(null);
+				classroom.setClassManager(null);
 			}
 
 			System.out.println("Old Grade: " + classroom.getGrade());
@@ -211,7 +211,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				int gradeNumber = Integer.parseInt(data[0]);
 				String gradeManagerID = data[1]; 
 
-				//Teacher teacher = new Teacher(gradeManagerID);
+				//Teacher gradeteacher = new Teacher(gradeManagerID);
 				Grade newGrade = new Grade(gradeNumber, null);
 				classroom.setGrade(newGrade);
 			}
@@ -270,19 +270,22 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
     }
 	
 	public void searchClassName(String className) {
+		boolean flag = false;
 		for(int i = 0; i < currentIndex; i++) {
 			if(classroomManagement[i].getClassName().equalsIgnoreCase(className)) {
-				if(classroomManagement[i].getStatus()) {
-					searchList[searchClassroomLength] = classroomManagement[i];
-					searchClassroomLength++;
-				}
-				else {
-					System.out.println("ClassName does not exist!");
-				}	
-			}
+				flag = true;
+				searchList[searchListLength] = classroomManagement[i];
+				searchListLength++;
+				break;	
+			}	
 		}
-		
+		if(!flag) {
+			System.out.println("Class " + className + " does not exist!");		
+		}	
 	}
 
+	
 
 }
+	
+

@@ -49,16 +49,18 @@ public class AppHelper {
                     //addClassroomsToClassroomManagementList(classroomManagement, sc);
                     break;
                 case 4:
-                    updatePupilData(pupilManagement, sc);
+                    //updatePupilData(pupilManagement, sc);
+                    updateTeacherData(teacherManagement, sc);
                     updateClassroomData(classroomManagement, sc);
                     break;
                 case 5:
-                    deletePupilData(pupilManagement, sc);
+                    //deletePupilData(pupilManagement, sc);
                     deleteClassroomData(classroomManagement, sc);
                     break;
                 case 6:
-                    searchPupilData(pupilManagement, sc);
+                    //searchPupilData(pupilManagement, sc);
                     searchClassroomData(classroomManagement, sc);
+
                     break;
                 case 7:
 
@@ -327,68 +329,52 @@ public class AppHelper {
 
 
 
-    // public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner scanner) {
+    // public static void addClassroomsToClassroomManagementList(ClassroomManagement classroomManagement, Scanner sc) {
     //     char option = 'y';
     //     do {
     //         System.out.println("Add classrooms: ");
     //         System.out.print("Classname (Format: 6A1): ");
-    //         String className = scanner.nextLine();
+    //         String className = sc.nextLine();
             
 
-	//         System.out.println("Add classManagerID: ");
+	//         System.out.println("Add classManager: ");
     //         System.out.print("ClassManagerID (Format: GV0016): ");
-    //         String classManagerID = scanner.nextLine();
+    //         String classManagerID = sc.nextLine();
             
             
     //         System.out.println("Add grade: ");
     //         System.out.print("GradeNumber (Format: 6): ");
-    //         int gradeNumber = Integer.parseInt(scanner.nextLine());
+    //         int gradeNumber = Integer.parseInt(sc.nextLine());
 
     //         System.out.println("Add grademanager: ");
     //         System.out.print("GrademanagerID (Format: GV0016): ");
-    //         String gradeManagerID = scanner.nextLine();
+    //         String gradeManagerID = sc.nextLine();
                 
     //         Grade grade = new Grade(gradeNumber, null);   
     //         classroomManagement.add(new Classroom(className, grade));
 
     //         System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
-    //         option = scanner.nextLine().charAt(0);
+    //         option = sc.nextLine().charAt(0);
     //     } while (option == 'y' || option == 'Y');
 
     // }
 
-    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
+    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner sc) {
         System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
+        String ID = sc.nextLine();
         classroomManagement.update(ID);
     }
 
-    public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
+    public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner sc) {
         System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
+        String ID = sc.nextLine();
         classroomManagement.delete(ID);
     }
     
-    public static void searchClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
-        int option = 0;
-        do {
-            System.out.println("======================= Search for classrooms data session =======================");
-            System.out.println("1. Search classrooms data by classname");
-            System.out.println("0. Exit");
-
-            option = Integer.parseInt(scanner.nextLine());
-            switch (option) {
-                case 1:
-                    System.out.print("Enter classname: ");
-                    String className = scanner.nextLine();
-                    classroomManagement.searchClassName(className);
-                    classroomManagement.fileSearchList(classroomManagement.getSearchClassroomLength());
-                    break;
-
-
-                default:
-                    break;
-            }
-        } while (option != 0);
+    public static void searchClassroomData(ClassroomManagement classroomManagement, Scanner sc) {
+        System.out.println("Enter classname:");
+        String className = sc.nextLine();
+        classroomManagement.searchClassName(className);
+        classroomManagement.fileSearchList(classroomManagement.getSearchListLength());
     }
 }

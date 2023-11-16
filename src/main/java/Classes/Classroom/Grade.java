@@ -4,23 +4,22 @@ import Classes.Teachers.Teacher;
 
 public class Grade {
     private int gradeNumber;
-    private Teacher gradeManagerID;
+    private Teacher gradeManager;
 	private boolean status = true;
 
-    
-    
+	
 	public Grade() {
 	}
 
-	public Grade(int gradeNumber, Teacher gradeManagerID, boolean status) {
+	public Grade(int gradeNumber, Teacher gradeManager, boolean status) {
 		this.gradeNumber = gradeNumber;
-		this.gradeManagerID = gradeManagerID;
+		this.gradeManager = gradeManager;
 		this.status = status;
 	}
 
-	public Grade(int gradeNumber, Teacher gradeManagerID) {
+	public Grade(int gradeNumber, Teacher gradeManager) {
 		this.gradeNumber = gradeNumber;
-		this.gradeManagerID = gradeManagerID;
+		this.gradeManager = gradeManager;
 	}
 
 	public Grade(int gradeNumber) {
@@ -35,12 +34,12 @@ public class Grade {
 		this.gradeNumber = gradeNumber;
 	}
 
-	public Teacher getGradeManagerID() {
-		return gradeManagerID;
+	public Teacher getGradeManager() {
+		return gradeManager;
 	}
 
-	public void setGradeManagerID(Teacher gradeManagerID) {
-		this.gradeManagerID = gradeManagerID;
+	public void setGradeManager(Teacher gradeManager) {
+		this.gradeManager = gradeManager;
 	}
 
 	public Boolean getStatus() {
@@ -53,7 +52,6 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		//return String.format("%10d\t%-10s", gradeNumber, gradeManagerID);
-		return  gradeNumber + "-" + gradeManagerID;
+		return String.format("%10d\t%15s", gradeNumber, gradeManager);
 	}
 }
