@@ -1,5 +1,9 @@
 package Classes.Pupils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import Classes.Classroom.Classroom;
 import Classes.Parents.Parent;
 import Classes.Person.Address;
@@ -13,6 +17,7 @@ public class Pupil extends Person {
     private Parent parents;
     private Point subjectPoints;
     private boolean status;
+    private List<Parent> relatives;
 
     public Pupil() {
     }
@@ -21,6 +26,7 @@ public class Pupil extends Person {
         super(fullname, dob, address);
         this.pupilID = pupilID;
         this.status = true;
+        this.relatives = new ArrayList<>();
     }
 
     public Pupil(String pupilID, String fullname, Date dob, Address address, Classroom classroom) {
@@ -28,6 +34,7 @@ public class Pupil extends Person {
         this.pupilID = pupilID;
         this.classroom = classroom;
         this.status = true;
+        this.relatives = new ArrayList<>();
     }
 
     public String getPupilID() {
@@ -62,7 +69,6 @@ public class Pupil extends Person {
         this.subjectPoints = subjectPoints;
     }
 
-
     public boolean isStatus() {
         return this.status;
     }
@@ -75,8 +81,20 @@ public class Pupil extends Person {
         this.status = status;
     }
 
+    public List<Parent> getRelatives() {
+        return Collections.unmodifiableList(relatives); // Return an unmodifiable view of the list
+    }
+
+    public void addRelative(Parent relative) {
+        this.relatives.add(relative);
+    }
+
+    public void removeRelative(Parent relative) {
+        this.relatives.remove(relative);
+    }
+
     @Override
     public String toString() {
-        return pupilID + "\t" + super.toString(); 
+        return pupilID + "\t" + super.toString();
     }
 }

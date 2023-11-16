@@ -1,0 +1,1870 @@
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	null
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS051	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS052	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS053	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS054	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS055	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS056	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS057	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS058	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS059	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS060	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result for Parents:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+================================================================
+Search result for Parents:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+================================================================
+Search result for Parents:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+================================================================
+Parent Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Pham Van Linh       	01/01/1956	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156428
+HS002	Le Thi Hai          	15/05/1958	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156429
+HS003	Pham Thi Phuong     	20/09/1957	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156430
+HS004	Nguyen Van Dong     	03/11/1954	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156431
+HS005	Tran Thi Ha         	12/12/1956	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156432
+HS006	Le Thi Mai          	09/08/1959	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156433
+HS007	Do Van Hung         	28/02/1955	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156434
+HS008	Nguyen Van Hoa      	14/06/1954	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156435
+HS009	Tran Thi Hoa        	19/03/1955	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156436
+HS010	Hoang Thi Hoa       	10/10/1957	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh	0832156437
+================================================================
+Pupil Management List:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+List of pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Searching relatives for pupils with name containing 'Na':
+Pupil: Nguyen Van Nam
+Relatives:
+============================================
+Pupil: Hoang Van Nam
+Relatives:
+============================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+List of pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS001	Cao Thai Bao        	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS002	Le Thi Minh         	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS003	Pham Van Khanh      	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS004	Nguyen Thi Quynh    	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS005	Tran Van Toan       	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS006	Le Thi Hang         	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS007	Do Thi Huong        	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS008	Nguyen Van Hieu     	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS009	Tran Thi Lan        	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS010	Hoang Van Hung      	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS011	Le Thi Thao         	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS012	Pham Van Tuan       	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS013	Nguyen Thi Tuyet    	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS014	Tran Van Tuan       	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS015	Dang Thi Mai        	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS016	Nguyen Van An       	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS017	Le Thi Thu          	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS018	Hoang Thi Hanh      	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS019	Trinh Van Hoa       	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS020	Nguyen Thi Thu Ha   	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS021	Vo Thi Hoang        	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS022	Lam Van Hung        	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS023	Huynh Thi Thanh     	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS024	Nguyen Thi Thuy     	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS025	Tran Van Hoang      	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh 
+HS026	Pham Thi Ngoc       	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS027	Nguyen Thi Ha       	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS028	Le Van Duc          	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS029	Hoang Thi Hang      	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS030	Trinh Van Dong      	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS031	Dang Thi Huong      	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS032	Nguyen Thi Lan      	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS033	Hoang Van Khanh     	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS034	Le Thi Thuy         	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS035	Pham Van Hiep       	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS036	Do Van Tai          	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS037	Nguyen Thi Quyen    	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS038	Vo Thi Mai          	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS039	Pham Van Tuan       	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS040	Tran Thi Thao       	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS041	Le Thi Hoa          	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS042	Nguyen Van Nam      	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS043	Tran Van Duc        	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS044	Pham Thi Huong      	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS045	Nguyen Van Anh      	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS046	Hoang Thi Thu       	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS047	Trinh Van Dinh      	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS048	Nguyen Thi Tam      	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS049	Le Van Khoi         	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS050	Pham Thi Phuong     	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh
+HS051	Nguyen Thi Thu Trang	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS052	Le Thi Ha           	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS053	Pham Van Dung       	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS054	Tran Van Hoan       	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS055	Le Thi Hanh         	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS056	Nguyen Thi Nga      	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS057	Hoang Van Nam       	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS058	Pham Thi Phuong     	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+HS060	Le Van Hoang        	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================
+Searching relatives for pupils with name containing 'Ta':
+Pupil: Do Van Tai
+Relatives:
+============================================
+Pupil: Nguyen Thi Tam
+Relatives:
+============================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+================================================================
+Search result for Pupils:
+ID   	Fullname            	BirthDate 	Address                                                               
+HS059	Nguyen Thi Thu Hien 	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh
+================================================================

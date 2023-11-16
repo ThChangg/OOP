@@ -7,10 +7,12 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Classes.Parents.Parent;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Interfaces.ICRUD;
@@ -21,12 +23,14 @@ public class PupilManagement implements IFileManagement, ICRUD {
     private Pupil searchResult[];
     private int currentIndex;
     private int searchResultLength;
+    private List<Pupil> pupils;
 
     public PupilManagement() {
         pupilList = new Pupil[100];
         searchResult = new Pupil[100];
         currentIndex = 0;
         searchResultLength = 0;
+
     }
 
     public Pupil[] getPupilManagement() {
@@ -279,18 +283,25 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return pupil;
     }
 
-    public void findPupilsByName(String name) {
+    public Pupil findPupilsByName(String name) {
+        this.searchResultLength = 0; // Đảm bảo reset searchResultLength mỗi lần tìm kiếm mới
+
         Pattern pattern = Pattern.compile(Pattern.quote(name), Pattern.CASE_INSENSITIVE);
 
         for (int i = 0; i < currentIndex; i++) {
             if (pattern.matcher(pupilList[i].getFullname()).find()) {
                 if (pupilList[i].getStatus()) {
                     this.searchResult[this.searchResultLength++] = pupilList[i];
+                    return pupilList[i]; // Trả về học sinh được tìm thấy
                 } else {
-                    System.out.println("Pupil does not exist!");
+                    System.out.println("Học sinh không tồn tại hoặc đã bị xóa!");
+                    return null; // Trả về null nếu học sinh không tồn tại hoặc đã bị xóa
                 }
             }
         }
+
+        System.out.println("Không tìm thấy học sinh với tên đã nhập!");
+        return null; // Trả về null nếu không tìm thấy học sinh
     }
 
     public int getPupilArrayIndex(String ID) {
@@ -305,4 +316,92 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
         return index;
     }
+
+    public void searchRelativesByName(String name) {
+        // Tên file output
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            // Hiển thị danh sách học sinh
+            writer.write("List of pupils:");
+            writer.newLine();
+            writeToFile(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"), writer);
+            for (int i = 0; i < currentIndex; i++) {
+                if (pupilList[i].getStatus()) {
+                    writeToFile(pupilList[i].toString(), writer);
+                }
+            }
+            writeToFile("================================================================", writer);
+
+            // Thực hiện tìm kiếm người thân theo tên
+            writer.write("Searching relatives for pupils with name containing '" + name + "':");
+            writer.newLine();
+            for (int i = 0; i < currentIndex; i++) {
+                if (pupilList[i].getStatus() && pupilList[i].getFullname().toLowerCase().contains(name.toLowerCase())) {
+                    writer.write("Pupil: " + pupilList[i].getFullname());
+                    writer.newLine();
+
+                    // Hiển thị danh sách người thân của học sinh
+                    List<Parent> relatives = pupilList[i].getRelatives();
+                    writer.write("Relatives:");
+                    writer.newLine();
+                    for (Parent relative : relatives) {
+                        writeToFile(relative.getFullname(), writer);
+                    }
+
+                    writer.write("============================================");
+                    writer.newLine();
+                }
+            }
+            System.out.println("Data written to " + relativePath);
+        } catch (IOException e) {
+            System.err.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+    }
+
+    // Phương thức để ghi dữ liệu vào file
+    private void writeToFile(String data, BufferedWriter writer) throws IOException {
+        writer.write(data);
+        writer.newLine();
+    }
+
+    public void exportSearchResultToFile() {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            writer.write("Search result for Pupils:");
+            writer.newLine();
+            writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
+            writer.newLine();
+            for (int i = 0; i < searchResultLength; i++) {
+                writer.write(searchResult[i].toString());
+                writer.newLine();
+            }
+            writer.write("================================================================");
+            writer.newLine();
+            System.out.println("Pupil data written to " + relativePath);
+        } catch (IOException e) {
+            System.err.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public String toString() {
+        // Add the header information
+        String header = "ID\tFullname\tBirthDate\tAddress";
+        String separator = "================================================================";
+
+        // Iterate through pupils in the pupilList array and create a string
+        // representation for each pupil
+        StringBuilder result = new StringBuilder(header + "\n" + separator + "\n");
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getStatus()) {
+                result.append(pupilList[i].toString()).append("\n");
+            }
+        }
+        result.append(separator); // Add separator after all pupils
+
+        return result.toString();
+    }
+
 }

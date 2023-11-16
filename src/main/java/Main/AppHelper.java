@@ -43,16 +43,76 @@ public class AppHelper {
                     appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
                 case 3:
-                    addPupilsToPupilManagementList(pupilManagement, sc);
+                    System.out.println("3. Adding 1 or n person to");
+                    System.out.println("1) Add pupils");
+                    System.out.println("2) Add parents");
+                    int subOption = Integer.parseInt(sc.nextLine());
+
+                    switch (subOption) {
+                        case 1:
+                            AppHelper.addPupilsToPupilManagementList(pupilManagement, sc);
+                            break;
+                        case 2:
+                            AppHelper.addParentsToParentManagementList(parentManagement, sc);
+                            break;
+                        default:
+                            System.out.println("Invalid sub-option");
+                            break;
+                    }
                     break;
                 case 4:
-                    updatePupilData(pupilManagement, sc);
+                    System.out.println("4. Update person information");
+                    System.out.println("1) Update pupils");
+                    System.out.println("2) Update parents");
+                    int subOption1 = Integer.parseInt(sc.nextLine());
+
+                    switch (subOption1) {
+                        case 1:
+                            AppHelper.updatePupilData(pupilManagement, sc);
+                            break;
+                        case 2:
+                            AppHelper.updateParentData(parentManagement, sc);
+                            break;
+                        default:
+                            System.out.println("Invalid sub-option");
+                            break;
+                    }
                     break;
                 case 5:
-                    deletePupilData(pupilManagement, sc);
+                    System.out.println("5. Delete person");
+                    System.out.println("1) Delete pupils");
+                    System.out.println("2) Delete parents");
+                    int subOption2 = Integer.parseInt(sc.nextLine());
+
+                    switch (subOption2) {
+                        case 1:
+                            AppHelper.deletePupilData(pupilManagement, sc);
+                            break;
+                        case 2:
+                            AppHelper.deleteParentData(parentManagement, sc);
+                            break;
+                        default:
+                            System.out.println("Invalid sub-option");
+                            break;
+                    }
                     break;
                 case 6:
-                searchPupilData(pupilManagement, sc);
+                    System.out.println("6. Searching for the person information");
+                    System.out.println("1) Search pupils");
+                    System.out.println("2) Search parents");
+                    int subOption3 = Integer.parseInt(sc.nextLine());
+
+                    switch (subOption3) {
+                        case 1:
+                            AppHelper.searchPupilAndParent(pupilManagement, parentManagement, sc);
+                            break;
+                        case 2:
+                            AppHelper.searchParentData(parentManagement, sc);
+                            break;
+                        default:
+                            System.out.println("Invalid sub-option");
+                            break;
+                    }
                     break;
                 case 7:
 
@@ -73,7 +133,7 @@ public class AppHelper {
                 ((ClassroomManagement) managementObject).initialize();
             } else if (managementObject instanceof TeacherManagement) {
                 ((TeacherManagement) managementObject).initialize();
-            }else if (managementObject instanceof ParentManagement) {
+            } else if (managementObject instanceof ParentManagement) {
                 ((ParentManagement) managementObject).initialize();
             }
             // Add more else if blocks for other management objects
@@ -94,11 +154,10 @@ public class AppHelper {
                 classroomManagement = (ClassroomManagement) managementObject;
             } else if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
-            }else if (managementObject instanceof ParentManagement) {
+            } else if (managementObject instanceof ParentManagement) {
                 parentManagement = (ParentManagement) managementObject;
             }
-            
-            
+
             // Add more else if blocks for other management objects
         }
 
@@ -157,18 +216,15 @@ public class AppHelper {
     }
 
     public static boolean isValidAddress(String address) {
-        String addressPart = address;
-        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
-        Pattern pattern = Pattern.compile(addressRegex);
-        Matcher matcher = pattern.matcher(addressPart);
+        // Allowing for more flexible address formats, including an optional phone
+        // number at the end
+        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*)(,\\s\\d+)?$|(null)";
 
-        boolean flag = true;
-        if (!matcher.matches()) {
-            flag = false;
-        }
-        return flag;
+        Pattern pattern = Pattern.compile(addressRegex);
+        Matcher matcher = pattern.matcher(address);
+
+        return matcher.matches();
     }
-    
 
     public static String createPupilID(String lastPupilID) {
         String prefix = lastPupilID.substring(0, 2);
@@ -302,13 +358,127 @@ public class AppHelper {
         System.out.println("Delete successfully!");
     }
 
-    public static void searchPupilData(PupilManagement pupilManagement, Scanner sc) {
+    public static void searchPupilAndParent(PupilManagement pupilManagement, ParentManagement parentManagement,
+            Scanner sc) {
         int option = 0;
         do {
-            System.out.println("======================= Search for pupils data session =======================");
-            System.out.println("1. Search pupils data by name");
-            System.out.println("2. Search pupils data by class");
-            System.out.println("3. Search pupils data by sex");
+            System.out.println("Choose search option:");
+            System.out.println("1. Search by pupil name and display parents");
+            System.out.println("2. Search relatives by pupil name");
+            option = sc.nextInt();
+
+            switch (option) {
+                case 1:
+                    System.out.print("Enter pupil name to search: ");
+                    sc.nextLine(); // Consume the newline character
+                    String searchName = sc.nextLine();
+                    Pupil pupil = pupilManagement.findPupilsByName(searchName);
+
+                    if (pupil != null) {
+                        System.out.println("Pupil: " + pupil.getFullname());
+
+                        // Display parents of the pupil
+                        Parent parent = pupil.getParents();
+                        if (parent != null) {
+                            System.out.println("Parents:");
+                            System.out.println(parent.getFullname());
+                        } else {
+                            System.out.println("Parents not found.");
+                        }
+
+                        // Export search result to file
+                        pupilManagement.exportSearchResultToFile();
+                    } else {
+                        System.out.println("Pupil not found.");
+                    }
+                    break;
+                case 2:
+                    System.out.print("Enter pupil name to search relatives: ");
+                    sc.nextLine(); // Consume the newline character
+                    String relativeSearchName = sc.nextLine();
+                    pupilManagement.searchRelativesByName(relativeSearchName);
+                    pupilManagement.exportSearchResultToFile();
+                    break;
+                default:
+                    System.out.println("Invalid option. Please choose 1 or 2.");
+            }
+        } while (option != 0);
+    }
+
+    public static String createParentID(String lastParentID) {
+        String prefix = lastParentID.substring(0, 2);
+        int number = 0; // Default value if lastParentID is empty
+
+        if (!lastParentID.isEmpty()) {
+            number = Integer.parseInt(lastParentID.substring(2));
+        }
+
+        number++;
+
+        // Format it back into the original string format, %s for a string, %03d for a
+        // number with 3 digits, and padding 0 before if a number has less than 3 digits
+        String result = String.format("%s%03d", prefix, number);
+        return result;
+    }
+
+    public static void addParentsToParentManagementList(ParentManagement parentManagement, Scanner scanner) {
+        char option = 'y';
+        do {
+            System.out.println("Add Parents: ");
+            System.out.print("Fullname (Format: Nguyen Duc Canh): ");
+            String fullName = scanner.nextLine();
+
+            String date = "";
+            do {
+                System.out.print("BirthDate: (format: 03/03/2017): ");
+                date = scanner.nextLine();
+                boolean flag = isValidDateAndMonth(date);
+
+                if (!flag) {
+                    System.out.println("BirthDate is invalid (Wrong format)!");
+                }
+            } while (!isValidDateAndMonth(date));
+            Date dob = new Date(date);
+
+            String inputAddress = "";
+            do {
+                System.out.print(
+                        "Address: (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
+                inputAddress = scanner.nextLine();
+                boolean flag = isValidAddress(inputAddress);
+
+                if (!flag) {
+                    System.out.println("Address is invalid (Wrong format)!");
+                }
+            } while (!isValidAddress(inputAddress));
+            Address address = new Address(inputAddress);
+
+            String parentID = createParentID(parentManagement.getLastParentID());
+            parentManagement.add(new Parent(parentID, fullName, dob, address));
+
+            System.out.println("Do you want to add more parents ? Yes(Y) : No(N)");
+            option = scanner.nextLine().charAt(0);
+        } while (option == 'y' || option == 'Y');
+
+    }
+
+    public static void updateParentData(ParentManagement parentManagement, Scanner scanner) {
+        System.out.print("Enter parent ID: ");
+        String ID = scanner.nextLine();
+        parentManagement.update(ID);
+    }
+
+    public static void deleteParentData(ParentManagement parentManagement, Scanner scanner) {
+        System.out.print("Enter parent ID: ");
+        String ID = scanner.nextLine();
+        parentManagement.delete(ID);
+    }
+
+    public static void searchParentData(ParentManagement parentManagement, Scanner sc) {
+        int option = 0;
+        do {
+            System.out.println("======================= Search for parents data session =======================");
+            System.out.println("1. Search parents data by name");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -316,8 +486,8 @@ public class AppHelper {
                 case 1:
                     System.out.print("Enter name: ");
                     String name = sc.nextLine();
-                    pupilManagement.findPupilsByName(name);
-                    pupilManagement.display(pupilManagement.getSearchResultLength());
+                    parentManagement.findParentsByName(name);
+                    parentManagement.display(parentManagement.getSearchResultLength());
                     break;
 
                 default:

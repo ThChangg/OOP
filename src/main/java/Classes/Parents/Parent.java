@@ -26,7 +26,7 @@ public class Parent extends Person {
     public Parent(String parentID, String fullname, Date dob, Address address, Classroom classroom) {
         super(fullname, dob, address);
         this.parentID = parentID;
-        this.classroom = classroom;
+        this.phoneNumber = phoneNumber;
         this.status = true;
     }
 
@@ -81,10 +81,11 @@ public class Parent extends Person {
     }
 
     @Override
-    public String toString() {
-        // Thêm số điện thoại vào chuỗi khi hiển thị thông tin
-        return parentID + "\t" + super.toString() + "\t" + phoneNumber; 
-    }
+public String toString() {
+    // Thêm số điện thoại vào chuỗi khi hiển thị thông tin
+    return parentID + "\t" + super.toString() + "\t" + (phoneNumber != null ? phoneNumber : "N/A");
+}
+
 
 
 }
