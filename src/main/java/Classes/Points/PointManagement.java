@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
@@ -19,7 +18,6 @@ public class PointManagement implements IFileManagement, ICRUD {
     public PointManagement() {
         listPoint = new Point[100];
         currentIndex = 0;
-
     }
 
     public int getCurrentIndex() {
@@ -46,9 +44,9 @@ public class PointManagement implements IFileManagement, ICRUD {
                         double mathPoint = Double.parseDouble(parts[2]);
                         double physicalEducationPoint = Double.parseDouble(parts[3]);
                         double englishPoint = Double.parseDouble(parts[4]);
-                        String rank = parts[5];
+                        int pointConductValue = Integer.parseInt(parts[5]);
 
-                        Conduct conduct = new Conduct(rank);
+                        Conduct conduct = new Conduct(pointConductValue);
                         Point point = new Point(pupilID, literaturePoint, mathPoint, physicalEducationPoint,
                                 englishPoint, conduct);
 
@@ -64,37 +62,44 @@ public class PointManagement implements IFileManagement, ICRUD {
         } else {
             System.out.println("File does not exist.");
         }
-
+        calculateRank();
     }
 
     @Override
     public void display() {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
-        if (file.exists()) {
-            // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
-                writer.write("Point Management List:");
-                writer.newLine();
-                writer.write(String.format("%-5s\t%-3s\t%-3s\t%-3s\t%-3s\t%-2s", "ID", "LiteraturePoint",
-                        "MathPoint", "PhysicalEducationPoint", "EnglishPoint", "Conduct"));
-                writer.newLine();
-                for (int i = 0; i < currentIndex; i++) {
-                    if (listPoint[i].getStatus()) {
-                        writer.write(listPoint[i].toString());
-                        writer.newLine();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            writer.write("Point Management List:");
+            writer.newLine();
+            writer.write(String.format("%-5s\t%-3s\t%-3s\t%-3s\t%-3s\t%-2s\t%-10s\t%-9s", "ID", "LiteraturePoint",
+                    "MathPoint", "PhysicalEducationPoint", "EnglishPoint", "PointConduct", "Rank", "Performance"));
+            writer.newLine();
+            for (int i = 0; i < currentIndex; i++) {
+                if (listPoint[i].getStatus()) {
+                    Point point = listPoint[i];
+                    int pointConductValue = point.getConduct().getpointConduct();
+                    String rank;
+                    if (pointConductValue >= 80) {
+                        rank = "Very Good";
+                    } else if (pointConductValue >= 65 && pointConductValue <= 79) {
+                        rank = "Good";
+                    } else if (pointConductValue >= 50 && pointConductValue <= 64) {
+                        rank = "Average";
+                    } else {
+                        rank = "Weak";
                     }
+                    point.getConduct().setRank(rank);
+                    point.calculatePerformance();
+                    writer.write(
+                            point.toString() + "\t" + point.getConduct().getRank() + "\t" + point.getPerformance());
+                    writer.newLine();
                 }
-                writer.write("================================================================");
-                writer.newLine();
-                System.out.println("Data written to " + relativePath);
-            } catch (IOException e) {
-                System.out.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
-        } else {
-            System.out.println("File does not exist.");
+            writer.write("================================================================");
+            writer.newLine();
+            System.out.println("Data written to " + relativePath);
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file: " + e.getMessage());
         }
     }
 
@@ -121,7 +126,6 @@ public class PointManagement implements IFileManagement, ICRUD {
             System.out.println("New MathPoint: ");
             double mathPoint = Double.parseDouble(sc.nextLine());
             point.setMathPoint(mathPoint);
-
             System.out.println("Old PhysicalEducationPoint " + point.getPhysicalEducationPoint());
             System.out.println("New PhysicalEducationPoint: ");
             double physicalEducationPoint = Double.parseDouble(sc.nextLine());
@@ -130,10 +134,10 @@ public class PointManagement implements IFileManagement, ICRUD {
             System.out.println("New EnglishPoint : ");
             double englishPoint = Double.parseDouble(sc.nextLine());
             point.setEnglishPoint(englishPoint);
-            System.out.println("Old Conduct " + conduct.getRank());
-            System.out.println("New Conduct: ");
-            String newConductRank = sc.nextLine();
-            point.getConduct().setRank(newConductRank);
+            System.out.println("Old PointConduct " + conduct.getpointConduct());
+            System.out.println("New PointConduct: ");
+            int newPointConduct = sc.nextInt();
+            point.getConduct().setpointConduct(newPointConduct);
         }
     }
 
@@ -150,7 +154,6 @@ public class PointManagement implements IFileManagement, ICRUD {
     @Override
     public void delete(String ID) {
         int index = this.getPointArrayIndex(ID);
-
         if (index >= 0) {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
@@ -196,4 +199,24 @@ public class PointManagement implements IFileManagement, ICRUD {
         return index;
     }
 
+    private void calculateRank() {
+        for (int i = 0; i < currentIndex; i++) {
+            if (listPoint[i].getStatus()) {
+                Point point = listPoint[i];
+                int pointConductValue = point.getConduct().getpointConduct();
+                String rank;
+                if (pointConductValue >= 80) {
+                    rank = "Very Good";
+                } else if (pointConductValue >= 65 && pointConductValue <= 79) {
+                    rank = "Good";
+                } else if (pointConductValue >= 50 && pointConductValue <= 64) {
+                    rank = "Average";
+                } else {
+                    rank = "Weak";
+                }
+                point.getConduct().setRank(rank);
+            }
+        }
+        System.out.println("Ranks calculated.");
+    }
 }

@@ -2,19 +2,23 @@ package Classes.Points;
 
 public class Conduct {
     private String rank;
-    private int point;
+    private int pointConduct;
     private boolean isDeleted=false;
 
     public Conduct() {
     }
 
-    public Conduct(String rank, int point) {
+    public Conduct(String rank, int pointConduct) {
         this.rank = rank;
-        this.point = point;
+        this.pointConduct = pointConduct;
+       
     }
 
     public Conduct(String rank) {
         this.rank = rank;
+    }
+    public Conduct(int pointConduct){
+        this.pointConduct=pointConduct;
     }
 
     public String getRank() {
@@ -25,12 +29,12 @@ public class Conduct {
         this.rank = rank;
     }
 
-    public int getPoint() {
-        return point;
+    public int getpointConduct() {
+        return pointConduct;
     }
 
-    public void setPoint(int point) {
-        this.point = point;
+    public void setpointConduct(int pointConduct) {
+        this.pointConduct = pointConduct;
     }
     public boolean getIsDeleted() {
         return isDeleted;
@@ -41,7 +45,11 @@ public class Conduct {
     }
     @Override
     public String toString() {
-        return rank;
+        return  pointConduct +"\t";
     }
 
+    public  String getConductValue() {
+        return pointConduct + "\t";
+    }
+ 
 }

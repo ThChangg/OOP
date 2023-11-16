@@ -4,8 +4,6 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Points.Conduct;
@@ -18,7 +16,6 @@ import Classes.Teachers.TeacherManagement;
 import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
 import Classes.Classroom.Grade;
-
 
 public class AppHelper {
     public static void Menu() {
@@ -112,8 +109,7 @@ public class AppHelper {
             } else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
-            
-            
+
             // Add more else if blocks for other management objects
         }
 
@@ -183,7 +179,6 @@ public class AppHelper {
         }
         return flag;
     }
-    
 
     public static String createPupilID(String lastPupilID) {
         String prefix = lastPupilID.substring(0, 2);
@@ -387,6 +382,7 @@ public class AppHelper {
         System.out.print("Enter pupil ID: ");
         String ID = scanner.nextLine();
         pointManagement.update(ID);
+        
     }
 
     public static void deletePointData(PointManagement pointManagement, Scanner scanner) {
@@ -400,8 +396,11 @@ public class AppHelper {
         String ID = scanner.nextLine();
         Point foundPoint = pointManagement.searchPointByPupilID(ID);
 
+        foundPoint.calculatePerformance();
+
         if (foundPoint != null) {
-            System.out.println("Point found: " + foundPoint.toString());
+            System.out.println("Point found: " + foundPoint.toString() + foundPoint.getConduct().getRank() + "\t"
+                    + foundPoint.getPerformance());
         } else {
             System.out.println("Point not found.");
         }
@@ -443,10 +442,10 @@ public class AppHelper {
             scanner.nextLine(); // Consume the newline character
 
             System.out.print("Conduct: ");
-            String conduct = scanner.nextLine();
+            int conductValue = Integer.parseInt(scanner.nextLine());
 
             Point point = new Point(pupilID, literaturePoint, mathPoint, physicalEducationPoint, englishPoint,
-                    new Conduct(conduct, option));
+                    new Conduct(conductValue));
             pointManagement.add(point);
 
             System.out.println("Do you want to add more points? Yes(Y) : No(N)");
