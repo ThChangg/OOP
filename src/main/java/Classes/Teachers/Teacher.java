@@ -19,13 +19,19 @@ public class Teacher extends Person {
         this.teacherID = teacherID;
     }
 
+    public Teacher(String teacherID, String fullname, Date birthDate, Address address, String sex, String major) {
+        super(fullname, birthDate, address, sex);
+        this.teacherID = teacherID;
+        this.major = major;
+    }
+
     public Teacher(String teacherID, Classroom classroom, String major, String fullname, Date birthDate, Address address) {
         super(fullname, birthDate, address);
         this.teacherID = teacherID;
         this.classroom = classroom;
         this.major = major;
     }
-    
+
     public String getTeacherID() {
         return teacherID;
     }
@@ -52,7 +58,7 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return teacherID + "\t" + super.toString();
+        return teacherID + "\t" + super.toString() + "\t" + major;
     }
 
 }

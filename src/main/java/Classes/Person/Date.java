@@ -1,5 +1,8 @@
 package Classes.Person;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Date {
     private String date;
     private String month;
@@ -48,5 +51,30 @@ public class Date {
     @Override
     public String toString() {
         return date + "/" + month + "/" + year;
+    }
+
+    public static boolean isValidDateAndMonth(String date) {
+        boolean flag = true;
+        String regex = "\\d+\\/\\d+\\/\\d+";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(date);
+
+        if (matcher.matches()) {
+            String dateParts[] = date.split("/");
+            int day = Integer.parseInt(dateParts[0]), month = Integer.parseInt(dateParts[1]);
+            if (month < 1 || month > 12) {
+                flag = false; // Invalid month
+            }
+
+            int[] daysInMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+            if (day < 1 || day > daysInMonth[month]) {
+                flag = false; // Invalid day for the given month
+            }
+
+        } else {
+            flag = false;
+        }
+        return flag;
     }
 }
