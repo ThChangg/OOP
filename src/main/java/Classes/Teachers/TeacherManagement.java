@@ -48,7 +48,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String teacherID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
-                        String classID = parts[4];
+                        String major = parts[4];
+                        String sex = parts[6];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -58,18 +59,18 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
+                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
                         Pattern pattern = Pattern.compile(addressRegex);
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
-                            String streetNumber = matcher.group(1);
+                            String houseNumber = matcher.group(1);
                             String streetName = "Duong " + matcher.group(2);
-                            String ward = "Phuong " + matcher.group(3);
-                            String district = "Quan " + matcher.group(4);
-                            String city = "Thanh pho " + matcher.group(5);
+                            String ward = matcher.group(3);
+                            String district = matcher.group(4);
+                            String city = matcher.group(5);
 
-                            Address address = new Address(streetNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address);
+                            Address address = new Address(houseNumber, streetName, ward, district, city);
+                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, sex, major);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -85,7 +86,6 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         } else {
             System.out.println("File does not exist.");
         }
-
     }
 
     @Override
@@ -99,7 +99,9 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Teacher Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "ID", "Fullname", "BirthDate", "Address"));
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Sex",
+                        "BirthDate", "Address",
+                        "Major"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     writer.write(teacherManagement[i].toString());
@@ -156,15 +158,15 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             System.out.print("New Address (Format: 16A, To Ky, Phuong Trung My Tay, Quan 12, Thanh pho Ho Chi Minh): ");
             String address = sc.nextLine();
             if (!address.isEmpty()) {
-                String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
+                String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
                 Pattern pattern = Pattern.compile(addressRegex);
                 Matcher matcher = pattern.matcher(address);
                 if (matcher.matches()) {
                     String streetNumber = matcher.group(1);
                     String streetName = "Duong " + matcher.group(2);
-                    String ward = "Phuong " + matcher.group(3);
-                    String district = "Quan " + matcher.group(4);
-                    String city = "Thanh pho " + matcher.group(5);
+                    String ward = matcher.group(3);
+                    String district = matcher.group(4);
+                    String city = matcher.group(5);
 
                     Address newAddress = new Address(streetNumber, streetName, ward, district, city);
                     teacher.setAddress(newAddress);

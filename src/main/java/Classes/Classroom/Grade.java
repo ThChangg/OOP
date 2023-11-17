@@ -5,24 +5,20 @@ import Classes.Teachers.Teacher;
 public class Grade {
     private int gradeNumber;
     private Teacher gradeManagerID;
-	private boolean status = true;
+	private boolean status;
 
 	public Grade() {
-	}
-
-	public Grade(int gradeNumber, Teacher gradeManagerID, boolean status) {
-		this.gradeNumber = gradeNumber;
-		this.gradeManagerID = gradeManagerID;
-		this.status = status;
 	}
 
 	public Grade(int gradeNumber, Teacher gradeManagerID) {
 		this.gradeNumber = gradeNumber;
 		this.gradeManagerID = gradeManagerID;
+		this.status = true;
 	}
 
 	public Grade(int gradeNumber) {
 		this.gradeNumber = gradeNumber;
+		this.status = true;
 	}
 
 	public int getGradeNumber() {
