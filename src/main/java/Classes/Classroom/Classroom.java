@@ -8,27 +8,22 @@ public class Classroom {
     private String className;
     private Teacher classManagerID;
     private Grade grade;
-	private boolean status = true;
+	private boolean status;
     
     public Classroom() {
-	}
-
-	public Classroom(String className, Teacher classManagerID, Grade grade, boolean status) {
-		this.className = className;
-		this.classManagerID = classManagerID;
-		this.grade = grade;
-		this.status = status;
 	}
 
 	public Classroom(String className, Teacher classManagerID, Grade grade) {
 		this.className = className;
 		this.classManagerID = classManagerID;
 		this.grade = grade;
+		this.status = true;
 	}
 
 	public Classroom(String className, Grade grade) {
 		this.className = className;
 		this.grade = grade;
+		this.status = true;
 	}
 
 	public Classroom(String className) {
