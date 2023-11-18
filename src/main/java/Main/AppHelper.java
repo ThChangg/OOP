@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Person.Person;
 import Classes.Points.Conduct;
 import Classes.Points.Point;
 import Classes.Points.PointManagement;
@@ -50,7 +51,7 @@ public class AppHelper {
                 case 4:
                     // updatePupilData(pupilManagement, sc);
                     // updateClassroomData(classroomManagement, sc);
-                    updatePointData(pointManagement, sc);
+                    Person.updatePointData(pointManagement, sc);
                     break;
                 case 5:
                     // deletePupilData(pupilManagement, sc);
@@ -77,7 +78,7 @@ public class AppHelper {
         // ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
         // ParentManagement parentManagement = null;
-        PointManagement pointManagement=null;
+        // PointManagement pointManagement=null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof PupilManagement) {
@@ -388,7 +389,6 @@ public class AppHelper {
         teacherManagement.delete(ID);
         System.out.println("Delete successfully!");
     }
-
     public static void appSearch(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
         // ParentManagement parentManagement = null;

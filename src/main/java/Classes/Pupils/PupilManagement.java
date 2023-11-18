@@ -188,6 +188,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
     public void add(Object obj) {
         if (currentIndex < pupilList.length) {
             pupilList[currentIndex++] = (Pupil) obj;
+            
         } else {
             System.out.println("Pupil Management List is full. Cannot add more.");
         }
@@ -453,7 +454,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     private String readDatabase() {
         StringBuilder records = new StringBuilder();
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
+        String relativePath = System.getProperty("user.dir") + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
         File file = new File(relativePath);
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
@@ -467,7 +468,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
     }
 
     private void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
+        String relativePath = System.getProperty("user.dir") + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
         File file = new File(relativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(records);

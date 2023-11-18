@@ -1,7 +1,10 @@
 package Classes.Person;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import Classes.Points.PointManagement;
 
 public class Person {
     private String fullname;
@@ -60,6 +63,12 @@ public class Person {
     @Override
     public String toString() {
         return String.format("%-20s\t%-6s\t%-10s\t%-80s", fullname, sex, birthDate, address);
+    }
+
+    public static void updatePointData(PointManagement pointManagement, Scanner scanner) {
+        System.out.print("Enter pupil ID: ");
+        String ID = scanner.nextLine();
+        pointManagement.update(ID);
     }
 
     public static boolean isValidSex(String sex) {
