@@ -32,7 +32,7 @@ public class PointManagement implements IFileManagement, ICRUD {
     @Override
     public void initialize() {
         String relativePath = System.getProperty("user.dir")
-                + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\points.txt";
+                + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
 
         if (file.exists()) {
@@ -75,7 +75,7 @@ public class PointManagement implements IFileManagement, ICRUD {
         String dataFormat = "%-5s\t%-15.1f\t%-10.1f\t%-25.1f\t%-15.1f\t%-15d\t%-10s\t%-15s";
 
         String relativePath = System.getProperty("user.dir")
-                + "\\Pupil-Management-OOP\\src\\main\\java\\Main\\output.txt";
+                + "\\src\\main\\java\\Main\\output.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
             writer.write("Point Management List:");
             writer.newLine();
@@ -291,7 +291,7 @@ public class PointManagement implements IFileManagement, ICRUD {
     private String readDatabase() {
         StringBuilder records = new StringBuilder();
         String relativePath = System.getProperty("user.dir")
-                + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\points.txt";
+                + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
@@ -306,7 +306,7 @@ public class PointManagement implements IFileManagement, ICRUD {
 
     private void writeDatabase(String records) {
         String relativePath = System.getProperty("user.dir")
-                + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\points.txt";
+                + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(records + "\n");
@@ -318,7 +318,7 @@ public class PointManagement implements IFileManagement, ICRUD {
 
     private void updateDataFile() {
         String relativePath = System.getProperty("user.dir")
-                + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\points.txt";
+                + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
             for (int i = 0; i < currentIndex; i++) {
@@ -326,7 +326,6 @@ public class PointManagement implements IFileManagement, ICRUD {
                     writer.write(listPoint[i].toString() + "\n");
                 }
             }
-            System.out.println("Data file updated after deletion.");
         } catch (IOException e) {
             e.printStackTrace();
         }
