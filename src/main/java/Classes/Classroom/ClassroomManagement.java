@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Arrays;
 
 
 import Classes.Teachers.Teacher;
@@ -19,14 +22,17 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	private Classroom searchList[];
 	private int currentIndex;
 	private int searchListLength;
-	private static int numberOfPupil;
+	private static int classCounts[];
+	private static String classroomFormation[];
 
 	public ClassroomManagement() {
 		classroomManagement = new Classroom[100];
 		searchList = new Classroom[100];
 		currentIndex = 0;
 		searchListLength = 0;
-		numberOfPupil = 0;
+		classCounts = new int[5];
+		classroomFormation = new String[100];
+		Arrays.fill(classroomFormation, "");
 	}
     
 	public Classroom[] getClassroomManagement() {
@@ -61,13 +67,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.searchListLength = searchListLength;
 	}
 
-	public static int getNumberOfPupil() {
-		return numberOfPupil;
-	}
-
-	public static void setNumberOfPupil(int numberOfPupil) {
-		ClassroomManagement.numberOfPupil = numberOfPupil;
-	}
+	
 
 	
     
@@ -88,10 +88,10 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					String gradeManagerID = data[3];
 					
 
-					//Teacher classTeacher = new Teacher(classManagerID);
-					//Teacher gradeTeacher = new Teacher(gradeManagerID);
-					Grade grade = new Grade(gradeNumber, null);
-					Classroom classroom = new Classroom(className, null, grade);
+					Teacher classTeacher = new Teacher(classManagerID);
+					Teacher gradeTeacher = new Teacher(gradeManagerID);
+					Grade grade = new Grade(gradeNumber, gradeTeacher) ;
+					Classroom classroom = new Classroom(className, classTeacher, grade);
 					
 
 					this.add(classroom);
@@ -174,12 +174,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public void add(Object obj) {
 		if (currentIndex < classroomManagement.length) {
 			classroomManagement[currentIndex] = (Classroom) obj;
-        } 
+        }
 		else {
             System.out.println("Classroom Management List is full. Cannot add more.");
         }
 		currentIndex++;
-		numberOfPupil++;
+		System.out.println("Add classrooms successfully!"); 
     }
 
 	@Override
@@ -187,34 +187,49 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		Scanner sc = new Scanner(System.in);
 		Classroom classroom = getClassNameByID(ID);
 
-		if(classroom != null) {		
-			System.out.println("Old Classname: " + classroom.getClassName());
-			System.out.print("New Classname: ");
-			String newClassName = sc.nextLine();
-			if (!newClassName.isEmpty()) {
-				classroom.setClassName(newClassName);
-			}
+		if(classroom != null) {	
+			boolean flag;	
+			String newClassName = "";
+			do {
+				System.out.println("Old Classname: " + classroom.getClassName());
+				System.out.print("New Classname: ");
+				newClassName = sc.nextLine();
+				if (!newClassName.isEmpty()) {
+					classroom.setClassName(newClassName);
+				}
+				else {
+					System.out.println("New Classname is empty!");
+				}
+				flag = validateClassname(newClassName);
+				if(flag) {
+					System.out.println("Classname is valid!");
+				}
+				else {
+					System.out.println("Classname is invalid!");
+				}
+			} while (!flag);
+			
 
-			System.out.println("Old Classmanager: " + classroom.getClassManager());
-			System.out.print("New Classmanager: ");
-			String newClassManagerID = sc.nextLine();
-			if (!newClassManagerID.isEmpty()) {
-				//Teacher classManager = new Teacher(newClassManagerID);
-				classroom.setClassManager(null);
-			}
+			// System.out.println("Old Classmanager: " + classroom.getClassManager());
+			// System.out.print("New Classmanager: ");
+			// String newClassManagerID = sc.nextLine();
+			// if (!newClassManagerID.isEmpty()) {
+			// 	//Teacher classManager = new Teacher(newClassManagerID);
+			// 	classroom.setClassManager(null);
+			// }
 
-			System.out.println("Old Grade: " + classroom.getGrade());
-			System.out.print("New Grade: ");
-			String grade = sc.nextLine();
-			if (!grade.isEmpty()) {
-				String data[] = grade.split("-");
-				int gradeNumber = Integer.parseInt(data[0]);
-				String gradeManagerID = data[1]; 
+			// System.out.println("Old Grade: " + classroom.getGrade());
+			// System.out.print("New Grade: ");
+			// String grade = sc.nextLine();
+			// if (!grade.isEmpty()) {
+			// 	String data[] = grade.split("-");
+			// 	int gradeNumber = Integer.parseInt(data[0]);
+			// 	String gradeManagerID = data[1]; 
 
-				//Teacher gradeteacher = new Teacher(gradeManagerID);
-				Grade newGrade = new Grade(gradeNumber, null);
-				classroom.setGrade(newGrade);
-			}
+			// 	//Teacher gradeteacher = new Teacher(gradeManagerID);
+			// 	Grade newGrade = new Grade(gradeNumber, null);
+			// 	classroom.setGrade(newGrade);
+			// }
 					
 			System.out.println("Update successfully!");		
 		}
@@ -223,7 +238,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		}
 
 	}
-
 
 	@Override
 	public void delete(String ID) {
@@ -286,6 +300,46 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	}
 
 	
+	// public void classroomFormationInitialize() {
+	// 	for (int i = 0; i < currentIndex; i++) {
+	// 		classroomFormation[i] = classroomManagement[i].getClassName();
+	// 	}
+	// }
+	public String getLastClassManagerID() {
+        String ID = "";
+        for (int i = 0; i < currentIndex; i++) {
+            if (classroomManagement[i].getStatus()) {
+                ID = classroomManagement[i].getClassManager().getTeacherID();
+            }
+        }
+        return ID;
+    }
+
+	public static boolean validateClassname(String className) {
+        boolean flag = true;
+        String classNameRegex = "([1-5]A([1-9]))";
+        Pattern pattern = Pattern.compile(classNameRegex);
+		Matcher matcher = pattern.matcher(className);
+
+        if(!matcher.matches()) {
+            flag = false;
+        }
+        return flag;
+    }
+
+	public static boolean validateGradeManager(String classManager) {
+		boolean flag = true;
+		String prefix = classManager.substring(0, 2);
+		int number = Integer.parseInt(classManager.substring(2));
+		number++;
+
+		String result = String.format("%s%03d",prefix, number);
+		
+		return flag;
+	}
+
+	
+
 }
 	
 

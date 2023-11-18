@@ -52,6 +52,6 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		return String.format("%10d\t%15s", gradeNumber, gradeManager);
+		return String.format("%10d\t%15s", gradeNumber, gradeManager.getTeacherID());
 	}
 }

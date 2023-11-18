@@ -1,8 +1,8 @@
 package Classes.Classroom;
 
-
+import java.lang.reflect.Field;
 import Classes.Teachers.Teacher;
-
+import Classes.Person.*;
 
 public class Classroom {
     private String className;
@@ -74,7 +74,7 @@ public class Classroom {
 
 	@Override
 	public String toString() {
-		return String.format("%-10s\t%-10s\t%-5s", className, classManager, grade);
+		return String.format("%-10s\t%-10s\t%-5s", className, classManager.getTeacherID(), grade);
 	}
 
 }
