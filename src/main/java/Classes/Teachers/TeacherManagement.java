@@ -1,5 +1,6 @@
 package Classes.Teachers;
 
+import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Interfaces.ICRUD;
@@ -48,7 +49,10 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String teacherID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
-                        String classID = parts[4];
+                        String major = parts[4];
+                        Classroom classroom = new Classroom();
+                        classroom.setClassName(parts[5]);
+                        
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -70,7 +74,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                             String city = "Thanh pho " + matcher.group(5);
 
                             Address address = new Address(streetNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address);
+                            Teacher teacher = new Teacher(teacherID, fullName, dob, address/*, major, classroom*/);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
