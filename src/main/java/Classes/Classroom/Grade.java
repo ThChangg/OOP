@@ -26,6 +26,10 @@ public class Grade {
 		this.gradeNumber = gradeNumber;
 	}
 
+	public Grade(Teacher gradeManager) {
+		this.gradeManager = gradeManager;
+	}
+
 	public int getGradeNumber() {
 		return gradeNumber;
 	}
@@ -52,6 +56,6 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		return String.format("%10d\t%15s", gradeNumber, gradeManager.getTeacherID());
+		return String.format("%-15d\t%-15s", gradeNumber, gradeManager.getFullname());
 	}
 }
