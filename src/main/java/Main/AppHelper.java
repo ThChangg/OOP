@@ -21,20 +21,51 @@ public class AppHelper {
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
-        int option = 0;
-        do {
-            System.out.println("========================== Menu ==========================");
-            System.out.println("Please select: ");
-            System.out.println("1. Initialize data");
-            System.out.println("2. Print out data");
-            System.out.println("3. Adding 1 or n person to");
-            System.out.println("4. Update person information");
-            System.out.println("5. Delete person");
-            System.out.println("6. Searching for the person information");
-            System.out.println("7. Statistics");
-            System.out.println("0. Exit");
+        int option = -1;
+        boolean isCloseApp = false;
 
-            option = Integer.parseInt(sc.nextLine());
+        do {
+            while (option != 0 && !Redux.isLoggedIn && !isCloseApp) {
+                System.out.println("Have you got an account yet ? Yes(Y/y) : No(N/n) : Close App(X/x)");
+                char opt = sc.nextLine().charAt(0);
+                switch (opt) {
+                    case 'y':
+                    case 'Y':
+                        Redux.signInForm(sc);
+                        break;
+
+                    case 'n':
+                    case 'N':
+                        Redux.signUpForm(sc);
+                        break;
+
+                    case 'x':
+                    case 'X':
+                        isCloseApp = true;
+                        break;
+                }
+            }
+
+            if (Redux.isLoggedIn) {
+                System.out.println("========================== Menu ==========================");
+                System.out.println("Please select: ");
+                System.out.println("1. Initialize data");
+                System.out.println("2. Print out data");
+                if (Redux.isAdmin) {
+                    System.out.println("3. Adding 1 or n person to");
+                    System.out.println("4. Update person information");
+                    System.out.println("5. Delete person");
+                }
+                System.out.println("6. Searching for the person information");
+                if (Redux.isAdmin) {
+                    System.out.println("7. Statistics");
+                }
+                System.out.println("8. Logout");
+                System.out.println("0. Exit");
+            }
+
+            System.out.print("Your option: ");
+            option = !isCloseApp || (option == 1) ? Integer.parseInt(sc.nextLine()) : 0;
             switch (option) {
                 case 1:
                     appInitialize(pupilManagement, classroomManagement, teacherManagement, parentManagement);
@@ -43,19 +74,34 @@ public class AppHelper {
                     appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
                 case 3:
-                    appCreate(sc, pupilManagement, teacherManagement, parentManagement, classroomManagement);
+                    if (Redux.isAdmin) {
+                        appCreate(sc, pupilManagement, teacherManagement, parentManagement, classroomManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
                     break;
                 case 4:
-                    appUpdate(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    if (Redux.isAdmin) {
+                        appUpdate(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
                     break;
                 case 5:
-                    appDelete(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    if (Redux.isAdmin) {
+                        appDelete(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
+                    break;
+                case 7:
+                    // Case 7 logic
                     break;
                 case 6:
                     appSearch(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
-                case 7:
-
+                case 8:
+                    Redux.isLoggedIn = false;
                     break;
                 default:
                     System.out.println("Exited!");
@@ -112,7 +158,7 @@ public class AppHelper {
         Pupil pupilList[] = pupilManagement.getPupilList();
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
         Parent parentList[] = parentManagement.getParentManagement();
-        
+
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
             pupilList[i].setClassroom(classroomList[classroomIndex]);
             pupilList[i].setParents(parentList[i]);
@@ -317,6 +363,7 @@ public class AppHelper {
             System.out.println("3. Delete parents data");
             System.out.println("4. Delete points data");
             System.out.println("5. Delete classroom data");
+            System.out.println("6. Recycle Bin");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -339,6 +386,10 @@ public class AppHelper {
 
                 case 5:
                     deleteClassroomData(classroomManagement, sc);
+                    break;
+
+                case 6:
+                    Redux.displayRecycleBin(sc);
                     break;
 
                 default:
@@ -599,7 +650,5 @@ public class AppHelper {
         System.out.print("Enter class name: ");
         String ID = scanner.nextLine();
         classroomManagement.delete(ID);
-
     }
-
 }

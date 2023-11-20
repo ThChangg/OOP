@@ -70,7 +70,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				e.printStackTrace();
 			}
 			classroomFormationInitialize();
-			System.out.println("File existed!");
 		} else {
 			System.out.println("File does not exist.");
 		}
@@ -98,7 +97,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			System.out.println("\"File exists.\"");
 		} else {
 			System.out.println("File does not exist.");
 		}
