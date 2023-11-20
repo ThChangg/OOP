@@ -515,15 +515,17 @@ public class AppHelper {
     public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
         char option = 'y';
         do {
+            boolean flag;
+            String fullName = "";
             System.out.println("Add teachers: ");
             System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
-            String fullName = scanner.nextLine();
+            fullName = scanner.nextLine();
 
             String date = "";
             do {
                 System.out.print("BirthDate: (format: 16/02/2000): ");
                 date = scanner.nextLine();
-                boolean flag = Date.isValidDateAndMonth(date);
+                flag = Date.isValidDateAndMonth(date);
 
                 if (!flag) {
                     System.out.println("BirthDate is invalid (Wrong format)!");
@@ -536,16 +538,52 @@ public class AppHelper {
                 System.out.print(
                         "Address: (format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
                 inputAddress = scanner.nextLine();
-                boolean flag = Address.isValidAddress(inputAddress);
+                flag = Address.isValidAddress(inputAddress);
 
                 if (!flag) {
                     System.out.println("Address is invalid (Wrong format)!");
                 }
             } while (!Address.isValidAddress(inputAddress));
             Address address = new Address(inputAddress);
+            
+            String major = "";
+            do {
+                System.out.print("Major (Format: Math): ");
+                major = scanner.nextLine();
+                flag = Teacher.isValidMajor(major);
 
+                if (!flag) {
+                    System.out.println("Major is invalid (Wrong format)!");
+                }
+
+            } while (!flag);
+            
+            String className = "";
+            do {
+                System.out.print("Class (format: 1A1): ");
+                className = scanner.nextLine();
+                flag = ClassroomManagement.isValidClassroom(className);
+
+                if (!flag) {
+                    System.out.println("Class is invalid (No class available)!");
+                }
+            } while (!flag);
+            Classroom classroom = new Classroom();
+            classroom.setClassName(className);
+            
+            String sex = "";
+            do {
+                System.out.print("Sex (format: male / female): ");
+                sex = scanner.nextLine();
+                flag = Pupil.isValidSex(sex);
+
+                if (!flag) {
+                    System.out.println("Sex is invalid (Wrong format)!");
+                }
+            } while (!flag);
+            
             String teacherID = createNewID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher(teacherID, fullName, dob, address));
+            teacherManagement.add(new Teacher(teacherID, classroom, major, fullName, sex, dob, address));
 
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);

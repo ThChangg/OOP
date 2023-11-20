@@ -4,12 +4,15 @@ import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Person.Person;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Teacher extends Person {
     private String teacherID;
     private Classroom classroom;
     private String major;
+
 
     public Teacher() {
     }
@@ -25,8 +28,8 @@ public class Teacher extends Person {
         this.major = major;
     }
 
-    public Teacher(String teacherID, Classroom classroom, String major, String fullname, Date birthDate, Address address) {
-        super(fullname, birthDate, address);
+    public Teacher(String teacherID, Classroom classroom, String major, String fullname, String sex, Date birthDate, Address address) {
+        super(fullname, birthDate, address, sex);
         this.teacherID = teacherID;
         this.classroom = classroom;
         this.major = major;
@@ -58,7 +61,17 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return teacherID + "\t" + super.toString() + "\t" + major;
+        return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + classroom;
     }
+    public static boolean isValidMajor(String major) {
+        boolean flag = true;
+        String regex = "(^[A-Z][a-z]+)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(major); 
+        if (!matcher.matches()) {
+            flag = false;
+        }
 
+        return flag;
+    }
 }

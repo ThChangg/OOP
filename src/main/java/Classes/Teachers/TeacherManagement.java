@@ -1,5 +1,6 @@
 package Classes.Teachers;
 
+import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Interfaces.ICRUD;
@@ -49,6 +50,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String major = parts[4];
+                        Classroom classroom = new Classroom();
+                        classroom.setClassName(parts[5]);
                         String sex = parts[6];
 
                         String dobParts[] = dobString.split("/");
@@ -70,7 +73,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, sex, major);
+                            Teacher teacher = new Teacher(teacherID, classroom, major, fullName, sex, dob, address);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -98,9 +101,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Teacher Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Sex",
-                        "BirthDate", "Address",
-                        "Major"));
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s\t%-10s", "ID", "Fullname", "Sex",
+                        "BirthDate", "Address", "Major", "Class"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     writer.write(teacherManagement[i].toString());
