@@ -68,8 +68,8 @@ public class Classroom {
 
 	@Override
 	public String toString() {
-		return String.format("\t%-20s\t%-10s\t%-70s", className, classManagerID, grade);
-//		return className + "-" + classManagerID + "-" + grade;
+//		return String.format("\t%-20s\t%-10s\t%-70s", className, classManagerID, grade);
+		return className + "-" + classManagerID + "-" + grade;
 	}
 
 }

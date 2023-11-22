@@ -1,453 +1,325 @@
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
+Search result:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+================================================================
+Pupil Management List:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+HS001	Cao Thai Bao        	male  	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A1
+HS002	Le Thi Minh         	female	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS003	Pham Van Khanh      	male  	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A1
+HS004	Nguyen Thi Quynh    	female	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS005	Tran Van Toan       	male  	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS006	Le Thi Hang         	female	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A2
+HS007	Do Thi Huong        	female	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS008	Nguyen Van Hieu     	male  	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	1A2
+HS009	Tran Thi Lan        	female	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A3
+HS010	Hoang Van Hung      	male  	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A3
+HS011	Le Thi Thao         	female	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS012	Pham Van Tuan       	male  	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS013	Nguyen Thi Tuyet    	female	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A1
+HS014	Tran Van Tuan       	male  	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A1
+HS015	Dang Thi Mai        	female	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	2A1
+HS016	Nguyen Van An       	male  	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A1
+HS017	Le Thi Thu          	female	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh   	2A2
+HS018	Hoang Thi Hanh      	female	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS019	Trinh Van Hoa       	male  	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A2
+HS020	Nguyen Thi Thu Ha   	female	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS021	Vo Thi Hoang        	female	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS022	Lam Van Hung        	male  	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS023	Huynh Thi Thanh     	female	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh     	2A3
+HS024	Nguyen Thi Thuy     	female	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A3
+HS025	Tran Van Hoang      	male  	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh           	3A1
+HS026	Pham Thi Ngoc       	female	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS027	Nguyen Thi Ha       	female	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A1
+HS028	Le Van Duc          	male  	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS029	Hoang Thi Hang      	female	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS030	Trinh Van Dong      	male  	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A2
+HS031	Dang Thi Huong      	female	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A2
+HS032	Nguyen Thi Lan      	male  	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS033	Hoang Van Khanh     	male  	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A3
+HS034	Le Thi Thuy         	female	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS035	Pham Van Hiep       	male  	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS036	Do Van Tai          	male  	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS037	Nguyen Thi Quyen    	female	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A1
+HS038	Vo Thi Mai          	female	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS039	Pham Van Tuan       	male  	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS040	Tran Thi Thao       	female	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh    	4A1
+HS041	Le Thi Hoa          	female	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A2
+HS042	Nguyen Van Nam      	male  	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A2
+HS043	Tran Van Duc        	male  	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh      	4A2
+HS044	Pham Thi Huong      	female	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A2
+HS045	Nguyen Van Anh      	male  	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A3
+HS046	Hoang Thi Thu       	female	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS047	Trinh Van Dinh      	male  	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A3
+HS048	Nguyen Thi Tam      	female	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS049	Le Van Khoi         	male  	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS050	Pham Thi Phuong     	female	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS051	Nguyen Thi Thu Trang	female	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A1
+HS052	Le Thi Ha           	male  	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A1
+HS053	Pham Van Dung       	male  	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS054	Tran Van Hoan       	male  	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A2
+HS055	Le Thi Hanh         	female	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS056	Nguyen Thi Nga      	female	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A2
+HS057	Hoang Van Nam       	male  	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A3
+HS058	Pham Thi Phuong     	male  	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A3
+HS059	Nguyen Thi Thu Hien 	female	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A3
+HS060	Le Van Hoang        	male  	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh       	5A3
+================================================================
+Pupil Management List:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+HS001	Cao Thai Bao        	male  	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A1
+HS002	Le Thi Minh         	female	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS003	Pham Van Khanh      	male  	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A1
+HS004	Nguyen Thi Quynh    	female	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS005	Tran Van Toan       	male  	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS006	Le Thi Hang         	female	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A2
+HS007	Do Thi Huong        	female	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS008	Nguyen Van Hieu     	male  	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	1A2
+HS009	Tran Thi Lan        	female	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A3
+HS010	Hoang Van Hung      	male  	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A3
+HS011	Le Thi Thao         	female	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS012	Pham Van Tuan       	male  	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS013	Nguyen Thi Tuyet    	female	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A1
+HS014	Tran Van Tuan       	male  	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A1
+HS015	Dang Thi Mai        	female	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	2A1
+HS016	Nguyen Van An       	male  	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A1
+HS017	Le Thi Thu          	female	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh   	2A2
+HS018	Hoang Thi Hanh      	female	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS019	Trinh Van Hoa       	male  	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A2
+HS020	Nguyen Thi Thu Ha   	female	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS021	Vo Thi Hoang        	female	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS022	Lam Van Hung        	male  	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS023	Huynh Thi Thanh     	female	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh     	2A3
+HS024	Nguyen Thi Thuy     	female	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A3
+HS025	Tran Van Hoang      	male  	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh           	3A1
+HS026	Pham Thi Ngoc       	female	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS027	Nguyen Thi Ha       	female	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A1
+HS028	Le Van Duc          	male  	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS029	Hoang Thi Hang      	female	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS030	Trinh Van Dong      	male  	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A2
+HS031	Dang Thi Huong      	female	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A2
+HS032	Nguyen Thi Lan      	male  	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS033	Hoang Van Khanh     	male  	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A3
+HS034	Le Thi Thuy         	female	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS035	Pham Van Hiep       	male  	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS036	Do Van Tai          	male  	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS037	Nguyen Thi Quyen    	female	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A1
+HS038	Vo Thi Mai          	female	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS039	Pham Van Tuan       	male  	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS040	Tran Thi Thao       	female	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh    	4A1
+HS041	Le Thi Hoa          	female	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A2
+HS042	Nguyen Van Nam      	male  	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A2
+HS043	Tran Van Duc        	male  	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh      	4A2
+HS044	Pham Thi Huong      	female	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A2
+HS045	Nguyen Van Anh      	male  	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A3
+HS046	Hoang Thi Thu       	female	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS047	Trinh Van Dinh      	male  	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A3
+HS048	Nguyen Thi Tam      	female	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS049	Le Van Khoi         	male  	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS050	Pham Thi Phuong     	female	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS051	Nguyen Thi Thu Trang	female	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A1
+HS052	Le Thi Ha           	male  	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A1
+HS053	Pham Van Dung       	male  	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS054	Tran Van Hoan       	male  	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A2
+HS055	Le Thi Hanh         	female	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS056	Nguyen Thi Nga      	female	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A2
+HS057	Hoang Van Nam       	male  	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A3
+HS058	Pham Thi Phuong     	male  	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A3
+HS059	Nguyen Thi Thu Hien 	female	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A3
+HS060	Le Van Hoang        	male  	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh       	5A3
+================================================================
+Search result:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+HS047	Trinh Van Dinh      	male  	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A3
+================================================================
+Search result:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+HS045	Nguyen Van Anh      	male  	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A3
+HS046	Hoang Thi Thu       	female	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS047	Trinh Van Dinh      	male  	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A3
+HS048	Nguyen Thi Tam      	female	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
 ================================================================
 Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-GV016	Tran Le Anh Khoi    	null  	16/02/2000	18/29, Duong Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh    	null
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	male                	null  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	female              	null  	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	male                	null  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	female              	null  	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	male                	null  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	male                	null  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	male                	null  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	female              	null  	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	female              	null  	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	male                	null  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	female              	null  	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	male                	null  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	male                	null  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	female              	null  	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	female              	null  	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	male                	Nguyen Van Linh	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	female              	Pham Thi Thao	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	male                	Tran Van Nam	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	female              	Le Thi Huong	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	male                	Do Van Hai	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	male                	Phan Van Tu	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	male                	Nguyen Van Thang	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	female              	Hoang Thi Thu	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	female              	Le Thi Mai	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	male                	Tran Van Duc	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	female              	Dang Thi Ha	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	male                	Nguyen Van Trung	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	male                	Lam Van Quoc	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	female              	Hoang Thi Ngoc	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	female              	Nguyen Thi Linh	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-================================================================
-Teacher Management List:
-ID   	Sex   	FullName            	BirthDate 	Address                                                                         	Major     
-GV001	male                	Nguyen Van Linh	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	female              	Pham Thi Thao	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	male                	Tran Van Nam	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	female              	Le Thi Huong	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	male                	Do Van Hai	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	male                	Phan Van Tu	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	male                	Nguyen Van Thang	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	female              	Hoang Thi Thu	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	female              	Le Thi Mai	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	male                	Tran Van Duc	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	female              	Dang Thi Ha	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	male                	Nguyen Van Trung	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	male                	Lam Van Quoc	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	female              	Hoang Thi Ngoc	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	female              	Nguyen Thi Linh	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	male                	Nguyen Van Linh	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	female              	Pham Thi Thao	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	male                	Tran Van Nam	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	female              	Le Thi Huong	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	male                	Do Van Hai	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	male                	Phan Van Tu	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	male                	Nguyen Van Thang	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	female              	Hoang Thi Thu	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	female              	Le Thi Mai	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	male                	Tran Van Duc	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	female              	Dang Thi Ha	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	male                	Nguyen Van Trung	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	male                	Lam Van Quoc	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	female              	Hoang Thi Ngoc	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	female              	Nguyen Thi Linh	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	1A1-null-null	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math
-GV002	1A2-null-null	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English
-GV003	1A3-null-null	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE
-GV004	2A1-null-null	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math
-GV005	2A2-null-null	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature
-GV006	2A3-null-null	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English
-GV007	3A1-null-null	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE
-GV008	3A2-null-null	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature
-GV009	3A3-null-null	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math
-GV010	4A1-null-null	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English
-GV011	4A2-null-null	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature
-GV012	4A3-null-null	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math
-GV013	5A1-null-null	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE
-GV014	5A2-null-null	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English
-GV015	5A3-null-null	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3-null-null
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	
+GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1
+GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2
+GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3
+GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1
+GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2
+GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3
+GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1
+GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2
+GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3
+GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1
+GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2
+GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3
+GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1
 ================================================================
 Teacher Management List:
 ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	male-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	female-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	male-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	female-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	male-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	male-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	male-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	female-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	female-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	male-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	female-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	male-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	male-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	female-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	female-null-null
+GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1
+GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2
+GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3
+GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1
+GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2
+GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3
+GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1
+GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2
+GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3
+GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1
+GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2
+GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3
+GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1
+GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2
+GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3
+================================================================
+Search result:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	
+GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1
+================================================================
+Search result:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	
+GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1
 ================================================================
 Teacher Management List:
 ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3-null-null
+GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1
+GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2
+GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3
+GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1
+GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2
+GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3
+GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1
+GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2
+GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3
+GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1
+GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2
+GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3
+GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1
+GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2
+GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3
 ================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class               
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3-null-null
+Pupil Management List:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+HS001	Cao Thai Bao        	male  	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A1
+HS002	Le Thi Minh         	female	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS003	Pham Van Khanh      	male  	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A1
+HS004	Nguyen Thi Quynh    	female	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS005	Tran Van Toan       	male  	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS006	Le Thi Hang         	female	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A2
+HS007	Do Thi Huong        	female	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS008	Nguyen Van Hieu     	male  	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	1A2
+HS009	Tran Thi Lan        	female	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A3
+HS010	Hoang Van Hung      	male  	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A3
+HS011	Le Thi Thao         	female	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS012	Pham Van Tuan       	male  	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS013	Nguyen Thi Tuyet    	female	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A1
+HS014	Tran Van Tuan       	male  	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A1
+HS015	Dang Thi Mai        	female	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	2A1
+HS016	Nguyen Van An       	male  	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A1
+HS017	Le Thi Thu          	female	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh   	2A2
+HS018	Hoang Thi Hanh      	female	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS019	Trinh Van Hoa       	male  	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A2
+HS020	Nguyen Thi Thu Ha   	female	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS021	Vo Thi Hoang        	female	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS022	Lam Van Hung        	male  	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS023	Huynh Thi Thanh     	female	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh     	2A3
+HS024	Nguyen Thi Thuy     	female	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A3
+HS025	Tran Van Hoang      	male  	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh           	3A1
+HS026	Pham Thi Ngoc       	female	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS027	Nguyen Thi Ha       	female	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A1
+HS028	Le Van Duc          	male  	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS029	Hoang Thi Hang      	female	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS030	Trinh Van Dong      	male  	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A2
+HS031	Dang Thi Huong      	female	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A2
+HS032	Nguyen Thi Lan      	male  	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS033	Hoang Van Khanh     	male  	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A3
+HS034	Le Thi Thuy         	female	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS035	Pham Van Hiep       	male  	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS036	Do Van Tai          	male  	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS037	Nguyen Thi Quyen    	female	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A1
+HS038	Vo Thi Mai          	female	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS039	Pham Van Tuan       	male  	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS040	Tran Thi Thao       	female	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh    	4A1
+HS041	Le Thi Hoa          	female	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A2
+HS042	Nguyen Van Nam      	male  	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A2
+HS043	Tran Van Duc        	male  	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh      	4A2
+HS044	Pham Thi Huong      	female	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A2
+HS045	Nguyen Van Anh      	male  	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A3
+HS046	Hoang Thi Thu       	female	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS047	Trinh Van Dinh      	male  	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A3
+HS048	Nguyen Thi Tam      	female	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS049	Le Van Khoi         	male  	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS050	Pham Thi Phuong     	female	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS051	Nguyen Thi Thu Trang	female	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A1
+HS052	Le Thi Ha           	male  	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A1
+HS053	Pham Van Dung       	male  	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS054	Tran Van Hoan       	male  	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A2
+HS055	Le Thi Hanh         	female	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS056	Nguyen Thi Nga      	female	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A2
+HS057	Hoang Van Nam       	male  	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A3
+HS058	Pham Thi Phuong     	male  	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A3
+HS059	Nguyen Thi Thu Hien 	female	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A3
+HS060	Le Van Hoang        	male  	15/10/2013	60, Duong Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh       	5A3
 ================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major               	Class               
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3-null-null
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	%-20s1A1-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	%-20s1A2-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	%-20s1A3-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	%-20s2A1-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	%-20s2A2-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	%-20s2A3-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	%-20s3A1-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	%-20s3A2-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	%-20s3A3-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	%-20s4A1-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	%-20s4A2-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	%-20s4A3-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	%-20s5A1-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	%-20s5A2-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	%-20s5A3-null-null
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1-null-null
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2-null-null
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3-null-null
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1-null-null
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2-null-null
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3-null-null
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1-null-null
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2-null-null
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3-null-null
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1-null-null
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2-null-null
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3-null-null
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1-null-null
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2-null-null
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3-null-null
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	1A1                      	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	1A2                      	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	1A3                      	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	2A1                      	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	2A2                      	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	2A3                      	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	3A1                      	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	3A2                      	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	3A3                      	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	4A1                      	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	4A2                      	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	4A3                      	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	5A1                      	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	5A2                      	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	5A3                      	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math	t1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English	t1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE	t1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math	t2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature	t2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English	t2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE	t3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature	t3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math	t3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English	t4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature	t4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math	t4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE	t5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English	t5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math	t5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1       	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2       	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3       	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1       	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2       	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3       	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1       	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2       	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3       	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1       	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2       	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3       	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1       	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2       	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3       	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3                 	null      	null                                                                  
-================================================================
-Teacher Management List:
-ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Major     	Class     
-GV001	Nguyen Van Linh     	male  	01/01/1980	01, Duong Nguyen Thien Thuat, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh  	Math		1A1                 	null      	null                                                                  
-GV002	Pham Thi Thao       	female	15/03/1975	02, Duong Le Loi, Phuong 2, Quan 1, Thanh pho Ho Chi Minh                       	English		1A2                 	null      	null                                                                  
-GV003	Tran Van Nam        	male  	25/06/1985	03, Duong Le Quang Dinh, Phuong 3, Quan Go Vap, Thanh pho Ho Chi Minh           	PE		1A3                 	null      	null                                                                  
-GV004	Le Thi Huong        	female	10/12/1970	04, Duong Truong Dai hoc, Phuong 4, Quan 5, Thanh pho Ho Chi Minh               	Math		2A1                 	null      	null                                                                  
-GV005	Do Van Hai          	male  	07/05/1983	05, Duong Nguyen Du, Phuong 5, Quan 10, Thanh pho Ho Chi Minh                   	Literature		2A2                 	null      	null                                                                  
-GV006	Phan Van Tu         	male  	22/09/1979	06, Duong Phan Dang Luu, Phuong 6, Quan Phu Nhuan, Thanh pho Ho Chi Minh        	English		2A3                 	null      	null                                                                  
-GV007	Nguyen Van Thang    	male  	14/11/1973	07, Duong Hoang Hoa Tham, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	PE		3A1                 	null      	null                                                                  
-GV008	Hoang Thi Thu       	female	05/07/1972	08, Duong Nguyen Cong Tru, Phuong 8, Quan 1, Thanh pho Ho Chi Minh              	Literature		3A2                 	null      	null                                                                  
-GV009	Le Thi Mai          	female	18/04/1976	09, Duong Dinh Cong Trang, Phuong 9, Quan 2, Thanh pho Ho Chi Minh              	Math		3A3                 	null      	null                                                                  
-GV010	Tran Van Duc        	male  	31/08/1982	10, Duong Le Thanh Ton, Phuong 10, Quan 3, Thanh pho Ho Chi Minh                	English		4A1                 	null      	null                                                                  
-GV011	Dang Thi Ha         	female	09/02/1971	11, Duong Ho Bieu Chanh, Phuong 11, Quan Tan Binh, Thanh pho Ho Chi Minh        	Literature		4A2                 	null      	null                                                                  
-GV012	Nguyen Van Trung    	male  	03/04/1988	12, Duong Tran Nhan Ton, Phuong 12, Quan 4, Thanh pho Ho Chi Minh               	Math		4A3                 	null      	null                                                                  
-GV013	Lam Van Quoc        	male  	26/07/1978	13, Duong Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh                      	PE		5A1                 	null      	null                                                                  
-GV014	Hoang Thi Ngoc      	female	15/09/1984	14, Duong Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh                	English		5A2                 	null      	null                                                                  
-GV015	Nguyen Thi Linh     	female	12/11/1975	15, Duong Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh                	Math		5A3                 	null      	null                                                                  
-GV016	Tran Le Anh Khoi    	male  	16/02/2000	18/29, Duong Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh    	Math		2A1                 	null      	null                                                                  
-GV017	Bui The Khang       	Male  	16/08/2000	10A, Duong To Ky, Phuong Trung My Tay, Quan 12, Thanh pho Ho Chi Minh           	Math		2A2                 	null      	null                                                                  
+Pupil Management List:
+ID   	Fullname            	Sex   	BirthDate 	Address                                                                         	Class
+HS001	Cao Thai Bao        	male  	01/01/2017	01, Duong Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A1
+HS002	Le Thi Minh         	female	15/05/2017	02, Duong Tran Van Hoa, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS003	Pham Van Khanh      	male  	20/09/2017	03, Duong Hoang Thi Thu, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A1
+HS004	Nguyen Thi Quynh    	female	03/11/2017	04, Duong Vu Minh Khoi, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A1
+HS005	Tran Van Toan       	male  	12/12/2017	05, Duong Dang Thi Hoa, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS006	Le Thi Hang         	female	09/08/2017	06, Duong Phan Van Thanh, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A2
+HS007	Do Thi Huong        	female	28/02/2017	07, Duong Le Minh Tam, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh        	1A2
+HS008	Nguyen Van Hieu     	male  	14/06/2017	08, Duong Lam Thi Mai, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	1A2
+HS009	Tran Thi Lan        	female	19/03/2017	09, Duong Nguyen Van Nam, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	1A3
+HS010	Hoang Van Hung      	male  	10/10/2017	10, Duong Pham Thi Phuong, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh     	1A3
+HS011	Le Thi Thao         	female	04/07/2017	11, Duong Trinh Thi Anh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS012	Pham Van Tuan       	male  	27/11/2017	12, Duong Vo Thi Huong, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	1A3
+HS013	Nguyen Thi Tuyet    	female	08/09/2016	13, Duong Bui Van Thang, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A1
+HS014	Tran Van Tuan       	male  	21/01/2016	14, Duong Le Thi Ngoc, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A1
+HS015	Dang Thi Mai        	female	30/04/2016	15, Duong Phan Minh Tuan, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh      	2A1
+HS016	Nguyen Van An       	male  	05/03/2016	16, Duong Tran Thi Hoa, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A1
+HS017	Le Thi Thu          	female	18/12/2016	17, Duong Hoang Minh Thanh, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh   	2A2
+HS018	Hoang Thi Hanh      	female	23/08/2016	18, Duong Do Van Dong, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS019	Trinh Van Hoa       	male  	02/10/2016	19, Duong Pham Thi Loan, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh       	2A2
+HS020	Nguyen Thi Thu Ha   	female	16/06/2016	20, Duong Vu Minh Hoa, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A2
+HS021	Vo Thi Hoang        	female	14/05/2016	21, Duong Tran Van Duc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS022	Lam Van Hung        	male  	09/01/2016	22, Duong Bui Thi Thao, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	2A3
+HS023	Huynh Thi Thanh     	female	20/03/2016	23, Duong Nguyen Van Phuc, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh     	2A3
+HS024	Nguyen Thi Thuy     	female	07/07/2016	24, Duong Vo Van Hung, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	2A3
+HS025	Tran Van Hoang      	male  	12/12/2015	25, Duong Le Thi Ly, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh           	3A1
+HS026	Pham Thi Ngoc       	female	25/09/2015	26, Duong Truong Van Long, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS027	Nguyen Thi Ha       	female	19/10/2015	27, Duong Lam Van Tai, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A1
+HS028	Le Van Duc          	male  	11/08/2015	28, Duong Nguyen Thi Ngoc, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh     	3A1
+HS029	Hoang Thi Hang      	female	04/04/2015	29, Duong Pham Van Khoa, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS030	Trinh Van Dong      	male  	08/06/2015	30, Duong Vu Van Thanh, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A2
+HS031	Dang Thi Huong      	female	17/02/2015	31, Duong Le Van Binh, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh         	3A2
+HS032	Nguyen Thi Lan      	male  	29/12/2015	32, Duong Phan Van Hung, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh       	3A2
+HS033	Hoang Van Khanh     	male  	13/07/2015	33, Duong Vo Thi Hoang, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh        	3A3
+HS034	Le Thi Thuy         	female	10/11/2015	34, Duong Nguyen Van Loi, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS035	Pham Van Hiep       	male  	03/03/2015	35, Duong Tran Thi Huong, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS036	Do Van Tai          	male  	25/08/2015	36, Duong Hoang Van Tung, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh      	3A3
+HS037	Nguyen Thi Quyen    	female	01/06/2014	37, Duong Le Thi Thu Ha, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A1
+HS038	Vo Thi Mai          	female	18/09/2014	38, Duong Phan Thi Thu, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS039	Pham Van Tuan       	male  	07/04/2014	39, Duong Bui Van Hung, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A1
+HS040	Tran Thi Thao       	female	30/01/2014	40, Duong Nguyen Thi Hang, Phuong 10, Quan Binh Thanh, Thanh pho Ho Chi Minh    	4A1
+HS041	Le Thi Hoa          	female	12/10/2014	41, Duong Lam Van Dung, Phuong 11, Quan Binh Thanh, Thanh pho Ho Chi Minh       	4A2
+HS042	Nguyen Van Nam      	male  	05/11/2014	42, Duong Hoang Van Hoang, Phuong 1, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A2
+HS043	Tran Van Duc        	male  	09/03/2014	43, Duong Dang Van Thinh, Phuong 2, Quan Binh Thanh, Thanh pho Ho Chi Minh      	4A2
+HS044	Pham Thi Huong      	female	16/02/2014	44, Duong Le Thi Hoai, Phuong 3, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A2
+HS045	Nguyen Van Anh      	male  	28/07/2014	45, Duong Truong Thi Thao, Phuong 4, Quan Binh Thanh, Thanh pho Ho Chi Minh     	4A3
+HS046	Hoang Thi Thu       	female	15/06/2014	46, Duong Phan Thi Hoa, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS047	Trinh Van Dinh      	male  	14/05/2014	47, Duong Vo Van Hieu, Phuong 6, Quan Binh Thanh, Thanh pho Ho Chi Minh         	4A3
+HS048	Nguyen Thi Tam      	female	08/12/2014	48, Duong Le Thi Tuyet, Phuong 7, Quan Binh Thanh, Thanh pho Ho Chi Minh        	4A3
+HS049	Le Van Khoi         	male  	11/01/2013	49, Duong Hoang Van Tung, Phuong 8, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS050	Pham Thi Phuong     	female	25/04/2013	50, Duong Nguyen Van Hoa, Phuong 9, Quan Binh Thanh, Thanh pho Ho Chi Minh      	5A1
+HS051	Nguyen Thi Thu Trang	female	05/09/2013	51, Duong Hoang Thi Hang, Phuong 3, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A1
+HS052	Le Thi Ha           	male  	18/04/2013	52, Duong Lam Van Dung, Phuong 2, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A1
+HS053	Pham Van Dung       	male  	01/12/2013	53, Duong Tran Thi Huong, Phuong 1, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS054	Tran Van Hoan       	male  	21/03/2013	54, Duong Dang Thi Mai, Phuong 6, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A2
+HS055	Le Thi Hanh         	female	14/08/2013	55, Duong Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A2
+HS056	Nguyen Thi Nga      	female	09/01/2013	56, Duong Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A2
+HS057	Hoang Van Nam       	male  	02/06/2013	57, Duong Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh         	5A3
+HS058	Pham Thi Phuong     	male  	27/11/2013	58, Duong Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh          	5A3
+HS059	Nguyen Thi Thu Hien 	female	08/05/2013	59, Duong Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh        	5A3
 ================================================================

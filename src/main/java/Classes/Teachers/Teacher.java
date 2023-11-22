@@ -12,6 +12,7 @@ public class Teacher extends Person {
     private String teacherID;
     private Classroom classroom;
     private String major;
+    private boolean status = true;
 
 
     public Teacher() {
@@ -59,19 +60,20 @@ public class Teacher extends Person {
         this.major = major;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public boolean getStatus() {
+        return this.status;
+    }
+    
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + classroom;
-    }
-    public static boolean isValidMajor(String major) {
-        boolean flag = true;
-        String regex = "(^[A-Z][a-z]+)";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(major); 
-        if (!matcher.matches()) {
-            flag = false;
-        }
-
-        return flag;
+        return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + classroom.getClassName();
     }
 }

@@ -513,13 +513,22 @@ public class AppHelper {
     }
 
     public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
+        
         char option = 'y';
         do {
             boolean flag;
             String fullName = "";
             System.out.println("Add teachers: ");
-            System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
-            fullName = scanner.nextLine();
+            do {
+                System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
+                fullName = scanner.nextLine();
+                flag = Teacher.isValidName(fullName);
+
+                if (!flag) {
+                    System.out.println("Fullname is invalid (Wrong format)!");
+                }
+
+            } while (!flag);
 
             String date = "";
             do {
@@ -550,7 +559,7 @@ public class AppHelper {
             do {
                 System.out.print("Major (Format: Math): ");
                 major = scanner.nextLine();
-                flag = Teacher.isValidMajor(major);
+                flag = TeacherManagement.isValidMajor(major);
 
                 if (!flag) {
                     System.out.println("Major is invalid (Wrong format)!");
@@ -575,7 +584,7 @@ public class AppHelper {
             do {
                 System.out.print("Sex (format: male / female): ");
                 sex = scanner.nextLine();
-                flag = Pupil.isValidSex(sex);
+                flag = Teacher.isValidSex(sex);
 
                 if (!flag) {
                     System.out.println("Sex is invalid (Wrong format)!");
@@ -626,6 +635,8 @@ public class AppHelper {
             System.out.println("======================= Menu =======================");
             System.out.println("1. Search pupils data by name");
             System.out.println("2. Search pupils data by class");
+            System.out.println("3. Search teachers data by name");
+            System.out.println("4. Search teachers data by class");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -644,6 +655,19 @@ public class AppHelper {
                     pupilManagement.display(pupilManagement.getSearchResultLength());
                     break;
 
+                case 3:
+                    System.out.print("Enter name: ");
+                    name = sc.nextLine();
+                    teacherManagement.findTeachersBy(name, "getFullname", Teacher.class, null);
+                    teacherManagement.display(teacherManagement.getSearchResultLength());
+                    break;
+
+                case 4:
+                    System.out.print("Enter ClassName: ");
+                    className = sc.nextLine();
+                    teacherManagement.findTeachersBy(className, "getClassName", Teacher.class, Classroom.class);
+                    teacherManagement.display(teacherManagement.getSearchResultLength());
+                    break;
                 default:
                     break;
             }
