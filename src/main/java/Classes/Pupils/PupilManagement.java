@@ -18,6 +18,7 @@ import Classes.Person.Address;
 import Classes.Person.Date;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
+import Main.Redux;
 
 public class PupilManagement implements IFileManagement, ICRUD {
     private Pupil pupilList[];
@@ -113,7 +114,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 ((Throwable) e).printStackTrace();
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -146,7 +146,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -178,7 +177,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -313,6 +311,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     pupilList[i].setStatus(false);
+                    Redux.add(pupilList[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -417,7 +416,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     public void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
-        String[] records = databaseContent.split("\n");
+        String records[] = databaseContent.split("\n");
         String pupilID = updatedRecord.substring(0, 5);
 
         for (int i = 0; i < records.length; i++) {
@@ -435,7 +434,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         writeDatabase(updatedContent.toString());
     }
 
-    public void deleteRecord(String record) {
+    public static void deleteRecord(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -445,14 +444,14 @@ public class PupilManagement implements IFileManagement, ICRUD {
             String updatedRecords = existingRecords.replace(record, "").trim();
 
             // Update the database with the modified records
-            writeDatabase(updatedRecords);
+            // writeDatabase(updatedRecords);
             System.out.println("Record deleted successfully.");
         } else {
             System.out.println("Record not found in the database. Deletion failed.");
         }
     }
 
-    private String readDatabase() {
+    public static String readDatabase() {
         StringBuilder records = new StringBuilder();
         String relativePath = System.getProperty("user.dir") + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
         File file = new File(relativePath);
@@ -467,14 +466,19 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return records.toString().trim();
     }
 
+// <<<<<<< HEAD
     private void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
-        File file = new File(relativePath);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(records);
-        } catch (IOException e) {
+        // String relativePath = System.getProperty("user.dir") + "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
+// =======
+    // public static void writeDatabase(String records) {
+//         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
+// >>>>>>> af208d989da2b5b73387018af840326e7acfc5b7
+        // File file = new File(relativePath);
+        // try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            // writer.write(records);
+        // } catch (IOException e) {
             // Handle IOException
-            e.printStackTrace();
-        }
+            // e.printStackTrace();
+        // }
     }
 }

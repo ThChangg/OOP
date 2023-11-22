@@ -21,20 +21,51 @@ public class AppHelper {
         // ClassroomManagement classroomManagement = new ClassroomManagement();
         PointManagement pointManagement = new PointManagement();
         Scanner sc = new Scanner(System.in);
-        int option = 0;
-        do {
-            System.out.println("========================== Menu ==========================");
-            System.out.println("Please select: ");
-            System.out.println("1. Initialize data");
-            System.out.println("2. Print out data");
-            System.out.println("3. Adding 1 or n person to");
-            System.out.println("4. Update person information");
-            System.out.println("5. Delete person");
-            System.out.println("6. Searching for the person information");
-            System.out.println("7. Statistics");
-            System.out.println("0. Exit");
+        int option = -1;
+        boolean isCloseApp = false;
 
-            option = Integer.parseInt(sc.nextLine());
+        do {
+            while (option != 0 && !Redux.isLoggedIn && !isCloseApp) {
+                System.out.println("Have you got an account yet ? Yes(Y/y) : No(N/n) : Close App(X/x)");
+                char opt = sc.nextLine().charAt(0);
+                switch (opt) {
+                    case 'y':
+                    case 'Y':
+                        Redux.signInForm(sc);
+                        break;
+
+                    case 'n':
+                    case 'N':
+                        Redux.signUpForm(sc);
+                        break;
+
+                    case 'x':
+                    case 'X':
+                        isCloseApp = true;
+                        break;
+                }
+            }
+
+            if (Redux.isLoggedIn) {
+                System.out.println("========================== Menu ==========================");
+                System.out.println("Please select: ");
+                System.out.println("1. Initialize data");
+                System.out.println("2. Print out data");
+                if (Redux.isAdmin) {
+                    System.out.println("3. Adding 1 or n person to");
+                    System.out.println("4. Update person information");
+                    System.out.println("5. Delete person");
+                }
+                System.out.println("6. Searching for the person information");
+                if (Redux.isAdmin) {
+                    System.out.println("7. Statistics");
+                }
+                System.out.println("8. Logout");
+                System.out.println("0. Exit");
+            }
+
+            System.out.print("Your option: ");
+            option = !isCloseApp || (option == 1) ? Integer.parseInt(sc.nextLine()) : 0;
             switch (option) {
                 case 1:
                     appInitialize(pupilManagement, /*classroomManagement,*/ teacherManagement, pointManagement);
@@ -43,27 +74,20 @@ public class AppHelper {
                     appDisplay(sc, pupilManagement,/* classroomManagement,*/  teacherManagement, pointManagement);
                     break;
                 case 3:
-                    // addPupilsToPupilManagementList(pupilManagement, sc);
-                    // addClassroomsToClassroomManagementList(classroomManagement, sc);
-                    addPointToPointManagementList(pointManagement, sc);
-
+                     appCreate(sc, pupilManagement, /*teacherManagement, parentManagement, classroomManagement,*/ pointManagement);
                     break;
                 case 4:
-                    // updatePupilData(pupilManagement, sc);
-                    // updateClassroomData(classroomManagement, sc);
-                    Person.updatePointData(pointManagement, sc);
+                    appUpdate(sc, pupilManagement, /*classroomManagement, teacherManagement, parentManagement,*/ pointManagement);
                     break;
                 case 5:
-                    // deletePupilData(pupilManagement, sc);
-                    // deleteClassroomData(classroomManagement, sc);
-                    deletePointData(pointManagement, sc);
+                    appDelete(sc, pupilManagement/*, classroomManagement, teacherManagement, parentManagement*/ ,pointManagement);
                     break;
                 case 6:
-                    searchPointData(pointManagement, sc);
+                    appSearch(sc,pointManagement);
                     // searchPupilData(pupilManagement, sc);
                     break;
-                case 7:
-
+                case 8:
+                    Redux.isLoggedIn = false;
                     break;
                 default:
                     System.out.println("Exited!");
@@ -190,36 +214,153 @@ public class AppHelper {
             }
         } while (option != 0);
     }
+    public static void appCreate(Scanner sc, Object... managementObjects){
+        PointManagement pointManagement =null;
+         for(Object managementObject : managementObjects){
+            if (managementObject instanceof PointManagement){
+                pointManagement =(PointManagement) managementObject;
+            }
+         }
+         int option = 0;
+        do {
+            System.out.println("======================= Create data session =======================");
+            System.out.println("1. Add pupils data");
+            System.out.println("2. Add teachers data");
+            System.out.println("3. Add parents data");
+            System.out.println("4. Add points data");
+            System.out.println("5. Add classroom data");
+            System.out.println("0. Exit");
 
-    public static boolean isValidDateAndMonth(String date) {
-        String dateParts[] = date.split("/");
-        int day = Integer.parseInt(dateParts[0]), month = Integer.parseInt(dateParts[1]);
-        if (month < 1 || month > 12) {
-            return false; // Invalid month
+            option = Integer.parseInt(sc.nextLine());
+            switch (option) {
+                case 4:
+                    addPointToPointManagementList(pointManagement, sc);
+                    break;
+                    default:
+                    break;
+            }
+        } while (option != 0);
+            }
+        
+    
+
+    public static void appUpdate(Scanner sc, Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        // ParentManagement parentManagement = null;
+        TeacherManagement teacherManagement = null;
+        // ClassroomManagement classroomManagement = null;
+        PointManagement pointManagement =null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            } 
+            // else if (managementObject instanceof ParentManagement) {
+            //     parentManagement = (ParentManagement) managementObject;
+            // }
+            else if (managementObject instanceof PointManagement) {
+                pointManagement = (PointManagement) managementObject;
+            }
         }
 
-        int[] daysInMonth = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        int option = 0;
+        do {
+            System.out.println("======================= Create data session =======================");
+            System.out.println("1. Update pupils data");
+            System.out.println("2. Update teachers data");
+            System.out.println("3. Update parents data");
+            System.out.println("4. Update points data");
+            System.out.println("5. Update classroom data");
+            System.out.println("0. Exit");
 
-        if (day < 1 || day > daysInMonth[month]) {
-            return false; // Invalid day for the given month
-        }
+            option = Integer.parseInt(sc.nextLine());
+            switch (option) {
+                case 1:
+                    updatePupilData(pupilManagement, sc);
+                    break;
 
-        return true;
+                case 2:
+                    updateTeacherData(teacherManagement, sc);
+                    break;
+
+                case 3:
+                    // parentManagement.display();
+                    break;
+
+                case 4:
+                    updatePointData(pointManagement, sc);
+                    break;
+
+                case 5:
+                    // updateClassroomData(classroomManagement, sc);
+                    break;
+
+                default:
+                    break;
+            }
+        } while (option != 0);
     }
 
-    // public static boolean isValidAddress(String address) {
-    //     String addressPart = address;
-    //     String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
-        // Pattern pattern = Pattern.compile(addressRegex);
-        // Matcher matcher = pattern.matcher(addressPart);
+    public static void appDelete(Scanner sc, Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        // ParentManagement parentManagement = null;
+        TeacherManagement teacherManagement = null;
+        // ClassroomManagement classroomManagement = null;
+        PointManagement pointManagement = null;
 
-        // boolean flag = true;
-        // if (!matcher.matches()) {
-        //     flag = false;
-        // }
-        // return flag;
-    // }
-    
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            } 
+            // else if (managementObject instanceof ParentManagement) {
+            //     parentManagement = (ParentManagement) managementObject;
+            // }
+            else if (managementObject instanceof PointManagement) {
+                pointManagement = (PointManagement) managementObject;
+            }
+        }
+
+        int option = 0;
+        do {
+            System.out.println("======================= Create data session =======================");
+            System.out.println("1. Delete pupils data");
+            System.out.println("2. Delete teachers data");
+            System.out.println("3. Delete parents data");
+            System.out.println("4. Delete points data");
+            System.out.println("5. Delete classroom data");
+            System.out.println("0. Exit");
+
+            option = Integer.parseInt(sc.nextLine());
+            switch (option) {
+                case 1:
+                    deletePupilData(pupilManagement, sc);
+                    break;
+
+                case 2:
+                    deleteTeacherData(teacherManagement, sc);
+                    break;
+
+                case 3:
+                    // parentManagement.display();
+                    break;
+
+                case 4:
+                    deletePointData(pointManagement, sc);
+                    break;
+
+                case 5:
+                    // deleteClassroomData(classroomManagement, sc);
+                    break;
+
+                default:
+                    break;
+            }
+        } while (option != 0);
+    }
 
     public static String createNewID(String lastID) {
         String prefix = lastID.substring(0, 2);
@@ -403,10 +544,10 @@ public class AppHelper {
                 teacherManagement = (TeacherManagement) managementObject;
             } /*else if (managementObject instanceof ParentManagement) {
                 parentManagement = (ParentManagement) managementObject;
-            }
-            else if (managementObject instanceof PointManagement) {
-                parentManagement = (PointManagement) managementObject;
             }*/
+            else if (managementObject instanceof PointManagement) {
+                pointManagement = (PointManagement) managementObject;
+            }
         }
 
         int option = 0;
@@ -414,6 +555,7 @@ public class AppHelper {
             System.out.println("======================= Menu =======================");
             System.out.println("1. Search pupils data by name");
             System.out.println("2. Search pupils data by class");
+            System.out.println("3. Search Point data by Pupil ID");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -430,6 +572,9 @@ public class AppHelper {
                     String className = sc.nextLine();
                     // pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class);
                     pupilManagement.display(pupilManagement.getSearchResultLength());
+                    break;
+                    case 3:
+                    searchPointData(pointManagement, sc);
                     break;
 
                 default:
@@ -496,19 +641,17 @@ public class AppHelper {
     public static void searchPointData(PointManagement pointManagement, Scanner scanner) {
         System.out.print("Enter pupil ID to search: ");
         String ID = scanner.nextLine();
+        
         Point foundPoint = pointManagement.searchPointByPupilID(ID);
-
-        foundPoint.calculatePerformance();
-
+        
         if (foundPoint != null) {
-            System.out.println("Point found: " + foundPoint.toString() + foundPoint.getConduct().getRank() + "\t"
-                    + foundPoint.getPerformance());
+            // Display or print the information about the found point
+            System.out.println("Point found: " + foundPoint.toString());
         } else {
-            System.out.println("Point not found.");
+            System.out.println("Point not found for ID: " + ID);
         }
     }
-
-    public static boolean isPoint(double value) {
+     public static boolean isPoint(double value) {
         return value >= 0 && value <= 10;
     }
 

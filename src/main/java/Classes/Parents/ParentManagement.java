@@ -111,7 +111,6 @@ public class ParentManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -144,7 +143,6 @@ public class ParentManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -174,7 +172,6 @@ public class ParentManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }

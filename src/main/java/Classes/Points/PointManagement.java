@@ -19,6 +19,7 @@ public class PointManagement implements IFileManagement, ICRUD {
     public PointManagement() {
         listPoint = new Point[100];
         currentIndex = 0;
+
     }
 
     public int getCurrentIndex() {
