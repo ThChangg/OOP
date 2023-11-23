@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,8 +19,10 @@ import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
 
 
+
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
+import Main.Redux;
 
 
 public class ClassroomManagement implements IFileManagement, ICRUD {
@@ -39,7 +42,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		classroomFormation = new String[100];
 		Arrays.fill(classroomFormation, "");
 	}
-
+    
 	public Classroom[] getClassroomManagement() {
 		return classroomManagement;
 	}
@@ -56,7 +59,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.searchList = searchList;
 	}
 
-	public int getCurrentIndex() {
+    public int getCurrentIndex() {
 		return currentIndex;
 	}
 
@@ -75,105 +78,96 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	
 
 	@Override
-	public void initialize() {
+    public void initialize() {
 		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\classrooms.txt";
+        File file = new File(relativePath);
+		
+        if (file.exists()) {
+        	try (BufferedReader bufferedRead = new BufferedReader(new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+        		String line;
+        		while ((line = bufferedRead.readLine()) != null) {
+        			String[] data = line.split("-");
+					if(data.length >= 4) {
+						String className = data[0];
+						String classManagerID = data[1];
+						int gradeNumber = Integer.parseInt(data[2]);
+						String gradeManagerID = data[3];
+					
 
+						Teacher classTeacher = new Teacher(classManagerID);
+						Teacher gradeTeacher = new Teacher(gradeManagerID);
+						Grade grade = new Grade(gradeNumber, gradeTeacher);
+						Classroom classroom = new Classroom(className, classTeacher, grade);
+					
+
+						this.add(classroom);
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			// classroomFormationInitialize();
+		} else {
+			System.out.println("File does not exist.");
+		}
+	}
+
+	@Override
+	public void display() {
+		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
 		File file = new File(relativePath);
 
 		if (file.exists()) {
-			try (BufferedReader bufferedRead = new BufferedReader(
-					new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
-				String line;
-				while ((line = bufferedRead.readLine()) != null) {
-					String[] data = line.split("-");
-					String className = data[0];
-					String classManagerID = data[1];
-					int gradeNumber = Integer.parseInt(data[2]);
-					String gradeManagerID = data[3];
-					
-
-					Teacher classTeacher = new Teacher(classManagerID);
-					Teacher gradeTeacher = new Teacher(gradeManagerID);
-					Grade grade = new Grade(gradeNumber, gradeTeacher);
-					Classroom classroom = new Classroom(className, classTeacher, grade);
-					
-
-					this.add(classroom);
-        		}
-        	}
-        	catch (IOException e) {
-        		e.printStackTrace();
-        	}
-			classroomFormationInitialize();
-        	System.out.println("File exsisted!");
-        } 
-		else {
-        	System.out.println("File does not exist.");
-        }
-    }
-    
-    @Override
-    public void display() {
-    	String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-        File file = new File(relativePath);
-        
-        if (file.exists()) {
-        	try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
-        		bufferedWrite.write("Classroom Management List:");
-        		bufferedWrite.newLine();
-        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager", "gradeNumber", "gradeManager"));
-        		bufferedWrite.newLine();
-        		for (int i = 0; i < currentIndex; i++) {
+			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
+				bufferedWrite.write("Classroom Management List:");
+				bufferedWrite.newLine();
+				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager", "gradeNumber", "gradeManager"));
+				bufferedWrite.newLine();
+				for (int i = 0; i < currentIndex; i++) {
 					if(classroomManagement[i].getStatus()) {
 						bufferedWrite.write(classroomManagement[i].toString());
 						bufferedWrite.newLine();
 					}
-                }
-        		bufferedWrite.write("================================================================");
-        		bufferedWrite.newLine();
-        		System.out.println("Data written to " + relativePath);
-        	} 
-        	catch (IOException e) {
-        		e.printStackTrace();
-        	}
-        	System.out.println("\"File exists.\"");
-        } 
-		else {
-        	System.out.println("File does not exist.");
-        }
-    }
+				}
+				bufferedWrite.write("================================================================");
+				bufferedWrite.newLine();
+				System.out.println("Data written to " + relativePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("File does not exist.");
+		}
+	}
 
-	
+
 	public void fileSearchList(int arrayLength) {
 		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-        File file = new File(relativePath);
-        
-        if (file.exists()) {
-        	try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
-        		bufferedWrite.write("Search List:");
-        		bufferedWrite.newLine();
-        		bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager", "gradeNumber", "gradeManager"));
-        		bufferedWrite.newLine();
-        		for (int i = 0; i < arrayLength; i++) {
+		File file = new File(relativePath);
+
+		if (file.exists()) {
+			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
+				bufferedWrite.write("Classroom Search List:");
+				bufferedWrite.newLine();
+				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager", "gradeNumber", "gradeManager"));
+				bufferedWrite.newLine();
+				for (int i = 0; i < arrayLength; i++) {
 					if(searchList[i].getStatus()) {
 						bufferedWrite.write(searchList[i].toString());
 						bufferedWrite.newLine();
 					}
-                }
-        		bufferedWrite.write("================================================================");
-        		bufferedWrite.newLine();
-        		System.out.println("Data written to " + relativePath);
-        	} 
-        	catch (IOException e) {
-        		e.printStackTrace();
-        	}
-        	System.out.println("\"File exists.\"");
-        } 
-		else {
-        	System.out.println("File does not exist.");
-        }
+				}
+				bufferedWrite.write("================================================================");
+				bufferedWrite.newLine();
+				System.out.println("Data written to " + relativePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("File does not exist.");
+		}
 	}
-
+	
 
 	@Override
 	public void add(Object obj) {
@@ -184,7 +178,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
             System.out.println("Classroom Management List is full. Cannot add more.");
         }
 		currentIndex++; 
-		System.out.println("Add Classroom successfully!");
     }
 	
 
@@ -196,28 +189,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		if(classroom != null) {	
 			boolean flag = true;
 			do {
-				String newClassName = "";
-				do {
-					System.out.println("Old Classname: " + classroom.getClassName());
-					System.out.print("New Classname: (Format: 5A4): ");
-					newClassName = sc.nextLine();
-					if (!newClassName.isEmpty()) {
-						flag = isValidClassroom(newClassName);
-						if(flag) {
-							classroom.setClassName(newClassName);
-							int gradeNumber = newClassName.charAt(0) - '0';
-							classroom.getGrade().setGradeNumber(gradeNumber);
-						}
-						else {
-							System.out.println("Classname is invalid!");
-						}
-					}
-					else {
-						classroom.getClassName();
-					}	
-				} while (!flag);
+				String className = classroom.getClassName();
 				
-				
+				int gradeNumber = className.charAt(0) - '0';
+				classroom.getGrade().setGradeNumber(gradeNumber);
+
 				String newClassManagerID = "";
 				do {
 					System.out.println("Old Classmanager: " + classroom.getClassManager().getTeacherID());
@@ -241,10 +217,10 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				String newGradeManagerID = "";
 				do {
 					System.out.println("Old Grademanager: " + classroom.getGrade().getGradeManager().getTeacherID());
-					System.out.print("New Grademagager: (format: GV018): ");
+					System.out.print("New Grademagager: (format: (GV004 or GV011)): ");
 					newGradeManagerID = sc.nextLine();
 					if (!newGradeManagerID.isEmpty()) {
-						flag = isValidManager(newClassManagerID);
+						flag = isValidManager(newGradeManagerID);
 						if(flag) {
 							classroom.getGrade().getGradeManager().setTeacherID(newGradeManagerID);
 						}
@@ -261,7 +237,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				String fullName = "";
 				do {
 					System.out.println("Old Fullname: " + classroom.getClassManager().getFullname());
-					System.out.print("New Fullname (Format: Nguyen Duc Canh): ");
+					System.out.print("New Fullname (Format: Pham Xuan Thu): ");
 					fullName = sc.nextLine();
 					if(!fullName.isEmpty()) {
 						flag = Teacher.isValidName(fullName);
@@ -302,7 +278,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				String address = "";
 				do {
 					System.out.println("Old Address: " + classroom.getClassManager().getAddress());
-					System.out.print("New Address (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
+					System.out.print("New Address (format: 04, Phan Van Tri, Phuong 2, Quan 5, Thanh pho Ho Chi Minh): ");
 					address = sc.nextLine();
 					if(!address.isEmpty()) {
 						flag = Address.isValidAddress(address);
@@ -358,9 +334,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 						classroom.getClassManager().getMajor();
 					}
 				} while (!flag);
-
-			} while (!flag);	
-		System.out.println("Update successfully!");		
+			
+			String write = className + "-" + newClassManagerID + "-" + gradeNumber + "-" + newGradeManagerID;
+			this.updateRecord(write);
+			System.out.println("Update successfully!");
+			} while (!flag);			
 		}
 		else {
 			System.out.println("Classroom with ID: " + ID + " is not found!");
@@ -374,6 +352,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
 				if(i == index) {
             		classroomManagement[i].setStatus(false);
+					Redux.add(classroomManagement[i]);
 				}
             }
 			System.out.println("Delete successfully!"); 
@@ -439,10 +418,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			for (int j = 1; j <= classCounts[i - 1]; j++) {
 				System.out.print(i + "A" + j + "\t");
 			}
-			System.out.println();
 		}
 	}
-	
 	
 	public String getLastClassManagerID() {
         String ID = "";
@@ -456,7 +433,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	public static boolean isValidClassroom(String className) {
         boolean flag = true;
-        String classNameRegex = "([1-5]A([1-9]))";
+        String classNameRegex = "([1-5]A([4-9]))";
         Pattern pattern = Pattern.compile(classNameRegex);
 		Matcher matcher = pattern.matcher(className);
 
@@ -469,7 +446,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	
 	public static boolean isValidManager(String classManager) {
 		boolean flag = true;
-		String managerRegex = "^GV[00][1-9][0-9]$";
+		String managerRegex = "^(GV)[0][0-9][0-9]$";
 		Pattern pattern = Pattern.compile(managerRegex);
 		Matcher matcher = pattern.matcher(classManager);
 
@@ -479,8 +456,80 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		return flag;
 	}
 
-	
 
+    public static String readDatabase() {
+        StringBuilder records = new StringBuilder();
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\classrooms.txt";
+        File file = new File(relativePath);
+        try (Scanner sc = new Scanner(new FileReader(file))) {
+            while (sc.hasNextLine()) {
+                records.append(sc.nextLine()).append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return records.toString().trim();
+    }
+
+    public static void writeDatabase(String records) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\classrooms.txt";
+        File file = new File(relativePath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(records);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+	public void insertIntoDatabase(String record) {
+        // Read existing records from the database file
+        String existingRecords = readDatabase();
+
+        // Check if the new record is not present in the existing records
+        if (!existingRecords.contains(record)) {
+            // Append the new record to the existing records
+            writeDatabase(existingRecords + "\n" + record);
+        } else {
+            System.out.println("Record already exists in the database. Not added.");
+        }
+    }
+
+    public void updateRecord(String updatedRecord) {
+        String databaseContent = readDatabase();
+        String records[] = databaseContent.split("\n");
+        String className = updatedRecord.substring(0, 3);
+        for (int i = 0; i < records.length; i++) {
+            if (records[i].startsWith(className)) {
+                records[i] = updatedRecord;
+                break;
+            }
+        }
+
+        StringBuilder updatedContent = new StringBuilder();
+        for (String record : records) {
+            updatedContent.append(record).append("\n");
+        }
+
+        writeDatabase(updatedContent.toString());
+    }
+
+    public static void deleteRecord(String record) {
+        // Read existing records from the database file
+        String existingRecords = readDatabase();
+
+        // Check if the record is present in the existing records
+        if (existingRecords.contains(record)) {
+            // Remove the record from the existing records
+            String updatedRecords = existingRecords.replace(record, "").trim();
+
+            // Update the database with the modified records
+            writeDatabase(updatedRecords);
+            System.out.println("Record deleted successfully.");
+        } else {
+            System.out.println("Record not found in the database. Deletion failed.");
+        }
+    }
 }
 	
 

@@ -2,6 +2,7 @@ package Main;
 
 import java.util.Scanner;
 
+
 import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
 import Classes.Classroom.Grade;
@@ -14,8 +15,7 @@ import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
-import Classes.Classroom.Classroom;
-import Classes.Classroom.Grade;
+
 
 public class AppHelper {
     public static void Menu() {
@@ -24,20 +24,51 @@ public class AppHelper {
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
-        int option = 0;
-        do {
-            System.out.println("========================== Menu ==========================");
-            System.out.println("Please select: ");
-            System.out.println("1. Initialize data");
-            System.out.println("2. Print out data");
-            System.out.println("3. Adding 1 or n person to");
-            System.out.println("4. Update person information");
-            System.out.println("5. Delete person");
-            System.out.println("6. Searching for the person information");
-            System.out.println("7. Statistics");
-            System.out.println("0. Exit");
+        int option = -1;
+        boolean isCloseApp = false;
 
-            option = Integer.parseInt(sc.nextLine());
+        do {
+            while (option != 0 && !Redux.isLoggedIn && !isCloseApp) {
+                System.out.println("Have you got an account yet ? Yes(Y/y) : No(N/n) : Close App(X/x)");
+                char opt = sc.nextLine().charAt(0);
+                switch (opt) {
+                    case 'y':
+                    case 'Y':
+                        Redux.signInForm(sc);
+                        break;
+
+                    case 'n':
+                    case 'N':
+                        Redux.signUpForm(sc);
+                        break;
+
+                    case 'x':
+                    case 'X':
+                        isCloseApp = true;
+                        break;
+                }
+            }
+
+            if (Redux.isLoggedIn) {
+                System.out.println("========================== Menu ==========================");
+                System.out.println("Please select: ");
+                System.out.println("1. Initialize data");
+                System.out.println("2. Print out data");
+                if (Redux.isAdmin) {
+                    System.out.println("3. Adding 1 or n person to");
+                    System.out.println("4. Update person information");
+                    System.out.println("5. Delete person");
+                }
+                System.out.println("6. Searching for the person information");
+                if (Redux.isAdmin) {
+                    System.out.println("7. Statistics");
+                }
+                System.out.println("8. Logout");
+                System.out.println("0. Exit");
+            }
+
+            System.out.print("Your option: ");
+            option = !isCloseApp || (option == 1) ? Integer.parseInt(sc.nextLine()) : 0;
             switch (option) {
                 case 1:
                     appInitialize(pupilManagement, classroomManagement, teacherManagement, parentManagement);
@@ -46,19 +77,34 @@ public class AppHelper {
                     appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
                 case 3:
-                    appCreate(sc, pupilManagement, teacherManagement, parentManagement, classroomManagement);
+                    if (Redux.isAdmin) {
+                        appCreate(sc, pupilManagement, teacherManagement, parentManagement, classroomManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
                     break;
                 case 4:
-                    appUpdate(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    if (Redux.isAdmin) {
+                        appUpdate(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
                     break;
                 case 5:
-                    appDelete(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    if (Redux.isAdmin) {
+                        appDelete(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
+                    break;
+                case 7:
+                    // Case 7 logic
                     break;
                 case 6:
                     appSearch(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
-                case 7:
-
+                case 8:
+                    Redux.isLoggedIn = false;
                     break;
                 default:
                     System.out.println("Exited!");
@@ -116,7 +162,7 @@ public class AppHelper {
         Pupil pupilList[] = pupilManagement.getPupilList();
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
         Parent parentList[] = parentManagement.getParentManagement();
-        
+
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
             pupilList[i].setClassroom(classroomList[classroomIndex]);
             pupilList[i].setParents(parentList[i]);
@@ -325,6 +371,7 @@ public class AppHelper {
             System.out.println("3. Delete parents data");
             System.out.println("4. Delete points data");
             System.out.println("5. Delete classroom data");
+            System.out.println("6. Recycle Bin");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -347,6 +394,10 @@ public class AppHelper {
 
                 case 5:
                     deleteClassroomData(classroomManagement, sc);
+                    break;
+
+                case 6:
+                    Redux.displayRecycleBin(sc);
                     break;
 
                 default:
@@ -602,9 +653,7 @@ public class AppHelper {
             // Add more else if blocks for other management objects
         }
 
-        int count = 0;
         int teacherIndex = 0;
-        int managerIndex = 0;
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
         Teacher teacherList[] = teacherManagement.getTeacherManagement();
         
@@ -614,14 +663,29 @@ public class AppHelper {
             teacherIndex++;
             
             //Every three classes will form a block and have a teacher managing that block
-            classroomList[i].getGrade().setGradeManager(teacherList[managerIndex]);
-            ++count;
-            if(count == 3) {
-                count = 0;
-                managerIndex++;
-            } 
+            switch (classroomList[i].getGrade().getGradeNumber()) {
+                case 1:
+                    classroomList[i].getGrade().setGradeManager(teacherList[2]); // GV003
+                    break;
+                case 2:
+                    classroomList[i].getGrade().setGradeManager(teacherList[3]); // GV004
+                    break;
+                case 3:
+                    classroomList[i].getGrade().setGradeManager(teacherList[7]); // GV008
+                    break;
+                case 4:
+                    classroomList[i].getGrade().setGradeManager(teacherList[10]); // GV011
+                    break;
+                case 5:
+                    classroomList[i].getGrade().setGradeManager(teacherList[13]); // GV014
+                    break;
+                default:
+                    break;
+            }
         }
     }
+
+    
 
 
     public static String createClassManagerID(String lastTeacherID) {
@@ -670,7 +734,7 @@ public class AppHelper {
             
             String gradeManager = "";
             do {
-                System.out.print("GradeManagerID (Format: GV018): ");
+                System.out.print("GradeManagerID (Format: (GV003 or GV011)): ");
                 gradeManager = sc.nextLine();
                 flag = classroomManagement.isValidManager(gradeManager);
                 
@@ -683,7 +747,7 @@ public class AppHelper {
 
             String fullName = "";
             do {
-                System.out.print("Fullname (Format: Nguyen Duc Canh): ");
+                System.out.print("Fullname (Format: Tran Minh Hieu): ");
                 fullName = sc.nextLine();
                 flag = Teacher.isValidName(fullName);
 
@@ -694,7 +758,7 @@ public class AppHelper {
             
             String date = "";
             do {
-                System.out.print("BirthDate (format: 03/03/2017): ");
+                System.out.print("BirthDate (format: 12/03/1982): ");
                 date = sc.nextLine();
                 flag = Date.isValidDateAndMonth(date);
 
@@ -706,7 +770,7 @@ public class AppHelper {
 
             String address = "";
             do {
-                System.out.print("Address (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
+                System.out.print("Address (format: 273, An Duong Vuong, Phuong 3, Quan 5, Thanh pho Ho Chi Minh): ");
                 address = sc.nextLine();
                 flag = Address.isValidAddress(address);
 
@@ -739,9 +803,13 @@ public class AppHelper {
             } while (!flag);
             
 
-            
             Teacher teacher = new Teacher(classManager, fullName, datetime, inputAddress, sex, major);
             classroomManagement.add(new Classroom(className,teacher, grade));
+
+            String write = className + "-" + classManager + "-" + gradeNumber + "-" + gradeManager;
+            classroomManagement.insertIntoDatabase(write);
+            
+            System.out.println("Add classroom successfully!");
             System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
             option = sc.nextLine().charAt(0);
         } while (option == 'y' || option == 'Y');
@@ -761,6 +829,6 @@ public class AppHelper {
         String ID = sc.nextLine();
         classroomManagement.delete(ID);
     }
-    
 
+    
 }

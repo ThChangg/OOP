@@ -18,6 +18,7 @@ import Classes.Person.Address;
 import Classes.Person.Date;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
+import Main.Redux;
 
 public class PupilManagement implements IFileManagement, ICRUD {
     private Pupil pupilList[];
@@ -113,7 +114,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 ((Throwable) e).printStackTrace();
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -146,7 +146,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -178,7 +177,6 @@ public class PupilManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -312,6 +310,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     pupilList[i].setStatus(false);
+                    Redux.add(pupilList[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -416,7 +415,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     public void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
-        String[] records = databaseContent.split("\n");
+        String records[] = databaseContent.split("\n");
         String pupilID = updatedRecord.substring(0, 5);
 
         for (int i = 0; i < records.length; i++) {
@@ -434,7 +433,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         writeDatabase(updatedContent.toString());
     }
 
-    public void deleteRecord(String record) {
+    public static void deleteRecord(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -451,7 +450,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
     }
 
-    private String readDatabase() {
+    public static String readDatabase() {
         StringBuilder records = new StringBuilder();
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
         File file = new File(relativePath);
@@ -466,7 +465,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return records.toString().trim();
     }
 
-    private void writeDatabase(String records) {
+    public static void writeDatabase(String records) {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
         File file = new File(relativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {

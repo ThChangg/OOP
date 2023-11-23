@@ -5,7 +5,7 @@ import Classes.Teachers.Teacher;
 public class Grade {
     private int gradeNumber;
     private Teacher gradeManager;
-	private boolean status = true;
+	private boolean status;
 
 	
 	public Grade() {
@@ -14,7 +14,7 @@ public class Grade {
 	public Grade(int gradeNumber, Teacher gradeManager, boolean status) {
 		this.gradeNumber = gradeNumber;
 		this.gradeManager = gradeManager;
-		this.status = status;
+		this.status = true;
 	}
 
 	public Grade(int gradeNumber, Teacher gradeManager) {
