@@ -1,30 +1,28 @@
 package Classes.Parents;
 
-import Classes.Classroom.Classroom;
+import Classes.Parents.Parent;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Person.Person;
-import Classes.Points.Point;
+import Classes.Pupils.Pupil;
 
 public class Parent extends Person {
-	private String parentID;
-    private Classroom classroom;
-    private Parent parents;
-    private Point subjectPoints;
-    private boolean status;
+    private String parentID;
     private String phoneNumber;
+    private boolean status;
+    private Pupil pupil;
 
     public Parent() {
     }
 
-    public Parent(String parentID, String fullname, Date dob, Address address) {
-        super(fullname, dob, address);
+    public Parent(String parentID, String fullname, Date dob, Address address, String sex) {
+        super(fullname, dob, address, sex);
         this.parentID = parentID;
         this.status = true;
     }
 
-    public Parent(String parentID, String fullname, Date dob, Address address, Classroom classroom) {
-        super(fullname, dob, address);
+    public Parent(String parentID, String fullname, Date dob, Address address, String sex, String phoneNumber) {
+        super(fullname, dob, address, sex);
         this.parentID = parentID;
         this.phoneNumber = phoneNumber;
         this.status = true;
@@ -38,29 +36,14 @@ public class Parent extends Person {
         this.parentID = parentID;
     }
 
-    public Classroom getClassroom() {
-        return this.classroom;
+    public Pupil getPupil() {
+        return this.pupil;
     }
 
-    public void setClassroom(Classroom classroom) {
-        this.classroom = classroom;
+    public void setPupil(Pupil pupil) {
+        this.pupil = pupil;
     }
 
-    public Parent getParents() {
-        return this.parents;
-    }
-
-    public void setParents(Parent parents) {
-        this.parents = parents;
-    }
-
-    public Point getSubjectPoints() {
-        return this.subjectPoints;
-    }
-
-    public void setSubjectPoints(Point subjectPoints) {
-        this.subjectPoints = subjectPoints;
-    }
     public boolean isStatus() {
         return this.status;
     }
@@ -72,6 +55,7 @@ public class Parent extends Person {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
@@ -80,12 +64,11 @@ public class Parent extends Person {
         this.phoneNumber = phoneNumber;
     }
 
+    
+
     @Override
-public String toString() {
-    // Thêm số điện thoại vào chuỗi khi hiển thị thông tin
-    return parentID + "\t" + super.toString() + "\t" + (phoneNumber != null ? phoneNumber : "N/A");
-}
-
-
+    public String toString() {
+        return parentID + "\t" + super.toString() + "\t" + phoneNumber;
+    }
 
 }

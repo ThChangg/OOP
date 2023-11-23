@@ -1,9 +1,7 @@
 package Classes.Pupils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
+import java.lang.reflect.Field;
 import Classes.Classroom.Classroom;
 import Classes.Parents.Parent;
 import Classes.Person.Address;
@@ -17,24 +15,21 @@ public class Pupil extends Person {
     private Parent parents;
     private Point subjectPoints;
     private boolean status;
-    private List<Parent> relatives;
 
     public Pupil() {
     }
 
-    public Pupil(String pupilID, String fullname, Date dob, Address address) {
-        super(fullname, dob, address);
+    public Pupil(String pupilID, String fullname, Date dob, Address address, String sex) {
+        super(fullname, dob, address, sex);
         this.pupilID = pupilID;
         this.status = true;
-        this.relatives = new ArrayList<>();
     }
 
-    public Pupil(String pupilID, String fullname, Date dob, Address address, Classroom classroom) {
-        super(fullname, dob, address);
+    public Pupil(String pupilID, String fullname, Date dob, Address address, String sex, Classroom classroom) {
+        super(fullname, dob, address, sex);
         this.pupilID = pupilID;
         this.classroom = classroom;
         this.status = true;
-        this.relatives = new ArrayList<>();
     }
 
     public String getPupilID() {
@@ -50,7 +45,18 @@ public class Pupil extends Person {
     }
 
     public void setClassroom(Classroom classroom) {
-        this.classroom = classroom;
+        this.classroom = new Classroom(); // Assuming Classroom has a default constructor
+    
+        // Use reflection to copy fields from the parameter object to the current object
+        Field[] fields = Classroom.class.getDeclaredFields();
+        for (Field field : fields) {
+            try {
+                field.setAccessible(true);
+                field.set(this.classroom, field.get(classroom));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace(); // Handle the exception as needed
+            }
+        }
     }
 
     public Parent getParents() {
@@ -81,20 +87,8 @@ public class Pupil extends Person {
         this.status = status;
     }
 
-    public List<Parent> getRelatives() {
-        return Collections.unmodifiableList(relatives); // Return an unmodifiable view of the list
-    }
-
-    public void addRelative(Parent relative) {
-        this.relatives.add(relative);
-    }
-
-    public void removeRelative(Parent relative) {
-        this.relatives.remove(relative);
-    }
-
     @Override
     public String toString() {
-        return pupilID + "\t" + super.toString();
+        return pupilID + "\t" + super.toString() + "\t" + classroom.getClassName(); 
     }
 }
