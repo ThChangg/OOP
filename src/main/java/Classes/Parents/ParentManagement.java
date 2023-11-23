@@ -4,9 +4,12 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,12 +32,12 @@ public class ParentManagement implements IFileManagement, ICRUD {
         searchResultLength = 0;
     }
 
-    public Parent[] getParentManagement() {
+    public Parent[] getParentList() {
         return this.parentList;
     }
 
-    public void setParentManagement(Parent parentManagement[]) {
-        this.parentList = parentManagement;
+    public void setParentList(Parent parentList[]) {
+        this.parentList = parentList;
     }
 
     public int getCurrentIndex() {
@@ -149,7 +152,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     public void display(int arrayLength) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output3.txt";
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
 
         File file = new File(relativePath);
 
@@ -256,9 +259,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
     public String getLastParentID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
-            if (parentList[i].getStatus()) {
-                ID = parentList[i].getPupilID();
-            }
+            ID = parentList[i].getParentID();
         }
         return ID;
     }
@@ -266,7 +267,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
     public Parent getParentByID(String ID) {
         Parent parent = null;
         for (int i = 0; i < currentIndex; i++) {
-            if (parentList[i].getPupilID().equalsIgnoreCase(ID)) {
+            if (parentList[i].getParentID().equalsIgnoreCase(ID)) {
                 if (parentList[i].getStatus()) {
                     parent = parentList[i];
                     break;
@@ -278,16 +279,46 @@ public class ParentManagement implements IFileManagement, ICRUD {
         return parent;
     }
 
-    public void findParentsByName(String name) {
-        Pattern pattern = Pattern.compile(Pattern.quote(name), Pattern.CASE_INSENSITIVE);
+    public void findParentsBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass) {
+        Arrays.fill(searchResult, null);
+        searchResultLength = 0;
+        Pattern pattern = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE);
 
         for (int i = 0; i < currentIndex; i++) {
-            if (pattern.matcher(parentList[i].getFullname()).find()) {
-                if (parentList[i].getStatus()) {
-                    this.searchResult[this.searchResultLength++] = parentList[i];
+            try {
+                if (nestedClass != null) {
+                    // Get the nested object from the main object
+                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
+                            .invoke(parentList[i]);
+
+                    // Use reflection to get the appropriate method from the nested class
+                    Method getterMethod = nestedClass.getMethod(findBy);
+
+                    // Invoke the method on the nested object
+                    String attributeValue = (String) getterMethod.invoke(nestedObject);
+
+                    if (pattern.matcher(attributeValue).find()) {
+                        if (parentList[i].getStatus()) {
+                            this.searchResult[this.searchResultLength++] = parentList[i];
+                        } else {
+                            System.out.println("Parent does not exist!");
+                        }
+                    }
                 } else {
-                    System.out.println("Parent does not exist!");
+                    // No nested class, directly invoke the method on the main class
+                    Method getterMethod = mainClass.getMethod(findBy);
+                    String attributeValue = (String) getterMethod.invoke(parentList[i]);
+
+                    if (pattern.matcher(attributeValue).find()) {
+                        if (parentList[i].getStatus()) {
+                            this.searchResult[this.searchResultLength++] = parentList[i];
+                        } else {
+                            System.out.println("Parent does not exist!");
+                        }
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -295,7 +326,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
     public int getParentArrayIndex(String ID) {
         int index = -1;
         for (int i = 0; i < currentIndex; i++) {
-            if (parentList[i].getPupilID().equalsIgnoreCase(ID)) {
+            if (parentList[i].getParentID().equalsIgnoreCase(ID)) {
                 if (parentList[i].getStatus()) {
                     index = i;
                     break;
@@ -303,5 +334,81 @@ public class ParentManagement implements IFileManagement, ICRUD {
             }
         }
         return index;
+    }
+
+    public void insertIntoDatabase(String record) {
+        // Read existing records from the database file
+        String existingRecords = readDatabase();
+
+        // Check if the new record is not present in the existing records
+        if (!existingRecords.contains(record)) {
+            // Append the new record to the existing records
+            writeDatabase(existingRecords + "\n" + record);
+        } else {
+            System.out.println("Record already exists in the database. Not added.");
+        }
+    }
+
+    public void updateRecord(String updatedRecord) {
+        String databaseContent = readDatabase();
+        String records[] = databaseContent.split("\n");
+        String parentID = updatedRecord.substring(0, 5);
+
+        for (int i = 0; i < records.length; i++) {
+            if (records[i].startsWith(parentID)) {
+                records[i] = updatedRecord;
+                break;
+            }
+        }
+
+        StringBuilder updatedContent = new StringBuilder();
+        for (String record : records) {
+            updatedContent.append(record).append("\n");
+        }
+
+        writeDatabase(updatedContent.toString());
+    }
+
+    public static void deleteRecord(String record) {
+        // Read existing records from the database file
+        String existingRecords = readDatabase();
+
+        // Check if the record is present in the existing records
+        if (existingRecords.contains(record)) {
+            // Remove the record from the existing records
+            String updatedRecords = existingRecords.replaceAll(record + "(\\n|$)", "").trim();
+
+            // Update the database with the modified records
+            writeDatabase(updatedRecords);
+            System.out.println("Record deleted successfully.");
+        } else {
+            System.out.println("Record not found in the database. Deletion failed.");
+        }
+    }
+
+    public static String readDatabase() {
+        StringBuilder records = new StringBuilder();
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
+        File file = new File(relativePath);
+        try (Scanner scanner = new Scanner(new FileReader(file))) {
+            while (scanner.hasNextLine()) {
+                records.append(scanner.nextLine()).append("\n");
+            }
+        } catch (IOException e) {
+            // Handle IOException
+            e.printStackTrace();
+        }
+        return records.toString().trim();
+    }
+
+    public static void writeDatabase(String records) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
+        File file = new File(relativePath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(records);
+        } catch (IOException e) {
+            // Handle IOException
+            e.printStackTrace();
+        }
     }
 }

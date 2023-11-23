@@ -157,11 +157,12 @@ public class AppHelper {
         int classroomIndex = 0;
         Pupil pupilList[] = pupilManagement.getPupilList();
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
-        Parent parentList[] = parentManagement.getParentManagement();
+        Parent parentList[] = parentManagement.getParentList();
 
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
             pupilList[i].setClassroom(classroomList[classroomIndex]);
             pupilList[i].setParents(parentList[i]);
+            parentList[i].setPupil(pupilList[i]);
             count++;
 
             if (count == 4) {
@@ -268,7 +269,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    addParentsToParentManagementList(parentManagement, sc);
                     break;
 
                 case 4:
@@ -322,7 +323,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    updateParentData(parentManagement, sc);
                     break;
 
                 case 4:
@@ -377,7 +378,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    deleteParentData(parentManagement, sc);
                     break;
 
                 case 4:
@@ -512,6 +513,82 @@ public class AppHelper {
         pupilManagement.delete(ID);
     }
 
+    public static void addParentsToParentManagementList(ParentManagement parentManagement, Scanner scanner) {
+        char option = 'y';
+        do {
+            boolean flag;
+            String fullName = "";
+            System.out.println("Add Parents: ");
+            do {
+                System.out.print("Fullname (Format: Nguyen Duc Canh): ");
+                fullName = scanner.nextLine();
+                flag = Pupil.isValidName(fullName);
+
+                if (!flag) {
+                    System.out.println("Fullname is invalid (Wrong format)!");
+                }
+
+            } while (!flag);
+
+            String date = "";
+            do {
+                System.out.print("BirthDate (format: 03/03/2017): ");
+                date = scanner.nextLine();
+                flag = Date.isValidDateAndMonth(date);
+
+                if (!flag) {
+                    System.out.println("BirthDate is invalid (Wrong format)!");
+                }
+            } while (!flag);
+            Date dob = new Date(date);
+
+            String inputAddress = "";
+            do {
+                System.out.print(
+                        "Address (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
+                inputAddress = scanner.nextLine();
+                flag = Address.isValidAddress(inputAddress);
+
+                if (!flag) {
+                    System.out.println("Address is invalid (Wrong format)!");
+                }
+            } while (!flag);
+            Address address = new Address(inputAddress);
+
+            String sex = "";
+            do {
+                System.out.print("Sex (format: male / female): ");
+                sex = scanner.nextLine();
+                flag = Parent.isValidSex(sex);
+
+                if (!flag) {
+                    System.out.println("Sex is invalid (Wrong format)!");
+                }
+            } while (!flag);
+
+            String parentID = createNewID(parentManagement.getLastParentID());
+            parentManagement.add(new Parent(parentID, fullName, dob, address, sex));
+
+            String record = parentID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + "-" + sex;
+            parentManagement.insertIntoDatabase(record);
+
+            System.out.println("Do you want to add more parents ? Yes(Y) : No(N)");
+            option = scanner.nextLine().charAt(0);
+        } while (option == 'y' || option == 'Y');
+    }
+
+    public static void updateParentData(ParentManagement parentManagement, Scanner scanner) {
+        System.out.print("Enter parent ID: ");
+        String ID = scanner.nextLine();
+        parentManagement.update(ID);
+    }
+
+    public static void deleteParentData(ParentManagement parentManagement, Scanner scanner) {
+        System.out.print("Enter parent ID: ");
+        String ID = scanner.nextLine();
+        parentManagement.delete(ID);
+    }
+
     public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
         char option = 'y';
         do {
@@ -588,6 +665,7 @@ public class AppHelper {
             System.out.println("======================= Menu =======================");
             System.out.println("1. Search pupils data by name");
             System.out.println("2. Search pupils data by class");
+            System.out.println("3. Search parents data by name");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -604,6 +682,12 @@ public class AppHelper {
                     String className = sc.nextLine();
                     pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class);
                     pupilManagement.display(pupilManagement.getSearchResultLength());
+                    break;
+                case 3:
+                    System.out.print("Enter Parent Name: ");
+                    String parentName = sc.nextLine();
+                    parentManagement.findParentsBy(parentName, "getFullName", Parent.class, null);
+                    parentManagement.display(parentManagement.getSearchResultLength());
                     break;
 
                 default:

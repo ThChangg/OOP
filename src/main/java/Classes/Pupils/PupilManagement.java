@@ -426,8 +426,11 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
 
         StringBuilder updatedContent = new StringBuilder();
-        for (String record : records) {
-            updatedContent.append(record).append("\n");
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if (i < records.length - 1) {
+                updatedContent.append("\n");
+            }
         }
 
         writeDatabase(updatedContent.toString());
