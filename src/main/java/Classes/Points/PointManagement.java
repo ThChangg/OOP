@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
@@ -32,23 +33,22 @@ public class PointManagement implements IFileManagement, ICRUD {
 
     @Override
     public void initialize() {
-        String relativePath = System.getProperty("user.dir")
-                + "\\src\\main\\java\\Data\\points.txt";
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
 
         if (file.exists()) {
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
-                String line = "";
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split("\\s+");
+            try (Scanner scanner = new Scanner(file)) {
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+
+                    String[] parts = line.split("-");
                     if (parts.length >= 6) {
                         String pupilID = parts[0];
                         double literaturePoint = Double.parseDouble(parts[1]);
                         double mathPoint = Double.parseDouble(parts[2]);
                         double physicalEducationPoint = Double.parseDouble(parts[3]);
                         double englishPoint = Double.parseDouble(parts[4]);
-                        int pointConductValue = Integer.parseInt(parts[5]);
+                        int pointConductValue = Integer.parseInt(parts[5].trim());
 
                         Conduct conduct = new Conduct(pointConductValue);
                         Point point = new Point(pupilID, literaturePoint, mathPoint, physicalEducationPoint,
@@ -60,7 +60,7 @@ public class PointManagement implements IFileManagement, ICRUD {
                     }
                 }
             } catch (IOException e) {
-                ((Throwable) e).printStackTrace();
+                e.printStackTrace();
             }
             System.out.println("File exists.");
 
@@ -87,24 +87,13 @@ public class PointManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (listPoint[i].getStatus()) {
                     Point point = listPoint[i];
-                    int pointConductValue = point.getConduct().getpointConduct();
-                    String rank;
-                    if (pointConductValue >= 80) {
-                        rank = "Very Good";
-                    } else if (pointConductValue >= 65 && pointConductValue <= 79) {
-                        rank = "Good";
-                    } else if (pointConductValue >= 50 && pointConductValue <= 64) {
-                        rank = "Average";
-                    } else {
-                        rank = "Weak";
-                    }
-                    point.getConduct().setRank(rank);
+                    calculateRank(point);
+
                     point.calculatePerformance();
 
                     writer.write(String.format(dataFormat, point.getPupilID(), point.getLiteraturePoint(),
-                            point.getMathPoint(),
-                            point.getPhysicalEducationPoint(), point.getEnglishPoint(), pointConductValue,
-                            point.getConduct().getRank(),
+                            point.getMathPoint(), point.getPhysicalEducationPoint(), point.getEnglishPoint(),
+                            point.getConduct().getpointConduct(), point.getConduct().getRank(),
                             point.getPerformance()));
                     writer.newLine();
                 }
@@ -117,6 +106,15 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
+    private void calculateRank() {
+        for (int i = 0; i < currentIndex; i++) {
+            if (listPoint[i].getStatus()) {
+                calculateRank(listPoint[i]); // Call the common method to calculate rank
+            }
+        }
+        System.out.println("Ranks calculated.");
+    }
+
     @Override
     public void add(Object obj) {
         if (currentIndex < listPoint.length) {
@@ -127,34 +125,128 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
+    public static boolean isPoint(double value) {
+        return value >= 0 && value <= 10;
+    }
+
     @Override
     public void update(String ID) {
         Scanner sc = new Scanner(System.in);
         Point point = getPointByID(ID);
         Conduct conduct = point.getConduct();
         if (point != null) {
-            System.out.println("Old LiteraturePoint " + point.getLiteraturePoint());
-            System.out.println("New LiteraturePoint: ");
-            double literaturePoint = Double.parseDouble(sc.nextLine());
-            point.setLiteraturePoint(literaturePoint);
-            System.out.println("Old MathPoint " + point.getMathPoint());
-            System.out.println("New MathPoint: ");
-            double mathPoint = Double.parseDouble(sc.nextLine());
-            point.setMathPoint(mathPoint);
-            System.out.println("Old PhysicalEducationPoint " + point.getPhysicalEducationPoint());
-            System.out.println("New PhysicalEducationPoint: ");
-            double physicalEducationPoint = Double.parseDouble(sc.nextLine());
-            point.setPhysicalEducationPoint(physicalEducationPoint);
-            System.out.println("Old EnglishPoint " + point.getEnglishPoint());
-            System.out.println("New EnglishPoint : ");
-            double englishPoint = Double.parseDouble(sc.nextLine());
-            point.setEnglishPoint(englishPoint);
-            System.out.println("Old PointConduct " + conduct.getpointConduct());
-            System.out.println("New PointConduct: ");
-            int newPointConduct = sc.nextInt();
-            point.getConduct().setpointConduct(newPointConduct);
-            updateRecord(point.toString());
+            do {
+                System.out.println("Old LiteraturePoint: " + point.getLiteraturePoint());
+                System.out.print("New LiteraturePoint(0-10): ");
+                String input = sc.nextLine().trim(); // Read the entire line including whitespaces
+
+                if (input.isEmpty()) {
+                    // User pressed Enter without entering anything
+                    break;
+                }
+                while (!sc.hasNextDouble()) {
+                    System.out.println("Invalid input. Please enter a numeric value.");
+                    sc.next(); // Consume the invalid input
+                }
+                double newLiteraturePoint = sc.nextDouble();
+
+                if (isPoint(newLiteraturePoint)) {
+                    point.setLiteraturePoint(newLiteraturePoint);
+                } else {
+                    System.out.print("New LiteraturePoint(0-10): ");
+                    newLiteraturePoint = sc.nextDouble();
+                }
+            } while (!isPoint(point.getLiteraturePoint()));
+            do {
+                System.out.println("Old MathPoint: " + point.getMathPoint());
+                System.out.print("New MathPoint(0-10): ");
+                String input = sc.nextLine().trim(); // Read the entire line including whitespaces
+
+                if (input.isEmpty()) {
+                    // User pressed Enter without entering anything
+                    break;
+                }
+
+                while (!sc.hasNextDouble()) {
+                    System.out.println("Invalid input. Please enter a numeric value.");
+                    sc.next(); // Consume the invalid input
+                }
+                double newMathPoint = sc.nextDouble();
+
+                if (isPoint(newMathPoint)) {
+                    point.setMathPoint(newMathPoint);
+                } else {
+                    System.out.print("New MathPoint(0-10): ");
+                    newMathPoint = sc.nextDouble();
+                }
+            } while (!isPoint(point.getMathPoint()));
+            do {
+                System.out.println("Old PhysicalEducationPoint: " + point.getPhysicalEducationPoint());
+                System.out.print("New PhysicalEducationPoint(0-10): ");
+                String input = sc.nextLine().trim(); // Read the entire line including whitespaces
+
+                if (input.isEmpty()) {
+                    // User pressed Enter without entering anything
+                    break;
+                }
+                while (!sc.hasNextDouble()) {
+                    System.out.println("Invalid input. Please enter a numeric value.");
+                    sc.next(); // Consume the invalid input
+                }
+                double newPhysicalEducationPoint = sc.nextDouble();
+
+                if (isPoint(newPhysicalEducationPoint)) {
+                    point.setPhysicalEducationPoint(newPhysicalEducationPoint);
+                } else {
+                    System.out.print("New PhysicalEducationPoint(0-10): ");
+                    newPhysicalEducationPoint = sc.nextDouble();
+                }
+            } while (!isPoint(point.getPhysicalEducationPoint()));
+            do {
+                System.out.println("OldEnglishPoint: " + point.getEnglishPoint());
+                System.out.print("New EnglishPointPoint(0-10): ");
+                String input = sc.nextLine().trim(); // Read the entire line including whitespaces
+
+                if (input.isEmpty()) {
+                    // User pressed Enter without entering anything
+                    break;
+                }
+                while (!sc.hasNextDouble()) {
+                    System.out.println("Invalid input. Please enter a numeric value.");
+                    sc.next(); // Consume the invalid input
+                }
+                double newEnglishPoint = sc.nextDouble();
+
+                if (isPoint(newEnglishPoint)) {
+                    point.setEnglishPoint(newEnglishPoint);
+                } else {
+                    System.out.print("New EnglishPointPoint(0-10): ");
+                    newEnglishPoint = sc.nextDouble();
+                }
+            } while (!isPoint(point.getEnglishPoint()));
+        } else {
+            System.out.println("Student with ID " + ID + " not found.");
         }
+
+        System.out.println("Old PointConduct: " + conduct.getpointConduct());
+        System.out.print("New PointConduct(0-100): ");
+        
+        String conductInput = sc.nextLine().trim();
+        
+        if (!conductInput.isEmpty()) {
+            try {
+                int newPointConduct = Integer.parseInt(conductInput);
+
+                if (newPointConduct >= 0 && newPointConduct <= 100) {
+                    point.getConduct().setpointConduct(newPointConduct);
+                } else {
+                    System.out.println("Invalid input. Please enter an integer value between 0 and 100.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter an integer value.");
+            }
+        }
+        updateRecord(point.toString());
     }
 
     private Point getPointByID(String ID) {
@@ -218,25 +310,19 @@ public class PointManagement implements IFileManagement, ICRUD {
         return index;
     }
 
-    private void calculateRank() {
-        for (int i = 0; i < currentIndex; i++) {
-            if (listPoint[i].getStatus()) {
-                Point point = listPoint[i];
-                int pointConductValue = point.getConduct().getpointConduct();
-                String rank;
-                if (pointConductValue >= 80) {
-                    rank = "Very Good";
-                } else if (pointConductValue >= 65 && pointConductValue <= 79) {
-                    rank = "Good";
-                } else if (pointConductValue >= 50 && pointConductValue <= 64) {
-                    rank = "Average";
-                } else {
-                    rank = "Weak";
-                }
-                point.getConduct().setRank(rank);
-            }
+    private void calculateRank(Point point) {
+        int pointConductValue = point.getConduct().getpointConduct();
+        String rank;
+        if (pointConductValue >= 80) {
+            rank = "Very Good";
+        } else if (pointConductValue >= 65 && pointConductValue <= 79) {
+            rank = "Good";
+        } else if (pointConductValue >= 50 && pointConductValue <= 64) {
+            rank = "Average";
+        } else {
+            rank = "Weak";
         }
-        System.out.println("Ranks calculated.");
+        point.getConduct().setRank(rank);
     }
 
     public void insertIntoDatabase(String record) {
@@ -297,6 +383,7 @@ public class PointManagement implements IFileManagement, ICRUD {
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
                 records.append(scanner.nextLine()).append("\n");
+
             }
         } catch (IOException e) {
             // Handle IOException

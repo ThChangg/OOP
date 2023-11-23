@@ -100,54 +100,73 @@ public class Point {
 
     @Override
     public String toString() {
-        return pupilID + "\t" + literaturePoint + "\t" + mathPoint + "\t" + physicalEducationPoint + "\t" + englishPoint
-                + "\t" + conduct;
+        return pupilID + "-" + literaturePoint + "-" + mathPoint + "-" + physicalEducationPoint + "-" + englishPoint
+                + "-" + conduct;
     }
 
     public String initialize() {
         return null;
     }
 
-    public void calculatePerformance() {
-        String academicLevel = calculateAcademicLevel();
-        String conductLevel = getConduct().getRank();
+   public void calculatePerformance() {
+    String academicLevel = calculateAcademicLevel();
+    String conductLevel = getConduct().getRank();
 
-        // Combine academic and conduct levels to determine overall performance
-        if (academicLevel.equals("Excellent") && (conductLevel.equals("Good") || conductLevel.equals("Very Good"))) {
-            setPerformance("Excellent");
-        } else if (academicLevel.equals("Good") && conductLevel.equals("Very Good")) {
-            setPerformance("Good");
-        } else if (academicLevel.equals("Good") && conductLevel.equals("Good")) {
-            setPerformance("Good");
-        } else if (academicLevel.equals("Good") && conductLevel.equals("Average")) {
-            setPerformance("Average");
+    // Combine academic and conduct levels to determine overall performance
+    if (academicLevel.equals("Excellent") && conductLevel.equals("Very Good")) {
+        setPerformance("Excellent");
+    } else if (academicLevel.equals("Excellent") && conductLevel.equals("Good")) {
+        setPerformance("Good");
+    }
+        else if (academicLevel.equals("Good") && conductLevel.equals("Very Good")) {
+        setPerformance("Good");
+    } else if (academicLevel.equals("Good") && conductLevel.equals("Good")) {
+        setPerformance("Good");
+    } else if (academicLevel.equals("Good") && conductLevel.equals("Average")) {
+        setPerformance("Average");
+         } else if (academicLevel.equals("Average") && conductLevel.equals("Very Good")) {
+        setPerformance("Average");
+        } else if (academicLevel.equals("Average") && conductLevel.equals("Good")) {
+        setPerformance("Average");
+    } else if (academicLevel.equals("Average") && conductLevel.equals("Average")) {
+        setPerformance("Average");
+    } else {
+        setPerformance("Weak");
+    }
+}
+
+private String calculateAcademicLevel() {
+    double[] subjectPoints = { getMathPoint(), getLiteraturePoint(), getEnglishPoint(), getPhysicalEducationPoint() };
+
+    boolean isExcellent = false;
+    boolean isGood = false;
+    boolean isAverage = false;
+    boolean isWeak = false;
+
+    boolean atLeastOneSubjectAbove8 = getMathPoint() > 8.0 || getLiteraturePoint() > 8.0;
+    boolean atLeastOneSubjectAbove6_5 = getMathPoint() > 6.5 || getLiteraturePoint() > 6.5;
+    boolean atLeastOneSubjectAbove5_0 = getMathPoint() > 5.0 || getLiteraturePoint() > 5.0;
+
+    for (double point : subjectPoints) {
+        if (point > 8.0) {
+            isExcellent = true;
+        } else if (point > 6.5) {
+            isGood = true;
+        } else if (point > 5.0) {
+            isAverage = true;
         } else {
-            setPerformance("Weak");
+            isWeak = true;
         }
     }
 
-    private String calculateAcademicLevel() {
-        double[] subjectPoints = { getMathPoint(), getLiteraturePoint(), getEnglishPoint(),
-                getPhysicalEducationPoint() };
-
-        boolean isExcellent = true;
-        boolean isGood = true;
-
-        for (double point : subjectPoints) {
-            if (point < 5.0) {
-                isGood = false;
-            }
-            if (point < 8.0) {
-                isExcellent = false;
-            }
-        }
-
-        if (isExcellent) {
-            return "Excellent";
-        } else if (isGood) {
-            return "Good";
-        } else {
-            return "Weak";
-        }
+    if (isExcellent && atLeastOneSubjectAbove8) {
+        return "Excellent";
+    } else if (isGood && atLeastOneSubjectAbove6_5) {
+        return "Good";
+    } else if (isAverage && atLeastOneSubjectAbove5_0) {
+        return "Average";
+    } else {
+        return "Weak";
     }
+}
 }
