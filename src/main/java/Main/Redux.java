@@ -11,6 +11,7 @@ import Classes.Account.AccountManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
+import Classes.Teachers.TeacherManagement;
 
 public class Redux {
     private static AccountManagement accountManagement = new AccountManagement();
@@ -181,6 +182,13 @@ public class Redux {
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
                     // teacher.setStatus(true);
                     // break;
+                    String address = teacher.getAddress().toString().replace(" Duong ", " ");
+                    String record = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
+                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getSex();
+                    TeacherManagement.deleteTeacherRecord(record);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
                 }
             } else {
                 System.out.println("Instance not found!");

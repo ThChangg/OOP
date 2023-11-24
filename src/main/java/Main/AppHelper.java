@@ -264,9 +264,9 @@ public class AppHelper {
                     break;
 
                 case 2:
-                    addTeachersToTeacherManagementList(teacherManagement, sc);
+                    addTeachersToTeacherManagementList(sc, teacherManagement, classroomManagement);
                     break;
-
+                    
                 case 3:
                     // parentManagement.display();
                     break;
@@ -512,7 +512,18 @@ public class AppHelper {
         pupilManagement.delete(ID);
     }
 
-    public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
+    public static void addTeachersToTeacherManagementList(Scanner scanner, Object... managementObjects) {
+        
+        TeacherManagement teacherManagement = null;
+        ClassroomManagement classroomManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            } else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            }
+        }
         
         char option = 'y';
         do {
@@ -539,7 +550,7 @@ public class AppHelper {
                 if (!flag) {
                     System.out.println("BirthDate is invalid (Wrong format)!");
                 }
-            } while (!Date.isValidDateAndMonth(date));
+            } while (!flag);
             Date dob = new Date(date);
 
             String inputAddress = "";
@@ -552,12 +563,12 @@ public class AppHelper {
                 if (!flag) {
                     System.out.println("Address is invalid (Wrong format)!");
                 }
-            } while (!Address.isValidAddress(inputAddress));
+            } while (!flag);
             Address address = new Address(inputAddress);
             
             String major = "";
             do {
-                System.out.print("Major (Format: Math): ");
+                System.out.print("Major (Format: Math, Literature, English, PE): ");
                 major = scanner.nextLine();
                 flag = TeacherManagement.isValidMajor(major);
 
@@ -567,6 +578,7 @@ public class AppHelper {
 
             } while (!flag);
             
+            ClassroomManagement.displayClassroomFormation();
             String className = "";
             do {
                 System.out.print("Class (format: 1A1): ");
@@ -577,8 +589,9 @@ public class AppHelper {
                     System.out.println("Class is invalid (No class available)!");
                 }
             } while (!flag);
-            Classroom classroom = new Classroom();
-            classroom.setClassName(className);
+            int gradeNumber = className.charAt(0) - '0';
+            Grade grade = new Grade(gradeNumber);
+            Classroom classroom = new Classroom(className, grade);
             
             String sex = "";
             do {
@@ -593,7 +606,10 @@ public class AppHelper {
             
             String teacherID = createNewID(teacherManagement.getLastTeacherID());
             teacherManagement.add(new Teacher(teacherID, classroom, major, fullName, sex, dob, address));
-
+            String record = teacherID + "-" + fullName + "-" + date + "-" + dob + "-" + inputAddress + "-"
+                        + major + "-" + className + "-" + sex;
+            teacherManagement.insertTeacherIntoDatabase(record);
+            
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
         } while (option == 'y' || option == 'Y');
@@ -604,14 +620,14 @@ public class AppHelper {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.update(ID);
-        System.out.println("Update successfully!");
+        //System.out.println("Update successfully!");
     }
 
     public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.delete(ID);
-        System.out.println("Delete successfully!");
+        //System.out.println("Delete successfully!");
     }
 
     public static void appSearch(Scanner sc, Object... managementObjects) {
