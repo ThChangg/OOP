@@ -105,7 +105,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, major, gender);
+                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, gender, major);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");

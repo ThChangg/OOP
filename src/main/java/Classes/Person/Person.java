@@ -53,7 +53,7 @@ public class Person {
         return this.gender;
     }
 
-    public void setGender(String sex) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

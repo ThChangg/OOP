@@ -26,6 +26,7 @@ public class Teacher extends Person {
     public Teacher(String teacherID, String fullname, Date birthDate, Address address, String gender, String major) {
         super(fullname, birthDate, address, gender);
         this.teacherID = teacherID;
+        this.classroom = classroom;
         this.major = major;
     }
 
@@ -70,6 +71,9 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
+        if(classroom == null){
+            return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + null;
+        }
         return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + classroom.getClassName();
     }
 }
