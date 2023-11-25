@@ -44,7 +44,7 @@ public class Redux {
                     // Check if existing at least one Pupil instance
                     writer.write("++++++++++++++++ Pupil Management List Session ++++++++++++++++");
                     writer.newLine();
-                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Gender",
                             "BirthDate", "Address",
                             "Class"));
                     writer.newLine();
@@ -62,7 +62,7 @@ public class Redux {
                     // Check if existing at least one Teacher instance
                     writer.write("++++++++++++++++ Teacher Management List Session ++++++++++++++++");
                     writer.newLine();
-                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Sex",
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Gender",
                             "BirthDate", "Address",
                             "Major"));
                     writer.newLine();
@@ -201,7 +201,7 @@ public class Redux {
                 if (pupil.getPupilID().equalsIgnoreCase(ID)) {
                     String address = pupil.getAddress().toString().replace(" Duong ", " ");
                     String record = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getSex();
+                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getGender();
                     PupilManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -240,7 +240,7 @@ public class Redux {
                 Pupil pupil = (Pupil) deletedObjects[i];
                 String address = pupil.getAddress().toString().replace(" Duong ", " ");
                 String pupilRecord = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getSex();
+                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getGender();
 
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {

@@ -19,11 +19,7 @@ import Main.Redux;
 public class PointManagement implements IFileManagement, ICRUD {
     private Point listPoint[];
     private int currentIndex;
-    private String pointID;
 
-    // public void setLastPointID(String pointID) {
-    // this.pointID = pointID;
-    // }
     public Point[] getListPoint() {
         return this.listPoint;
     }
@@ -35,7 +31,6 @@ public class PointManagement implements IFileManagement, ICRUD {
     public PointManagement() {
         listPoint = new Point[100];
         currentIndex = 0;
-
     }
 
     public int getCurrentIndex() {
@@ -50,7 +45,6 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void initialize() {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
-
         if (file.exists()) {
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
@@ -64,11 +58,9 @@ public class PointManagement implements IFileManagement, ICRUD {
                         double physicalEducationPoint = Double.parseDouble(parts[3]);
                         double englishPoint = Double.parseDouble(parts[4]);
                         int pointConductValue = Integer.parseInt(parts[5].trim());
-
                         Conduct conduct = new Conduct(pointConductValue);
                         Point point = new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint,
                                 englishPoint, conduct);
-
                         this.add(point);
                         calculateRank(point);
                         point.calculatePerformance();
@@ -79,7 +71,6 @@ public class PointManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         } else {
             System.out.println("File does not exist.");
         }
@@ -89,13 +80,9 @@ public class PointManagement implements IFileManagement, ICRUD {
     @Override
     public void display() {
         String headerFormat = "%-5s\t%-15s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s";
-        // String dataFormat =
-        // "%-5s\t%-15.1f\t%-10.1f\t%-25.1f\t%-15.1f\t%-15d\t%-10s\t%-15s";
-
         String relativePath = System.getProperty("user.dir")
                 + "\\src\\main\\java\\Main\\output.txt";
         File file = new File(relativePath);
-
         if (file.exists()) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Point Management List:");
@@ -103,11 +90,9 @@ public class PointManagement implements IFileManagement, ICRUD {
                 writer.write(String.format(headerFormat, "ID", "LiteraturePoint", "MathPoint", "PhysicalEducationPoint",
                         "EnglishPoint", "PointConduct", "Rank", "Performance"));
                 writer.newLine();
-
                 for (int i = 0; i < currentIndex; i++) {
                     if (listPoint[i].getStatus()) {
                         Point point = listPoint[i];
-
                         writer.write(
                                 point.toString() + "-" + point.getConduct().getRank() + "-" + point.getPerformance());
                         writer.newLine();
@@ -153,16 +138,8 @@ public class PointManagement implements IFileManagement, ICRUD {
         if (currentIndex < listPoint.length) {
             listPoint[currentIndex++] = (Point) obj;
             Point addedPoint = listPoint[currentIndex - 1]; // The recently added point
-
-            // No need to manually increment PointID, it's handled in the Point constructor
-
-            // Calculate rank and performance for the added point
             calculateRank(addedPoint);
             addedPoint.calculatePerformance();
-
-            // Update the record in the database
-            updateRecord(addedPoint.toString());
-
         } else {
             System.out.println("Point List is full. Cannot add more.");
         }
@@ -177,7 +154,6 @@ public class PointManagement implements IFileManagement, ICRUD {
         Scanner sc = new Scanner(System.in);
         Point point = getPointByID(ID);
         Conduct conduct = point.getConduct();
-
         if (point != null) {
             boolean flag = true;
             do {
@@ -313,7 +289,7 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public Point searchPointByPointID(String pointID) {
+    public Point searchPointByPupilID(String pointID) {
         Point point = null;
         for (int i = 0; i < currentIndex; i++) {
             if (listPoint[i].getPointID().equalsIgnoreCase(pointID)) {
@@ -372,25 +348,17 @@ public class PointManagement implements IFileManagement, ICRUD {
             }
         }
 
-        // Rebuild the content with the updated records
-    //     StringBuilder updatedContent = new StringBuilder();
-    //     for (String record : records) {
-    //         updatedContent.append(record).append("\n");
-    //     }
+    
 
-    //     // Write the updated content back to the database
-    //     writeDatabase(updatedContent.toString().trim());
-    // }
+        StringBuilder updatedContent = new StringBuilder();
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if (i < records.length - 1) {
+                updatedContent.append("\n");
+            }
+        }
 
-    StringBuilder updatedContent = new StringBuilder();
-    for (int i = 0; i < records.length; i++) {
-    updatedContent.append(records[i]);
-    if (i < records.length - 1) {
-    updatedContent.append("\n");
-    }
-    }
-
-    writeDatabase(updatedContent.toString());
+        writeDatabase(updatedContent.toString());
     }
 
     public static void deleteRecord(String record) {
@@ -438,7 +406,5 @@ public class PointManagement implements IFileManagement, ICRUD {
             e.printStackTrace();
         }
     }
-
-
 
 }

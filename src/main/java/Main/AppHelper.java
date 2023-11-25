@@ -70,23 +70,23 @@ public class AppHelper {
             option = !isCloseApp || (option == 1) ? Integer.parseInt(sc.nextLine()) : 0;
             switch (option) {
                 case 1:
-                    appInitialize(pupilManagement, /* classroomManagement, */ teacherManagement, pointManagement);
+                    appInitialize(pupilManagement,  classroomManagement,  teacherManagement, pointManagement);
                     break;
                 case 2:
-                    appDisplay(sc, pupilManagement, /* classroomManagement, */ teacherManagement, pointManagement);
+                    appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, pointManagement);
                     break;
                 case 3:
                     if (Redux.isAdmin) {
                         appCreate(sc, pupilManagement, teacherManagement,
-                                /* parentManagement, classroomManagement, */ pointManagement);
+                                 parentManagement, classroomManagement,  pointManagement);
                     } else {
                         System.out.println("Permission denied. You are not an admin.");
                     }
                     break;
                 case 4:
                     if (Redux.isAdmin) {
-                        appUpdate(sc, pupilManagement, /* classroomManagement, */ teacherManagement,
-                                /* parentManagement, */ pointManagement);
+                        appUpdate(sc, pupilManagement,  classroomManagement,  teacherManagement,
+                                 parentManagement,  pointManagement);
                     } else {
                         System.out.println("Permission denied. You are not an admin.");
                     }
@@ -94,8 +94,8 @@ public class AppHelper {
 
                 case 5:
                     if (Redux.isAdmin) {
-                        appDelete(sc, pupilManagement, /* classroomManagement, */ teacherManagement,
-                                /* parentManagement, */ pointManagement);
+                        appDelete(sc, pupilManagement,  classroomManagement,  teacherManagement,
+                                 parentManagement,  pointManagement);
                     } else {
                         System.out.println("Permission denied. You are not an admin.");
                     }
@@ -104,8 +104,8 @@ public class AppHelper {
                     // Case 7 logic
                     break;
                 case 6:
-                    appSearch(sc, pupilManagement, /* classroomManagement, */ teacherManagement,
-                            /* parentManagement, */ pointManagement);
+                    appSearch(sc, pupilManagement, classroomManagement,  teacherManagement,
+                             parentManagement,  pointManagement);
                     break;
                 case 8:
                     Redux.isLoggedIn = false;
@@ -120,21 +120,19 @@ public class AppHelper {
 
     public static void appInitialize(Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ClassroomManagement classroomManagement = null;
+        ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
-        // ParentManagement parentManagement = null;
+        ParentManagement parentManagement = null;
         PointManagement pointManagement = null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof PupilManagement) {
                 pupilManagement = (PupilManagement) managementObject;
                 pupilManagement.initialize();
-            } /*
-               * else if (managementObject instanceof ClassroomManagement) {
-               * classroomManagement = (ClassroomManagement) managementObject;
-               * classroomManagement.initialize();
-               * }
-               */else if (managementObject instanceof TeacherManagement) {
+            } else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+                classroomManagement.initialize();
+            }else if (managementObject instanceof TeacherManagement) {
                 ((TeacherManagement) managementObject).initialize();
             } else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
@@ -143,26 +141,26 @@ public class AppHelper {
             // Add more else if blocks for other management objects
 
         }
-        setupPupilManagement(pupilManagement, /* classroomManagement, parentManagement, */ pointManagement);
+        setupPupilManagement(pupilManagement,  classroomManagement, parentManagement,  pointManagement);
         System.out.println("App is now initialized!");
     }
 
     public static void setupPupilManagement(Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ClassroomManagement classroomManagement = null;
-        // ParentManagement parentManagement = null;
+        ClassroomManagement classroomManagement = null;
+        ParentManagement parentManagement = null;
         PointManagement pointManagement = null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof PupilManagement) {
                 pupilManagement = (PupilManagement) managementObject;
-            } /*
-               * else if (managementObject instanceof ClassroomManagement) {
-               * classroomManagement = (ClassroomManagement) managementObject;
-               * } else if (managementObject instanceof ParentManagement) {
-               * parentManagement = (ParentManagement) managementObject;
-               * }
-               */
+            } 
+                else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+                } else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
+                }
+               
             else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
@@ -172,15 +170,15 @@ public class AppHelper {
         int count = 0;
         int classroomIndex = 0;
         Pupil pupilList[] = pupilManagement.getPupilList();
-        // Classroom classroomList[] = classroomManagement.getClassroomManagement();
-        // Parent parentList[] = parentManagement.getParentManagement();
+        Classroom classroomList[] = classroomManagement.getClassroomManagement();
+        Parent parentList[] = parentManagement.getParentManagement();
         Point listPoint[] = pointManagement.getListPoint();
 
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
-            // pupilList[i].setClassroom(classroomList[classroomIndex]);
-            // pupilList[i].setParents(parentList[i]);
+            pupilList[i].setClassroom(classroomList[classroomIndex]);
+            pupilList[i].setParents(parentList[i]);
             pupilList[i].setSubjectPoints(listPoint[i]);
-
+            listPoint[i].setPupil(pupilList[i]);
             count++;
 
             if (count == 4) {
@@ -192,18 +190,16 @@ public class AppHelper {
 
     public static void appDisplay(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ClassroomManagement classroomManagement = null;
+        ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
         PointManagement pointManagement = null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof PupilManagement) {
                 pupilManagement = (PupilManagement) managementObject;
-            } /*
-               * else if (managementObject instanceof ClassroomManagement) {
-               * classroomManagement = (ClassroomManagement) managementObject;
-               * }
-               */else if (managementObject instanceof TeacherManagement) {
+            }else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            }else if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
             } else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
@@ -233,7 +229,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    parentManagement.display();
                     break;
 
                 case 4:
@@ -241,8 +237,8 @@ public class AppHelper {
                     break;
 
                 case 5:
-                    // classroomManagement.display();
-                    // break;
+                    classroomManagement.display();
+                    break;
 
                 default:
                     break;
@@ -290,7 +286,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    parentManagement.display();
                     break;
 
                 case 4:
@@ -298,7 +294,7 @@ public class AppHelper {
                     break;
 
                 case 5:
-                    // addClassroomsToClassroomManagementList(classroomManagement, sc);
+                    addClassroomsToClassroomManagementList(classroomManagement, sc);
                     break;
 
                 default:
@@ -309,9 +305,9 @@ public class AppHelper {
 
     public static void appUpdate(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ParentManagement parentManagement = null;
+        ParentManagement parentManagement = null;
         TeacherManagement teacherManagement = null;
-        // ClassroomManagement classroomManagement = null;
+        ClassroomManagement classroomManagement = null;
         PointManagement pointManagement = null;
 
         for (Object managementObject : managementObjects) {
@@ -320,9 +316,9 @@ public class AppHelper {
             } else if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
             }
-            // else if (managementObject instanceof ParentManagement) {
-            // parentManagement = (ParentManagement) managementObject;
-            // }
+            else if (managementObject instanceof ParentManagement) {
+            parentManagement = (ParentManagement) managementObject;
+            }
             else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
@@ -349,7 +345,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    parentManagement.display();
                     break;
 
                 case 4:
@@ -357,7 +353,7 @@ public class AppHelper {
                     break;
 
                 case 5:
-                    // updateClassroomData(classroomManagement, sc);
+                    updateClassroomData(classroomManagement, sc);
                     break;
 
                 default:
@@ -368,9 +364,9 @@ public class AppHelper {
 
     public static void appDelete(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ParentManagement parentManagement = null;
+        ParentManagement parentManagement = null;
         TeacherManagement teacherManagement = null;
-        // ClassroomManagement classroomManagement = null;
+        ClassroomManagement classroomManagement = null;
         PointManagement pointManagement = null;
 
         for (Object managementObject : managementObjects) {
@@ -379,9 +375,9 @@ public class AppHelper {
             } else if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
             }
-            // else if (managementObject instanceof ParentManagement) {
-            // parentManagement = (ParentManagement) managementObject;
-            // }
+            else if (managementObject instanceof ParentManagement) {
+            parentManagement = (ParentManagement) managementObject;
+            }
             else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
@@ -409,7 +405,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    parentManagement.display();
                     break;
 
                 case 4:
@@ -417,7 +413,7 @@ public class AppHelper {
                     break;
 
                 case 5:
-                    // deleteClassroomData(classroomManagement, sc);
+                    deleteClassroomData(classroomManagement, sc);
                     break;
                 case 6:
                     Redux.displayRecycleBin(sc);
@@ -443,16 +439,16 @@ public class AppHelper {
 
     public static void addPupilsToPupilManagementList(Scanner scanner, Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ClassroomManagement classroomManagement = null;
+        ClassroomManagement classroomManagement = null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof PupilManagement) {
                 pupilManagement = (PupilManagement) managementObject;
-            } /*
-               * else if (managementObject instanceof ClassroomManagement) {
-               * classroomManagement = (ClassroomManagement) managementObject;
-               * }
-               */
+            } 
+               else if (managementObject instanceof ClassroomManagement) {
+               classroomManagement = (ClassroomManagement) managementObject;
+                }
+               
         }
 
         char option = 'y';
@@ -496,37 +492,37 @@ public class AppHelper {
             } while (!flag);
             Address address = new Address(inputAddress);
 
-            String sex = "";
+            String gender = "";
             do {
-                System.out.print("Sex (format: male / female): ");
-                sex = scanner.nextLine();
-                flag = Pupil.isValidSex(sex);
+                System.out.print("gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Pupil.isValidGender(gender);
 
                 if (!flag) {
-                    System.out.println("Sex is invalid (Wrong format)!");
+                    System.out.println("gender is invalid (Wrong format)!");
                 }
             } while (!flag);
 
-            // ClassroomManagement.displayClassroomFormation();
+            ClassroomManagement.displayClassroomFormation();
             String className = "";
             do {
                 System.out.print("Class (format: 1A1): ");
                 className = scanner.nextLine();
-                // flag = ClassroomManagement.isValidClassroom(className);
+                flag = ClassroomManagement.isValidClassroom(className);
 
                 if (!flag) {
                     System.out.println("Class is invalid (No class available)!");
                 }
             } while (!flag);
             int gradeNumber = className.charAt(0) - '0';
-            // Grade grade = new Grade(gradeNumber);
-            // Classroom classroom = new Classroom(className, grade);
+            Grade grade = new Grade(gradeNumber);
+            Classroom classroom = new Classroom(className, grade);
 
             String pupilID = createNewID(pupilManagement.getLastPupilID());
-            // pupilManagement.add(new Pupil(pupilID, fullName, dob, address, sex,
-            // classroom));
+            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, gender,
+            classroom));
 
-            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + sex;
+            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + gender;
             pupilManagement.insertIntoDatabase(record);
 
             System.out.println("Do you want to add more pupils ? Yes(Y) : No(N)");
@@ -603,9 +599,9 @@ public class AppHelper {
 
     public static void appSearch(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
-        // ParentManagement parentManagement = null;
+        ParentManagement parentManagement = null;
         TeacherManagement teacherManagement = null;
-        // ClassroomManagement classroomManagement = null;
+        ClassroomManagement classroomManagement = null;
         PointManagement pointManagement = null;
 
         for (Object managementObject : managementObjects) {
@@ -613,11 +609,11 @@ public class AppHelper {
                 pupilManagement = (PupilManagement) managementObject;
             } else if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
-            } /*
-               * else if (managementObject instanceof ParentManagement) {
-               * parentManagement = (ParentManagement) managementObject;
-               * }
-               */
+            } 
+                else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
+                }
+            
             else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
@@ -643,8 +639,8 @@ public class AppHelper {
                 case 2:
                     System.out.print("Enter ClassName: ");
                     String className = sc.nextLine();
-                    // pupilManagement.findPupilsBy(className, "getClassName", Pupil.class,
-                    // Classroom.class);
+                    pupilManagement.findPupilsBy(className, "getClassName", Pupil.class,
+                    Classroom.class);
                     pupilManagement.display(pupilManagement.getSearchResultLength());
                     break;
                 case 3:
@@ -657,50 +653,50 @@ public class AppHelper {
         } while (option != 0);
     }
 
-    // public static void addClassroomsToClassroomManagementList(ClassroomManagement
-    // classroomManagement,
-    // Scanner scanner) {
-    // char option = 'y';
-    // do {
-    // System.out.println("Add classrooms: ");
-    // System.out.print("Classname (Format: 6A1): ");
-    // String className = scanner.nextLine();
+    public static void addClassroomsToClassroomManagementList(ClassroomManagement
+    classroomManagement,
+    Scanner scanner) {
+    char option = 'y';
+    do {
+    System.out.println("Add classrooms: ");
+    System.out.print("Classname (Format: 6A1): ");
+    String className = scanner.nextLine();
 
-    // System.out.println("Add classManagerID: ");
-    // System.out.print("ClassManagerID (Format: GV0016): ");
-    // String classManagerID = scanner.nextLine();
+    System.out.println("Add classManagerID: ");
+    System.out.print("ClassManagerID (Format: GV0016): ");
+    String classManagerID = scanner.nextLine();
 
-    // System.out.println("Add grade: ");
-    // System.out.print("GradeNumber (Format: 6): ");
-    // int gradeNumber = Integer.parseInt(scanner.nextLine());
+    System.out.println("Add grade: ");
+    System.out.print("GradeNumber (Format: 6): ");
+    int gradeNumber = Integer.parseInt(scanner.nextLine());
 
-    // System.out.println("Add grademanager: ");
-    // System.out.print("GrademanagerID (Format: GV0016): ");
-    // String gradeManagerID = scanner.nextLine();
+    System.out.println("Add grademanager: ");
+    System.out.print("GrademanagerID (Format: GV0016): ");
+    String gradeManagerID = scanner.nextLine();
 
-    // Grade grade = new Grade(gradeNumber, null);
-    // classroomManagement.add(new Classroom(className, grade));
+    Grade grade = new Grade(gradeNumber, null);
+    classroomManagement.add(new Classroom(className, grade));
 
-    // System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
-    // option = scanner.nextLine().charAt(0);
-    // } while (option == 'y' || option == 'Y');
+    System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
+    option = scanner.nextLine().charAt(0);
+    } while (option == 'y' || option == 'Y');
 
-    // }
+    }
 
-    // public static void updateClassroomData(ClassroomManagement
-    // classroomManagement, Scanner scanner) {
-    // System.out.print("Enter class name: ");
-    // String ID = scanner.nextLine();
-    // classroomManagement.update(ID);
-    // }
+    public static void updateClassroomData(ClassroomManagement
+    classroomManagement, Scanner scanner) {
+    System.out.print("Enter class name: ");
+    String ID = scanner.nextLine();
+    classroomManagement.update(ID);
+    }
 
-    // public static void deleteClassroomData(ClassroomManagement
-    // classroomManagement, Scanner scanner) {
-    // System.out.print("Enter class name: ");
-    // String ID = scanner.nextLine();
-    // classroomManagement.delete(ID);
+    public static void deleteClassroomData(ClassroomManagement
+    classroomManagement, Scanner scanner) {
+    System.out.print("Enter class name: ");
+    String ID = scanner.nextLine();
+    classroomManagement.delete(ID);
 
-    // }
+    }
 
     public static void updatePointData(PointManagement pointManagement, Scanner scanner) {
         System.out.print("Enter point ID: ");
@@ -719,7 +715,7 @@ public class AppHelper {
         System.out.print("Enter pupil ID to search: ");
         String ID = scanner.nextLine();
 
-        Point foundPoint = pointManagement.searchPointByPointID(ID);
+        Point foundPoint = pointManagement.searchPointByPupilID(ID);
 
         if (foundPoint != null) {
             // Display or print the information about the found point
@@ -730,20 +726,11 @@ public class AppHelper {
     }
 
     public static void addPointToPointManagementList(PointManagement pointManagement, Scanner scanner) {
-        // PointManagement pointManagement = null;
-        // for (Object managementObject : managementObjects) {
-        // if (managementObject instanceof PointManagement) {
-        // pointManagement = (PointManagement) managementObject;
-        // }
-
         char option = 'y';
-
         do {
             boolean flag;
             double literaturePoint, mathPoint, physicalEducationPoint, englishPoint;
-
             System.out.print("Add Point: ");
-
             do {
                 System.out.print("Literature Point (0-10): ");
                 literaturePoint = scanner.nextDouble();
@@ -752,7 +739,6 @@ public class AppHelper {
                     System.out.println("Point is invalid!");
                 }
             } while (!flag);
-
             do {
                 System.out.print("Math Point (0-10): ");
                 mathPoint = scanner.nextDouble();
@@ -761,7 +747,6 @@ public class AppHelper {
                     System.out.println("Point is invalid!");
                 }
             } while (!flag);
-
             do {
                 System.out.print(" PhysicalEducation Point (0-10): ");
                 physicalEducationPoint = scanner.nextDouble();
@@ -770,7 +755,6 @@ public class AppHelper {
                     System.out.println("Point is invalid!");
                 }
             } while (!flag);
-
             do {
                 System.out.print("English Point (0-10): ");
                 englishPoint = scanner.nextDouble();
@@ -779,26 +763,18 @@ public class AppHelper {
                     System.out.println("Point is invalid!");
                 }
             } while (!flag);
-
             scanner.nextLine(); // Consume the newline character
-
             int conductValue;
             do {
                 System.out.print("Conduct: ");
                 conductValue = Integer.parseInt(scanner.nextLine());
             } while (conductValue < 0 || conductValue > 100);
-
-            // Create a new point ID using some logic (createNewID method not provided)
             String pointID = createNewID(pointManagement.getLastPointID());
-
-            // Use the record string and insert into the database
             String record = pointID + "-" + literaturePoint + "-" + mathPoint + "-" + physicalEducationPoint + "-"
                     + englishPoint + "-" + conductValue;
             pointManagement.insertIntoDatabase(record);
             pointManagement.add(new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint, englishPoint,
                     new Conduct(conductValue)));
-           
-
             System.out.println("Do you want to add more points? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
         } while (option == 'y' || option == 'Y');

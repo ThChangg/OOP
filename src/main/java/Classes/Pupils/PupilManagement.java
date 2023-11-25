@@ -81,7 +81,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         String pupilID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
-                        String sex = parts[5];
+                        String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -102,7 +102,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, sex);
+                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender);
                             this.add(pupil);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -130,7 +130,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Pupil Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Class"));
                 writer.newLine();
@@ -162,7 +162,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Class"));
                 writer.newLine();
@@ -238,21 +238,21 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
 
-                String sex = "";
+                String gender = "";
                 do {
-                    System.out.println("Old Sex: " + pupil.getSex());
-                    System.out.print("New Sex (Format: male / female): ");
-                    sex = sc.nextLine();
+                    System.out.println("Old gender: " + pupil.getGender());
+                    System.out.print("New gender (Format: male / female): ");
+                    gender = sc.nextLine();
 
-                    if (!sex.isEmpty()) {
-                        flag = Pupil.isValidSex(sex);
+                    if (!gender.isEmpty()) {
+                        flag = Pupil.isValidGender(gender);
                         if (flag) {
-                            pupil.setSex(sex);
+                            pupil.setGender(gender);
                         } else {
-                            System.out.println("Sex is invalid (Wrong format)!");
+                            System.out.println("gender is invalid (Wrong format)!");
                         }
                     } else {
-                        sex = pupil.getSex();
+                        gender = pupil.getGender();
                     }
                 } while (!flag);
 
@@ -294,7 +294,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
                 String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + pupil.getAddress() + "-"
-                        + className + "-" + sex;
+                        + className + "-" + gender;
                 this.updateRecord(record);
                 System.out.println("Update successfully!");
             } while (!flag);
@@ -444,7 +444,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             String updatedRecords = existingRecords.replace(record, "").trim();
 
             // Update the database with the modified records
-            // writeDatabase(updatedRecords);
+            writeDatabase(updatedRecords);
             System.out.println("Record deleted successfully.");
         } else {
             System.out.println("Record not found in the database. Deletion failed.");
@@ -466,21 +466,21 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return records.toString().trim();
     }
 
-    // <<<<<<< HEAD
+    <<<<<<< HEAD
     private void writeDatabase(String records) {
-        // String relativePath = System.getProperty("user.dir") +
-        // "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
-        // =======
-        // public static void writeDatabase(String records) {
-        // String relativePath = System.getProperty("user.dir") +
-        // "\\src\\main\\java\\Data\\pupils.txt";
-        // >>>>>>> af208d989da2b5b73387018af840326e7acfc5b7
-        // File file = new File(relativePath);
-        // try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-        // writer.write(records);
-        // } catch (IOException e) {
-        // Handle IOException
-        // e.printStackTrace();
-        // }
+        String relativePath = System.getProperty("user.dir") +
+        "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
+        =======
+        public static void writeDatabase(String records) {
+        String relativePath = System.getProperty("user.dir") +
+        "\\src\\main\\java\\Data\\pupils.txt";
+        >>>>>>> af208d989da2b5b73387018af840326e7acfc5b7
+        File file = new File(relativePath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        writer.write(records);
+        } catch (IOException e) {
+        Handle IOException
+        e.printStackTrace();
+        }
     }
 }

@@ -1,5 +1,7 @@
 package Classes.Points;
 
+import Classes.Pupils.Pupil;
+
 public class Point {
     private String pointID;
     private double literaturePoint;
@@ -10,6 +12,7 @@ public class Point {
     private String academics;
     private String performance;
     private boolean status;
+    private Pupil pupil;
   
 
     public Point() {
@@ -102,6 +105,9 @@ public class Point {
     public static boolean isPoint(double value) {
         return value >= 0 && value <= 10;
     }
+    public void setPupil(Pupil pupil) {
+        this.pupil = pupil;
+    }
    
  
 
@@ -178,4 +184,6 @@ public String calculateAcademicLevel() {
         return "Weak";
     }
 }
+
+
 }
