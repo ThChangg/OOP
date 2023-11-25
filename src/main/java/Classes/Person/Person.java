@@ -7,7 +7,7 @@ public class Person {
     private String fullname;
     private Date birthDate;
     private Address address;
-    private String sex;
+    private String gender;
 
     public Person() {
     }
@@ -18,11 +18,11 @@ public class Person {
         this.address = address;
     }
 
-    public Person(String fullname, Date birthDate, Address address, String sex) {
+    public Person(String fullname, Date birthDate, Address address, String gender) {
         this.fullname = fullname;
         this.birthDate = birthDate;
         this.address = address;
-        this.sex = sex;
+        this.gender = gender;
     }
 
     public String getFullname() {
@@ -49,21 +49,21 @@ public class Person {
         this.address = address;
     }
 
-    public String getSex() {
-        return this.sex;
+    public String getGender() {
+        return this.gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String sex) {
+        this.gender = gender;
     }
 
     @Override
     public String toString() {
-        return String.format("%-20s\t%-6s\t%-10s\t%-80s", fullname, sex, birthDate, address);
+        return String.format("%-20s\t%-6s\t%-10s\t%-80s", fullname, gender, birthDate, address);
     }
 
-    public static boolean isValidSex(String sex) {
-        return sex.equalsIgnoreCase("Male") || sex.equalsIgnoreCase("Female");
+    public static boolean isValidGender(String gender) {
+        return gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female");
     }
 
     public static boolean isValidName(String fullname) {

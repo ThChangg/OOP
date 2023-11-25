@@ -171,6 +171,56 @@ public class AppHelper {
         }
     }
 
+    public static void setupClassroomManagement(Object... managementObjects) {
+        ClassroomManagement classroomManagement = null;
+        TeacherManagement teacherManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            }
+            // Add more else if blocks for other management objects
+        }
+
+        int teacherIndex = 0;
+        Classroom classroomList[] = classroomManagement.getClassroomManagement();
+        Teacher teacherList[] = teacherManagement.getTeacherManagement();
+
+        for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
+            //A class will be managed by a teacher
+            classroomList[i].setClassManagerID(teacherList[teacherIndex]);
+            teacherIndex++;
+
+            //Every three classes will form a block and have a teacher managing that block
+            switch (classroomList[i].getGrade().getGradeNumber()) {
+                case 1:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[2]); // GV003
+                    teacherList[2].setClassroom(classroomList[i]);
+                    break;
+                case 2:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[3]); // GV004
+                    teacherList[3].setClassroom(classroomList[i]);
+                    break;
+                case 3:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[7]); // GV008
+                    teacherList[7].setClassroom(classroomList[i]);
+                    break;
+                case 4:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[10]); // GV011
+                    teacherList[10].setClassroom(classroomList[i]);
+                    break;
+                case 5:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[13]); // GV014
+                    teacherList[13].setClassroom(classroomList[i]);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
     public static void appDisplay(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
         ClassroomManagement classroomManagement = null;
@@ -463,11 +513,11 @@ public class AppHelper {
             } while (!flag);
             Address address = new Address(inputAddress);
 
-            String sex = "";
+            String gender = "";
             do {
-                System.out.print("Sex (format: male / female): ");
-                sex = scanner.nextLine();
-                flag = Pupil.isValidSex(sex);
+                System.out.print("Gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Pupil.isValidGender(gender);
 
                 if (!flag) {
                     System.out.println("Sex is invalid (Wrong format)!");
@@ -490,9 +540,9 @@ public class AppHelper {
             Classroom classroom = new Classroom(className, grade);
 
             String pupilID = createNewID(pupilManagement.getLastPupilID());
-            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, sex, classroom));
+            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, gender, classroom));
 
-            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + sex;
+            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + gender;
             pupilManagement.insertIntoDatabase(record);
 
             System.out.println("Do you want to add more pupils ? Yes(Y) : No(N)");
@@ -597,7 +647,7 @@ public class AppHelper {
             do {
                 System.out.print("Gender (format: male / female): ");
                 gender = scanner.nextLine();
-                flag = Teacher.isValidSex(gender);
+                flag = Teacher.isValidGender(gender);
 
                 if (!flag) {
                     System.out.println("Gender is invalid (Wrong format)!");

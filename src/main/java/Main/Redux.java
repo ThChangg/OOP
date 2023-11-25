@@ -138,7 +138,9 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
-                    // teacher.setStatus(true);
+                    teacher.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
                     break;
                 }
             } else {
@@ -146,7 +148,7 @@ public class Redux {
             }
         }
         if (isRestore) {
-            System.out.println("Data restored successfully!");
+            System.out.println("Data restored successfully!");  
         }
     }
 
@@ -156,7 +158,8 @@ public class Redux {
                 Pupil pupil = (Pupil) deletedObjects[i];
                 pupil.setStatus(true);
             } else if (deletedObjects[i] instanceof Teacher) {
-                // Similar restoration logic for Teacher
+                Teacher teacher = (Teacher) deletedObjects[i];
+                teacher.setStatus(true);
             }
         }
         System.out.println("All data have been restored successfully!");
@@ -171,7 +174,7 @@ public class Redux {
                 if (pupil.getPupilID().equalsIgnoreCase(ID)) {
                     String address = pupil.getAddress().toString().replace(" Duong ", " ");
                     String record = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getSex();
+                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getGender();
                     PupilManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -184,8 +187,8 @@ public class Redux {
                     // break;
                     String address = teacher.getAddress().toString().replace(" Duong ", " ");
                     String record = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
-                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getSex();
-                    TeacherManagement.deleteTeacherRecord(record);
+                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+                    TeacherManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
                     break;
@@ -205,11 +208,16 @@ public class Redux {
                 Pupil pupil = (Pupil) deletedObjects[i];
                 String address = pupil.getAddress().toString().replace(" Duong ", " ");
                 String pupilRecord = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getSex();
+                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getGender();
 
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {
-                // Similar deletion logic for Teacher
+                Teacher teacher = (Teacher) deletedObjects[i];
+                String address = teacher.getAddress().toString().replace(" Duong ", " ");
+                String teacherRecord = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
+                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+
+                TeacherManagement.deleteRecord(teacherRecord);
             }
         }
         System.out.println("All data have been permanently deleted successfully!");
@@ -226,8 +234,8 @@ public class Redux {
                     break;
                 }
             } else if (deletedObjects[i] instanceof Teacher) {
-                Teacher pupil = (Teacher) deletedObjects[i];
-                if (pupil.getTeacherID().equalsIgnoreCase(ID)) {
+                Teacher teacher = (Teacher) deletedObjects[i];
+                if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
                     // pupil.setStatus(true);
                     // index = i;
                     // break;
