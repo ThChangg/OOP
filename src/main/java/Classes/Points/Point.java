@@ -1,7 +1,7 @@
 package Classes.Points;
 
 public class Point {
-    private String pupilID;
+    private String pointID;
     private double literaturePoint;
     private double mathPoint;
     private double physicalEducationPoint;
@@ -10,13 +10,14 @@ public class Point {
     private String academics;
     private String performance;
     private boolean status;
+  
 
     public Point() {
     }
 
-    public Point(String pupilID, double literaturePoint, double mathPoint, double physicalEducationPoint,
+    public Point(String pointID, double literaturePoint, double mathPoint, double physicalEducationPoint,
             double englishPoint, Conduct conduct) {
-        this.pupilID = pupilID;
+        this.pointID = pointID;
         this.literaturePoint = literaturePoint;
         this.mathPoint = mathPoint;
         this.physicalEducationPoint = physicalEducationPoint;
@@ -25,17 +26,18 @@ public class Point {
         this.status = true;
 
     }
+ 
 
-    public String getPupilID() {
-        return pupilID;
+    public String getPointID() {
+        return this.pointID;
     }
 
-    public void setPupilID(String pupilID) {
-        this.pupilID = pupilID;
+    public void setPointID(String pointID) {
+        this.pointID = pointID;
     }
 
     public double getLiteraturePoint() {
-        return literaturePoint;
+        return this.literaturePoint;
     }
 
     public void setLiteraturePoint(double literaturePoint) {
@@ -43,7 +45,7 @@ public class Point {
     }
 
     public double getMathPoint() {
-        return mathPoint;
+        return this.mathPoint;
     }
 
     public void setMathPoint(double mathPoint) {
@@ -51,7 +53,7 @@ public class Point {
     }
 
     public double getPhysicalEducationPoint() {
-        return physicalEducationPoint;
+        return this.physicalEducationPoint;
     }
 
     public void setPhysicalEducationPoint(double physicalEducationPoint) {
@@ -67,7 +69,7 @@ public class Point {
     }
 
     public Conduct getConduct() {
-        return conduct;
+        return this.conduct;
     }
 
     public void setConduct(Conduct conduct) {
@@ -75,7 +77,7 @@ public class Point {
     }
 
     public String getAcademics() {
-        return academics;
+        return this.academics;
     }
 
     public void setAcademics(String academics) {
@@ -83,7 +85,7 @@ public class Point {
     }
 
     public boolean getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(boolean status) {
@@ -95,18 +97,21 @@ public class Point {
     }
 
     public String getPerformance() {
-        return performance;
+        return this.performance;
     }
+    public static boolean isPoint(double value) {
+        return value >= 0 && value <= 10;
+    }
+   
+ 
 
     @Override
     public String toString() {
-        return pupilID + "-" + literaturePoint + "-" + mathPoint + "-" + physicalEducationPoint + "-" + englishPoint
+        return pointID + "-" + literaturePoint + "-" + mathPoint + "-" + physicalEducationPoint + "-" + englishPoint
                 + "-" + conduct;
     }
 
-    public String initialize() {
-        return null;
-    }
+  
 
    public void calculatePerformance() {
     String academicLevel = calculateAcademicLevel();
@@ -135,8 +140,8 @@ public class Point {
     }
 }
 
-private String calculateAcademicLevel() {
-    double[] subjectPoints = { getMathPoint(), getLiteraturePoint(), getEnglishPoint(), getPhysicalEducationPoint() };
+public String calculateAcademicLevel() {
+    
 
     boolean isExcellent = false;
     boolean isGood = false;
@@ -147,22 +152,26 @@ private String calculateAcademicLevel() {
     boolean atLeastOneSubjectAbove6_5 = getMathPoint() > 6.5 || getLiteraturePoint() > 6.5;
     boolean atLeastOneSubjectAbove5_0 = getMathPoint() > 5.0 || getLiteraturePoint() > 5.0;
 
-    for (double point : subjectPoints) {
-        if (point > 8.0) {
+   
+        if (getPhysicalEducationPoint() > 6.5 && getEnglishPoint()>6.5 && getMathPoint()>6.5 && getLiteraturePoint()>6.5) {
             isExcellent = true;
-        } else if (point > 6.5) {
+        } else if (getPhysicalEducationPoint() > 5.0 && getEnglishPoint()>5.0 && getMathPoint()>5.0 && getLiteraturePoint()>5.0) {
             isGood = true;
-        } else if (point > 5.0) {
+        } else if (getPhysicalEducationPoint() > 3.5 && getEnglishPoint()>3.5  && getMathPoint()>3.5 && getLiteraturePoint()>3.5) {
             isAverage = true;
         } else {
             isWeak = true;
         }
-    }
+    
 
     if (isExcellent && atLeastOneSubjectAbove8) {
         return "Excellent";
+     } else if (isExcellent && !atLeastOneSubjectAbove8) {
+        return "Good";
     } else if (isGood && atLeastOneSubjectAbove6_5) {
         return "Good";
+        } else if (isGood && !atLeastOneSubjectAbove6_5) {
+        return "Average";
     } else if (isAverage && atLeastOneSubjectAbove5_0) {
         return "Average";
     } else {

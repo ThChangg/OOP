@@ -65,11 +65,7 @@ public class Person {
         return String.format("%-20s\t%-6s\t%-10s\t%-80s", fullname, sex, birthDate, address);
     }
 
-    public static void updatePointData(PointManagement pointManagement, Scanner scanner) {
-        System.out.print("Enter pupil ID: ");
-        String ID = scanner.nextLine();
-        pointManagement.update(ID);
-    }
+    
 
     public static boolean isValidSex(String sex) {
         return sex.equalsIgnoreCase("Male") || sex.equalsIgnoreCase("Female");

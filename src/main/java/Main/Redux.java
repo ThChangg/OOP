@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import Classes.Account.Account;
 import Classes.Account.AccountManagement;
+import Classes.Points.Point;
+import Classes.Points.PointManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
@@ -73,11 +75,29 @@ public class Redux {
                     writer.write("================================================================");
                     writer.newLine();
                 }
+                if (flags[2]) {
+                    // Check if existing at least one Point instance
+                    writer.write("++++++++++++++++ Point Management List Session ++++++++++++++++");
+                    writer.newLine();
+                    // Assuming you have a proper toString method in Point class
+                    writer.write(String.format("%-5s\t%-15s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s",
+                            "ID", "LiteraturePoint", "MathPoint", "PhysicalEducationPoint",
+                            "EnglishPoint", "PointConduct", "Rank", "Performance"));
+                    writer.newLine();
+                    for (int i = 0; i < deletedObjectsCount; i++) {
+                        if (deletedObjects[i] instanceof Point) {
+                            writer.write(deletedObjects[i].toString());
+                            writer.newLine();
+                        }
+                    }
+                    writer.write("================================================================");
+                    writer.newLine();
+                }
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
 
-            if (!flags[0] && !flags[1]) {
+            if (!flags[0] && !flags[1] && !flags[2]) {
                 System.out.println("Recycle Bin is clear");
             } else {
                 System.out.println("Do you want to restore or delete your data ? Restore(R/r) : Delete(D/d)");
@@ -140,6 +160,14 @@ public class Redux {
                     // teacher.setStatus(true);
                     break;
                 }
+                 } else if (deletedObjects[i] instanceof Point) {
+                Point point = (Point) deletedObjects[i];
+                if (point.getPointID().equalsIgnoreCase(ID)) {
+                     point.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
             } else {
                 System.out.println("Instance not found!");
             }
@@ -156,6 +184,9 @@ public class Redux {
                 pupil.setStatus(true);
             } else if (deletedObjects[i] instanceof Teacher) {
                 // Similar restoration logic for Teacher
+            } else if (deletedObjects[i] instanceof Point) {
+                Point point = (Point) deletedObjects[i];
+                point.setStatus(true);
             }
         }
         System.out.println("All data have been restored successfully!");
@@ -182,6 +213,18 @@ public class Redux {
                     // teacher.setStatus(true);
                     // break;
                 }
+            }else if(deletedObjects[i] instanceof Point){  
+                Point point = (Point) deletedObjects[i];
+                if (point.getPointID().equalsIgnoreCase(ID)) {
+                    
+                    String record = point.getPointID() + "-" + point.getLiteraturePoint() + "-" + point.getMathPoint() + "-"
+                            + point.getPhysicalEducationPoint() + "-" + point.getEnglishPoint() + "-" + point.getConduct();
+                    PointManagement.deleteRecord(record);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+
             } else {
                 System.out.println("Instance not found!");
             }
@@ -202,6 +245,10 @@ public class Redux {
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {
                 // Similar deletion logic for Teacher
+            } else if (deletedObjects[i] instanceof Point) {
+                Point point = (Point) deletedObjects[i];
+                String pointRecord = point.getPointID() + "-" +point.getLiteraturePoint()+ "-" + point.getMathPoint()+ "-" + point.getPhysicalEducationPoint() + "-"+ point.getEnglishPoint() + "-" + point.getConduct(); 
+                PointManagement.deleteRecord(pointRecord);
             }
         }
         System.out.println("All data have been permanently deleted successfully!");
@@ -224,6 +271,13 @@ public class Redux {
                     // index = i;
                     // break;
                 }
+            }else if (deletedObjects[i] instanceof Point) {
+                Point point = (Point) deletedObjects[i];
+                if (point.getPointID().equalsIgnoreCase(ID)) {
+                    
+                    index = i;
+                     break;
+                }
             }
         }
         return index;
@@ -242,15 +296,17 @@ public class Redux {
     }
 
     public static boolean[] checkInstances() {
-        boolean pupilFlag = false, teacherFlag = false;
+        boolean pupilFlag = false, teacherFlag = false, pointFlag =false;
         for (int i = 0; i < deletedObjectsCount; i++) {
             if (deletedObjects[i] instanceof Pupil) {
                 pupilFlag = true;
             } else if (deletedObjects[i] instanceof Teacher) {
                 teacherFlag = true;
+            }else if (deletedObjects[i] instanceof Point) {
+                pointFlag = true;
             }
         }
-        return new boolean[] { pupilFlag, teacherFlag };
+        return new boolean[] { pupilFlag, teacherFlag, pointFlag };
     }
 
     public static void signInForm(Scanner sc) {
