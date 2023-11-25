@@ -13,4 +13,3 @@ GV012-Nguyen Van Trung-03/04/1988-12, Tran Nhan Ton, Phuong 12, Quan 4, Thanh ph
 GV013-Lam Van Quoc-26/07/1978-13, Le Lai, Phuong 13, Quan 5, Thanh pho Ho Chi Minh-PE-5A1-male
 GV014-Hoang Thi Ngoc-15/09/1984-14, Phan Van Hon, Phuong 14, Quan 6, Thanh pho Ho Chi Minh-English-5A2-female
 GV015-Nguyen Thi Linh-12/11/1975-15, Le Dai Hanh, Phuong 15, Quan 11, Thanh pho Ho Chi Minh-Math-5A3-female
-

@@ -593,22 +593,22 @@ public class AppHelper {
             Grade grade = new Grade(gradeNumber);
             Classroom classroom = new Classroom(className, grade);
             
-            String sex = "";
+            String gender = "";
             do {
-                System.out.print("Sex (format: male / female): ");
-                sex = scanner.nextLine();
-                flag = Teacher.isValidSex(sex);
+                System.out.print("Gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Teacher.isValidSex(gender);
 
                 if (!flag) {
-                    System.out.println("Sex is invalid (Wrong format)!");
+                    System.out.println("Gender is invalid (Wrong format)!");
                 }
             } while (!flag);
             
             String teacherID = createNewID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher(teacherID, classroom, major, fullName, sex, dob, address));
+            teacherManagement.add(new Teacher(teacherID, classroom, major, fullName, gender, dob, address));
             String record = teacherID + "-" + fullName + "-" + date + "-" + dob + "-" + inputAddress + "-"
-                        + major + "-" + className + "-" + sex;
-            teacherManagement.insertTeacherIntoDatabase(record);
+                        + major + "-" + className + "-" + gender;
+            teacherManagement.insertIntoDatabase(record);
             
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
