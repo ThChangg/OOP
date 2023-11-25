@@ -5,18 +5,20 @@ import Classes.Teachers.Teacher;
 public class Grade {
     private int gradeNumber;
     private Teacher gradeManagerID;
-    
-    
+	private boolean status;
+
 	public Grade() {
 	}
 
 	public Grade(int gradeNumber, Teacher gradeManagerID) {
 		this.gradeNumber = gradeNumber;
 		this.gradeManagerID = gradeManagerID;
+		this.status = true;
 	}
 
 	public Grade(int gradeNumber) {
 		this.gradeNumber = gradeNumber;
+		this.status = true;
 	}
 
 	public int getGradeNumber() {
@@ -35,10 +37,17 @@ public class Grade {
 		this.gradeManagerID = gradeManagerID;
 	}
 
+	public Boolean getStatus() {
+		return status;
+	}
+	
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
+		//return String.format("%10d\t%-10s", gradeNumber, gradeManagerID);
 		return  gradeNumber + "-" + gradeManagerID;
 	}
-    
-    
 }
