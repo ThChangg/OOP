@@ -237,21 +237,21 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
 
-                String sex = "";
+                String gender = "";
                 do {
-                    System.out.println("Old Sex: " + pupil.getSex());
-                    System.out.print("New Sex (Format: male / female): ");
-                    sex = sc.nextLine();
+                    System.out.println("Old Gender: " + pupil.getGender());
+                    System.out.print("New Gender (Format: male / female): ");
+                    gender = sc.nextLine();
 
-                    if (!sex.isEmpty()) {
-                        flag = Pupil.isValidSex(sex);
+                    if (!gender.isEmpty()) {
+                        flag = Pupil.isValidGender(gender);
                         if (flag) {
-                            pupil.setSex(sex);
+                            pupil.setGender(gender);
                         } else {
-                            System.out.println("Sex is invalid (Wrong format)!");
+                            System.out.println("Gender is invalid (Wrong format)!");
                         }
                     } else {
-                        sex = pupil.getSex();
+                        gender = pupil.getGender();
                     }
                 } while (!flag);
 
@@ -293,7 +293,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
                 String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + pupil.getAddress() + "-"
-                        + className + "-" + sex;
+                        + className + "-" + gender;
                 this.updateRecord(record);
                 System.out.println("Update successfully!");
             } while (!flag);
