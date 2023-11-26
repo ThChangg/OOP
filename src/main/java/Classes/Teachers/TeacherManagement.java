@@ -1,18 +1,23 @@
 package Classes.Teachers;
 
 import Classes.Classroom.Classroom;
+import Classes.Classroom.ClassroomManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Person.Person;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
+import Main.Redux;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -20,11 +25,15 @@ import java.util.regex.Pattern;
 
 public class TeacherManagement implements IFileManagement, ICRUD {
     private Teacher teacherManagement[];
+    private Teacher searchResult[];
     private int currentIndex;
+    private int searchResultLength;
 
     public TeacherManagement() {
         teacherManagement = new Teacher[100];
+        searchResult = new Teacher[100];
         currentIndex = 0;
+        searchResultLength = 0;
     }
 
     public Teacher[] getTeacherManagement() {
@@ -42,7 +51,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
     }
-
+    
     @Override
     public void initialize() {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
@@ -60,9 +69,9 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String major = parts[4];
-                        String classID = parts[5];
-                        String sex = parts[6];
-                        Classroom className = new Classroom(classID);
+                        
+                        String gender = parts[6];
+                        
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -72,18 +81,19 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
+                        System.out.println(addressPart);
+                        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
                         Pattern pattern = Pattern.compile(addressRegex);
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
                             String houseNumber = matcher.group(1);
                             String streetName = "Duong " + matcher.group(2);
-                            String ward = matcher.group(3);
-                            String district = matcher.group(4);
-                            String city = matcher.group(5);
+                            String ward = "Phuong " + matcher.group(3);
+                            String district = "Quan " + matcher.group(4);
+                            String city = "Thanh pho " + matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, major, className, sex);
+                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, gender, major);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -95,9 +105,11 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 ((Throwable) e).printStackTrace();
             }
+            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
+
     }
 
     @Override
@@ -111,12 +123,41 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Teacher Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Sex",
-                        "BirthDate", "Address",
-                        "Major"));
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-20s\t%-10s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Major", "Class"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
-                    writer.write(teacherManagement[i].toString());
+                    if (teacherManagement[i].getStatus()) {
+                        writer.write(teacherManagement[i].toString());
+                        writer.newLine();
+                    }
+                }
+                writer.write("================================================================");
+                writer.newLine();
+                System.out.println("Data written to " + relativePath);
+            } catch (IOException e) {
+                System.err.println("An error occurred while writing to the file: " + e.getMessage());
+            }
+        } else {
+            System.out.println("File does not exist.");
+        }
+    }
+
+    public void display(int arrayLength) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
+
+        File file = new File(relativePath);
+
+        if (file.exists()) {
+            // File exists, you can work with it
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+                writer.write("Search result:");
+                writer.newLine();
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s\t", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Major", "Class"));
+                writer.newLine();
+                for (int i = 0; i < arrayLength; i++) {
+                    writer.write(searchResult[i].toString());
                     writer.newLine();
                 }
                 writer.write("================================================================");
@@ -132,7 +173,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void add(Object obj) {
-        if (currentIndex < teacherManagement.length) {
+       if (currentIndex < teacherManagement.length) {
             teacherManagement[currentIndex++] = (Teacher) obj;
         } else {
             System.out.println("Teacher Management List is full. Cannot add more.");
@@ -145,46 +186,125 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         Teacher teacher = getTeacherByID(ID);
 
         if (teacher != null) {
-            System.out.println("Old Fullname: " + teacher.getFullname());
-            System.out.print("New Fullname (Format: Tran Le Anh Khoi): ");
-            String name = sc.nextLine();
-            if (!name.isEmpty()) {
-                teacher.setFullname(name);
-            }
+            boolean flag = true;
+            do {
+                String name = "";
+                do {
+                    System.out.println("Old Fullname: " + teacher.getFullname());
+                    System.out.print("New Fullname (Format: Tran Le Anh Khoi): ");
+                    name = sc.nextLine();
+                    if (!name.isEmpty()) {
+                        flag = Teacher.isValidName(name);
+                        if (flag) {
+                            teacher.setFullname(name);
+                        } else {
+                            System.out.println("Fullname is invalid (Wrong format)!");
+                        }
+                    } else {
+                        name = teacher.getFullname();
+                    }
 
-            System.out.println("Old BirthDate: " + teacher.getBirthDate());
-            System.out.print("New BirthDate (Format: 25/08/2000): ");
-            String birthDate = sc.nextLine();
-            if (!birthDate.isEmpty()) {
-                String dobParts[] = birthDate.split("/");
-                String date = dobParts[0];
-                String month = dobParts[1];
-                String year = dobParts[2];
+                } while (!flag);
 
-                Date newDob = new Date(date, month, year);
-                teacher.setBirthDate(newDob);
-            }
+                String birthDate = "";
+                do {
+                    System.out.println("Old BirthDate: " + teacher.getBirthDate());
+                    System.out.print("New BirthDate (Format: 16/02/2000): ");
+                    birthDate = sc.nextLine();
 
-            System.out.println("Old Address: " + teacher.getAddress());
-            System.out.print("New Address (Format: 16A, To Ky, Phuong Trung My Tay, Quan 12, Thanh pho Ho Chi Minh): ");
-            String address = sc.nextLine();
-            if (!address.isEmpty()) {
-                String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                Pattern pattern = Pattern.compile(addressRegex);
-                Matcher matcher = pattern.matcher(address);
-                if (matcher.matches()) {
-                    String streetNumber = matcher.group(1);
-                    String streetName = "Duong " + matcher.group(2);
-                    String ward = matcher.group(3);
-                    String district = matcher.group(4);
-                    String city = matcher.group(5);
+                    if (!birthDate.isEmpty()) {
+                        flag = Date.isValidDateAndMonth(birthDate);
+                        if (flag) {
+                            Date newDob = new Date(birthDate);
+                            teacher.setBirthDate(newDob);
+                        } else {
+                            System.out.println("BirthDate is invalid (Wrong format)!");
+                        }
 
-                    Address newAddress = new Address(streetNumber, streetName, ward, district, city);
-                    teacher.setAddress(newAddress);
-                } else {
-                    System.out.println("Your address is invalid!");
-                }
-            }
+                    } else {
+                        birthDate = teacher.getBirthDate().toString();
+                    }
+                } while (!flag);
+
+                String gender = "";
+                do {
+                    System.out.println("Old Gender: " + teacher.getGender());
+                    System.out.print("New Gender (Format: male / female): ");
+                    gender = sc.nextLine();
+
+                    if (!gender.isEmpty()) {
+                        flag = Teacher.isValidGender(gender);
+                        if (flag) {
+                            teacher.setGender(gender);
+                        } else {
+                            System.out.println("Gender is invalid (Wrong format)!");
+                        }
+                    } else {
+                        gender = teacher.getGender();
+                    }
+                } while (!flag);
+                
+                String major = "";
+                do {
+                    System.out.println("Old Major: " + teacher.getMajor());
+                    System.out.print("New Major (Format: Math, Literature, English, PE): ");
+                    major = sc.nextLine();
+
+                    if (!major.isEmpty()) {
+                        flag = isValidMajor(major);
+                        if (flag) {
+                            teacher.setMajor(major);
+                        } else {
+                            System.out.println("Major is invalid (Wrong format)!");
+                        }
+                    } else {
+                        major = teacher.getMajor();
+                    }
+                } while (!flag);
+
+                String address = "";
+                do {
+                    System.out.println("Old Address: " + teacher.getAddress());
+                    System.out.print("New Address (Format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
+                    address = sc.nextLine();
+                    if (!address.isEmpty()) {
+                        flag = Address.isValidAddress(address);
+                        if (flag) {
+                            Address newAddress = new Address(address);
+                            teacher.setAddress(newAddress);
+                        } else {
+                            System.out.println("Address is invalid (Wrong format)!");
+                        }
+                    } else {
+                        address = teacher.getAddress().toString();
+                    }
+                } while (!flag);
+
+                ClassroomManagement.displayClassroomFormation();
+                String className = "";
+                do {
+                    System.out.println("Old Class: " + teacher.getClassroom().getClassName());
+                    System.out.print("New Class (Format: 1A1): ");
+                    className = sc.nextLine();
+                    if (!className.isEmpty()) {
+                        flag = ClassroomManagement.isValidClassroom(className);
+                        if (flag) {
+                            int gradeNumber = className.charAt(0) - '0';
+                            teacher.getClassroom().getGrade().setGradeNumber(gradeNumber);
+                            teacher.getClassroom().setClassName(className);
+                        } else {
+                            System.out.println("Classroom is invalid (Wrong format)!");
+                        }
+                    } else {
+                        className = teacher.getClassroom().getClassName();
+                    }
+                } while (!flag);
+                
+                String record = teacher.getTeacherID() + "-" + name + "-" + birthDate + "-" + teacher.getAddress() + "-"
+                        + major + "-" + className + "-" + gender;
+                this.updateRecord(record);
+                System.out.println("Update successfully!");
+            } while (!flag);
         } else {
             System.out.println("Teacher with ID: " + ID + " is not found!");
         }
@@ -193,17 +313,19 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     @Override
     public void delete(String ID) {
         int index = this.getTeacherArrayIndex(ID);
-
         if (index >= 0) {
-            for (int i = index; i < currentIndex - 1; i++) {
-                this.teacherManagement[i] = this.teacherManagement[i + 1];
+            for (int i = 0; i < currentIndex; i++) {
+                if (i == index) {
+                    teacherManagement[i].setStatus(false);
+                    Redux.add(teacherManagement[i]);
+                }
             }
-            this.currentIndex--;
+            System.out.println("Delete successfully!");
         } else {
             System.out.println("Teacher with ID: " + ID + " is not found!");
         }
     }
-
+    
     public String getLastTeacherID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
@@ -234,6 +356,49 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         return index;
     }
 
+    public void findTeachersBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass) {
+        Arrays.fill(searchResult, null);
+        searchResultLength = 0;
+        Pattern pattern = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE);
+
+        for (int i = 0; i < currentIndex; i++) {
+            try {
+                if (nestedClass != null) {
+                    // Get the nested object from the main object
+                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName()).invoke(teacherManagement[i]);
+
+                    // Use reflection to get the appropriate method from the nested class
+                    Method getterMethod = nestedClass.getMethod(findBy);
+
+                    // Invoke the method on the nested object
+                    String attributeValue = (String) getterMethod.invoke(nestedObject);
+
+                    if (pattern.matcher(attributeValue).find()) {
+                        if (teacherManagement[i].getStatus()) {
+                            this.searchResult[this.searchResultLength++] = teacherManagement[i];
+                        } else {
+                            System.out.println("Teacher does not exist!");
+                        }
+                    }
+                } else {
+                    // No nested class, directly invoke the method on the main class
+                    Method getterMethod = mainClass.getMethod(findBy);
+                    String attributeValue = (String) getterMethod.invoke(teacherManagement[i]);
+
+                    if (pattern.matcher(attributeValue).find()) {
+                        if (teacherManagement[i].getStatus()) {
+                            this.searchResult[this.searchResultLength++] = teacherManagement[i];
+                        } else {
+                            System.out.println("Teacher does not exist!");
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static boolean isValidMajor(String major) {
         boolean flag = false;
         String validMajor[] = {"Math", "Literature", "English", "PE"};
@@ -249,6 +414,86 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
         return flag;
     }
+
+    public void insertIntoDatabase(String record) {
+        // Read existing records from the database file
+        String existingRecords = readDatabase();
+
+        // Check if the new record is not present in the existing records
+        if (!existingRecords.contains(record)) {
+            // Append the new record to the existing records
+            writeDatabase(existingRecords + "\n" + record);
+        } else {
+            System.out.println("Record already exists in the database. Not added.");
+        }
+    }
+
+    public void updateRecord(String updatedRecord) {
+        String databaseContent = readDatabase();
+        String records[] = databaseContent.split("\n");
+        String teacherID = updatedRecord.substring(0, 5);
+
+        for (int i = 0; i < records.length; i++) {
+            if (records[i].startsWith(teacherID)) {
+                records[i] = updatedRecord;
+                break;
+            }
+        }
+
+        StringBuilder updatedContent = new StringBuilder();
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if(i < records.length - 1){
+                updatedContent.append("\n");
+            }
+        }
+
+        writeDatabase(updatedContent.toString());
+    }
+
+    public static void deleteRecord(String record) {
+        // Read existing records from the database file
+        String existingRecords = readDatabase();
+
+        // Check if the record is present in the existing records
+        if (existingRecords.contains(record)) {
+            // Remove the record from the existing records
+            String updatedRecords = existingRecords.replaceAll(record + "\\n|$", "").trim();
+
+            // Update the database with the modified records
+            writeDatabase(updatedRecords);
+            System.out.println("Record deleted successfully.");
+        } else {
+            System.out.println("Record not found in the database. Deletion failed.");
+        }
+    }
+
+    public static String readDatabase() {
+        StringBuilder records = new StringBuilder();
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
+        File file = new File(relativePath);
+        try (Scanner scanner = new Scanner(new FileReader(file))) {
+            while (scanner.hasNextLine()) {
+                records.append(scanner.nextLine()).append("\n");
+            }
+        } catch (IOException e) {
+            // Handle IOException
+            e.printStackTrace();
+        }
+        return records.toString().trim();
+    }
+
+    public static void writeDatabase(String records) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
+        File file = new File(relativePath);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(records);
+        } catch (IOException e) {
+            // Handle IOException
+            e.printStackTrace();
+        }
+    }
+
 
     public boolean hasUninitializedClassroom() {
         boolean flag = false;

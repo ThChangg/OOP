@@ -77,5 +77,4 @@ public class Classroom {
 	public String toString() {
 		return String.format("%-10s\t%-20s\t%-40s", className, classManager.getFullname(), grade);
 	}
-
 }

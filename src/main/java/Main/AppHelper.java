@@ -2,20 +2,17 @@ package Main;
 
 import java.util.Scanner;
 
-
-import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
-import Classes.Classroom.Grade;
 import Classes.Parents.Parent;
 import Classes.Parents.ParentManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
-import Classes.Person.Person;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
-
+import Classes.Classroom.Classroom;
+import Classes.Classroom.Grade;
 
 public class AppHelper {
     public static void Menu() {
@@ -475,7 +472,7 @@ public class AppHelper {
             do {
                 System.out.print("Sex (format: male / female): ");
                 sex = scanner.nextLine();
-                flag = Pupil.isValidSex(sex);
+                flag = Pupil.isValidGender(sex);
 
                 if (!flag) {
                     System.out.println("Sex is invalid (Wrong format)!");
@@ -588,7 +585,7 @@ public class AppHelper {
                 teacherManagement = (TeacherManagement) managementObject;
             } else if (managementObject instanceof ParentManagement) {
                 parentManagement = (ParentManagement) managementObject;
-            }  else if (managementObject instanceof ClassroomManagement) {
+            } else if (managementObject instanceof ClassroomManagement) {
                 classroomManagement = (ClassroomManagement) managementObject;
             }
         }
@@ -634,12 +631,7 @@ public class AppHelper {
 
 
 
-
-
-
-
-
-
+    // AppHelper Classroom Management
     public static void setupClassroomManagement(Object... managementObjects) {
         ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
@@ -744,7 +736,6 @@ public class AppHelper {
         
     }
 
-
     public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner sc) {
         System.out.print("Enter class name: ");
         String ID = sc.nextLine();
@@ -756,6 +747,4 @@ public class AppHelper {
         String ID = sc.nextLine();
         classroomManagement.delete(ID);
     }
-
-    
 }
