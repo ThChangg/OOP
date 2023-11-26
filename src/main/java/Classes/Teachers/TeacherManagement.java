@@ -84,6 +84,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String major = parts[4];
+                        String className = parts[5];
+                        System.out.println(className);
                         String gender = parts[6];
 
                         String dobParts[] = dobString.split("/");
@@ -105,7 +107,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, gender, major);
+                           // Teacher teacher = new Teacher(teacherID, className, fullName, dob, address, gender, major);
+                           Teacher teacher = new Teacher(teacherID, className, major, fullName, gender, dob, address);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -120,6 +123,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         } else {
             System.out.println("File does not exist.");
         }
+        
     }
 
     @Override

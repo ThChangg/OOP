@@ -26,14 +26,13 @@ public class Teacher extends Person {
     public Teacher(String teacherID, String fullname, Date birthDate, Address address, String gender, String major) {
         super(fullname, birthDate, address, gender);
         this.teacherID = teacherID;
-        this.classroom = classroom;
         this.major = major;
     }
 
-    public Teacher(String teacherID, Classroom classroom, String major, String fullname, String gender, Date birthDate, Address address) {
+    public Teacher(String teacherID, String className, String major, String fullname, String gender, Date birthDate, Address address) {
         super(fullname, birthDate, address, gender);
         this.teacherID = teacherID;
-        this.classroom = classroom;
+        this.classroom = new Classroom(className);
         this.major = major;
     }
 

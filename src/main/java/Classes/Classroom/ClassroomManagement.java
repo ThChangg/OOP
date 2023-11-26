@@ -213,6 +213,9 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	}
 
 	public static boolean isValidClassroom(String className) {
+            if(className.equalsIgnoreCase("null")){
+                return true;
+            }
 		String regex = "([1-5])A(\\d+)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(className);

@@ -134,6 +134,7 @@ public class AppHelper {
             // Add more else if blocks for other management objects
         }
         setupPupilManagement(pupilManagement, classroomManagement, parentManagement);
+        setupClassroomManagement(teacherManagement, classroomManagement);
         System.out.println("App is now initialized!");
     }
 
@@ -197,30 +198,49 @@ public class AppHelper {
             switch (classroomList[i].getGrade().getGradeNumber()) {
                 case 1:
                     classroomList[i].getGrade().setGradeManagerID(teacherList[2]); // GV003
-                    teacherList[2].setClassroom(classroomList[i]);
                     break;
                 case 2:
                     classroomList[i].getGrade().setGradeManagerID(teacherList[3]); // GV004
-                    teacherList[3].setClassroom(classroomList[i]);
                     break;
                 case 3:
                     classroomList[i].getGrade().setGradeManagerID(teacherList[7]); // GV008
-                    teacherList[7].setClassroom(classroomList[i]);
                     break;
                 case 4:
                     classroomList[i].getGrade().setGradeManagerID(teacherList[10]); // GV011
-                    teacherList[10].setClassroom(classroomList[i]);
                     break;
                 case 5:
                     classroomList[i].getGrade().setGradeManagerID(teacherList[13]); // GV014
-                    teacherList[13].setClassroom(classroomList[i]);
                     break;
                 default:
                     break;
             }
         }
     }
-    
+    public static void setupTeacherManagement(Object... managementObjects) {
+        ClassroomManagement classroomManagement = null;
+        TeacherManagement teacherManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            }
+            // Add more else if blocks for other management objects
+        }
+
+        int teacherIndex = 0;
+        Classroom classroomList[] = classroomManagement.getClassroomManagement();
+        Teacher teacherList[] = teacherManagement.getTeacherManagement();
+
+        for (int i = 0; i < teacherManagement.getCurrentIndex(); i++) {          
+            for (int j = 0; j < classroomManagement.getCurrentIndex(); j++) {
+                if (teacherList[i].getClassroom().getClassName().equalsIgnoreCase(classroomList[j].getClassName())) {
+                    teacherList[i].setClassroom(classroomList[j]);
+                }
+            }
+        }
+    }
     public static void appDisplay(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
         ClassroomManagement classroomManagement = null;
@@ -628,21 +648,29 @@ public class AppHelper {
 
             } while (!flag);
             
+            Classroom classroom = null;
             ClassroomManagement.displayClassroomFormation();
             String className = "";
             do {
                 System.out.print("Class (format: 1A1): ");
                 className = scanner.nextLine();
+              
                 flag = ClassroomManagement.isValidClassroom(className);
 
                 if (!flag) {
                     System.out.println("Class is invalid (No class available)!");
                 }
             } while (!flag);
-            int gradeNumber = className.charAt(0) - '0';
-            Grade grade = new Grade(gradeNumber);
-            Classroom classroom = new Classroom(className, grade);
-            
+//            int gradeNumber = className.charAt(0) - '0';
+//            Grade grade = new Grade(gradeNumber);
+//            Classroom classroom = new Classroom(className, grade);
+            if (classroom != null) {
+                for (int i = 0; i < classroomManagement.getCurrentIndex(); ++i) {
+                    if (classroomManagement.getClassroomManagement()[i].getClassName().equalsIgnoreCase(className)) {
+                        classroom = classroomManagement.getClassroomManagement()[i];
+                    }
+                }
+            }
             String gender = "";
             do {
                 System.out.print("Gender (format: male / female): ");
@@ -655,7 +683,7 @@ public class AppHelper {
             } while (!flag);
             
             String teacherID = createNewID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher(teacherID, classroom, major, fullName, gender, dob, address));
+            teacherManagement.add(new Teacher(teacherID, className, major, fullName, gender, dob, address));
             String record = teacherID + "-" + fullName + "-" + date + "-" + dob + "-" + inputAddress + "-"
                         + major + "-" + className + "-" + gender;
             teacherManagement.insertIntoDatabase(record);
