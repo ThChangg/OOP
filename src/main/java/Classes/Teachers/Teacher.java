@@ -36,6 +36,13 @@ public class Teacher extends Person {
         this.major = major;
     }
 
+    public Teacher(String teacherID, String fullname, Date birthDate, Address address, String major, Classroom classroom, String sex) {
+        super(fullname, birthDate, address, sex);
+        this.teacherID = teacherID;
+        this.classroom = classroom;
+        this.major = major;
+    }
+
     public String getTeacherID() {
         return teacherID;
     }
@@ -62,7 +69,7 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return teacherID + "\t" + super.toString() + "\t" + major;
+        return teacherID + "\t" + super.toString() + "\t" + major + classroom.getClassName();
     }
 
 }

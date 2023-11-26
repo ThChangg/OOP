@@ -13,8 +13,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Classes.Person.Address;
-import Classes.Person.Date;
+
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
 
@@ -191,9 +190,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			do {
 				String className = classroom.getClassName();
 				
-				int gradeNumber = className.charAt(0) - '0';
-				classroom.getGrade().setGradeNumber(gradeNumber);
-
 				String newClassManagerID = "";
 				do {
 					System.out.println("Old Classmanager: " + classroom.getClassManager().getTeacherID());
@@ -209,131 +205,23 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 						}
 					}
 					else {
-						classroom.getClassManager().getTeacherID();
+						flag = true;
+						newClassManagerID = classroom.getClassManager().getTeacherID();
 					}
 				} while(!flag);
 				
+				int gradeNumber = className.charAt(0) - '0';
+				classroom.getGrade().setGradeNumber(gradeNumber);
 
 				String newGradeManagerID = "";
 				do {
+
 					System.out.println("Old Grademanager: " + classroom.getGrade().getGradeManager().getTeacherID());
-					System.out.print("New Grademagager: (format: (GV004 or GV011)): ");
-					newGradeManagerID = sc.nextLine();
-					if (!newGradeManagerID.isEmpty()) {
-						flag = isValidManager(newGradeManagerID);
-						if(flag) {
-							classroom.getGrade().getGradeManager().setTeacherID(newGradeManagerID);
-						}
-						else {
-							System.out.println("Grade manager is invalid!");
-						}
-					}
-					else {
-						classroom.getGrade().getGradeManager().setTeacherID(newGradeManagerID);
-					}
-				} while (!flag);
+					newGradeManagerID = getGradeManagerByGradeNumber(gradeNumber);
+					
 
-				
-				String fullName = "";
-				do {
-					System.out.println("Old Fullname: " + classroom.getClassManager().getFullname());
-					System.out.print("New Fullname (Format: Pham Xuan Thu): ");
-					fullName = sc.nextLine();
-					if(!fullName.isEmpty()) {
-						flag = Teacher.isValidName(fullName);
-						if(flag) {
-							classroom.getClassManager().setFullname(fullName);;
-						}
-						else {
-							System.out.println("Fullname is invalid!");
-						}
-					}
-					else {
-						classroom.getClassManager().getFullname();
-					}
-				} while (!flag); 
-
-				
-				String date = "";
-				do {
-					System.out.println("Old BirthDate: " + classroom.getClassManager().getBirthDate());
-					System.out.print("New BirthDate (format: 13/04/1982): ");
-					date = sc.nextLine();
-					if(!date.isEmpty()) {
-						flag = Date.isValidDateAndMonth(date);
-						if(flag) {
-							Date newDate = new Date(date);
-							classroom.getClassManager().setBirthDate(newDate);
-						}
-						else {
-							System.out.println("Date is invalid!");
-						}
-					}
-					else {
-						classroom.getClassManager().getBirthDate();
-					}
-				} while(!flag);
-
-
-				String address = "";
-				do {
-					System.out.println("Old Address: " + classroom.getClassManager().getAddress());
-					System.out.print("New Address (format: 04, Phan Van Tri, Phuong 2, Quan 5, Thanh pho Ho Chi Minh): ");
-					address = sc.nextLine();
-					if(!address.isEmpty()) {
-						flag = Address.isValidAddress(address);
-						if(flag) {
-							Address newAddress = new Address(address);
-							classroom.getClassManager().setAddress(newAddress);
-						}
-						else {
-							System.out.println("Address is invalid!");
-						}
-					}
-					else {
-						classroom.getClassManager().getAddress();
-					}	
-				} while(!flag);
-				
-
-				String sex = "";
-				do {
-					System.out.println("Old Sex: " + classroom.getClassManager().getSex());
-					System.out.print("New Sex (format: male / female): ");
-					sex = sc.nextLine();
-					if(!sex.isEmpty()) {
-						flag = Teacher.isValidSex(sex);
-						if(flag) {
-							classroom.getClassManager().setSex(sex);
-						}
-						else {
-							System.out.println("Sex is invalid!");
-						}
-					}
-					else {
-						classroom.getClassManager().getSex();
-					}	
 				} while (!flag);
 				
-
-				String major = "";
-				do {
-					System.out.println("Old Major: " + classroom.getClassManager().getMajor());
-					System.out.println("New Major (format: Math): ");
-					major = sc.nextLine();
-					if(!major.isEmpty()) {
-						flag = TeacherManagement.isValidMajor(major);
-						if(flag) {
-							classroom.getClassManager().setMajor(major);
-						}
-						else {
-							System.out.println("Major is invalid!");
-						}
-					}
-					else {
-						classroom.getClassManager().getMajor();
-					}
-				} while (!flag);
 			
 			String write = className + "-" + newClassManagerID + "-" + gradeNumber + "-" + newGradeManagerID;
 			this.updateRecord(write);
@@ -392,13 +280,13 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
     }
 	
 	public void searchClassName(String className) {
+		searchListLength = 0;
 		boolean flag = false;
 		for(int i = 0; i < currentIndex; i++) {
-			if(classroomManagement[i].getClassName().equalsIgnoreCase(className)) {
+			if(classroomManagement[i].getClassName().contains(className.toUpperCase())) {
 				flag = true;
 				searchList[searchListLength] = classroomManagement[i];
-				searchListLength++;
-				break;	
+				searchListLength++;	
 			}	
 		}
 		if(!flag) {
@@ -424,9 +312,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public String getLastClassManagerID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
-            if (classroomManagement[i].getStatus()) {
-                ID = classroomManagement[i].getClassManager().getTeacherID();
-            }
+            ID = classroomManagement[i].getClassManager().getTeacherID();
         }
         return ID;
     }
@@ -437,25 +323,64 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         Pattern pattern = Pattern.compile(classNameRegex);
 		Matcher matcher = pattern.matcher(className);
 
+		
         if(!matcher.matches()) {
             flag = false;
         }
+
         return flag;
     }
 
 	
-	public static boolean isValidManager(String classManager) {
+	public boolean isValidManager(String classManager) {
 		boolean flag = true;
 		String managerRegex = "^(GV)[0][0-9][0-9]$";
 		Pattern pattern = Pattern.compile(managerRegex);
 		Matcher matcher = pattern.matcher(classManager);
+		
 
 		if(!matcher.matches()) {
 			flag = false;
+		} 
+		else {
+			for (int i = 0; i < currentIndex; i++) {
+				if (classManager.equals(classroomManagement[i].getClassManager().getTeacherID())) {
+					System.out.println("Teacher ID already exists. Please enter a different one.");
+					flag = false;
+					break;
+				}
+			}
 		}
+		
 		return flag;
 	}
+	
+	public static String getGradeManagerByGradeNumber(int gradeNumber) {
+        
+        String gradeManager = "";
+        switch(gradeNumber) {
+            case 1:
+                gradeManager = "GV003";
+                break;
+            case 2:
+                gradeManager = "GV004";
+                break;
+            case 3:
+                gradeManager = "GV008";
+                break;
+            case 4:
+                gradeManager = "GV011";
+                break;
+            case 5:
+                gradeManager = "GV014";
+                break;
 
+            default:
+                break;
+        }
+
+        return gradeManager;
+    }
 
     public static String readDatabase() {
         StringBuilder records = new StringBuilder();
@@ -507,8 +432,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         }
 
         StringBuilder updatedContent = new StringBuilder();
-        for (String record : records) {
-            updatedContent.append(record).append("\n");
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+			if(i < records.length - 1) {
+				updatedContent.append("\n");
+			}
         }
 
         writeDatabase(updatedContent.toString());
@@ -521,7 +449,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         // Check if the record is present in the existing records
         if (existingRecords.contains(record)) {
             // Remove the record from the existing records
-            String updatedRecords = existingRecords.replace(record, "").trim();
+            String updatedRecords = existingRecords.replaceAll(record + "(\\n|$)", "").trim();
 
             // Update the database with the modified records
             writeDatabase(updatedRecords);

@@ -81,7 +81,7 @@ public class Redux {
                     // Check if existing at least one Classroom instance
                     writer.write("++++++++++++++++ Classroom Management List Session ++++++++++++++++");
                     writer.newLine();
-                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s", "ClassName", "ClassManager", "GradeNumber", "GradeManager"));
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%16s", "ClassName", "ClassManager", "GradeNumber", "GradeManager"));
                     writer.newLine();
                     for (int i = 0; i < deletedObjectsCount; i++) {
                         if (deletedObjects[i] instanceof Classroom) {

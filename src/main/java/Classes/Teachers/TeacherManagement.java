@@ -1,7 +1,9 @@
 package Classes.Teachers;
 
+import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Person.Person;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 import java.io.BufferedReader;
@@ -11,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,8 +60,9 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String major = parts[4];
+                        String classID = parts[5];
                         String sex = parts[6];
-
+                        Classroom className = new Classroom(classID);
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -79,7 +83,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, sex, major);
+                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, major, className, sex);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -245,4 +249,16 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
         return flag;
     }
+
+    public boolean hasUninitializedClassroom() {
+        boolean flag = false;
+        for (int i = 0; i < currentIndex; i++) {
+            if (teacherManagement[i].getClassroom() == null) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
+    
 }

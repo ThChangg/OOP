@@ -662,7 +662,7 @@ public class AppHelper {
             classroomList[i].setClassManager(teacherList[teacherIndex]);
             teacherIndex++;
             
-            //Every three classes will form a block and have a teacher managing that block
+            //Every three classes will form a block and have a teacher managing that block and the teacher managing that block is the default
             switch (classroomList[i].getGrade().getGradeNumber()) {
                 case 1:
                     classroomList[i].getGrade().setGradeManager(teacherList[2]); // GV003
@@ -687,20 +687,6 @@ public class AppHelper {
 
     
 
-
-    public static String createClassManagerID(String lastTeacherID) {
-        String prefix = lastTeacherID.substring(0, 2);
-        int number = Integer.parseInt(lastTeacherID.substring(2));
-
-        number++;
-
-        // Format it back into the original string format, %s for a string, %03d for a
-        // number with 3 digits, and padding 0 before if a number has less than 3 digits
-        String result = String.format("%s%03d", prefix, number);
-        return result;
-    }
-    
-
     public static void addClassroomsToClassroomManagementList(Scanner sc, Object... managementObjects) {
         ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
@@ -712,110 +698,51 @@ public class AppHelper {
                 teacherManagement = (TeacherManagement) managementObject;
             }
         }
-        char option = 'y';
-        do {
-            System.out.println("Add classrooms: ");
-            boolean flag;
-            String className = "";
+        if(teacherManagement.hasUninitializedClassroom()) {
+            char option = 'y';
             do {
-                System.out.print("Classname (Format: 5A4): ");
-                className = sc.nextLine();
-                flag = classroomManagement.isValidClassroom(className);
-
-                if(!flag) {
-                    System.out.println("Classname is invalid!");
-                }
+                System.out.println("Add classrooms: ");
+                boolean flag;
+                String className = "";
+                do {
+                    System.out.print("Classname (Format: 5A4): ");
+                    className = sc.nextLine();
+                    flag = classroomManagement.isValidClassroom(className);
+    
+                    if(!flag) {
+                        System.out.println("Classname is invalid!");
+                    }
+                    
+                } while(!flag);
+    
                 
-            } while(!flag);
-
-            int gradeNumber = className.charAt(0) - '0';
-	        
-            String classManager = createClassManagerID(classroomManagement.getLastClassManagerID());
-            
-            String gradeManager = "";
-            do {
-                System.out.print("GradeManagerID (Format: (GV003 or GV011)): ");
-                gradeManager = sc.nextLine();
-                flag = classroomManagement.isValidManager(gradeManager);
+                String classManager = null;
+                Teacher classTeacher = new Teacher(classManager);
+    
+                int gradeNumber = className.charAt(0) - '0';
+    
+                String gradeManager = classroomManagement.getGradeManagerByGradeNumber(gradeNumber);
+    
+                Teacher gradeTeacher = new Teacher(gradeManager);
+                Grade grade = new Grade(gradeNumber, gradeTeacher);
+    
+    
+                classroomManagement.add(new Classroom(className, classTeacher, grade));
                 
-                if(!flag) {
-                    System.out.println("Grade manager is invalid!");
-                }
-            } while (!flag);
-            Teacher gradeTeacher = new Teacher(gradeManager);
-            Grade grade = new Grade(gradeNumber, gradeTeacher);
-
-            String fullName = "";
-            do {
-                System.out.print("Fullname (Format: Tran Minh Hieu): ");
-                fullName = sc.nextLine();
-                flag = Teacher.isValidName(fullName);
-
-                if(!flag) {
-                    System.out.println("Fullname is invalid!");
-                }
-            } while (!flag); 
-            
-            String date = "";
-            do {
-                System.out.print("BirthDate (format: 12/03/1982): ");
-                date = sc.nextLine();
-                flag = Date.isValidDateAndMonth(date);
-
-                if(!flag) {
-                    System.out.println("Date is invalid!");
-                }
-            } while(!flag);
-            Date datetime = new Date(date);
-
-            String address = "";
-            do {
-                System.out.print("Address (format: 273, An Duong Vuong, Phuong 3, Quan 5, Thanh pho Ho Chi Minh): ");
-                address = sc.nextLine();
-                flag = Address.isValidAddress(address);
-
-                if(!flag) {
-                    System.out.println("Address is invalid!");
-                }
-            } while(!flag);
-            Address inputAddress = new Address(address);
-            
-            String sex = "";
-            do {
-                System.out.print("Sex (format: male / female): ");
-                sex = sc.nextLine();
-                flag = Person.isValidSex(sex);
-
-                if(!flag) {
-                    System.out.println("Sex is invalid!");
-                }
-            } while (!flag);
-            
-            String major = "";
-            do {
-                System.out.println("Major (format: Math): ");
-                major = sc.nextLine();
-                flag = teacherManagement.isValidMajor(major);
-
-                if(!flag) {
-                    System.out.println("Major is invalid!");
-                }
-            } while (!flag);
-            
-
-            Teacher teacher = new Teacher(classManager, fullName, datetime, inputAddress, sex, major);
-            classroomManagement.add(new Classroom(className,teacher, grade));
-
-            String write = className + "-" + classManager + "-" + gradeNumber + "-" + gradeManager;
-            classroomManagement.insertIntoDatabase(write);
-            
-            System.out.println("Add classroom successfully!");
-            System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
-            option = sc.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
-
+                String write = className + "-" + classManager + "-" + gradeNumber + "-" + gradeManager;
+                classroomManagement.insertIntoDatabase(write);
+    
+                
+                System.out.println("Add classroom successfully!");
+                System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
+                option = sc.nextLine().charAt(0);
+            } while (option == 'y' || option == 'Y');    
+        }
+        else {
+            System.out.println("All teachers have already taught a class. Cannot add a new class."); 
+        }
+        
     }
-
 
 
     public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner sc) {
