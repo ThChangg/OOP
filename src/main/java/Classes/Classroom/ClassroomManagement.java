@@ -172,6 +172,28 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public void add(Object obj) {
 		if (currentIndex < classroomManagement.length) {
 			classroomManagement[currentIndex] = (Classroom) obj;
+			String classNumber = ((Classroom) obj).getClassName().substring(0, 2);
+			switch (classNumber) {
+				case "1A":
+					classCounts[0]++;
+					break;
+
+				case "2A":
+					classCounts[1]++;
+					break;
+
+				case "3A":
+					classCounts[2]++;
+					break;
+
+				case "4A":
+					classCounts[3]++;
+					break;
+
+				case "5A":
+					classCounts[4]++;
+					break;
+			}
         }
 		else {
             System.out.println("Classroom Management List is full. Cannot add more.");
@@ -306,6 +328,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			for (int j = 1; j <= classCounts[i - 1]; j++) {
 				System.out.print(i + "A" + j + "\t");
 			}
+			System.out.println();
 		}
 	}
 	
@@ -318,8 +341,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
     }
 
 	public static boolean isValidClassroom(String className) {
+		if(className.equalsIgnoreCase("null")){
+			return true;
+		}
         boolean flag = true;
-        String classNameRegex = "([1-5]A([4-9]))";
+        String classNameRegex = "([1-5])A([4-9])";
         Pattern pattern = Pattern.compile(classNameRegex);
 		Matcher matcher = pattern.matcher(className);
 
@@ -356,7 +382,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	}
 	
 	public static String getGradeManagerByGradeNumber(int gradeNumber) {
-        
         String gradeManager = "";
         switch(gradeNumber) {
             case 1:

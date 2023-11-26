@@ -81,22 +81,21 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        System.out.println(addressPart);
-                        String addressRegex = "(\\d+),\\s(.*),\\sPhuong\\s(.*),\\sQuan\\s(.*),\\sThanh pho\\s(.*$)";
+                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
                         Pattern pattern = Pattern.compile(addressRegex);
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
                             String houseNumber = matcher.group(1);
                             String streetName = "Duong " + matcher.group(2);
-                            String ward = "Phuong " + matcher.group(3);
-                            String district = "Quan " + matcher.group(4);
-                            String city = "Thanh pho " + matcher.group(5);
+                            String ward = matcher.group(3);
+                            String district = matcher.group(4);
+                            String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
                             Teacher teacher = new Teacher(teacherID, fullName, dob, address, gender, major);
                             this.add(teacher);
                         } else {
-                            System.out.println("Your address is invalid!");
+                            System.out.println("Your address is invalid2!");
                         }
                     } else {
                         System.out.println("Record does not have enough information");
@@ -105,7 +104,6 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 ((Throwable) e).printStackTrace();
             }
-            System.out.println("File exists.");
         } else {
             System.out.println("File does not exist.");
         }
@@ -123,7 +121,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Teacher Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-20s\t%-10s", "ID", "Fullname", "Gender",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s\t%-3s", "ID", "Fullname", "Gender",
                         "BirthDate", "Address", "Major", "Class"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
@@ -280,28 +278,9 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
 
-                ClassroomManagement.displayClassroomFormation();
-                String className = "";
-                do {
-                    System.out.println("Old Class: " + teacher.getClassroom().getClassName());
-                    System.out.print("New Class (Format: 1A1): ");
-                    className = sc.nextLine();
-                    if (!className.isEmpty()) {
-                        flag = ClassroomManagement.isValidClassroom(className);
-                        if (flag) {
-                            int gradeNumber = className.charAt(0) - '0';
-                            teacher.getClassroom().getGrade().setGradeNumber(gradeNumber);
-                            teacher.getClassroom().setClassName(className);
-                        } else {
-                            System.out.println("Classroom is invalid (Wrong format)!");
-                        }
-                    } else {
-                        className = teacher.getClassroom().getClassName();
-                    }
-                } while (!flag);
                 
                 String record = teacher.getTeacherID() + "-" + name + "-" + birthDate + "-" + teacher.getAddress() + "-"
-                        + major + "-" + className + "-" + gender;
+                        + major + "-" + "null" + "-" + gender;
                 this.updateRecord(record);
                 System.out.println("Update successfully!");
             } while (!flag);
@@ -458,7 +437,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         // Check if the record is present in the existing records
         if (existingRecords.contains(record)) {
             // Remove the record from the existing records
-            String updatedRecords = existingRecords.replaceAll(record + "\\n|$", "").trim();
+            String updatedRecords = existingRecords.replaceAll(record + "(\\n|$)", "").trim();
 
             // Update the database with the modified records
             writeDatabase(updatedRecords);

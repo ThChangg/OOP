@@ -77,7 +77,10 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return teacherID + "\t" + super.toString() + "\t" + major + classroom.getClassName();
+        if(classroom == null){
+            return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + null;
+        }
+        return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + classroom.getClassName();
     }
 
 }

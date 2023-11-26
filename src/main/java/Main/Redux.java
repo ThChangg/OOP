@@ -216,11 +216,10 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
-                    // teacher.setStatus(true);
-                    // break;
+                    String classNameFormat = teacher.getClassroom() == null ? "null" : teacher.getClassroom().getClassName();
                     String address = teacher.getAddress().toString().replace(" Duong ", " ");
                     String record = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
-                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+                            + address + "-" + teacher.getMajor() + "-" + classNameFormat + "-" + teacher.getGender();
                     TeacherManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -230,7 +229,8 @@ public class Redux {
             else if (deletedObjects[i] instanceof Classroom) {
                 Classroom classroom = (Classroom) deletedObjects[i];
                 if(classroom.getClassName().equalsIgnoreCase(ID)) {
-                    String write = classroom.getClassName() + "-" + classroom.getClassManager().getTeacherID() + "-" 
+                    String FormattedTeacherID = classroom.getClassManager() == null ? "null" : classroom.getClassManager().getTeacherID();
+                    String write = classroom.getClassName() + "-" + FormattedTeacherID + "-" 
                                     + classroom.getGrade().getGradeNumber() + "-" + classroom.getGrade().getGradeManager().getTeacherID();
                     ClassroomManagement.deleteRecord(write);
                     isDelete = true;
@@ -257,16 +257,18 @@ public class Redux {
 
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {
-               Teacher teacher = (Teacher) deletedObjects[i];
+                Teacher teacher = (Teacher) deletedObjects[i];
+                String classNameFormat = teacher.getClassroom() == null ? "null" : teacher.getClassroom().getClassName();
                 String address = teacher.getAddress().toString().replace(" Duong ", " ");
                 String teacherRecord = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
-                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+                        + address + "-" + teacher.getMajor() + "-" + classNameFormat + "-" + teacher.getGender();
 
                 TeacherManagement.deleteRecord(teacherRecord);
             } else if (deletedObjects[i] instanceof Classroom) {
                 Classroom classroom = (Classroom) deletedObjects[i];
-                String write = classroom.getClassName() + "-" + classroom.getClassManager().getTeacherID() + "-" 
-                                + classroom.getGrade().getGradeNumber() + "-" + classroom.getGrade().getGradeManager().getTeacherID();
+                String FormattedTeacherID = classroom.getClassManager() == null ? "null" : classroom.getClassManager().getTeacherID();
+                String write = classroom.getClassName() + "-" + FormattedTeacherID + "-" 
+                                    + classroom.getGrade().getGradeNumber() + "-" + classroom.getGrade().getGradeManager().getTeacherID();
                 ClassroomManagement.deleteRecord(write); 
             }
         }
