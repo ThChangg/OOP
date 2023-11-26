@@ -13,6 +13,7 @@ public class Point {
     private String performance;
     private boolean status;
     private Pupil pupil;
+    private String pupilID;
   
 
     public Point() {
@@ -29,7 +30,14 @@ public class Point {
         this.status = true;
 
     }
- 
+    public Point(String pupilID) {
+        this.pupilID = pupilID;
+    }
+
+    public String getPupilID() {
+        return pupilID;
+    }
+  
 
     public String getPointID() {
         return this.pointID;
@@ -107,6 +115,9 @@ public class Point {
     }
     public void setPupil(Pupil pupil) {
         this.pupil = pupil;
+    }
+    public Pupil getPupil() {
+        return pupil;
     }
    
  

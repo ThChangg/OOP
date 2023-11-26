@@ -11,15 +11,19 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-// import Classes.Pupils.Pupil;
+import Classes.Pupils.Pupil;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 import Main.Redux;
 
 public class PointManagement implements IFileManagement, ICRUD {
     private Point listPoint[];
+    private Point searchResult[];
     private int currentIndex;
+    private Pupil[] pupilList;
+    private int searchResultLength;
 
+  
     public Point[] getListPoint() {
         return this.listPoint;
     }
@@ -27,10 +31,19 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void setPointList(Point listPoint[]) {
         this.listPoint = listPoint;
     }
+    public void setPupilList(Pupil[] pupilList) {
+        this.pupilList = pupilList;
+    }
+
+    public Pupil[] getPupilList() {
+        return this.pupilList;
+    }
 
     public PointManagement() {
         listPoint = new Point[100];
         currentIndex = 0;
+        this.pupilList = new Pupil[100];
+        searchResult = new Point[100];
     }
 
     public int getCurrentIndex() {
@@ -40,11 +53,27 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
     }
+     
+    public Point[] getSearchResult() {
+        return this.searchResult;
+    }
 
+    public void setSearchResult(Point searchResult[]) {
+        this.searchResult = searchResult;
+    }
+
+    public int getSearchResultLength() {
+        return this.searchResultLength;
+    }
+
+    public void setSearchResultLength(int searchResultLength) {
+        this.searchResultLength = searchResultLength;
+    }
     @Override
     public void initialize() {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\points.txt";
         File file = new File(relativePath);
+
         if (file.exists()) {
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
@@ -58,9 +87,11 @@ public class PointManagement implements IFileManagement, ICRUD {
                         double physicalEducationPoint = Double.parseDouble(parts[3]);
                         double englishPoint = Double.parseDouble(parts[4]);
                         int pointConductValue = Integer.parseInt(parts[5].trim());
+
                         Conduct conduct = new Conduct(pointConductValue);
                         Point point = new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint,
                                 englishPoint, conduct);
+
                         this.add(point);
                         calculateRank(point);
                         point.calculatePerformance();
@@ -71,6 +102,7 @@ public class PointManagement implements IFileManagement, ICRUD {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         } else {
             System.out.println("File does not exist.");
         }
@@ -80,9 +112,12 @@ public class PointManagement implements IFileManagement, ICRUD {
     @Override
     public void display() {
         String headerFormat = "%-5s\t%-15s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s";
+        
+
         String relativePath = System.getProperty("user.dir")
                 + "\\src\\main\\java\\Main\\output.txt";
         File file = new File(relativePath);
+
         if (file.exists()) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Point Management List:");
@@ -90,9 +125,11 @@ public class PointManagement implements IFileManagement, ICRUD {
                 writer.write(String.format(headerFormat, "ID", "LiteraturePoint", "MathPoint", "PhysicalEducationPoint",
                         "EnglishPoint", "PointConduct", "Rank", "Performance"));
                 writer.newLine();
+
                 for (int i = 0; i < currentIndex; i++) {
                     if (listPoint[i].getStatus()) {
                         Point point = listPoint[i];
+
                         writer.write(
                                 point.toString() + "-" + point.getConduct().getRank() + "-" + point.getPerformance());
                         writer.newLine();
@@ -107,6 +144,83 @@ public class PointManagement implements IFileManagement, ICRUD {
         } else {
             System.out.println("File does not exist.");
         }
+    }
+
+    public Pupil getPupilByID(String pupilID) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i] != null && pupilList[i].getPupilID() != null
+                    && pupilList[i].getPupilID().equalsIgnoreCase(pupilID)) {
+                if (pupilList[i].getStatus()) {
+                    return pupilList[i];
+                } else {
+                    System.out.println("Pupil does not exist!");
+                    return null; // Return null if the pupil is not found or has been marked as not existing
+                }
+            }
+        }
+        return null; // Return null if the pupil is not found
+    }
+
+     // Display method for searching points by pupilID
+     public void displayByPupilID(String pupilID) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
+
+        File file = new File(relativePath);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            boolean writeHeader = !file.exists() || file.length() == 0;
+
+            // Write header if necessary
+            if (writeHeader) {
+                writer.write("Search result:");
+                writer.newLine();
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s", "ID",
+                        "Fullname",
+                        "Literature Point", "Math Point", "Physical Education Point", "English Point", "Point Conduct",
+                        "Rank", "Performance"));
+                writer.newLine();
+                writer.write("================================================================");
+                writer.newLine();
+            }
+            Point searchResult = findPointByPupilIDAndGetPoint(pupilID);
+
+            if (searchResult != null) {
+                Pupil pupil = getPupilByID(searchResult.getPupilID());
+                if (pupil != null) {
+                    // Your existing code to write data to the file
+                    writer.write(String.format("%-5s\t%-20s\t%-6.2f\t%-10.2f\t%-25.2f\t%-15.2f\t%-15.2f\t%-10s\t%-15s",
+                            pupil.getPupilID(), pupil.getFullname(), searchResult.getLiteraturePoint(),
+                            searchResult.getMathPoint(), searchResult.getPhysicalEducationPoint(),
+                            searchResult.getEnglishPoint(), searchResult.getConduct().getpointConduct(),
+                            searchResult.getConduct().getRank(), searchResult.getPerformance()));
+                    writer.newLine();
+
+                    // Handle the found point, e.g., print its information
+                    System.out.println("PupilID: " + pupil.getPupilID());
+                    System.out.println("Fullname: " + pupil.getFullname());
+                    // Add information about other fields if needed
+                }
+            } else {
+                System.out.println("No points found for PupilID: " + pupilID);
+            }
+
+            writer.write("================================================================");
+            writer.newLine();
+            System.out.println("Data written to " + relativePath);
+        } catch (IOException e) {
+            System.err.println("An error occurred while writing to the file: " + e.getMessage());
+        }
+    }
+
+    public Point findPointByPupilIDAndGetPoint(String pupilID) {
+        for (Point point : listPoint) {
+            if (point != null && point.getPupil() != null && point.getPupil().getPupilID().equals(pupilID)) {
+                // Found the point for the specified PupilID
+                return point;
+            }
+        }
+        // If no point is found for the specified PupilID, return null
+        return null;
     }
 
     public void calculateRank() {
@@ -138,8 +252,16 @@ public class PointManagement implements IFileManagement, ICRUD {
         if (currentIndex < listPoint.length) {
             listPoint[currentIndex++] = (Point) obj;
             Point addedPoint = listPoint[currentIndex - 1]; // The recently added point
+
+            // No need to manually increment PointID, it's handled in the Point constructor
+
+            // Calculate rank and performance for the added point
             calculateRank(addedPoint);
             addedPoint.calculatePerformance();
+
+            // Update the record in the database
+            updateRecord(addedPoint.toString());
+
         } else {
             System.out.println("Point List is full. Cannot add more.");
         }
@@ -154,6 +276,7 @@ public class PointManagement implements IFileManagement, ICRUD {
         Scanner sc = new Scanner(System.in);
         Point point = getPointByID(ID);
         Conduct conduct = point.getConduct();
+
         if (point != null) {
             boolean flag = true;
             do {
@@ -289,15 +412,29 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public Point searchPointByPupilID(String pointID) {
-        Point point = null;
-        for (int i = 0; i < currentIndex; i++) {
-            if (listPoint[i].getPointID().equalsIgnoreCase(pointID)) {
-                point = listPoint[i];
+    public void findPointByPupilID(String pupilID) {
+        boolean found = false;
 
+        for (Point point : listPoint) {
+            if (point != null && point.getPupil() != null && point.getPupil().getPupilID().equals(pupilID)) {
+
+                System.out.println("PupilID: " + point.getPupil().getPupilID());
+                System.out.println("Fullname: " + point.getPupil().getFullname());
+                System.out.println("Literature Point: " + point.getLiteraturePoint());
+                System.out.println("Math Point: " + point.getMathPoint());
+                System.out.println("Physical Education Point: " + point.getPhysicalEducationPoint());
+                System.out.println("English Point: " + point.getEnglishPoint());
+                System.out.println("Point Conduct: " + point.getConduct());
+                System.out.println("Rank: " + point.getConduct().getRank());
+                System.out.println("Performance: " + point.getPerformance());
+                found = true;
+                break;
             }
         }
-        return point;
+
+        if (!found) {
+            System.out.println("No points found for PupilID: " + pupilID);
+        }
     }
 
     public String getLastPointID() {
@@ -348,17 +485,25 @@ public class PointManagement implements IFileManagement, ICRUD {
             }
         }
 
-    
+        // Rebuild the content with the updated records
+    //     StringBuilder updatedContent = new StringBuilder();
+    //     for (String record : records) {
+    //         updatedContent.append(record).append("\n");
+    //     }
 
-        StringBuilder updatedContent = new StringBuilder();
-        for (int i = 0; i < records.length; i++) {
-            updatedContent.append(records[i]);
-            if (i < records.length - 1) {
-                updatedContent.append("\n");
-            }
-        }
+    //     // Write the updated content back to the database
+    //     writeDatabase(updatedContent.toString().trim());
+    // }
 
-        writeDatabase(updatedContent.toString());
+    StringBuilder updatedContent = new StringBuilder();
+    for (int i = 0; i < records.length; i++) {
+    updatedContent.append(records[i]);
+    if (i < records.length - 1) {
+    updatedContent.append("\n");
+    }
+    }
+
+    writeDatabase(updatedContent.toString());
     }
 
     public static void deleteRecord(String record) {
@@ -406,5 +551,7 @@ public class PointManagement implements IFileManagement, ICRUD {
             e.printStackTrace();
         }
     }
+
+
 
 }

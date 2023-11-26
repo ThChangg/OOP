@@ -466,21 +466,15 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return records.toString().trim();
     }
 
-    <<<<<<< HEAD
-    private void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") +
-        "\\Pupil-Management-OOP\\src\\main\\java\\Data\\pupils.txt";
-        =======
-        public static void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") +
-        "\\src\\main\\java\\Data\\pupils.txt";
-        >>>>>>> af208d989da2b5b73387018af840326e7acfc5b7
+    
+           public static void writeDatabase(String records) {
+        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
         File file = new File(relativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-        writer.write(records);
+            writer.write(records);
         } catch (IOException e) {
-        Handle IOException
-        e.printStackTrace();
+            // Handle IOException
+            e.printStackTrace();
         }
     }
 }
