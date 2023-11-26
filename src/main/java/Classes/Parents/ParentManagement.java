@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +20,7 @@ import Classes.Person.Address;
 import Classes.Person.Date;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
+import Main.Redux;
 
 public class ParentManagement implements IFileManagement, ICRUD {
     private Parent parentList[];
@@ -63,7 +66,6 @@ public class ParentManagement implements IFileManagement, ICRUD {
     public void setSearchResultLength(int searchResultLength) {
         this.searchResultLength = searchResultLength;
     }
-    
 
     @Override
     public void initialize() {
@@ -82,7 +84,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String phoneNumber = parts[4];
-                        String sex = parts[5];
+                        String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -103,7 +105,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Parent parent = new Parent(pupilID, fullName, dob, address, sex, phoneNumber);
+                            Parent parent = new Parent(pupilID, fullName, dob, address, gender, phoneNumber);
                             this.add(parent);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -131,7 +133,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Parent Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Phone Number"));
                 writer.newLine();
@@ -152,22 +154,28 @@ public class ParentManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void display(int arrayLength) {
+    public void display(Parent[] searchResult, int arrayLength) {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
 
         File file = new File(relativePath);
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, false))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s", "ID", "Fullname", "Sex",
-                        "BirthDate", "Address",
-                        "Phone Number"));
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s", "Parent ID",
+                        "Parent Fullname", "gender",
+                        "BirthDate", "Address", "Phone Number", "Pupil ID", "Pupil Fullname"));
                 writer.newLine();
                 for (int i = 0; i < arrayLength; i++) {
-                    writer.write(searchResult[i].toString());
+                    Parent parent = searchResult[i];
+                    String pupilInfo = (parent.getPupil() != null)
+                            ? parent.getPupil().getPupilID() + "\t" + parent.getPupil().getFullname()
+                            : "";
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s",
+                            parent.getParentID(), parent.getFullName(), parent.getgender(), parent.getBirthDate(),
+                            parent.getAddress(), parent.getPhoneNumber(), "", pupilInfo));
                     writer.newLine();
                 }
                 writer.write("================================================================");
@@ -235,9 +243,38 @@ public class ParentManagement implements IFileManagement, ICRUD {
                 } else {
                     System.out.println("Your address is invalid!");
                 }
+
+                System.out.println("Old Phone Number: " + parent.getPhoneNumber());
+                System.out.print("New Phone Number (Format: 0907xxxxxx): ");
+                String phoneNumber = sc.nextLine();
+                if (!phoneNumber.isEmpty()) {
+                    if (Parent.isValidPhoneNumber(phoneNumber)) {
+                        parent.setPhoneNumber(phoneNumber);
+                    } else {
+                        System.out.println("Phone Number is invalid (Wrong format)!");
+                    }
+                }
+                System.out.println("Old Gender: " + parent.getgender());
+                System.out.print("New Gender (Format: male / female): ");
+                String gender = sc.nextLine();
+                if (!gender.isEmpty()) {
+                    if (Parent.isValidgender(gender)) {
+                        parent.setgender(gender);
+                    } else {
+                        System.out.println("Gender is invalid (Wrong format)!");
+                    }
+                }
+
+                String record = parent.getParentID() + "-" + name + "-" + birthDate + "-" + parent.getAddress() + "-"
+                        + "-" + phoneNumber + "-"
+                        + "-"
+                        + gender;
+                this.updateRecord(record);
+                System.out.println("Update successfully!");
+
+            } else {
+                System.out.println("Parent with ID: " + ID + " is not found!");
             }
-        } else {
-            System.out.println("Parent with ID: " + ID + " is not found!");
         }
     }
 
@@ -249,6 +286,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     parentList[i].setStatus(false);
+                    Redux.addToRecycleBin(parentList[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -260,7 +298,9 @@ public class ParentManagement implements IFileManagement, ICRUD {
     public String getLastParentID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
-            ID = parentList[i].getParentID();
+            if (parentList[i].getStatus()) {
+                ID = parentList[i].getParentID();
+            }
         }
         return ID;
     }
@@ -280,46 +320,32 @@ public class ParentManagement implements IFileManagement, ICRUD {
         return parent;
     }
 
-    public void findParentsBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass) {
+    public void findParentsBy(String searchValue) {
+        // Clear previous search results
         Arrays.fill(searchResult, null);
         searchResultLength = 0;
-        Pattern pattern = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE);
 
+        // Search by Fullname
+        searchByFullname(searchValue);
+
+        // Display search results if there are any
+        if (searchResultLength > 0) {
+            display(searchResult, searchResultLength);
+        } else {
+            System.out.println("No matching records found.");
+        }
+    }
+
+    private void searchByFullname(String partialName) {
+        // Clear the searchResult array before each search
+        Arrays.fill(searchResult, null);
+        searchResultLength = 0;
+
+        // Search by Fullname
         for (int i = 0; i < currentIndex; i++) {
-            try {
-                if (nestedClass != null) {
-                    // Get the nested object from the main object
-                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
-                            .invoke(parentList[i]);
-
-                    // Use reflection to get the appropriate method from the nested class
-                    Method getterMethod = nestedClass.getMethod(findBy);
-
-                    // Invoke the method on the nested object
-                    String attributeValue = (String) getterMethod.invoke(nestedObject);
-
-                    if (pattern.matcher(attributeValue).find()) {
-                        if (parentList[i].getStatus()) {
-                            this.searchResult[this.searchResultLength++] = parentList[i];
-                        } else {
-                            System.out.println("Parent does not exist!");
-                        }
-                    }
-                } else {
-                    // No nested class, directly invoke the method on the main class
-                    Method getterMethod = mainClass.getMethod(findBy);
-                    String attributeValue = (String) getterMethod.invoke(parentList[i]);
-
-                    if (pattern.matcher(attributeValue).find()) {
-                        if (parentList[i].getStatus()) {
-                            this.searchResult[this.searchResultLength++] = parentList[i];
-                        } else {
-                            System.out.println("Parent does not exist!");
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (parentList[i].getStatus()
+                    && parentList[i].getFullname().toLowerCase().contains(partialName.toLowerCase())) {
+                searchResult[searchResultLength++] = parentList[i];
             }
         }
     }
@@ -363,8 +389,11 @@ public class ParentManagement implements IFileManagement, ICRUD {
         }
 
         StringBuilder updatedContent = new StringBuilder();
-        for (String record : records) {
-            updatedContent.append(record).append("\n");
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if (i < records.length - 1) {
+                updatedContent.append("\n");
+            }
         }
 
         writeDatabase(updatedContent.toString());

@@ -82,7 +82,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         String pupilID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
-                        String sex = parts[5];
+                        String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -103,7 +103,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, sex);
+                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender);
                             this.add(pupil);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -131,7 +131,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Pupil Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Class"));
                 writer.newLine();
@@ -163,7 +163,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Class"));
                 writer.newLine();
@@ -238,21 +238,21 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
 
-                String sex = "";
+                String gender = "";
                 do {
-                    System.out.println("Old Sex: " + pupil.getSex());
-                    System.out.print("New Sex (Format: male / female): ");
-                    sex = sc.nextLine();
+                    System.out.println("Old gender: " + pupil.getgender());
+                    System.out.print("New gender (Format: male / female): ");
+                    gender = sc.nextLine();
 
-                    if (!sex.isEmpty()) {
-                        flag = Pupil.isValidSex(sex);
+                    if (!gender.isEmpty()) {
+                        flag = Pupil.isValidgender(gender);
                         if (flag) {
-                            pupil.setSex(sex);
+                            pupil.setgender(gender);
                         } else {
-                            System.out.println("Sex is invalid (Wrong format)!");
+                            System.out.println("gender is invalid (Wrong format)!");
                         }
                     } else {
-                        sex = pupil.getSex();
+                        gender = pupil.getgender();
                     }
                 } while (!flag);
 
@@ -294,7 +294,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     }
                 } while (!flag);
                 String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + pupil.getAddress() + "-"
-                        + className + "-" + sex;
+                        + className + "-" + gender;
                 this.updateRecord(record);
                 System.out.println("Update successfully!");
             } while (!flag);
@@ -311,7 +311,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     pupilList[i].setStatus(false);
-                    Redux.add(pupilList[i]);
+                    Redux.addToRecycleBin(pupilList[i]);
                 }
             }
             System.out.println("Delete successfully!");

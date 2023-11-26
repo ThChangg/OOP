@@ -1,6 +1,5 @@
 package Classes.Parents;
 
-import Classes.Parents.Parent;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Person.Person;
@@ -11,21 +10,28 @@ public class Parent extends Person {
     private String phoneNumber;
     private boolean status;
     private Pupil pupil;
+    private String fullName;
 
     public Parent() {
     }
 
-    public Parent(String parentID, String fullname, Date dob, Address address, String sex) {
-        super(fullname, dob, address, sex);
+    public Parent(String parentID, String fullname, Date dob, Address address, String gender) {
+        super(fullname, dob, address, gender);
         this.parentID = parentID;
+        this.fullName = fullname; // Sửa ở đây
         this.status = true;
     }
 
-    public Parent(String parentID, String fullname, Date dob, Address address, String sex, String phoneNumber) {
-        super(fullname, dob, address, sex);
+    public Parent(String parentID, String fullname, Date dob, Address address, String gender, String phoneNumber) {
+        super(fullname, dob, address, gender);
         this.parentID = parentID;
+        this.fullName = fullname; // Sửa ở đây
         this.phoneNumber = phoneNumber;
         this.status = true;
+    }
+
+    public String getFullName() {
+        return this.fullName;
     }
 
     public String getParentID() {
@@ -44,10 +50,6 @@ public class Parent extends Person {
         this.pupil = pupil;
     }
 
-    public boolean isStatus() {
-        return this.status;
-    }
-
     public boolean getStatus() {
         return this.status;
     }
@@ -64,11 +66,14 @@ public class Parent extends Person {
         this.phoneNumber = phoneNumber;
     }
 
-    
+    private static final String PHONE_NUMBER_PATTERN = "^(0[0-9]{9})$";
+
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        return phoneNumber.matches(PHONE_NUMBER_PATTERN);
+    }
 
     @Override
     public String toString() {
         return parentID + "\t" + super.toString() + "\t" + phoneNumber;
     }
-
 }

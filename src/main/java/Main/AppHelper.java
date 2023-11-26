@@ -18,6 +18,7 @@ public class AppHelper {
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
         ParentManagement parentManagement = new ParentManagement();
+
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         Scanner sc = new Scanner(System.in);
@@ -464,14 +465,14 @@ public class AppHelper {
             } while (!flag);
             Address address = new Address(inputAddress);
 
-            String sex = "";
+            String gender = "";
             do {
-                System.out.print("Sex (format: male / female): ");
-                sex = scanner.nextLine();
-                flag = Pupil.isValidSex(sex);
+                System.out.print("gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Pupil.isValidgender(gender);
 
                 if (!flag) {
-                    System.out.println("Sex is invalid (Wrong format)!");
+                    System.out.println("gender is invalid (Wrong format)!");
                 }
             } while (!flag);
 
@@ -491,9 +492,9 @@ public class AppHelper {
             Classroom classroom = new Classroom(className, grade);
 
             String pupilID = createNewID(pupilManagement.getLastPupilID());
-            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, sex, classroom));
+            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, gender, classroom));
 
-            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + sex;
+            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + gender;
             pupilManagement.insertIntoDatabase(record);
 
             System.out.println("Do you want to add more pupils ? Yes(Y) : No(N)");
@@ -522,7 +523,7 @@ public class AppHelper {
             do {
                 System.out.print("Fullname (Format: Nguyen Duc Canh): ");
                 fullName = scanner.nextLine();
-                flag = Pupil.isValidName(fullName);
+                flag = Parent.isValidName(fullName);
 
                 if (!flag) {
                     System.out.println("Fullname is invalid (Wrong format)!");
@@ -555,21 +556,34 @@ public class AppHelper {
             } while (!flag);
             Address address = new Address(inputAddress);
 
-            String sex = "";
+            String phoneNumber = "";
             do {
-                System.out.print("Sex (format: male / female): ");
-                sex = scanner.nextLine();
-                flag = Parent.isValidSex(sex);
+                System.out.print("Phone Number : (format: 0907xxxxxx): ");
+                phoneNumber = scanner.nextLine();
+                flag = Parent.isValidPhoneNumber(phoneNumber);
 
                 if (!flag) {
-                    System.out.println("Sex is invalid (Wrong format)!");
+                    System.out.println("Phone Number is invalid (Wrong format)!");
+                }
+            } while (!flag);
+
+            String gender = "";
+            do {
+                System.out.print("gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Parent.isValidgender(gender);
+
+                if (!flag) {
+                    System.out.println("gender is invalid (Wrong format)!");
                 }
             } while (!flag);
 
             String parentID = createNewID(parentManagement.getLastParentID());
-            parentManagement.add(new Parent(parentID, fullName, dob, address, sex));
+            parentManagement.add(new Parent(parentID, fullName, dob, address, gender, phoneNumber));
 
-            String record = parentID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + "-" + sex;
+            String record = parentID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + "-" + phoneNumber + "-"
+                    + "-"
+                    + gender;
             parentManagement.insertIntoDatabase(record);
 
             System.out.println("Do you want to add more parents ? Yes(Y) : No(N)");
@@ -580,6 +594,7 @@ public class AppHelper {
     public static void updateParentData(ParentManagement parentManagement, Scanner scanner) {
         System.out.print("Enter parent ID: ");
         String ID = scanner.nextLine();
+
         parentManagement.update(ID);
     }
 
@@ -686,9 +701,10 @@ public class AppHelper {
                     break;
                 case 3:
                     System.out.print("Enter Parent Name: ");
-                    name = sc.nextLine(); // Reusing the existing variable
-                    parentManagement.findParentsBy(name, "getFullName", Parent.class, null);
-                    parentManagement.display(parentManagement.getSearchResultLength());
+                    name = sc.nextLine();
+                    parentManagement.findParentsBy(name);
+                    parentManagement.display(parentManagement.getSearchResult(),
+                            parentManagement.getSearchResultLength());
                     break;
 
                 default:

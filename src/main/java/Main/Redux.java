@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import Classes.Account.Account;
 import Classes.Account.AccountManagement;
+import Classes.Parents.Parent;
+import Classes.Parents.ParentManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
@@ -19,7 +21,7 @@ public class Redux {
     public static Object deletedObjects[] = new Object[100];
     public static int deletedObjectsCount = 0;
 
-    public static void add(Object obj) {
+    public static void addToRecycleBin(Object obj) {
         if (deletedObjectsCount < deletedObjects.length) {
             deletedObjects[deletedObjectsCount++] = obj;
         } else {
@@ -42,7 +44,7 @@ public class Redux {
                     // Check if existing at least one Pupil instance
                     writer.write("++++++++++++++++ Pupil Management List Session ++++++++++++++++");
                     writer.newLine();
-                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                             "BirthDate", "Address",
                             "Class"));
                     writer.newLine();
@@ -60,7 +62,7 @@ public class Redux {
                     // Check if existing at least one Teacher instance
                     writer.write("++++++++++++++++ Teacher Management List Session ++++++++++++++++");
                     writer.newLine();
-                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Sex",
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "gender",
                             "BirthDate", "Address",
                             "Major"));
                     writer.newLine();
@@ -73,11 +75,29 @@ public class Redux {
                     writer.write("================================================================");
                     writer.newLine();
                 }
+                if (flags[2]) {
+                    // Check if existing at least one Parent instance
+                    writer.write("++++++++++++++++ Parent Management List Session ++++++++++++++++:");
+                    writer.newLine();
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s", "Parent ID",
+                            "Parent Fullname", "gender",
+                            "BirthDate", "Address", "Phone Number", "Pupil ID", "Pupil Fullname"));
+                    writer.newLine();
+                    for (int i = 0; i < deletedObjectsCount; i++) {
+                        if (deletedObjects[i] instanceof Parent) {
+                            writer.write(deletedObjects[i].toString());
+                            writer.newLine();
+                        }
+                    }
+                    writer.write("================================================================");
+                    writer.newLine();
+                }
+
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
 
-            if (!flags[0] && !flags[1]) {
+            if (!flags[0] && !flags[1] && !flags[2]) {
                 System.out.println("Recycle Bin is clear");
             } else {
                 System.out.println("Do you want to restore or delete your data ? Restore(R/r) : Delete(D/d)");
@@ -140,12 +160,20 @@ public class Redux {
                     // teacher.setStatus(true);
                     break;
                 }
-            } else {
-                System.out.println("Instance not found!");
+            } else if (deletedObjects[i] instanceof Parent) {
+                Parent parent = (Parent) deletedObjects[i];
+                if (parent.getParentID().equalsIgnoreCase(ID)) {
+                    parent.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                } else {
+                    System.out.println("Instance not found!");
+                }
             }
-        }
-        if (isRestore) {
-            System.out.println("Data restored successfully!");
+            if (isRestore) {
+                System.out.println("Data restored successfully!");
+            }
         }
     }
 
@@ -156,6 +184,9 @@ public class Redux {
                 pupil.setStatus(true);
             } else if (deletedObjects[i] instanceof Teacher) {
                 // Similar restoration logic for Teacher
+            } else if (deletedObjects[i] instanceof Parent) {
+                Parent parent = (Parent) deletedObjects[i];
+                parent.setStatus(true);
             }
         }
         System.out.println("All data have been restored successfully!");
@@ -170,7 +201,7 @@ public class Redux {
                 if (pupil.getPupilID().equalsIgnoreCase(ID)) {
                     String address = pupil.getAddress().toString().replace(" Duong ", " ");
                     String record = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getSex();
+                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getgender();
                     PupilManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -182,12 +213,26 @@ public class Redux {
                     // teacher.setStatus(true);
                     // break;
                 }
-            } else {
-                System.out.println("Instance not found!");
+            } else if (deletedObjects[i] instanceof Parent) {
+                Parent parent = (Parent) deletedObjects[i];
+                if (parent.getParentID().equalsIgnoreCase(ID)) {
+                    String address = parent.getAddress().toString().replace(" Duong ", " ");
+                    String record = parent.getParentID() + "-" + parent.getFullname() + "-" + parent.getBirthDate()
+                            + "-"
+                            + address + "-" + parent.getPhoneNumber() + "-" + parent.getgender();
+                    ParentManagement.deleteRecord(record);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+
+                else {
+                    System.out.println("Instance not found!");
+                }
             }
-        }
-        if (isDelete) {
-            System.out.println("Data deleted successfully!");
+            if (isDelete) {
+                System.out.println("Data deleted successfully!");
+            }
         }
     }
 
@@ -197,11 +242,17 @@ public class Redux {
                 Pupil pupil = (Pupil) deletedObjects[i];
                 String address = pupil.getAddress().toString().replace(" Duong ", " ");
                 String pupilRecord = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getSex();
+                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getgender();
 
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {
                 // Similar deletion logic for Teacher
+            } else if (deletedObjects[i] instanceof Parent) {
+                Parent parent = (Parent) deletedObjects[i];
+                String address = parent.getAddress().toString().replace(" Duong ", " ");
+                String record = parent.getParentID() + "-" + parent.getFullname() + "-" + parent.getBirthDate() + "-"
+                        + address + "-" + parent.getPhoneNumber() + "-" + parent.getgender();
+                ParentManagement.deleteRecord(record);
             }
         }
         System.out.println("All data have been permanently deleted successfully!");
@@ -224,6 +275,12 @@ public class Redux {
                     // index = i;
                     // break;
                 }
+            } else if (deletedObjects[i] instanceof Parent) {
+                Parent parent = (Parent) deletedObjects[i];
+                if (parent.getParentID().equalsIgnoreCase(ID)) {
+                    index = i;
+                    break;
+                }
             }
         }
         return index;
@@ -242,15 +299,17 @@ public class Redux {
     }
 
     public static boolean[] checkInstances() {
-        boolean pupilFlag = false, teacherFlag = false;
+        boolean pupilFlag = false, teacherFlag = false, parentFlag = false;
         for (int i = 0; i < deletedObjectsCount; i++) {
             if (deletedObjects[i] instanceof Pupil) {
                 pupilFlag = true;
             } else if (deletedObjects[i] instanceof Teacher) {
                 teacherFlag = true;
+            } else if (deletedObjects[i] instanceof Parent) {
+                parentFlag = true;
             }
         }
-        return new boolean[] { pupilFlag, teacherFlag };
+        return new boolean[] { pupilFlag, teacherFlag, parentFlag };
     }
 
     public static void signInForm(Scanner sc) {
