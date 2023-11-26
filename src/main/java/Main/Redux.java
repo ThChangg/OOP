@@ -11,6 +11,9 @@ import Classes.Account.AccountManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
+import Classes.Classroom.Classroom;
+import Classes.Classroom.ClassroomManagement;
+
 import Classes.Teachers.TeacherManagement;
 
 public class Redux {
@@ -74,11 +77,27 @@ public class Redux {
                     writer.write("================================================================");
                     writer.newLine();
                 }
+
+                if (flags[2]) {
+                    // Check if existing at least one Classroom instance
+                    writer.write("++++++++++++++++ Classroom Management List Session ++++++++++++++++");
+                    writer.newLine();
+                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%16s", "ClassName", "ClassManager", "GradeNumber", "GradeManager"));
+                    writer.newLine();
+                    for (int i = 0; i < deletedObjectsCount; i++) {
+                        if (deletedObjects[i] instanceof Classroom) {
+                            writer.write(deletedObjects[i].toString());
+                            writer.newLine();
+                        }
+                    }
+                    writer.write("================================================================");
+                    writer.newLine();
+                }
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
 
-            if (!flags[0] && !flags[1]) {
+            if (!flags[0] && !flags[1] && !flags[2] ) {
                 System.out.println("Recycle Bin is clear");
             } else {
                 System.out.println("Do you want to restore or delete your data ? Restore(R/r) : Delete(D/d)");
@@ -143,7 +162,17 @@ public class Redux {
                     removeElementFromRecycleBin(ID);
                     break;
                 }
-            } else {
+            } 
+            else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                if (classroom.getClassName().equalsIgnoreCase(ID)) {
+                    classroom.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+            }
+            else {
                 System.out.println("Instance not found!");
             }
         }
@@ -160,6 +189,10 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 teacher.setStatus(true);
+            } else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                classroom.setStatus(true);
+               
             }
         }
         System.out.println("All data have been restored successfully!");
@@ -183,17 +216,29 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
-                    // teacher.setStatus(true);
-                    // break;
+                    String classNameFormat = teacher.getClassroom() == null ? "null" : teacher.getClassroom().getClassName();
                     String address = teacher.getAddress().toString().replace(" Duong ", " ");
                     String record = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
-                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+                            + address + "-" + teacher.getMajor() + "-" + classNameFormat + "-" + teacher.getGender();
                     TeacherManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
                     break;
                 }
-            } else {
+            } 
+            else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                if(classroom.getClassName().equalsIgnoreCase(ID)) {
+                    String FormattedTeacherID = classroom.getClassManager() == null ? "null" : classroom.getClassManager().getTeacherID();
+                    String write = classroom.getClassName() + "-" + FormattedTeacherID + "-" 
+                                    + classroom.getGrade().getGradeNumber() + "-" + classroom.getGrade().getGradeManager().getTeacherID();
+                    ClassroomManagement.deleteRecord(write);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+            }
+            else {
                 System.out.println("Instance not found!");
             }
         }
@@ -213,11 +258,18 @@ public class Redux {
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
+                String classNameFormat = teacher.getClassroom() == null ? "null" : teacher.getClassroom().getClassName();
                 String address = teacher.getAddress().toString().replace(" Duong ", " ");
                 String teacherRecord = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
-                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+                        + address + "-" + teacher.getMajor() + "-" + classNameFormat + "-" + teacher.getGender();
 
                 TeacherManagement.deleteRecord(teacherRecord);
+            } else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                String FormattedTeacherID = classroom.getClassManager() == null ? "null" : classroom.getClassManager().getTeacherID();
+                String write = classroom.getClassName() + "-" + FormattedTeacherID + "-" 
+                                    + classroom.getGrade().getGradeNumber() + "-" + classroom.getGrade().getGradeManager().getTeacherID();
+                ClassroomManagement.deleteRecord(write); 
             }
         }
         System.out.println("All data have been permanently deleted successfully!");
@@ -240,6 +292,12 @@ public class Redux {
                     // index = i;
                     // break;
                 }
+            } else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                if(classroom.getClassName().equalsIgnoreCase(ID)) {
+                    index = i;
+                    break;
+                }
             }
         }
         return index;
@@ -258,15 +316,17 @@ public class Redux {
     }
 
     public static boolean[] checkInstances() {
-        boolean pupilFlag = false, teacherFlag = false;
+        boolean pupilFlag = false, teacherFlag = false, classroomFlag = false;
         for (int i = 0; i < deletedObjectsCount; i++) {
             if (deletedObjects[i] instanceof Pupil) {
                 pupilFlag = true;
             } else if (deletedObjects[i] instanceof Teacher) {
                 teacherFlag = true;
+            } else if (deletedObjects[i] instanceof Classroom) {
+                classroomFlag = true;
             }
         }
-        return new boolean[] { pupilFlag, teacherFlag };
+        return new boolean[] { pupilFlag, teacherFlag, classroomFlag };
     }
 
     public static void signInForm(Scanner sc) {
