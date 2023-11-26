@@ -13,6 +13,7 @@ import Classes.Parents.ParentManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
+import Classes.Teachers.TeacherManagement;
 
 public class Redux {
     private static AccountManagement accountManagement = new AccountManagement();
@@ -157,7 +158,9 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
-                    // teacher.setStatus(true);
+                    teacher.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
                     break;
                 }
             } else if (deletedObjects[i] instanceof Parent) {
@@ -183,7 +186,8 @@ public class Redux {
                 Pupil pupil = (Pupil) deletedObjects[i];
                 pupil.setStatus(true);
             } else if (deletedObjects[i] instanceof Teacher) {
-                // Similar restoration logic for Teacher
+                Teacher teacher = (Teacher) deletedObjects[i];
+                teacher.setStatus(true);
             } else if (deletedObjects[i] instanceof Parent) {
                 Parent parent = (Parent) deletedObjects[i];
                 parent.setStatus(true);
@@ -201,7 +205,7 @@ public class Redux {
                 if (pupil.getPupilID().equalsIgnoreCase(ID)) {
                     String address = pupil.getAddress().toString().replace(" Duong ", " ");
                     String record = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getgender();
+                            + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getGender();
                     PupilManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -212,6 +216,13 @@ public class Redux {
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
                     // teacher.setStatus(true);
                     // break;
+                    String address = teacher.getAddress().toString().replace(" Duong ", " ");
+                    String record = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
+                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+                    TeacherManagement.deleteRecord(record);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
                 }
             } else if (deletedObjects[i] instanceof Parent) {
                 Parent parent = (Parent) deletedObjects[i];
@@ -219,7 +230,7 @@ public class Redux {
                     String address = parent.getAddress().toString().replace(" Duong ", " ");
                     String record = parent.getParentID() + "-" + parent.getFullname() + "-" + parent.getBirthDate()
                             + "-"
-                            + address + "-" + parent.getPhoneNumber() + "-" + parent.getgender();
+                            + address + "-" + parent.getPhoneNumber() + "-" + parent.getGender();
                     ParentManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -242,16 +253,21 @@ public class Redux {
                 Pupil pupil = (Pupil) deletedObjects[i];
                 String address = pupil.getAddress().toString().replace(" Duong ", " ");
                 String pupilRecord = pupil.getPupilID() + "-" + pupil.getFullname() + "-" + pupil.getBirthDate() + "-"
-                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getgender();
+                        + address + "-" + pupil.getClassroom().getClassName() + "-" + pupil.getGender();
 
                 PupilManagement.deleteRecord(pupilRecord);
             } else if (deletedObjects[i] instanceof Teacher) {
-                // Similar deletion logic for Teacher
+                Teacher teacher = (Teacher) deletedObjects[i];
+                String address = teacher.getAddress().toString().replace(" Duong ", " ");
+                String teacherRecord = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate() + "-"
+                            + address + "-" + teacher.getMajor() + teacher.getClassroom().getClassName() + "-" + teacher.getGender();
+
+                TeacherManagement.deleteRecord(teacherRecord);
             } else if (deletedObjects[i] instanceof Parent) {
                 Parent parent = (Parent) deletedObjects[i];
                 String address = parent.getAddress().toString().replace(" Duong ", " ");
                 String record = parent.getParentID() + "-" + parent.getFullname() + "-" + parent.getBirthDate() + "-"
-                        + address + "-" + parent.getPhoneNumber() + "-" + parent.getgender();
+                        + address + "-" + parent.getPhoneNumber() + "-" + parent.getGender();
                 ParentManagement.deleteRecord(record);
             }
         }
@@ -269,8 +285,8 @@ public class Redux {
                     break;
                 }
             } else if (deletedObjects[i] instanceof Teacher) {
-                Teacher pupil = (Teacher) deletedObjects[i];
-                if (pupil.getTeacherID().equalsIgnoreCase(ID)) {
+                Teacher teacher = (Teacher) deletedObjects[i];
+                if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
                     // pupil.setStatus(true);
                     // index = i;
                     // break;

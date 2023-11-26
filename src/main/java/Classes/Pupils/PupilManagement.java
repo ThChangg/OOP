@@ -240,19 +240,19 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
                 String gender = "";
                 do {
-                    System.out.println("Old gender: " + pupil.getgender());
+                    System.out.println("Old gender: " + pupil.getGender());
                     System.out.print("New gender (Format: male / female): ");
                     gender = sc.nextLine();
 
                     if (!gender.isEmpty()) {
-                        flag = Pupil.isValidgender(gender);
+                        flag = Pupil.isValidGender(gender);
                         if (flag) {
-                            pupil.setgender(gender);
+                            pupil.setGender(gender);
                         } else {
                             System.out.println("gender is invalid (Wrong format)!");
                         }
                     } else {
-                        gender = pupil.getgender();
+                        gender = pupil.getGender();
                     }
                 } while (!flag);
 

@@ -49,11 +49,11 @@ public class Person {
         this.address = address;
     }
 
-    public String getgender() {
+    public String getGender() {
         return this.gender;
     }
 
-    public void setgender(String gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -62,7 +62,7 @@ public class Person {
         return String.format("%-20s\t%-6s\t%-10s\t%-80s", fullname, gender, birthDate, address);
     }
 
-    public static boolean isValidgender(String gender) {
+    public static boolean isValidGender(String gender) {
         return gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female");
     }
 

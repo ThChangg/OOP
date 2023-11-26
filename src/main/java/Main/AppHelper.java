@@ -135,6 +135,7 @@ public class AppHelper {
             // Add more else if blocks for other management objects
         }
         setupPupilManagement(pupilManagement, classroomManagement, parentManagement);
+        setupClassroomManagement(teacherManagement, classroomManagement);
         System.out.println("App is now initialized!");
     }
 
@@ -173,6 +174,79 @@ public class AppHelper {
         }
     }
 
+    public static void setupClassroomManagement(Object... managementObjects) {
+        ClassroomManagement classroomManagement = null;
+        TeacherManagement teacherManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            }
+            // Add more else if blocks for other management objects
+        }
+
+        int teacherIndex = 0;
+        Classroom classroomList[] = classroomManagement.getClassroomManagement();
+        Teacher teacherList[] = teacherManagement.getTeacherManagement();
+
+        for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
+            // A class will be managed by a teacher
+            classroomList[i].setClassManagerID(teacherList[teacherIndex]);
+            teacherList[i].setClassroom(classroomList[i]);
+            teacherIndex++;
+
+            // Every three classes will form a block and have a teacher managing that block
+            switch (classroomList[i].getGrade().getGradeNumber()) {
+                case 1:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[2]); // GV003
+                    break;
+                case 2:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[3]); // GV004
+                    break;
+                case 3:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[7]); // GV008
+                    break;
+                case 4:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[10]); // GV011
+                    break;
+                case 5:
+                    classroomList[i].getGrade().setGradeManagerID(teacherList[13]); // GV014
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    // public static void setupTeacherManagement(Object... managementObjects) {
+    // ClassroomManagement classroomManagement = null;
+    // TeacherManagement teacherManagement = null;
+    //
+    // for (Object managementObject : managementObjects) {
+    // if (managementObject instanceof ClassroomManagement) {
+    // classroomManagement = (ClassroomManagement) managementObject;
+    // } else if (managementObject instanceof TeacherManagement) {
+    // teacherManagement = (TeacherManagement) managementObject;
+    // }
+    // // Add more else if blocks for other management objects
+    // }
+    //
+    // int teacherIndex = 0;
+    // Classroom classroomList[] = classroomManagement.getClassroomManagement();
+    // Teacher teacherList[] = teacherManagement.getTeacherManagement();
+    //
+    // for (int i = 0; i < teacherManagement.getCurrentIndex(); i++) {
+    // for (int j = 0; j < classroomManagement.getCurrentIndex(); j++) {
+    // if
+    // (teacherList[i].getClassroom().getClassName().equalsIgnoreCase(classroomList[j].getClassName()))
+    // {
+    // teacherList[i].setClassroom(classroomList[j]);
+    // }
+    // }
+    // }
+    // }
     public static void appDisplay(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
         ClassroomManagement classroomManagement = null;
@@ -266,19 +340,17 @@ public class AppHelper {
                     break;
 
                 case 2:
-                    addTeachersToTeacherManagementList(teacherManagement, sc);
+                    addTeachersToTeacherManagementList(sc, teacherManagement, classroomManagement);
                     break;
 
                 case 3:
-                    addParentsToParentManagementList(parentManagement, sc);
-                    break;
 
                 case 4:
 
                     break;
 
                 case 5:
-                    addClassroomsToClassroomManagementList(classroomManagement, sc);
+                    addParentsToParentManagementList(parentManagement, sc);
                     break;
 
                 default:
@@ -467,9 +539,9 @@ public class AppHelper {
 
             String gender = "";
             do {
-                System.out.print("gender (format: male / female): ");
+                System.out.print("Gender (format: male / female): ");
                 gender = scanner.nextLine();
-                flag = Pupil.isValidgender(gender);
+                flag = Pupil.isValidGender(gender);
 
                 if (!flag) {
                     System.out.println("gender is invalid (Wrong format)!");
@@ -571,7 +643,7 @@ public class AppHelper {
             do {
                 System.out.print("gender (format: male / female): ");
                 gender = scanner.nextLine();
-                flag = Parent.isValidgender(gender);
+                flag = Parent.isValidGender(gender);
 
                 if (!flag) {
                     System.out.println("gender is invalid (Wrong format)!");
@@ -604,23 +676,47 @@ public class AppHelper {
         parentManagement.delete(ID);
     }
 
-    public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
+    
+
+    public static void addTeachersToTeacherManagementList(Scanner scanner, Object... managementObjects) {
+        
+        TeacherManagement teacherManagement = null;
+        ClassroomManagement classroomManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            } else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            }
+        }
+        
         char option = 'y';
         do {
+            boolean flag;
+            String fullName = "";
             System.out.println("Add teachers: ");
-            System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
-            String fullName = scanner.nextLine();
+            do {
+                System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
+                fullName = scanner.nextLine();
+                flag = Teacher.isValidName(fullName);
+
+                if (!flag) {
+                    System.out.println("Fullname is invalid (Wrong format)!");
+                }
+
+            } while (!flag);
 
             String date = "";
             do {
                 System.out.print("BirthDate: (format: 16/02/2000): ");
                 date = scanner.nextLine();
-                boolean flag = Date.isValidDateAndMonth(date);
+                flag = Date.isValidDateAndMonth(date);
 
                 if (!flag) {
                     System.out.println("BirthDate is invalid (Wrong format)!");
                 }
-            } while (!Date.isValidDateAndMonth(date));
+            } while (!flag);
             Date dob = new Date(date);
 
             String inputAddress = "";
@@ -628,16 +724,55 @@ public class AppHelper {
                 System.out.print(
                         "Address: (format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
                 inputAddress = scanner.nextLine();
-                boolean flag = Address.isValidAddress(inputAddress);
+                flag = Address.isValidAddress(inputAddress);
 
                 if (!flag) {
                     System.out.println("Address is invalid (Wrong format)!");
                 }
-            } while (!Address.isValidAddress(inputAddress));
+            } while (!flag);
             Address address = new Address(inputAddress);
 
+            String major = "";
+            do {
+                System.out.print("Major (Format: Math, Literature, English, PE): ");
+                major = scanner.nextLine();
+                flag = TeacherManagement.isValidMajor(major);
+
+                if (!flag) {
+                    System.out.println("Major is invalid (Wrong format)!");
+                }
+
+            } while (!flag);
+
+            Classroom classroom = null;
+            ClassroomManagement.displayClassroomFormation();
+            String className = "";
+            do {
+                System.out.print("Class (format: 1A1): ");
+                className = scanner.nextLine();
+
+                flag = ClassroomManagement.isValidClassroom(className);
+
+                if (!flag) {
+                    System.out.println("Class is invalid (No class available)!");
+                }
+            } while (!flag);
+            String gender = "";
+            do {
+                System.out.print("Gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Teacher.isValidGender(gender);
+
+                if (!flag) {
+                    System.out.println("Gender is invalid (Wrong format)!");
+                }
+            } while (!flag);
+
             String teacherID = createNewID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher(teacherID, fullName, dob, address));
+            teacherManagement.add(new Teacher(teacherID, className, major, fullName, gender, dob, address));
+            String record = teacherID + "-" + fullName + "-" + date + "-" + dob + "-" + inputAddress + "-"
+                    + major + "-" + className + "-" + gender;
+            teacherManagement.insertIntoDatabase(record);
 
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
@@ -649,14 +784,14 @@ public class AppHelper {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.update(ID);
-        System.out.println("Update successfully!");
+        // System.out.println("Update successfully!");
     }
 
     public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.delete(ID);
-        System.out.println("Delete successfully!");
+        // System.out.println("Delete successfully!");
     }
 
     public static void appSearch(Scanner sc, Object... managementObjects) {
@@ -681,7 +816,9 @@ public class AppHelper {
             System.out.println("======================= Menu =======================");
             System.out.println("1. Search pupils data by name");
             System.out.println("2. Search pupils data by class");
-            System.out.println("3. Search parents data by name");
+            System.out.println("3. Search teachers data by name");
+            System.out.println("4. Search teachers data by class");
+            System.out.println("5. Search parents data by name");
             System.out.println("0. Exit");
 
             option = Integer.parseInt(sc.nextLine());
@@ -699,15 +836,29 @@ public class AppHelper {
                     pupilManagement.findPupilsBy(name, "getClassName", Pupil.class, Classroom.class);
                     pupilManagement.display(pupilManagement.getSearchResultLength());
                     break;
+
                 case 3:
+                    System.out.print("Enter name: ");
+                    name = sc.nextLine();
+                    teacherManagement.findTeachersBy(name, "getFullname", Teacher.class, null);
+                    teacherManagement.display(teacherManagement.getSearchResultLength());
+                    break;
+
+                case 4:
+                    System.out.print("Enter ClassName: ");
+                    name = sc.nextLine();
+                    teacherManagement.findTeachersBy(name, "getClassName", Teacher.class, Classroom.class);
+                    teacherManagement.display(teacherManagement.getSearchResultLength());
+                    break;
+                case 5:
                     System.out.print("Enter Parent Name: ");
                     name = sc.nextLine();
                     parentManagement.findParentsBy(name);
                     parentManagement.display(parentManagement.getSearchResult(),
                             parentManagement.getSearchResultLength());
                     break;
-
                 default:
+
                     break;
             }
         } while (option != 0);

@@ -174,7 +174,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                             ? parent.getPupil().getPupilID() + "\t" + parent.getPupil().getFullname()
                             : "";
                     writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s",
-                            parent.getParentID(), parent.getFullName(), parent.getgender(), parent.getBirthDate(),
+                            parent.getParentID(), parent.getFullName(), parent.getGender(), parent.getBirthDate(),
                             parent.getAddress(), parent.getPhoneNumber(), "", pupilInfo));
                     writer.newLine();
                 }
@@ -254,12 +254,12 @@ public class ParentManagement implements IFileManagement, ICRUD {
                         System.out.println("Phone Number is invalid (Wrong format)!");
                     }
                 }
-                System.out.println("Old Gender: " + parent.getgender());
+                System.out.println("Old Gender: " + parent.getGender());
                 System.out.print("New Gender (Format: male / female): ");
                 String gender = sc.nextLine();
                 if (!gender.isEmpty()) {
-                    if (Parent.isValidgender(gender)) {
-                        parent.setgender(gender);
+                    if (Parent.isValidGender(gender)) {
+                        parent.setGender(gender);
                     } else {
                         System.out.println("Gender is invalid (Wrong format)!");
                     }
