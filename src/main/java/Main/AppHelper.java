@@ -192,6 +192,7 @@ public class AppHelper {
         for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
             //A class will be managed by a teacher
             classroomList[i].setClassManagerID(teacherList[teacherIndex]);
+            teacherList[i].setClassroom(classroomList[i]);
             teacherIndex++;
 
             //Every three classes will form a block and have a teacher managing that block
@@ -216,31 +217,31 @@ public class AppHelper {
             }
         }
     }
-    public static void setupTeacherManagement(Object... managementObjects) {
-        ClassroomManagement classroomManagement = null;
-        TeacherManagement teacherManagement = null;
-
-        for (Object managementObject : managementObjects) {
-            if (managementObject instanceof ClassroomManagement) {
-                classroomManagement = (ClassroomManagement) managementObject;
-            } else if (managementObject instanceof TeacherManagement) {
-                teacherManagement = (TeacherManagement) managementObject;
-            }
-            // Add more else if blocks for other management objects
-        }
-
-        int teacherIndex = 0;
-        Classroom classroomList[] = classroomManagement.getClassroomManagement();
-        Teacher teacherList[] = teacherManagement.getTeacherManagement();
-
-        for (int i = 0; i < teacherManagement.getCurrentIndex(); i++) {          
-            for (int j = 0; j < classroomManagement.getCurrentIndex(); j++) {
-                if (teacherList[i].getClassroom().getClassName().equalsIgnoreCase(classroomList[j].getClassName())) {
-                    teacherList[i].setClassroom(classroomList[j]);
-                }
-            }
-        }
-    }
+//    public static void setupTeacherManagement(Object... managementObjects) {
+//        ClassroomManagement classroomManagement = null;
+//        TeacherManagement teacherManagement = null;
+//
+//        for (Object managementObject : managementObjects) {
+//            if (managementObject instanceof ClassroomManagement) {
+//                classroomManagement = (ClassroomManagement) managementObject;
+//            } else if (managementObject instanceof TeacherManagement) {
+//                teacherManagement = (TeacherManagement) managementObject;
+//            }
+//            // Add more else if blocks for other management objects
+//        }
+//
+//        int teacherIndex = 0;
+//        Classroom classroomList[] = classroomManagement.getClassroomManagement();
+//        Teacher teacherList[] = teacherManagement.getTeacherManagement();
+//
+//        for (int i = 0; i < teacherManagement.getCurrentIndex(); i++) {          
+//            for (int j = 0; j < classroomManagement.getCurrentIndex(); j++) {
+//                if (teacherList[i].getClassroom().getClassName().equalsIgnoreCase(classroomList[j].getClassName())) {
+//                    teacherList[i].setClassroom(classroomList[j]);
+//                }
+//            }
+//        }
+//    }
     public static void appDisplay(Scanner sc, Object... managementObjects) {
         PupilManagement pupilManagement = null;
         ClassroomManagement classroomManagement = null;
