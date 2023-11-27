@@ -758,11 +758,10 @@ public class AppHelper {
                     classroomManagement.fileSearchList(classroomManagement.getSearchListLength());
                     break;
                 case 4:
-                    System.out.print("Enter Parent Name: ");
+                    System.out.print("Enter Pupil Name: ");
                     name = sc.nextLine();
                     parentManagement.findParentsBy(name);
-                    parentManagement.display(parentManagement.getSearchResult(),
-                            parentManagement.getSearchResultLength());
+                    parentManagement.display(parentManagement.getSearchResultLength());
                     break;
 
                 default:

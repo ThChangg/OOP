@@ -154,14 +154,14 @@ public class ParentManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void display(Parent[] searchResult, int arrayLength) {
+    public void display(int arrayLength) {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
 
         File file = new File(relativePath);
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, false))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Search result:");
                 writer.newLine();
                 writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s", "Parent ID",
@@ -325,29 +325,14 @@ public class ParentManagement implements IFileManagement, ICRUD {
         Arrays.fill(searchResult, null);
         searchResultLength = 0;
 
-        // Search by Fullname
-        searchByFullname(searchValue);
-
-        // Display search results if there are any
-        if (searchResultLength > 0) {
-            display(searchResult, searchResultLength);
-        } else {
-            System.out.println("No matching records found.");
-        }
-    }
-
-    private void searchByFullname(String partialName) {
-        // Clear the searchResult array before each search
-        Arrays.fill(searchResult, null);
-        searchResultLength = 0;
-
-        // Search by Fullname
         for (int i = 0; i < currentIndex; i++) {
-            if (parentList[i].getStatus()
-                    && parentList[i].getFullname().toLowerCase().contains(partialName.toLowerCase())) {
-                searchResult[searchResultLength++] = parentList[i];
-            }
+            if (parentList[i].getStatus())
+                if (parentList[i].getPupil().getFullname().toLowerCase().contains(searchValue)) {
+                    searchResult[searchResultLength++] = parentList[i];
+                }
+
         }
+
     }
 
     public int getParentArrayIndex(String ID) {

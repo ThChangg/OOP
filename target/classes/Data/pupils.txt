@@ -57,4 +57,4 @@ HS056-Nguyen Thi Nga-09/01/2013-56, Nguyen Van An, Phuong 5, Quan Tan Binh, Than
 HS057-Hoang Van Nam-02/06/2013-57, Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh-5A3-male
 HS058-Pham Thi Phuong-27/11/2013-58, Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh-5A3-male
 HS059-Nguyen Thi Thu Hien-08/05/2013-59, Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh-5A3-female
-HS060-Hoang Van Ngan-02/06/2013-57, Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh-5A3-male
+HS060-Le Van Hoang-15/10/2013-60, Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh-5A3-male

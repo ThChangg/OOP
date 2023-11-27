@@ -56,5 +56,5 @@ PH055-Tran Thi Ha-12/12/1956-55, Tran Van Hoang, Phuong 4, Quan Tan Binh, Thanh 
 PH056-Le Thi Mai-09/08/1959-56, Nguyen Van An, Phuong 5, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156433-female
 PH057-Do Van Hung-28/02/1955-57, Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156434-male
 PH058-Nguyen Van Hoa-14/06/1954-58, Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156435-male
-PH059-Do Van Hung-28/02/1955-57, Pham Thi Hang, Phuong 7, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156434-male
-PH060-Nguyen Van Hoa-14/06/1954-58, Tran Van Duc, Phuong 8, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156435-male
+PH059-Tran Thi Hoa-19/03/1955-59, Nguyen Thi Lan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156436-female
+PH060-Hoang Thi Hoa-10/10/1957-60, Trinh Van Dong, Phuong 10, Quan Tan Binh, Thanh pho Ho Chi Minh-0832156437-female

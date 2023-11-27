@@ -1,0 +1,17 @@
+Search result:
+Parent ID	Parent Fullname     	gender	BirthDate 	Address                                                                         	Phone Number	Pupil ID	Pupil Fullname      
+================================================================
+Search result:
+Parent ID	Parent Fullname     	gender	BirthDate 	Address                                                                         	Phone Number	Pupil ID	Pupil Fullname      
+================================================================
+Search result:
+Parent ID	Parent Fullname     	gender	BirthDate 	Address                                                                         	Phone Number	Pupil ID	Pupil Fullname      
+PH048	Le Thi Tuyet        	female	08/12/1978	48, Duong Le Thi Tuyet, Phuong 7, Quan Tan Phu, Thanh pho Ho Chi Minh           	0832156425 	     	HS048	Nguyen Thi Tam
+================================================================
+Search result:
+Parent ID	Parent Fullname     	gender	BirthDate 	Address                                                                         	Phone Number	Pupil ID	Pupil Fullname      
+================================================================
+Search result:
+Parent ID	Parent Fullname     	gender	BirthDate 	Address                                                                         	Phone Number	Pupil ID	Pupil Fullname      
+PH048  	Le Thi Tuyet        	female	08/12/1978	48, Duong Le Thi Tuyet, Phuong 7, Quan Tan Phu, Thanh pho Ho Chi Minh           	0832156425 	     	HS048	Nguyen Thi Tam
+================================================================
