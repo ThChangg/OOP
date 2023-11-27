@@ -13,6 +13,10 @@ import Classes.Points.PointManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
 import Classes.Teachers.Teacher;
+import Classes.Classroom.Classroom;
+import Classes.Classroom.ClassroomManagement;
+
+import Classes.Teachers.TeacherManagement;
 
 public class Redux {
     private static AccountManagement accountManagement = new AccountManagement();
@@ -21,7 +25,7 @@ public class Redux {
     public static Object deletedObjects[] = new Object[100];
     public static int deletedObjectsCount = 0;
 
-    public static void add(Object obj) {
+    public static void addToRecycleBin(Object obj) {
         if (deletedObjectsCount < deletedObjects.length) {
             deletedObjects[deletedObjectsCount++] = obj;
         } else {
@@ -157,13 +161,31 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
-                    // teacher.setStatus(true);
+                    teacher.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
                     break;
                 }
-                 } else if (deletedObjects[i] instanceof Point) {
+            } else if (deletedObjects[i] instanceof Parent) {
+                Parent parent = (Parent) deletedObjects[i];
+                if (parent.getParentID().equalsIgnoreCase(ID)) {
+                    parent.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+            } else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                if (classroom.getClassName().equalsIgnoreCase(ID)) {
+                    classroom.setStatus(true);
+                    isRestore = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+            } else if (deletedObjects[i] instanceof Point) {
                 Point point = (Point) deletedObjects[i];
                 if (point.getPointID().equalsIgnoreCase(ID)) {
-                     point.setStatus(true);
+                    point.setStatus(true);
                     isRestore = true;
                     removeElementFromRecycleBin(ID);
                     break;
@@ -175,6 +197,7 @@ public class Redux {
         if (isRestore) {
             System.out.println("Data restored successfully!");
         }
+
     }
 
     public static void restoreAllData() {
@@ -210,15 +233,38 @@ public class Redux {
             } else if (deletedObjects[i] instanceof Teacher) {
                 Teacher teacher = (Teacher) deletedObjects[i];
                 if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
-                    // teacher.setStatus(true);
-                    // break;
+                    String classNameFormat = teacher.getClassroom() == null ? "null"
+                            : teacher.getClassroom().getClassName();
+                    String address = teacher.getAddress().toString().replace(" Duong ", " ");
+                    String record = teacher.getTeacherID() + "-" + teacher.getFullname() + "-" + teacher.getBirthDate()
+                            + "-"
+                            + address + "-" + teacher.getMajor() + "-" + classNameFormat + "-" + teacher.getGender();
+                    TeacherManagement.deleteRecord(record);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
                 }
-            }else if(deletedObjects[i] instanceof Point){  
+            } else if (deletedObjects[i] instanceof Classroom) {
+                Classroom classroom = (Classroom) deletedObjects[i];
+                if (classroom.getClassName().equalsIgnoreCase(ID)) {
+                    String FormattedTeacherID = classroom.getClassManager() == null ? "null"
+                            : classroom.getClassManager().getTeacherID();
+                    String write = classroom.getClassName() + "-" + FormattedTeacherID + "-"
+                            + classroom.getGrade().getGradeNumber() + "-"
+                            + classroom.getGrade().getGradeManager().getTeacherID();
+                    ClassroomManagement.deleteRecord(write);
+                    isDelete = true;
+                    removeElementFromRecycleBin(ID);
+                    break;
+                }
+            } else if (deletedObjects[i] instanceof Point) {
                 Point point = (Point) deletedObjects[i];
                 if (point.getPointID().equalsIgnoreCase(ID)) {
-                    
-                    String record = point.getPointID() + "-" + point.getLiteraturePoint() + "-" + point.getMathPoint() + "-"
-                            + point.getPhysicalEducationPoint() + "-" + point.getEnglishPoint() + "-" + point.getConduct();
+
+                    String record = point.getPointID() + "-" + point.getLiteraturePoint() + "-" + point.getMathPoint()
+                            + "-"
+                            + point.getPhysicalEducationPoint() + "-" + point.getEnglishPoint() + "-"
+                            + point.getConduct();
                     PointManagement.deleteRecord(record);
                     isDelete = true;
                     removeElementFromRecycleBin(ID);
@@ -247,7 +293,9 @@ public class Redux {
                 // Similar deletion logic for Teacher
             } else if (deletedObjects[i] instanceof Point) {
                 Point point = (Point) deletedObjects[i];
-                String pointRecord = point.getPointID() + "-" +point.getLiteraturePoint()+ "-" + point.getMathPoint()+ "-" + point.getPhysicalEducationPoint() + "-"+ point.getEnglishPoint() + "-" + point.getConduct(); 
+                String pointRecord = point.getPointID() + "-" + point.getLiteraturePoint() + "-" + point.getMathPoint()
+                        + "-" + point.getPhysicalEducationPoint() + "-" + point.getEnglishPoint() + "-"
+                        + point.getConduct();
                 PointManagement.deleteRecord(pointRecord);
             }
         }
@@ -265,18 +313,18 @@ public class Redux {
                     break;
                 }
             } else if (deletedObjects[i] instanceof Teacher) {
-                Teacher pupil = (Teacher) deletedObjects[i];
-                if (pupil.getTeacherID().equalsIgnoreCase(ID)) {
-                    // pupil.setStatus(true);
-                    // index = i;
-                    // break;
+                Teacher teacher = (Teacher) deletedObjects[i];
+                if (teacher.getTeacherID().equalsIgnoreCase(ID)) {
+                    pupil.setStatus(true);
+                    index = i;
+                    break;
                 }
-            }else if (deletedObjects[i] instanceof Point) {
+            } else if (deletedObjects[i] instanceof Point) {
                 Point point = (Point) deletedObjects[i];
                 if (point.getPointID().equalsIgnoreCase(ID)) {
-                    
+
                     index = i;
-                     break;
+                    break;
                 }
             }
         }
@@ -296,13 +344,13 @@ public class Redux {
     }
 
     public static boolean[] checkInstances() {
-        boolean pupilFlag = false, teacherFlag = false, pointFlag =false;
+        boolean pupilFlag = false, teacherFlag = false, pointFlag = false;
         for (int i = 0; i < deletedObjectsCount; i++) {
             if (deletedObjects[i] instanceof Pupil) {
                 pupilFlag = true;
             } else if (deletedObjects[i] instanceof Teacher) {
                 teacherFlag = true;
-            }else if (deletedObjects[i] instanceof Point) {
+            } else if (deletedObjects[i] instanceof Point) {
                 pointFlag = true;
             }
         }

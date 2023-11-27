@@ -31,6 +31,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         searchResult = new Pupil[100];
         currentIndex = 0;
         searchResultLength = 0;
+
     }
 
     public Pupil[] getPupilList() {
@@ -311,7 +312,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     pupilList[i].setStatus(false);
-                    Redux.add(pupilList[i]);
+                    Redux.addToRecycleBin(pupilList[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -427,8 +428,11 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
 
         StringBuilder updatedContent = new StringBuilder();
-        for (String record : records) {
-            updatedContent.append(record).append("\n");
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if (i < records.length - 1) {
+                updatedContent.append("\n");
+            }
         }
 
         writeDatabase(updatedContent.toString());

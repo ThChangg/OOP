@@ -23,7 +23,6 @@ public class PointManagement implements IFileManagement, ICRUD {
     private Pupil[] pupilList;
     private int searchResultLength;
 
-  
     public Point[] getListPoint() {
         return this.listPoint;
     }
@@ -31,6 +30,7 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void setPointList(Point listPoint[]) {
         this.listPoint = listPoint;
     }
+
     public void setPupilList(Pupil[] pupilList) {
         this.pupilList = pupilList;
     }
@@ -53,7 +53,7 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
     }
-     
+
     public Point[] getSearchResult() {
         return this.searchResult;
     }
@@ -69,6 +69,7 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void setSearchResultLength(int searchResultLength) {
         this.searchResultLength = searchResultLength;
     }
+
     @Override
     public void initialize() {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\points.txt";
@@ -112,7 +113,6 @@ public class PointManagement implements IFileManagement, ICRUD {
     @Override
     public void display() {
         String headerFormat = "%-5s\t%-15s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s";
-        
 
         String relativePath = System.getProperty("user.dir")
                 + "\\src\\main\\java\\Main\\output.txt";
@@ -161,8 +161,8 @@ public class PointManagement implements IFileManagement, ICRUD {
         return null; // Return null if the pupil is not found
     }
 
-     // Display method for searching points by pupilID
-     public void displayByPupilID(String pupilID) {
+    // Display method for searching points by pupilID
+    public void displayByPupilID(String pupilID) {
         String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
 
         File file = new File(relativePath);
@@ -403,7 +403,7 @@ public class PointManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     listPoint[i].setStatus(false);
-                    Redux.add(listPoint[i]);
+                    Redux.addToRecycleBin(listPoint[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -486,24 +486,24 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
 
         // Rebuild the content with the updated records
-    //     StringBuilder updatedContent = new StringBuilder();
-    //     for (String record : records) {
-    //         updatedContent.append(record).append("\n");
-    //     }
+        // StringBuilder updatedContent = new StringBuilder();
+        // for (String record : records) {
+        // updatedContent.append(record).append("\n");
+        // }
 
-    //     // Write the updated content back to the database
-    //     writeDatabase(updatedContent.toString().trim());
-    // }
+        // // Write the updated content back to the database
+        // writeDatabase(updatedContent.toString().trim());
+        // }
 
-    StringBuilder updatedContent = new StringBuilder();
-    for (int i = 0; i < records.length; i++) {
-    updatedContent.append(records[i]);
-    if (i < records.length - 1) {
-    updatedContent.append("\n");
-    }
-    }
+        StringBuilder updatedContent = new StringBuilder();
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if (i < records.length - 1) {
+                updatedContent.append("\n");
+            }
+        }
 
-    writeDatabase(updatedContent.toString());
+        writeDatabase(updatedContent.toString());
     }
 
     public static void deleteRecord(String record) {
@@ -551,7 +551,5 @@ public class PointManagement implements IFileManagement, ICRUD {
             e.printStackTrace();
         }
     }
-
-
 
 }

@@ -62,8 +62,6 @@ public class Person {
         return String.format("%-20s\t%-6s\t%-10s\t%-80s", fullname, gender, birthDate, address);
     }
 
-    
-
     public static boolean isValidGender(String gender) {
         return gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female");
     }
