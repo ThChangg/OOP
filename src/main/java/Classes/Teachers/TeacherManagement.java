@@ -241,7 +241,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         gender = teacher.getGender();
                     }
                 } while (!flag);
-                
+
                 String major = "";
                 do {
                     System.out.println("Old Major: " + teacher.getMajor());
@@ -263,7 +263,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                 String address = "";
                 do {
                     System.out.println("Old Address: " + teacher.getAddress());
-                    System.out.print("New Address (Format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
+                    System.out.print(
+                            "New Address (Format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
                     address = sc.nextLine();
                     if (!address.isEmpty()) {
                         flag = Address.isValidAddress(address);
@@ -296,7 +297,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     teacherManagement[i].setStatus(false);
-                    Redux.add(teacherManagement[i]);
+                    Redux.addToRecycleBin(teacherManagement[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -344,7 +345,8 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try {
                 if (nestedClass != null) {
                     // Get the nested object from the main object
-                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName()).invoke(teacherManagement[i]);
+                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
+                            .invoke(teacherManagement[i]);
 
                     // Use reflection to get the appropriate method from the nested class
                     Method getterMethod = nestedClass.getMethod(findBy);
@@ -380,14 +382,14 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     public static boolean isValidMajor(String major) {
         boolean flag = false;
-        String validMajor[] = {"Math", "Literature", "English", "PE"};
+        String validMajor[] = { "Math", "Literature", "English", "PE" };
 
-        if(major == null || major.trim().isEmpty()) {
+        if (major == null || major.trim().isEmpty()) {
             flag = false;
         }
-        
-        for(String inputMajor : validMajor)  {
-            if(major.equalsIgnoreCase(inputMajor)) {
+
+        for (String inputMajor : validMajor) {
+            if (major.equalsIgnoreCase(inputMajor)) {
                 flag = true;
             }
         }
@@ -422,7 +424,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         StringBuilder updatedContent = new StringBuilder();
         for (int i = 0; i < records.length; i++) {
             updatedContent.append(records[i]);
-            if(i < records.length - 1){
+            if (i < records.length - 1) {
                 updatedContent.append("\n");
             }
         }

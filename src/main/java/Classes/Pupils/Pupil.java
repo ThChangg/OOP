@@ -1,5 +1,6 @@
 package Classes.Pupils;
 
+
 import java.lang.reflect.Field;
 import Classes.Classroom.Classroom;
 import Classes.Parents.Parent;
@@ -73,7 +74,6 @@ public class Pupil extends Person {
     public void setSubjectPoints(Point subjectPoints) {
         this.subjectPoints = subjectPoints;
     }
-
 
     public boolean isStatus() {
         return this.status;

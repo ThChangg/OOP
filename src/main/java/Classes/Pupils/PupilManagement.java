@@ -31,6 +31,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         searchResult = new Pupil[100];
         currentIndex = 0;
         searchResultLength = 0;
+
     }
 
     public Pupil[] getPupilList() {
@@ -81,7 +82,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         String pupilID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
-                        String sex = parts[5];
+                        String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -102,7 +103,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, sex);
+                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender);
                             this.add(pupil);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -130,7 +131,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Pupil Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Class"));
                 writer.newLine();
@@ -162,7 +163,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "Sex",
+                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
                         "BirthDate", "Address",
                         "Class"));
                 writer.newLine();
@@ -239,8 +240,8 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
                 String gender = "";
                 do {
-                    System.out.println("Old Gender: " + pupil.getGender());
-                    System.out.print("New Gender (Format: male / female): ");
+                    System.out.println("Old gender: " + pupil.getGender());
+                    System.out.print("New gender (Format: male / female): ");
                     gender = sc.nextLine();
 
                     if (!gender.isEmpty()) {
@@ -248,7 +249,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         if (flag) {
                             pupil.setGender(gender);
                         } else {
-                            System.out.println("Gender is invalid (Wrong format)!");
+                            System.out.println("gender is invalid (Wrong format)!");
                         }
                     } else {
                         gender = pupil.getGender();
@@ -310,7 +311,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
             for (int i = 0; i < currentIndex; i++) {
                 if (i == index) {
                     pupilList[i].setStatus(false);
-                    Redux.add(pupilList[i]);
+                    Redux.addToRecycleBin(pupilList[i]);
                 }
             }
             System.out.println("Delete successfully!");
@@ -426,8 +427,11 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
 
         StringBuilder updatedContent = new StringBuilder();
-        for (String record : records) {
-            updatedContent.append(record).append("\n");
+        for (int i = 0; i < records.length; i++) {
+            updatedContent.append(records[i]);
+            if (i < records.length - 1) {
+                updatedContent.append("\n");
+            }
         }
 
         writeDatabase(updatedContent.toString());
