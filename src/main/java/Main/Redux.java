@@ -88,9 +88,13 @@ public class Redux {
                             "ID", "LiteraturePoint", "MathPoint", "PhysicalEducationPoint",
                             "EnglishPoint", "PointConduct", "Rank", "Performance"));
                     writer.newLine();
+
                     for (int i = 0; i < deletedObjectsCount; i++) {
+
                         if (deletedObjects[i] instanceof Point) {
-                            writer.write(deletedObjects[i].toString());
+                            Point deletedPoint = (Point) deletedObjects[i];
+                            writer.write(deletedPoint.toString() + "-" + deletedPoint.getConduct().getRank() + "-"
+                                    + deletedPoint.getPerformance());
                             writer.newLine();
                         }
                     }

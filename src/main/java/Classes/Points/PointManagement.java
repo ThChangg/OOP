@@ -260,7 +260,7 @@ public class PointManagement implements IFileManagement, ICRUD {
             addedPoint.calculatePerformance();
 
             // Update the record in the database
-            updateRecord(addedPoint.toString());
+            // updateRecord(addedPoint.toString());
 
         } else {
             System.out.println("Point List is full. Cannot add more.");
