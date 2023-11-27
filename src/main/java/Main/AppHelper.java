@@ -22,6 +22,7 @@ public class AppHelper {
     public static void Menu() {
         PupilManagement pupilManagement = new PupilManagement();
         ParentManagement parentManagement = new ParentManagement();
+
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
         int option = -1;
@@ -194,11 +195,12 @@ public class AppHelper {
         int classroomIndex = 0;
         Pupil pupilList[] = pupilManagement.getPupilList();
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
-        Parent parentList[] = parentManagement.getParentManagement();
+        Parent parentList[] = parentManagement.getParentList();
 
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
             pupilList[i].setClassroom(classroomList[classroomIndex]);
             pupilList[i].setParents(parentList[i]);
+            parentList[i].setPupil(pupilList[i]);
             // pupilList[i].setSubjectPoints(pointManagement[i]);
             // pointManagement[i].setPupil(pupilList[i]);
             pupilsOfClassCount++;
@@ -213,7 +215,7 @@ public class AppHelper {
         }
     }
 
-    public static void connect(Object... managementObjects) {
+    public static void pupilConnection(Object... managementObjects) {
         PupilManagement pupilManagement = null;
         ParentManagement parentManagement = null;
         // PointManagement pointManagement = null;
@@ -231,10 +233,16 @@ public class AppHelper {
 
         Pupil pupilList[] = pupilManagement.getPupilList();
         int pupilListLength = pupilManagement.getCurrentIndex();
-        Parent parentList[] = parentManagement.getParentManagement();
+        Parent parentList[] = parentManagement.getParentList();
         int parentListLength = parentManagement.getCurrentIndex();
-        if (pupilListLength == parentListLength) {
-            pupilList[pupilListLength - 1].setParents(parentList[parentListLength - 1]);
+
+        for (int i = 0; i < pupilListLength; i++) {
+            if (i < parentListLength) {
+                pupilList[i].setParents(parentList[i]);
+                parentList[i].setPupil(pupilList[i]);
+            } else {
+                break;
+            }
         }
 
         // Point pointList[] = pointManagement.getPointList();
@@ -243,6 +251,36 @@ public class AppHelper {
         // pupilList[pupilListLength - 1].setSubjectPoints(pointList[pointListLength -
         // 1]);
         // }
+    }
+
+    public static void classroomConnection(Object... managementObjects) {
+        TeacherManagement teacherManagement = null;
+        ClassroomManagement classroomManagement = null;
+        // PointManagement pointManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            } else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            }
+        }
+
+        Teacher teacherList[] = teacherManagement.getTeacherManagement();
+        int teacherListLength = teacherManagement.getCurrentIndex();
+        Classroom classroomList[] = classroomManagement.getClassroomManagement();
+        int classroomListLength = classroomManagement.getCurrentIndex();
+
+        for (int i = 0; i < teacherListLength; i++) {
+            if (i < classroomListLength) {
+                if (classroomList[i].getClassManager() != null) {
+                    teacherList[i].setClassroom(classroomList[i]);
+                    classroomList[i].setClassManager(teacherList[i]);
+                }
+            } else {
+                break;
+            }
+        }
     }
 
     public static void appDisplay(Scanner sc, Object... managementObjects) {
@@ -376,7 +414,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    addParentsToParentManagementList(sc, pupilManagement, parentManagement);
                     break;
 
                 case 4:
@@ -441,15 +479,18 @@ public class AppHelper {
 
             switch (option) {
                 case 1:
-                    updatePupilData(pupilManagement, sc);
+                    // updatePupilData(pupilManagement, sc);
+                    updatePupilData(sc, pupilManagement, classroomManagement, parentManagement);
                     break;
 
                 case 2:
-                    updateTeacherData(teacherManagement, sc);
+                    // updateTeacherData(teacherManagement, sc);
+                    updateTeacherData(sc, teacherManagement);
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    // updateParentData(parentManagement, sc);
+                    updateParentData(sc, pupilManagement, parentManagement);
                     break;
 
                 case 4:
@@ -457,7 +498,8 @@ public class AppHelper {
                     break;
 
                 case 5:
-                    updateClassroomData(classroomManagement, sc);
+                    // updateClassroomData(classroomManagement, sc);
+                    updateClassroomData(sc, classroomManagement, teacherManagement);
                     break;
 
                 default:
@@ -523,7 +565,7 @@ public class AppHelper {
                     break;
 
                 case 3:
-                    // parentManagement.display();
+                    deleteParentData(parentManagement, sc);
                     break;
 
                 case 4:
@@ -578,22 +620,29 @@ public class AppHelper {
             do {
                 System.out.print("Fullname (Format: Nguyen Duc Canh): ");
                 fullName = scanner.nextLine();
-                flag = Pupil.isValidName(fullName);
+                if (!fullName.isEmpty()) {
+                    flag = Pupil.isValidName(fullName);
 
-                if (!flag) {
-                    System.out.println("Fullname is invalid (Wrong format)!");
+                    if (!flag) {
+                        System.out.println("Fullname is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
-
             } while (!flag);
 
             String date = "";
             do {
                 System.out.print("BirthDate (format: 03/03/2017): ");
                 date = scanner.nextLine();
-                flag = Date.isValidDateAndMonth(date);
+                if (!date.isEmpty()) {
+                    flag = Date.isValidDateAndMonth(date);
 
-                if (!flag) {
-                    System.out.println("BirthDate is invalid (Wrong format)!");
+                    if (!flag) {
+                        System.out.println("BirthDate is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
             } while (!flag);
             Date dob = new Date(date);
@@ -603,10 +652,14 @@ public class AppHelper {
                 System.out.print(
                         "Address (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
                 inputAddress = scanner.nextLine();
-                flag = Address.isValidAddress(inputAddress);
+                if (!inputAddress.isEmpty()) {
+                    flag = Address.isValidAddress(inputAddress);
 
-                if (!flag) {
-                    System.out.println("Address is invalid (Wrong format)!");
+                    if (!flag) {
+                        System.out.println("Address is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
             } while (!flag);
             Address address = new Address(inputAddress);
@@ -615,10 +668,14 @@ public class AppHelper {
             do {
                 System.out.print("Gender (format: male / female): ");
                 gender = scanner.nextLine();
-                flag = Pupil.isValidGender(gender);
+                if (!gender.isEmpty()) {
+                    flag = Pupil.isValidGender(gender);
 
-                if (!flag) {
-                    System.out.println("Gender is invalid (Wrong format)!");
+                    if (!flag) {
+                        System.out.println("Gender is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
             } while (!flag);
 
@@ -629,15 +686,18 @@ public class AppHelper {
             do {
                 System.out.print("Class (format: 1A1): ");
                 className = scanner.nextLine();
-
-                for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
-                    if (classroomList[i].getClassName().equalsIgnoreCase(className)) {
-                        flag = true;
-                        classroom = classroomList[i];
-                        break;
-                    } else {
-                        flag = false;
+                if (!className.isEmpty()) {
+                    for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
+                        if (classroomList[i].getClassName().equalsIgnoreCase(className)) {
+                            flag = true;
+                            classroom = classroomList[i];
+                            break;
+                        } else {
+                            flag = false;
+                        }
                     }
+                } else {
+                    flag = false;
                 }
 
                 if (!flag) {
@@ -649,7 +709,9 @@ public class AppHelper {
             Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1, gradeNumber);
 
             String pupilID = createNewID(pupilManagement.getLastPupilID());
-            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, gender, classroom));
+            Pupil newPupil = new Pupil(pupilID, fullName, dob, address, gender);
+            newPupil.setClassroom(classroom);
+            pupilManagement.add(newPupil);
 
             String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + gender;
             PupilManagement.insertIntoDatabase(record);
@@ -665,49 +727,482 @@ public class AppHelper {
         pupilManagement.update(ID);
     }
 
+    public static void updatePupilData(Scanner sc, Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        ClassroomManagement classroomManagement = null;
+        ParentManagement parentManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            } else if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            } else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
+            }
+        }
+
+        char option = 'x';
+        System.out.println("Do you want to update pupils data? Yes(Y/y) : No (N/n)");
+        option = sc.nextLine().charAt(0);
+        Pupil pupil = null;
+        while (option == 'Y' || option == 'y') {
+            System.out.print("Enter pupil's ID: ");
+            String ID = sc.nextLine();
+            pupil = pupilManagement.getPupilByID(ID);
+            if (pupil != null) {
+                boolean flag = true;
+                do {
+                    String name = "";
+                    do {
+                        System.out.println("Old Fullname: " + pupil.getFullname());
+                        System.out.print("New Fullname (Format: Tran Duc Canh): ");
+                        name = sc.nextLine();
+                        if (!name.isEmpty()) {
+                            flag = Pupil.isValidName(name);
+                            if (flag) {
+                                System.out.println("New Fullname: " + name + " confirmed!");
+                            } else {
+                                System.out.println("Fullname is invalid (Wrong format)!");
+                            }
+                        } else {
+                            name = pupil.getFullname();
+                            flag = true;
+                        }
+
+                    } while (!flag);
+
+                    String birthDate = "";
+                    Date newDob = null;
+                    do {
+                        System.out.println("Old BirthDate: " + pupil.getBirthDate());
+                        System.out.print("New BirthDate (Format: 02/02/2017): ");
+                        birthDate = sc.nextLine();
+
+                        if (!birthDate.isEmpty()) {
+                            flag = Date.isValidDateAndMonth(birthDate);
+                            if (flag) {
+                                newDob = new Date(birthDate);
+                                System.out.println("New BirthDate: " + birthDate + " confirmed!");
+                            } else {
+                                System.out.println("BirthDate is invalid (Wrong format)!");
+                            }
+
+                        } else {
+                            newDob = pupil.getBirthDate();
+                            birthDate = pupil.getBirthDate().toString();
+                            flag = true;
+                        }
+                    } while (!flag);
+
+                    String gender = "";
+                    do {
+                        System.out.println("Old Gender: " + pupil.getGender());
+                        System.out.print("New Gender (Format: male / female): ");
+                        gender = sc.nextLine();
+
+                        if (!gender.isEmpty()) {
+                            flag = Pupil.isValidGender(gender);
+                            if (flag) {
+                                System.out.println("New Gender: " + gender + " confirmed!");
+                            } else {
+                                System.out.println("Gender is invalid (Wrong format)!");
+                            }
+                        } else {
+                            gender = pupil.getGender();
+                            flag = true;
+                        }
+                    } while (!flag);
+
+                    String address = "";
+                    Address newAddress = null;
+                    do {
+                        System.out.println("Old Address: " + pupil.getAddress());
+                        System.out
+                                .print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
+                        address = sc.nextLine();
+                        if (!address.isEmpty()) {
+                            flag = Address.isValidAddress(address);
+                            if (flag) {
+                                newAddress = new Address(address);
+                                System.out.println("New Address: " + address + " confirmed!");
+                            } else {
+                                System.out.println("Address is invalid (Wrong format)!");
+                            }
+                        } else {
+                            newAddress = pupil.getAddress();
+                            address = pupil.getAddress().toString();
+                            flag = true;
+                        }
+                    } while (!flag);
+
+                    ClassroomManagement.displayClassroomFormation();
+                    Classroom classroomList[] = classroomManagement.getClassroomManagement();
+                    Classroom classroom = null;
+                    String className = "";
+                    do {
+                        System.out.println("Old Class: " + pupil.getClassroom().getClassName());
+                        System.out.print("New Class (Format: 1A1): ");
+                        className = sc.nextLine();
+                        if (!className.isEmpty()) {
+                            flag = classroomManagement.isValidClassroom(className);
+                            if (flag) {
+                                for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
+                                    if (classroomList[i].getClassName().equalsIgnoreCase(className)) {
+                                        classroom = classroomList[i];
+                                        break;
+                                    }
+                                }
+                                int gradeNumber = className.charAt(0) - '0';
+                                Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1,
+                                        gradeNumber);
+                                System.out.println("New classroom: " + className + " confirmed!");
+                            } else {
+                                System.out.println("Classroom is invalid (Wrong format or Classroom not existed)!");
+                            }
+                        } else {
+                            className = pupil.getClassroom().getClassName();
+                            flag = true;
+                        }
+                    } while (!flag);
+
+                    Pupil updatedPupil = new Pupil(pupil.getPupilID(), name, newDob, newAddress, gender);
+                    updatedPupil.setClassroom(classroom);
+                    pupilManagement.update(updatedPupil);
+                    pupilConnection(pupilManagement, parentManagement);
+
+                    String customizedAddress = updatedPupil.getAddress().toString().replace(" Duong ", " ");
+                    String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + customizedAddress + "-"
+                            + className + "-"
+                            + gender;
+                    PupilManagement.updateRecord(record);
+                    System.out.println("Update successfully!");
+                } while (!flag);
+            } else {
+                System.out.println("Pupil with ID: " + ID + " is not found!");
+            }
+            System.out.println("Do you want to update more pupils ? Yes(Y) : No(N)");
+            option = sc.nextLine().charAt(0);
+        }
+
+    }
+
     public static void deletePupilData(PupilManagement pupilManagement, Scanner scanner) {
         System.out.print("Enter pupil ID: ");
         String ID = scanner.nextLine();
         pupilManagement.delete(ID);
     }
 
+    public static void addParentsToParentManagementList(Scanner scanner, Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        ParentManagement parentManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            } else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
+            }
+        }
+
+        if (pupilManagement.hasUninitializedPupil()) {
+            char option = 'x';
+            System.out.println("Do you want to add new parents ? Yes(Y/y) : No (N/n)");
+            option = scanner.nextLine().charAt(0);
+            while ((option == 'y' || option == 'Y') && pupilManagement.hasUninitializedPupil()) {
+                boolean flag;
+                String fullName = "";
+                System.out.println("Add Parents: ");
+                do {
+                    System.out.print("Fullname (Format: Tao Minh Duc): ");
+                    fullName = scanner.nextLine();
+                    if (!fullName.isEmpty()) {
+                        flag = Parent.isValidName(fullName);
+
+                        if (!flag) {
+                            System.out.println("Fullname is invalid (Wrong format)!");
+                        }
+                    } else {
+                        flag = false;
+                    }
+                } while (!flag);
+
+                String date = "";
+                do {
+                    System.out.print("BirthDate (format: 03/03/1976): ");
+                    date = scanner.nextLine();
+                    if (!date.isEmpty()) {
+                        flag = Date.isValidDateAndMonth(date);
+
+                        if (!flag) {
+                            System.out.println("BirthDate is invalid (Wrong format)!");
+                        }
+                    } else {
+                        flag = false;
+                    }
+                } while (!flag);
+                Date dob = new Date(date);
+
+                String inputAddress = "";
+                do {
+                    System.out.print(
+                            "Address (format: 03, Nguyen Van Troi, Phuong 5, Quan Binh Thanh, Thanh pho Ho Chi Minh): ");
+                    inputAddress = scanner.nextLine();
+                    if (!inputAddress.isEmpty()) {
+                        flag = Address.isValidAddress(inputAddress);
+
+                        if (!flag) {
+                            System.out.println("Address is invalid (Wrong format)!");
+                        }
+                    } else {
+                        flag = false;
+                    }
+                } while (!flag);
+                Address address = new Address(inputAddress);
+
+                String phoneNumber = "";
+                do {
+                    System.out.print("Phone Number : (format: 0907123456): ");
+                    phoneNumber = scanner.nextLine();
+                    if (!phoneNumber.isEmpty()) {
+                        flag = Parent.isValidPhoneNumber(phoneNumber);
+
+                        if (!flag) {
+                            System.out.println("Phone Number is invalid (Wrong format)!");
+                        }
+                    } else {
+                        flag = false;
+                    }
+                } while (!flag);
+
+                String gender = "";
+                do {
+                    System.out.print("gender (format: male / female): ");
+                    gender = scanner.nextLine();
+                    if (!gender.isEmpty()) {
+                        flag = Parent.isValidGender(gender);
+
+                        if (!flag) {
+                            System.out.println("gender is invalid (Wrong format)!");
+                        }
+                    } else {
+                        flag = false;
+                    }
+                } while (!flag);
+
+                String parentID = createNewID(parentManagement.getLastParentID());
+                parentManagement.add(new Parent(parentID, fullName, dob, address, gender, phoneNumber));
+
+                String record = parentID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + phoneNumber
+                        + "-" + gender;
+                parentManagement.insertIntoDatabase(record);
+                AppHelper.pupilConnection(pupilManagement, parentManagement);
+
+                System.out.println("Do you want to add more parents ? Yes(Y) : No(N)");
+                option = scanner.nextLine().charAt(0);
+            }
+        } else {
+            System.out.println("Cannot create parent data without creating a new pupil data first!");
+        }
+    }
+
+    public static void updateParentData(ParentManagement parentManagement, Scanner scanner) {
+        System.out.print("Enter parent ID: ");
+        String ID = scanner.nextLine();
+
+        parentManagement.update(ID);
+    }
+
+    public static void updateParentData(Scanner sc, Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        ParentManagement parentManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            } else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
+            }
+        }
+
+        char option = 'x';
+        System.out.println("Do you want to update parents data? Yes(Y/y) : No (N/n)");
+        option = sc.nextLine().charAt(0);
+        Parent parent = null;
+        while (option == 'Y' || option == 'y') {
+            System.out.print("Enter parent's ID: ");
+            String ID = sc.nextLine();
+            parent = parentManagement.getParentByID(ID);
+            if (parent != null) {
+                boolean flag = true;
+                String name = "";
+                do {
+                    System.out.println("Old Fullname: " + parent.getFullname());
+                    System.out.print("New Fullname (Format: Tran Duc Canh): ");
+                    name = sc.nextLine();
+                    if (!name.isEmpty()) {
+                        flag = Parent.isValidName(name);
+                        if (flag) {
+                            System.out.println("New Fullname: " + name + " confirmed!");
+                        } else {
+                            System.out.println("Fullname is invalid (Wrong format)!");
+                        }
+                    } else {
+                        name = parent.getFullname();
+                        flag = true;
+                    }
+
+                } while (!flag);
+
+                String birthDate = "";
+                Date newDob = null;
+                do {
+                    System.out.println("Old BirthDate: " + parent.getBirthDate());
+                    System.out.print("New BirthDate (Format: 02/02/1976): ");
+                    birthDate = sc.nextLine();
+
+                    if (!birthDate.isEmpty()) {
+                        flag = Date.isValidDateAndMonth(birthDate);
+                        if (flag) {
+                            newDob = new Date(birthDate);
+                            System.out.println("New BirthDate: " + birthDate + " confirmed!");
+                        } else {
+                            System.out.println("BirthDate is invalid (Wrong format)!");
+                        }
+
+                    } else {
+                        newDob = parent.getBirthDate();
+                        birthDate = parent.getBirthDate().toString();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                String gender = "";
+                do {
+                    System.out.println("Old gender: " + parent.getGender());
+                    System.out.print("New gender (Format: male / female): ");
+                    gender = sc.nextLine();
+
+                    if (!gender.isEmpty()) {
+                        flag = Parent.isValidGender(gender);
+                        if (flag) {
+                            System.out.println("New Gender: " + gender + " confirmed!");
+                        } else {
+                            System.out.println("gender is invalid (Wrong format)!");
+                        }
+                    } else {
+                        gender = parent.getGender();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                String address = "";
+                Address newAddress = null;
+                do {
+                    System.out.println("Old Address: " + parent.getAddress());
+                    System.out
+                            .print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
+                    address = sc.nextLine();
+                    if (!address.isEmpty()) {
+                        flag = Address.isValidAddress(address);
+                        if (flag) {
+                            newAddress = new Address(address);
+                            System.out.println("New Address: " + address + " confirmed!");
+                        } else {
+                            System.out.println("Address is invalid (Wrong format)!");
+                        }
+                    } else {
+                        newAddress = parent.getAddress();
+                        address = parent.getAddress().toString();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                String phoneNumber = "";
+                do {
+                    System.out.println("Old Phone Number: " + parent.getPhoneNumber());
+                    System.out.print("New Phone Number (Format: 0907654321): ");
+                    phoneNumber = sc.nextLine();
+                    if (!phoneNumber.isEmpty()) {
+                        flag = Parent.isValidPhoneNumber(phoneNumber);
+                        if (flag) {
+                            System.out.println("New Phone Number: " + phoneNumber + " confirmed!");
+                        } else {
+                            System.out.println("Phone Number is invalid (Wrong format)!");
+                        }
+                    } else {
+                        phoneNumber = parent.getPhoneNumber();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                Parent updatedParent = new Parent(parent.getParentID(), name, newDob, newAddress, gender, phoneNumber);
+                parentManagement.update(updatedParent);
+                pupilConnection(pupilManagement, parentManagement);
+
+                String customizedAddress = updatedParent.getAddress().toString().replace(" Duong ", " ");
+                String record = parent.getParentID() + "-" + name + "-" + birthDate + "-" + customizedAddress
+                        + "-" + phoneNumber + "-" + gender;
+                parentManagement.updateRecord(record);
+                System.out.println("Update successfully!");
+
+            } else {
+                System.out.println("Parent with ID: " + ID + " is not found!");
+            }
+            System.out.println("Do you want to update parent data ? Yes(Y) : No(N)");
+            option = sc.nextLine().charAt(0);
+        }
+    }
+
+    public static void deleteParentData(ParentManagement parentManagement, Scanner scanner) {
+        System.out.print("Enter parent ID: ");
+        String ID = scanner.nextLine();
+        parentManagement.delete(ID);
+    }
+
     public static void addTeachersToTeacherManagementList(Scanner scanner, Object... managementObjects) {
 
         TeacherManagement teacherManagement = null;
-        ClassroomManagement classroomManagement = null;
 
         for (Object managementObject : managementObjects) {
             if (managementObject instanceof TeacherManagement) {
                 teacherManagement = (TeacherManagement) managementObject;
-            } else if (managementObject instanceof ClassroomManagement) {
-                classroomManagement = (ClassroomManagement) managementObject;
             }
         }
 
-        char option = 'y';
-        do {
+        char option = 'x';
+        System.out.println("Do you want to add new teachers ? Yes(Y/y) : No (N/n)");
+        option = scanner.nextLine().charAt(0);
+        while (option == 'y' || option == 'Y') {
             boolean flag;
             String fullName = "";
             System.out.println("Add teachers: ");
             do {
                 System.out.print("Fullname (Format: Tran Anh Khoi): ");
                 fullName = scanner.nextLine();
-                flag = Pupil.isValidName(fullName);
-
-                if (!flag) {
-                    System.out.println("Fullname is invalid (Wrong format)!");
+                if (!fullName.isEmpty()) {
+                    flag = Pupil.isValidName(fullName);
+    
+                    if (!flag) {
+                        System.out.println("Fullname is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
-
             } while (!flag);
 
             String date = "";
             do {
                 System.out.print("BirthDate: (format: 16/02/2000): ");
                 date = scanner.nextLine();
-                flag = Date.isValidDateAndMonth(date);
-
-                if (!flag) {
-                    System.out.println("BirthDate is invalid (Wrong format)!");
+                if (!date.isEmpty()) {
+                    flag = Date.isValidDateAndMonth(date);
+    
+                    if (!flag) {
+                        System.out.println("BirthDate is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
             } while (!flag);
             Date dob = new Date(date);
@@ -717,10 +1212,14 @@ public class AppHelper {
                 System.out.print(
                         "Address: (format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
                 inputAddress = scanner.nextLine();
-                flag = Address.isValidAddress(inputAddress);
-
-                if (!flag) {
-                    System.out.println("Address is invalid (Wrong format)!");
+                if (!inputAddress.isEmpty()) {
+                    flag = Address.isValidAddress(inputAddress);
+    
+                    if (!flag) {
+                        System.out.println("Address is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
             } while (!flag);
             Address address = new Address(inputAddress);
@@ -729,10 +1228,14 @@ public class AppHelper {
             do {
                 System.out.print("Major (Format: Math, Literature, English, PE): ");
                 major = scanner.nextLine();
-                flag = TeacherManagement.isValidMajor(major);
-
-                if (!flag) {
-                    System.out.println("Major is invalid (Wrong format)!");
+                if (!major.isEmpty()) {
+                    flag = TeacherManagement.isValidMajor(major);
+    
+                    if (!flag) {
+                        System.out.println("Major is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
 
             } while (!flag);
@@ -741,10 +1244,14 @@ public class AppHelper {
             do {
                 System.out.print("Gender (format: male / female): ");
                 gender = scanner.nextLine();
-                flag = Teacher.isValidGender(gender);
-
-                if (!flag) {
-                    System.out.println("Gender is invalid (Wrong format)!");
+                if (!gender.isEmpty()) {
+                    flag = Teacher.isValidGender(gender);
+    
+                    if (!flag) {
+                        System.out.println("Gender is invalid (Wrong format)!");
+                    }
+                } else {
+                    flag = false;
                 }
             } while (!flag);
 
@@ -756,7 +1263,7 @@ public class AppHelper {
 
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
+        }
 
     }
 
@@ -764,6 +1271,146 @@ public class AppHelper {
         System.out.print("Enter teacher ID: ");
         String ID = scanner.nextLine();
         teacherManagement.update(ID);
+    }
+
+    public static void updateTeacherData(Scanner sc, Object... managementObjects) {
+        TeacherManagement teacherManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            }
+        }
+
+        char option = 'x';
+        System.out.println("Do you want to update teachers data? Yes(Y/y) : No (N/n)");
+        option = sc.nextLine().charAt(0);
+        Teacher teacher = null;
+        while (option == 'Y' || option == 'y') {
+            System.out.print("Enter teacher's ID: ");
+            String ID = sc.nextLine();
+            teacher = teacherManagement.getTeacherByID(ID);
+
+            if (teacher != null) {
+                boolean flag = true;
+                String name = "";
+                do {
+                    System.out.println("Old Fullname: " + teacher.getFullname());
+                    System.out.print("New Fullname (Format: Tran Le Anh Khoi): ");
+                    name = sc.nextLine();
+                    if (!name.isEmpty()) {
+                        flag = Teacher.isValidName(name);
+                        if (flag) {
+                            System.out.println("New Fullname: " + name + " confirmed!");
+                        } else {
+                            System.out.println("Fullname is invalid (Wrong format)!");
+                        }
+                    } else {
+                        name = teacher.getFullname();
+                        flag = true;
+                    }
+
+                } while (!flag);
+
+                String birthDate = "";
+                Date newDob = null;
+                do {
+                    System.out.println("Old BirthDate: " + teacher.getBirthDate());
+                    System.out.print("New BirthDate (Format: 16/02/2000): ");
+                    birthDate = sc.nextLine();
+
+                    if (!birthDate.isEmpty()) {
+                        flag = Date.isValidDateAndMonth(birthDate);
+                        if (flag) {
+                            newDob = new Date(birthDate);
+                            System.out.println("New BirthDate: " + birthDate + " confirmed!");
+                        } else {
+                            System.out.println("BirthDate is invalid (Wrong format)!");
+                        }
+
+                    } else {
+                        newDob = teacher.getBirthDate();
+                        birthDate = teacher.getBirthDate().toString();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                String gender = "";
+                do {
+                    System.out.println("Old Gender: " + teacher.getGender());
+                    System.out.print("New Gender (Format: male / female): ");
+                    gender = sc.nextLine();
+
+                    if (!gender.isEmpty()) {
+                        flag = Teacher.isValidGender(gender);
+                        if (flag) {
+                            System.out.println("New Gender: " + gender + " confirmed!");
+                        } else {
+                            System.out.println("Gender is invalid (Wrong format)!");
+                        }
+                    } else {
+                        gender = teacher.getGender();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                String address = "";
+                Address newAddress = null;
+                do {
+                    System.out.println("Old Address: " + teacher.getAddress());
+                    System.out.print(
+                            "New Address (Format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
+                    address = sc.nextLine();
+                    if (!address.isEmpty()) {
+                        flag = Address.isValidAddress(address);
+                        if (flag) {
+                            newAddress = new Address(address);
+                            System.out.println("New Address: " + address + " confirmed!");
+                        } else {
+                            System.out.println("Address is invalid (Wrong format)!");
+                        }
+                    } else {
+                        newAddress = teacher.getAddress();
+                        address = teacher.getAddress().toString();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                String major = "";
+                do {
+                    System.out.println("Old Major: " + teacher.getMajor());
+                    System.out.print("New Major (Format: Math, Literature, English, PE): ");
+                    major = sc.nextLine();
+
+                    if (!major.isEmpty()) {
+                        flag = TeacherManagement.isValidMajor(major);
+                        if (flag) {
+                            System.out.println("New Major: " + major + " confirmed!");
+                        } else {
+                            System.out.println("Major is invalid (Wrong format)!");
+                        }
+                    } else {
+                        major = teacher.getMajor();
+                        flag = true;
+                    }
+                } while (!flag);
+
+                Teacher updatedTeacher = new Teacher(teacher.getTeacherID(), name, newDob, newAddress, gender, major);
+                teacherManagement.update(updatedTeacher);
+
+                String customizedAddress = updatedTeacher.getAddress().toString().replace(" Duong ", " ");
+                String record = teacher.getTeacherID() + "-" + name + "-" + birthDate + "-" + customizedAddress + "-"
+                        + major + "-" + gender;
+                teacherManagement.updateRecord(record);
+                System.out.println("Update successfully!");
+            } else {
+                System.out.println("Teacher with ID: " + ID + " is not found!");
+            }
+
+            System.out.println("Do you want to update more pupils ? Yes(Y) : No(N)");
+            option = sc.nextLine().charAt(0);
+        }
+
     }
 
     public static void deleteTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
@@ -798,6 +1445,7 @@ public class AppHelper {
             System.out.println("3. Search classroom data by class name");
             System.out.println("4. Search teacher data by name");
             System.out.println("5. Search teacher data by class");
+            System.out.println("6. Search parents data by pupil's name");
             System.out.println("0. Exit");
 
             boolean isEmptyInput;
@@ -818,51 +1466,60 @@ public class AppHelper {
                 }
             } while (isEmptyInput || option == -1);
 
+            String searchText = "";
             switch (option) {
                 case 1:
                     System.out.print("Enter name: ");
-                    String name = sc.nextLine();
+                    searchText = sc.nextLine();
                     if (Redux.isAdmin) {
-                        pupilManagement.findPupilsBy(name, "getFullname", Pupil.class, null, false, true);
+                        pupilManagement.findPupilsBy(searchText, "getFullname", Pupil.class, null, false, true);
                     } else {
-                        pupilManagement.findPupilsBy(name, "getFullname", Pupil.class, null, false, false);
+                        pupilManagement.findPupilsBy(searchText, "getFullname", Pupil.class, null, false, false);
                     }
                     pupilManagement.display(pupilManagement.getSearchResultLength());
                     break;
 
                 case 2:
                     System.out.print("Enter ClassName: ");
-                    String className = sc.nextLine();
+                    searchText = sc.nextLine();
                     if (Redux.isAdmin) {
-                        pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class, false,
+                        pupilManagement.findPupilsBy(searchText, "getClassName", Pupil.class, Classroom.class, false,
                                 true);
                     } else {
-                        pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class, false,
+                        pupilManagement.findPupilsBy(searchText, "getClassName", Pupil.class, Classroom.class, false,
                                 false);
                     }
                     pupilManagement.display(pupilManagement.getSearchResultLength());
                     break;
                 case 3:
                     System.out.println("Enter ClassName:");
-                    String classname = sc.nextLine();
-                    classroomManagement.searchClassName(classname);
+                    searchText = sc.nextLine();
+                    classroomManagement.searchClassName(searchText);
                     classroomManagement.fileSearchList(classroomManagement.getSearchListLength());
                     break;
                 case 4:
                     System.out.print("Enter name: ");
-                    name = sc.nextLine();
-                    teacherManagement.findTeachersBy(name, "getFullname", Teacher.class, null);
+                    searchText = sc.nextLine();
+                    teacherManagement.findTeachersBy(searchText, "getFullname", Teacher.class, null);
                     teacherManagement.display(teacherManagement.getSearchResultLength());
                     break;
 
                 case 5:
                     System.out.print("Enter ClassName: ");
-                    className = sc.nextLine();
-                    teacherManagement.findTeachersBy(className, "getClassName", Teacher.class, Classroom.class);
+                    searchText = sc.nextLine();
+                    teacherManagement.findTeachersBy(searchText, "getClassName", Teacher.class, Classroom.class);
                     teacherManagement.display(teacherManagement.getSearchResultLength());
                     break;
 
+                case 6:
+                    System.out.print("Enter Pupil Name: ");
+                    searchText = sc.nextLine();
+                    parentManagement.findParentsBy(searchText);
+                    parentManagement.display(parentManagement.getSearchResultLength());
+                    break;
+
                 default:
+
                     break;
             }
         } while (option != 0);
@@ -909,7 +1566,6 @@ public class AppHelper {
         } while (option != 0);
     }
 
-    // AppHelper Classroom Management
     public static void setupClassroomManagement(Object... managementObjects) {
         ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
@@ -971,21 +1627,24 @@ public class AppHelper {
 
         if (teacherManagement.hasUninitializedClassroom()) {
             char option = 'x';
-            System.out.println("Do you want to add new pupils ? Yes(Y/y) : No (N/n)");
+            System.out.println("Do you want to add new classrooms ? Yes(Y/y) : No (N/n)");
             option = sc.nextLine().charAt(0);
-            while (option == 'y' || option == 'Y') {
+            while ((option == 'y' || option == 'Y') && teacherManagement.hasUninitializedClassroom()) {
                 System.out.println("Add classrooms: ");
                 boolean flag;
                 String className = "";
                 do {
                     System.out.print("Classname (Format: 5A4): ");
                     className = sc.nextLine();
-                    flag = ClassroomManagement.isValidClassroom(className);
-
-                    if (!flag) {
-                        System.out.println("Classname is invalid!");
+                    if (!className.isEmpty()) {
+                        flag = classroomManagement.isValidNewClassroom(className);
+    
+                        if (!flag) {
+                            System.out.println("Classname is invalid! (Wrong format or Classroom existed)");
+                        }
+                    } else {
+                        flag = false;
                     }
-
                 } while (!flag);
 
                 String classManager = null;
@@ -997,6 +1656,7 @@ public class AppHelper {
                 Grade grade = new Grade(gradeNumber, gradeTeacher);
 
                 classroomManagement.add(new Classroom(className, classTeacher, grade));
+                classroomManagement.initializeClassroomFormation();
 
                 String write = className + "-" + classManager + "-" + gradeNumber + "-" + gradeManager;
                 classroomManagement.insertIntoDatabase(write);
@@ -1015,6 +1675,70 @@ public class AppHelper {
         System.out.print("Enter class name: ");
         String ID = sc.nextLine();
         classroomManagement.update(ID);
+    }
+
+    public static void updateClassroomData(Scanner sc, Object... managementObjects) {
+        ClassroomManagement classroomManagement = null;
+        TeacherManagement teacherManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof ClassroomManagement) {
+                classroomManagement = (ClassroomManagement) managementObject;
+            } else if (managementObject instanceof TeacherManagement) {
+                teacherManagement = (TeacherManagement) managementObject;
+            }
+        }
+
+        char option = 'x';
+        System.out.println("Do you want to update classrooms data? Yes(Y/y) : No (N/n)");
+        option = sc.nextLine().charAt(0);
+        Classroom classroom = null;
+        Teacher classManager = null;
+        while (option == 'Y' || option == 'y') {
+            System.out.print("Enter classname: ");
+            String className = sc.nextLine();
+            classroom = classroomManagement.getClassroomByID(className);
+
+            if (classroom != null) {
+                boolean flag = true;
+                do {
+                    String newClassManagerID = "";
+                    do {
+                        System.out.println("Old ClassManager: " + classroom.getClassManager().getTeacherID());
+                        System.out.print("New ClassManager: (format: GV016): ");
+                        newClassManagerID = sc.nextLine();
+                        if (!newClassManagerID.isEmpty()) {
+                            flag = classroomManagement.isValidManager(newClassManagerID);
+                            if (flag) {
+                                classManager = teacherManagement.getTeacherByID(newClassManagerID);
+                                System.out.println("New class manager: " + newClassManagerID + " confirmed!");
+                            } else {
+                                System.out.println("Class manager is invalid!");
+                            }
+                        } else {
+                            classManager = teacherManagement.getTeacherByID(className);
+                            newClassManagerID = classroom.getClassManager().getTeacherID();
+                            flag = true;
+                        }
+                    } while (!flag);
+
+                    Classroom updatedClassroom = new Classroom(classroom.getClassName(), classManager,
+                            classroom.getGrade());
+                    classroomManagement.update(updatedClassroom);
+                    classroomConnection(classroomManagement, teacherManagement);
+
+                    String write = classroom.getClassName() + "-" + newClassManagerID + "-"
+                            + classroom.getGrade().getGradeNumber() + "-"
+                            + classroom.getGrade().getGradeManager().getTeacherID();
+                    classroomManagement.updateRecord(write);
+                    System.out.println("Update successfully!");
+                } while (!flag);
+            } else {
+                System.out.println("Classroom with className: " + className + " is not found!");
+            }
+            System.out.println("Do you want to update more classes ? Yes(Y) : No(N)");
+            option = sc.nextLine().charAt(0);
+        }
     }
 
     public static void deleteClassroomData(ClassroomManagement classroomManagement, Scanner sc) {

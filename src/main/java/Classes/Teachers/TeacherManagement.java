@@ -283,6 +283,15 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
     }
 
+    public void update(Object obj) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (teacherManagement[i].getTeacherID().equalsIgnoreCase(((Teacher) obj).getTeacherID())) {
+                teacherManagement[i] = (Teacher) obj;
+                break;
+            }
+        }
+    }
+
     @Override
     public void delete(String ID) {
         int index = this.getTeacherArrayIndex(ID);

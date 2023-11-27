@@ -14,7 +14,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Classes.Teachers.Teacher;
-import Classes.Teachers.TeacherManagement;
 import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
@@ -35,10 +34,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		currentIndex = 0;
 		searchListLength = 0;
 		classCounts = new int[5];
-		classroomFormation = new String[100];
-		Arrays.fill(classroomFormation, "");
 	}
-    
+
 	public Classroom[] getClassroomManagement() {
 		return classroomManagement;
 	}
@@ -55,7 +52,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		this.searchList = searchList;
 	}
 
-    public int getCurrentIndex() {
+	public int getCurrentIndex() {
 		return currentIndex;
 	}
 
@@ -70,8 +67,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public void setSearchListLength(int searchListLength) {
 		this.searchListLength = searchListLength;
 	}
-
-	
 
 	@Override
 	public void initialize() {
@@ -88,17 +83,16 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 						String classManagerID = data[1];
 						int gradeNumber = Integer.parseInt(data[2]);
 						String gradeManagerID = data[3];
-					
 
 						Teacher classTeacher = new Teacher(classManagerID);
 						Teacher gradeTeacher = new Teacher(gradeManagerID);
 						Grade grade = new Grade(gradeNumber, gradeTeacher);
 						Classroom classroom = new Classroom(className, classTeacher, grade);
-					
 
 						this.add(classroom);
 					}
 				}
+				initializeClassroomFormation();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -115,10 +109,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
 				bufferedWrite.write("Classroom Management List:");
 				bufferedWrite.newLine();
-				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager", "gradeNumber", "gradeManager"));
+				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager",
+						"gradeNumber", "gradeManager"));
 				bufferedWrite.newLine();
 				for (int i = 0; i < currentIndex; i++) {
-					if(classroomManagement[i].getStatus()) {
+					if (classroomManagement[i].getStatus()) {
 						bufferedWrite.write(classroomManagement[i].toString());
 						bufferedWrite.newLine();
 					}
@@ -134,7 +129,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		}
 	}
 
-
 	public void fileSearchList(int arrayLength) {
 		File file = new File(Redux.getOutputRelativePath());
 
@@ -142,10 +136,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
 				bufferedWrite.write("Classroom Search List:");
 				bufferedWrite.newLine();
-				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager", "gradeNumber", "gradeManager"));
+				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager",
+						"gradeNumber", "gradeManager"));
 				bufferedWrite.newLine();
 				for (int i = 0; i < arrayLength; i++) {
-					if(searchList[i].getStatus()) {
+					if (searchList[i].getStatus()) {
 						bufferedWrite.write(searchList[i].toString());
 						bufferedWrite.newLine();
 					}
@@ -160,7 +155,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			System.out.println("File does not exist.");
 		}
 	}
-	
 
 	@Override
 	public void add(Object obj) {
@@ -188,24 +182,22 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					classCounts[4]++;
 					break;
 			}
-        }
-		else {
-            System.out.println("Classroom Management List is full. Cannot add more.");
-        }
-		currentIndex++; 
-    }
-	
+		} else {
+			System.out.println("Classroom Management List is full. Cannot add more.");
+		}
+		currentIndex++;
+	}
 
 	@Override
 	public void update(String ID) {
 		Scanner sc = new Scanner(System.in);
-		Classroom classroom = getClassNameByID(ID);
+		Classroom classroom = getClassroomByID(ID);
 
-		if(classroom != null) {	
+		if (classroom != null) {
 			boolean flag = true;
 			do {
 				String className = classroom.getClassName();
-				
+
 				String newClassManagerID = "";
 				do {
 					System.out.println("Old ClassManager: " + classroom.getClassManager().getTeacherID());
@@ -213,19 +205,17 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					newClassManagerID = sc.nextLine();
 					if (!newClassManagerID.isEmpty()) {
 						flag = isValidManager(newClassManagerID);
-						if(flag) {
+						if (flag) {
 							classroom.getClassManager().setTeacherID(newClassManagerID);
-						}
-						else {
+						} else {
 							System.out.println("Class manager is invalid!");
 						}
-					}
-					else {
+					} else {
 						flag = true;
 						newClassManagerID = classroom.getClassManager().getTeacherID();
 					}
-				} while(!flag);
-				
+				} while (!flag);
+
 				int gradeNumber = className.charAt(0) - '0';
 				classroom.getGrade().setGradeNumber(gradeNumber);
 
@@ -235,15 +225,24 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					newGradeManagerID = getGradeManagerByGradeNumber(gradeNumber);
 				} while (!flag);
 				
-			String write = className + "-" + newClassManagerID + "-" + gradeNumber + "-" + newGradeManagerID;
-			this.updateRecord(write);
-			System.out.println("Update successfully!");
+				String write = className + "-" + newClassManagerID + "-" + gradeNumber + "-" + newGradeManagerID;
+				this.updateRecord(write);
+				System.out.println("Update successfully!");
 			} while (!flag);			
 		}
 		else {
 			System.out.println("Classroom with ID: " + ID + " is not found!");
 		}
 	}
+
+	public void update(Object obj) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (classroomManagement[i].getClassName().equalsIgnoreCase(((Classroom) obj).getClassName())) {
+                classroomManagement[i] = (Classroom) obj;
+                break;
+            }
+        }
+    }
 
 	@Override
 	public void delete(String ID) {
@@ -254,93 +253,121 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
             		classroomManagement[i].setStatus(false);
 					Redux.addToRecycleBin(classroomManagement[i]);
 				}
-            }
-			System.out.println("Delete successfully!"); 
-        } 
-		else {
-            System.out.println("Classroom with ID: " + ID + " is not found!");
-        }
+			}
+			System.out.println("Delete successfully!");
+		} else {
+			System.out.println("Classroom with ID: " + ID + " is not found!");
+		}
 	}
 
-	public Classroom getClassNameByID(String ID) {
-        Classroom classroom = null;
-        for (int i = 0; i < currentIndex; i++) {
-            if (classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
-				if(classroomManagement[i].getStatus()) {	
+	public Classroom getClassroomByID(String ID) {
+		Classroom classroom = null;
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
+				if (classroomManagement[i].getStatus()) {
 					classroom = classroomManagement[i];
-                	break;
-				}
-				else {
+					break;
+				} else {
 					System.out.println("Classroom does not exist");
 				}
-            }
-        }
-        return classroom;
-    }
+			}
+		}
+		return classroom;
+	}
 
 	public int getClassroomArrayIndex(String ID) {
-        int index = -1;
-        for (int i = 0; i < currentIndex; i++) {
-            if (classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
-				if(classroomManagement[i].getStatus()) {
+		int index = -1;
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassName().equalsIgnoreCase(ID)) {
+				if (classroomManagement[i].getStatus()) {
 					index = i;
 					break;
 				}
-            }
-        }
-        return index;
-    }
-	
+			}
+		}
+		return index;
+	}
+
 	public void searchClassName(String className) {
 		searchListLength = 0;
 		boolean flag = false;
-		for(int i = 0; i < currentIndex; i++) {
-			if(classroomManagement[i].getClassName().contains(className.toUpperCase())) {
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassName().contains(className.toUpperCase())) {
 				flag = true;
 				searchList[searchListLength] = classroomManagement[i];
-				searchListLength++;	
-			}	
+				searchListLength++;
+			}
 		}
-		if(!flag) {
-			System.out.println("Class " + className + " does not exist!");		
-		}	
+		if (!flag) {
+			System.out.println("Class " + className + " does not exist!");
+		}
+	}
+
+	public void initializeClassroomFormation() {
+		classroomFormation = new String[currentIndex];
+		for (int i = 0; i < currentIndex; i++) {
+			classroomFormation[i] = classroomManagement[i].getClassName();
+		}
+
+		Arrays.sort(classroomFormation);
 	}
 
 	public static void displayClassroomFormation() {
-		for (int i = 1; i <= 5; i++) {
-			System.out.print("Grade " + i + ": ");
-			for (int j = 1; j <= classCounts[i - 1]; j++) {
-				System.out.print(i + "A" + j + "\t");
+		int grade = 0;
+		int index = 0;
+	
+		for (int i = 0; i < 5; i++) {
+			System.out.print("Grade " + (grade + 1) + ": ");
+	
+			for (int j = 0; j < classCounts[grade]; j++) {
+				System.out.print(classroomFormation[index] + "\t");
+				index++;
 			}
+	
 			System.out.println();
+			grade++;
 		}
 	}
-	
-	public String getLastClassManagerID() {
-        String ID = "";
-        for (int i = 0; i < currentIndex; i++) {
-            ID = classroomManagement[i].getClassManager().getTeacherID();
-        }
-        return ID;
-    }
 
-	public static boolean isValidClassroom(String className) {
-		if(className.equalsIgnoreCase("null")){
-			return true;
+	public String getLastClassManagerID() {
+		String ID = "";
+		for (int i = 0; i < currentIndex; i++) {
+			ID = classroomManagement[i].getClassManager().getTeacherID();
 		}
-        boolean flag = true;
-        String classNameRegex = "([1-5])A([4-9]|[1-9][0-9]+)";
+		return ID;
+	}
+
+	public boolean isValidNewClassroom(String className) {
+		boolean flag = false;
+		String classNameRegex = "([1-5])A([4-9]|[1-9][0-9]+)";
         Pattern pattern = Pattern.compile(classNameRegex);
 		Matcher matcher = pattern.matcher(className);
 
-        if(!matcher.matches()) {
-            flag = false;
-        }
+        if(matcher.matches()) {
+			for (int i = 0; i < currentIndex; i++) {
+				if (!classroomManagement[i].getClassName().equalsIgnoreCase(className)) {
+					flag = true;
+				} else {
+					flag = false;
+					break;
+				}
+			}
+        } 
 
-        return flag;
-    }
+		return flag;
+	}
 
-	
+	public boolean isValidClassroom(String className) {
+		boolean flag = false;
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassName().equalsIgnoreCase(className)) {
+				flag = true;
+				break;
+			}
+		}
+		return flag;
+	}
+
 	public boolean isValidManager(String classManager) {
 		boolean flag = true;
 		String managerRegex = "^(GV)[0][0-9][0-9]$";
@@ -349,45 +376,44 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		
 		if(!matcher.matches()) {
 			flag = false;
-		} 
-		else {
+		} else {
 			for (int i = 0; i < currentIndex; i++) {
 				if (classManager.equals(classroomManagement[i].getClassManager().getTeacherID())) {
-					System.out.println("Teacher ID already exists. Please enter a different one.");
+					System.out.println("Teacher has already managed a class. Please enter a different one.");
 					flag = false;
 					break;
 				}
 			}
 		}
-		
+
 		return flag;
 	}
-	
+
 	public static String getGradeManagerByGradeNumber(int gradeNumber) {
-        String gradeManager = "";
-        switch(gradeNumber) {
-            case 1:
-                gradeManager = "GV003";
-                break;
-            case 2:
-                gradeManager = "GV004";
-                break;
-            case 3:
-                gradeManager = "GV008";
-                break;
-            case 4:
-                gradeManager = "GV011";
-                break;
-            case 5:
-                gradeManager = "GV014";
-                break;
+		String gradeManager = "";
+		switch (gradeNumber) {
+			case 1:
+				gradeManager = "GV003";
+				break;
+			case 2:
+				gradeManager = "GV004";
+				break;
+			case 3:
+				gradeManager = "GV008";
+				break;
+			case 4:
+				gradeManager = "GV011";
+				break;
+			case 5:
+				gradeManager = "GV014";
+				break;
 
-            default:
-                break;
-        }
+			default:
+				break;
+		}
 
-        return gradeManager;
-    }
+		return gradeManager;
+	}
 
     public static String readDatabase() {
         StringBuilder records = new StringBuilder();
@@ -411,58 +437,55 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
         }
     }
 
-
 	public void insertIntoDatabase(String record) {
-        // Read existing records from the database file
-        String existingRecords = readDatabase();
+		// Read existing records from the database file
+		String existingRecords = readDatabase();
 
-        // Check if the new record is not present in the existing records
-        if (!existingRecords.contains(record)) {
-            // Append the new record to the existing records
-            writeDatabase(existingRecords + "\n" + record);
-        } else {
-            System.out.println("Record already exists in the database. Not added.");
-        }
-    }
+		// Check if the new record is not present in the existing records
+		if (!existingRecords.contains(record)) {
+			// Append the new record to the existing records
+			writeDatabase(existingRecords + "\n" + record);
+		} else {
+			System.out.println("Record already exists in the database. Not added.");
+		}
+	}
 
-    public void updateRecord(String updatedRecord) {
-        String databaseContent = readDatabase();
-        String records[] = databaseContent.split("\n");
-        String className = updatedRecord.substring(0, 3);
-        for (int i = 0; i < records.length; i++) {
-            if (records[i].startsWith(className)) {
-                records[i] = updatedRecord;
-                break;
-            }
-        }
+	public void updateRecord(String updatedRecord) {
+		String databaseContent = readDatabase();
+		String records[] = databaseContent.split("\n");
+		String className = updatedRecord.substring(0, 3);
+		for (int i = 0; i < records.length; i++) {
+			if (records[i].startsWith(className)) {
+				records[i] = updatedRecord;
+				break;
+			}
+		}
 
-        StringBuilder updatedContent = new StringBuilder();
-        for (int i = 0; i < records.length; i++) {
-            updatedContent.append(records[i]);
-			if(i < records.length - 1) {
+		StringBuilder updatedContent = new StringBuilder();
+		for (int i = 0; i < records.length; i++) {
+			updatedContent.append(records[i]);
+			if (i < records.length - 1) {
 				updatedContent.append("\n");
 			}
-        }
+		}
 
-        writeDatabase(updatedContent.toString());
-    }
+		writeDatabase(updatedContent.toString());
+	}
 
-    public static void deleteRecord(String record) {
-        // Read existing records from the database file
-        String existingRecords = readDatabase();
+	public static void deleteRecord(String record) {
+		// Read existing records from the database file
+		String existingRecords = readDatabase();
 
-        // Check if the record is present in the existing records
-        if (existingRecords.contains(record)) {
-            // Remove the record from the existing records
-            String updatedRecords = existingRecords.replaceAll(record + "(\\n|$)", "").trim();
+		// Check if the record is present in the existing records
+		if (existingRecords.contains(record)) {
+			// Remove the record from the existing records
+			String updatedRecords = existingRecords.replaceAll(record + "(\\n|$)", "").trim();
 
-            // Update the database with the modified records
-            writeDatabase(updatedRecords);
-            System.out.println("Record deleted successfully.");
-        } else {
-            System.out.println("Record not found in the database. Deletion failed.");
-        }
-    }
+			// Update the database with the modified records
+			writeDatabase(updatedRecords);
+			System.out.println("Record deleted successfully.");
+		} else {
+			System.out.println("Record not found in the database. Deletion failed.");
+		}
+	}
 }
-	
-

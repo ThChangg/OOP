@@ -14,6 +14,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import Classes.Classroom.ClassroomManagement;
+import Classes.Classroom.Grade;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Redux.Redux;
@@ -22,8 +23,8 @@ import Interfaces.IFileManagement;
 
 public class PupilManagement implements IFileManagement, ICRUD {
     private Pupil pupilList[];
-    private Pupil searchResult[];
     private int currentIndex;
+    private Pupil searchResult[];
     private int searchResultLength;
     private static String inputRelativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
 
@@ -32,6 +33,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         searchResult = new Pupil[100];
         currentIndex = 0;
         searchResultLength = 0;
+
     }
 
     public Pupil[] getPupilList() {
@@ -191,115 +193,125 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
         if (pupil != null) {
             boolean flag = true;
+            String name = "";
             do {
-                String name = "";
-                do {
-                    System.out.println("Old Fullname: " + pupil.getFullname());
-                    System.out.print("New Fullname (Format: Tran Duc Canh): ");
-                    name = sc.nextLine();
-                    if (!name.isEmpty()) {
-                        flag = Pupil.isValidName(name);
-                        if (flag) {
-                            pupil.setFullname(name);
-                        } else {
-                            System.out.println("Fullname is invalid (Wrong format)!");
-                        }
+                System.out.println("Old Fullname: " + pupil.getFullname());
+                System.out.print("New Fullname (Format: Tran Duc Canh): ");
+                name = sc.nextLine();
+                if (!name.isEmpty()) {
+                    flag = Pupil.isValidName(name);
+                    if (flag) {
+                        pupil.setFullname(name);
                     } else {
-                        name = pupil.getFullname();
-                        flag = true;
+                        System.out.println("Fullname is invalid (Wrong format)!");
                     }
+                } else {
+                    name = pupil.getFullname();
+                    flag = true;
+                }
 
-                } while (!flag);
-
-                String birthDate = "";
-                do {
-                    System.out.println("Old BirthDate: " + pupil.getBirthDate());
-                    System.out.print("New BirthDate (Format: 02/02/2017): ");
-                    birthDate = sc.nextLine();
-
-                    if (!birthDate.isEmpty()) {
-                        flag = Date.isValidDateAndMonth(birthDate);
-                        if (flag) {
-                            Date newDob = new Date(birthDate);
-                            pupil.setBirthDate(newDob);
-                        } else {
-                            System.out.println("BirthDate is invalid (Wrong format)!");
-                        }
-
-                    } else {
-                        birthDate = pupil.getBirthDate().toString();
-                        flag = true;
-                    }
-                } while (!flag);
-
-                String gender = "";
-                do {
-                    System.out.println("Old gender: " + pupil.getGender());
-                    System.out.print("New gender (Format: male / female): ");
-                    gender = sc.nextLine();
-
-                    if (!gender.isEmpty()) {
-                        flag = Pupil.isValidGender(gender);
-                        if (flag) {
-                            pupil.setGender(gender);
-                        } else {
-                            System.out.println("Gender is invalid (Wrong format)!");
-                        }
-                    } else {
-                        gender = pupil.getGender();
-                        flag = true;
-                    }
-                } while (!flag);
-
-                String address = "";
-                do {
-                    System.out.println("Old Address: " + pupil.getAddress());
-                    System.out
-                            .print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
-                    address = sc.nextLine();
-                    if (!address.isEmpty()) {
-                        flag = Address.isValidAddress(address);
-                        if (flag) {
-                            Address newAddress = new Address(address);
-                            pupil.setAddress(newAddress);
-                        } else {
-                            System.out.println("Address is invalid (Wrong format)!");
-                        }
-                    } else {
-                        address = pupil.getAddress().toString();
-                        flag = true;
-                    }
-                } while (!flag);
-
-                ClassroomManagement.displayClassroomFormation();
-                String className = "";
-                do {
-                    System.out.println("Old Class: " + pupil.getClassroom().getClassName());
-                    System.out.print("New Class (Format: 1A1): ");
-                    className = sc.nextLine();
-                    if (!className.isEmpty()) {
-                        flag = ClassroomManagement.isValidClassroom(className);
-                        if (flag) {
-                            int gradeNumber = className.charAt(0) - '0';
-                            pupil.getClassroom().getGrade().setGradeNumber(gradeNumber);
-                            pupil.getClassroom().setClassName(className);
-                        } else {
-                            System.out.println("Classroom is invalid (Wrong format)!");
-                        }
-                    } else {
-                        className = pupil.getClassroom().getClassName();
-                        flag = true;
-                    }
-                } while (!flag);
-
-                String customizedAddress = pupil.getAddress().toString().replace(" Duong ", " ");
-                String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + customizedAddress + "-"
-                        + className + "-" + gender;
-                PupilManagement.updateRecord(record);
-                System.out.println("Update successfully!");
             } while (!flag);
+
+            String birthDate = "";
+            do {
+                System.out.println("Old BirthDate: " + pupil.getBirthDate());
+                System.out.print("New BirthDate (Format: 02/02/2017): ");
+                birthDate = sc.nextLine();
+
+                if (!birthDate.isEmpty()) {
+                    flag = Date.isValidDateAndMonth(birthDate);
+                    if (flag) {
+                        Date newDob = new Date(birthDate);
+                        pupil.setBirthDate(newDob);
+                    } else {
+                        System.out.println("BirthDate is invalid (Wrong format)!");
+                    }
+
+                } else {
+                    birthDate = pupil.getBirthDate().toString();
+                    flag = true;
+                }
+            } while (!flag);
+
+            String gender = "";
+            do {
+                System.out.println("Old gender: " + pupil.getGender());
+                System.out.print("New gender (Format: male / female): ");
+                gender = sc.nextLine();
+
+                if (!gender.isEmpty()) {
+                    flag = Pupil.isValidGender(gender);
+                    if (flag) {
+                        pupil.setGender(gender);
+                    } else {
+                        System.out.println("gender is invalid (Wrong format)!");
+                    }
+                } else {
+                    gender = pupil.getGender();
+                    flag = true;
+                }
+            } while (!flag);
+
+            String address = "";
+            do {
+                System.out.println("Old Address: " + pupil.getAddress());
+                System.out
+                        .print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
+                address = sc.nextLine();
+                if (!address.isEmpty()) {
+                    flag = Address.isValidAddress(address);
+                    if (flag) {
+                        Address newAddress = new Address(address);
+                        pupil.setAddress(newAddress);
+                    } else {
+                        System.out.println("Address is invalid (Wrong format)!");
+                    }
+                } else {
+                    address = pupil.getAddress().toString();
+                    flag = true;
+                }
+            } while (!flag);
+
+            ClassroomManagement.displayClassroomFormation();
+            String className = "";
+            do {
+                System.out.println("Old Class: " + pupil.getClassroom().getClassName());
+                System.out.print("New Class (Format: 1A1): ");
+                className = sc.nextLine();
+                if (!className.isEmpty()) {
+                    // flag = ClassroomManagement.isValidClassroom(className);
+                    flag = true;
+                    if (flag) {
+                        int gradeNumber = className.charAt(0) - '0';
+                        pupil.getClassroom().getGrade().setGradeNumber(gradeNumber);
+                        pupil.getClassroom().setClassName(className);
+                        Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1,
+                                gradeNumber);
+                    } else {
+                        System.out.println("Classroom is invalid (Wrong format)!");
+                    }
+                } else {
+                    className = pupil.getClassroom().getClassName();
+                    flag = true;
+                }
+            } while (!flag);
+
+            String customizedAddress = pupil.getAddress().toString().replace(" Duong ", " ");
+            String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + customizedAddress + "-"
+                    + className + "-" + gender;
+            PupilManagement.updateRecord(record);
+            System.out.println("Update successfully!");
         } else {
             System.out.println("Pupil with ID: " + ID + " is not found!");
+        }
+    }
+
+    public void update(Object obj) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getPupilID().equalsIgnoreCase(((Pupil) obj).getPupilID())) {
+                pupilList[i] = (Pupil) obj;
+                break;
+            }
         }
     }
 
