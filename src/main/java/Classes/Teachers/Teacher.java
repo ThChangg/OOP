@@ -4,8 +4,6 @@ import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Person.Person;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class Teacher extends Person {
@@ -13,26 +11,35 @@ public class Teacher extends Person {
     private Classroom classroom;
     private String major;
     private boolean status = true;
-
-
     public Teacher() {
     }
 
+    public Teacher(String teacherID) {
+        this.teacherID = teacherID;
+    }
+ 
     public Teacher(String teacherID, String fullname, Date birthDate, Address address) {
         super(fullname, birthDate, address);
         this.teacherID = teacherID;
     }
 
-    public Teacher(String teacherID, String fullname, Date birthDate, Address address, String gender, String major) {
+    public Teacher(String teacherID, Classroom classroom, String major, String fullname, Date birthDate, Address address) {
+        super(fullname, birthDate, address);
+        this.teacherID = teacherID;
+        this.classroom = classroom;
+        this.major = major;
+    }
+
+    public Teacher(String teacherID, String fullname, Date birthDate, Address address,  String gender, String major) {
         super(fullname, birthDate, address, gender);
         this.teacherID = teacherID;
         this.major = major;
     }
 
-    public Teacher(String teacherID, String className, String major, String fullname, String gender, Date birthDate, Address address) {
+    public Teacher(String teacherID, String fullname, Date birthDate, Address address, String major, Classroom classroom, String gender) {
         super(fullname, birthDate, address, gender);
         this.teacherID = teacherID;
-        this.classroom = new Classroom(className);
+        this.classroom = classroom;
         this.major = major;
     }
 
@@ -59,7 +66,7 @@ public class Teacher extends Person {
     public void setMajor(String major) {
         this.major = major;
     }
-    
+
     public boolean getStatus() {
         return this.status;
     }
@@ -75,4 +82,5 @@ public class Teacher extends Person {
         }
         return teacherID  + "\t"+ super.toString() + "\t" + major + "\t" + classroom.getClassName();
     }
+
 }
