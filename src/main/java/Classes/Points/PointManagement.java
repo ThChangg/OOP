@@ -252,16 +252,8 @@ public class PointManagement implements IFileManagement, ICRUD {
         if (currentIndex < listPoint.length) {
             listPoint[currentIndex++] = (Point) obj;
             Point addedPoint = listPoint[currentIndex - 1]; // The recently added point
-
-            // No need to manually increment PointID, it's handled in the Point constructor
-
-            // Calculate rank and performance for the added point
             calculateRank(addedPoint);
             addedPoint.calculatePerformance();
-
-            // Update the record in the database
-            // updateRecord(addedPoint.toString());
-
         } else {
             System.out.println("Point List is full. Cannot add more.");
         }
