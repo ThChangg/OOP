@@ -4,23 +4,32 @@ import Classes.Teachers.Teacher;
 
 public class Grade {
     private int gradeNumber;
-    private Teacher gradeManagerID;
-	private static int numberOfPupilsInGrade[];
+	private static int numberOfPupilsInGrade[] = new int[]{0, 0, 0, 0 , 0};
+    private Teacher gradeManager;
 	private boolean status;
 
+	
 	public Grade() {
 	}
 
-	public Grade(int gradeNumber, Teacher gradeManagerID) {
+	public Grade(int gradeNumber, Teacher gradeManager, boolean status) {
 		this.gradeNumber = gradeNumber;
-		this.gradeManagerID = gradeManagerID;
-		numberOfPupilsInGrade = new int[]{0, 0, 0, 0 , 0};
+		this.gradeManager = gradeManager;
 		this.status = true;
+	}
+
+	public Grade(int gradeNumber, Teacher gradeManager) {
+		this.gradeNumber = gradeNumber;
+		this.gradeManager = gradeManager;
 	}
 
 	public Grade(int gradeNumber) {
 		this.gradeNumber = gradeNumber;
-		numberOfPupilsInGrade = new int[]{0, 0, 0, 0 , 0};
+		this.status = true;
+	}
+
+	public Grade(Teacher gradeManager) {
+		this.gradeManager = gradeManager;
 		this.status = true;
 	}
 
@@ -32,12 +41,12 @@ public class Grade {
 		this.gradeNumber = gradeNumber;
 	}
 
-	public Teacher getGradeManagerID() {
-		return gradeManagerID;
+	public Teacher getGradeManager() {
+		return gradeManager;
 	}
 
-	public void setGradeManagerID(Teacher gradeManagerID) {
-		this.gradeManagerID = gradeManagerID;
+	public void setGradeManager(Teacher gradeManager) {
+		this.gradeManager = gradeManager;
 	}
 
 	public Boolean getStatus() {
@@ -58,7 +67,6 @@ public class Grade {
 
 	@Override
 	public String toString() {
-		//return String.format("%10d\t%-10s", gradeNumber, gradeManagerID);
-		return  gradeNumber + "-" + gradeManagerID;
+		return String.format("%-15d\t%-15s", gradeNumber, gradeManager.getTeacherID());
 	}
 }
