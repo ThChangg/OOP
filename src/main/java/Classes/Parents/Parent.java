@@ -5,15 +5,15 @@ import Classes.Person.Date;
 import Classes.Person.Person;
 
 public class Parent extends Person {
-	private String pupilID;
+    private String pupilID;
     private String phoneNumber;
     private boolean status;
 
     public Parent() {
     }
 
-    public Parent(String pupilID, String fullname, Date dob, Address address, String sex, String phoneNumber) {
-        super(fullname, dob, address, sex);
+    public Parent(String pupilID, String fullname, Date dob, Address address, String gender, String phoneNumber) {
+        super(fullname, dob, address, gender);
         this.pupilID = pupilID;
         this.phoneNumber = phoneNumber;
         this.status = true;
@@ -34,6 +34,7 @@ public class Parent extends Person {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
@@ -44,6 +45,6 @@ public class Parent extends Person {
 
     @Override
     public String toString() {
-        return pupilID + "\t" + super.toString() + "\t" + phoneNumber; 
+        return pupilID + "\t" + super.toString() + "\t" + phoneNumber;
     }
 }

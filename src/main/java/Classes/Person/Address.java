@@ -9,6 +9,7 @@ public class Address {
     private String ward;
     private String district;
     private String city;
+    private static String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
 
     public Address() {
     }
@@ -22,7 +23,6 @@ public class Address {
     }
 
     public Address(String address) {
-        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
         Pattern pattern = Pattern.compile(addressRegex);
         Matcher matcher = pattern.matcher(address);
         if (matcher.matches()) {
@@ -74,13 +74,16 @@ public class Address {
         this.city = city;
     }
 
+    public static String getAddressRegex() {
+        return addressRegex;
+    }
+
     @Override
     public String toString() {
         return houseNumber + ", " + streetName + ", " + ward + ", " + district + ", " + city;
     }
 
     public static boolean isValidAddress(String address) {
-        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
         Pattern pattern = Pattern.compile(addressRegex);
         Matcher matcher = pattern.matcher(address);
 

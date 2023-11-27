@@ -7,8 +7,12 @@ import Classes.Parents.Parent;
 import Classes.Parents.ParentManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Points.Point;
+import Classes.Points.PointManagement;
 import Classes.Pupils.Pupil;
 import Classes.Pupils.PupilManagement;
+import Classes.Redux.Redux;
+import Classes.Statistics.Statistics;
 import Classes.Teachers.Teacher;
 import Classes.Teachers.TeacherManagement;
 import Classes.Classroom.Classroom;
@@ -20,14 +24,23 @@ public class AppHelper {
         ParentManagement parentManagement = new ParentManagement();
         TeacherManagement teacherManagement = new TeacherManagement();
         ClassroomManagement classroomManagement = new ClassroomManagement();
-        Scanner sc = new Scanner(System.in);
         int option = -1;
         boolean isCloseApp = false;
+        boolean isAppInitialized = false;
+        Scanner sc = new Scanner(System.in);
 
         do {
             while (option != 0 && !Redux.isLoggedIn && !isCloseApp) {
                 System.out.println("Have you got an account yet ? Yes(Y/y) : No(N/n) : Close App(X/x)");
-                char opt = sc.nextLine().charAt(0);
+                char opt;
+                do {
+                    System.out.print("Enter your option: ");
+                    String input = sc.nextLine().trim();
+
+                    // Check if the input is not empty before accessing the first character
+                    opt = input.isEmpty() ? '\0' : input.charAt(0);
+                } while (opt == '\0');
+
                 switch (opt) {
                     case 'y':
                     case 'Y':
@@ -47,61 +60,82 @@ public class AppHelper {
             }
 
             if (Redux.isLoggedIn) {
+                if (!isAppInitialized) {
+                    appInitialize(pupilManagement, classroomManagement, teacherManagement, parentManagement);
+                    isAppInitialized = true;
+                }
+                
                 System.out.println("========================== Menu ==========================");
                 System.out.println("Please select: ");
-                System.out.println("1. Initialize data");
-                System.out.println("2. Print out data");
+                System.out.println("1. Print out data");
                 if (Redux.isAdmin) {
-                    System.out.println("3. Adding 1 or n person to");
-                    System.out.println("4. Update person information");
-                    System.out.println("5. Delete person");
+                    System.out.println("2. Adding 1 or n person to");
+                    System.out.println("3. Update person information");
+                    System.out.println("4. Delete person");
                 }
-                System.out.println("6. Searching for the person information");
+                System.out.println("5. Searching for the person information");
                 if (Redux.isAdmin) {
-                    System.out.println("7. Statistics");
+                    System.out.println("6. Statistics");
                 }
-                System.out.println("8. Logout");
+                System.out.println("7. Logout");
                 System.out.println("0. Exit");
             }
 
-            System.out.print("Your option: ");
-            option = !isCloseApp || (option == 1) ? Integer.parseInt(sc.nextLine()) : 0;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+
+                if (!isCloseApp && input.isEmpty()) {
+                    System.out.println("Please enter your option!");
+                    option = -1;
+                } else {
+                    try {
+                        option = isCloseApp ? 0 : Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                }
+            } while (option == -1);
+
             switch (option) {
                 case 1:
-                    appInitialize(pupilManagement, classroomManagement, teacherManagement, parentManagement);
-                    break;
-                case 2:
                     appDisplay(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
-                case 3:
+                case 2:
                     if (Redux.isAdmin) {
                         appCreate(sc, pupilManagement, teacherManagement, parentManagement, classroomManagement);
                     } else {
                         System.out.println("Permission denied. You are not an admin.");
                     }
                     break;
-                case 4:
+                case 3:
                     if (Redux.isAdmin) {
                         appUpdate(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     } else {
                         System.out.println("Permission denied. You are not an admin.");
                     }
                     break;
-                case 5:
+                case 4:
                     if (Redux.isAdmin) {
                         appDelete(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     } else {
                         System.out.println("Permission denied. You are not an admin.");
                     }
                     break;
-                case 7:
-                    // Case 7 logic
-                    break;
-                case 6:
+                case 5:
                     appSearch(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement);
                     break;
-                case 8:
+                case 6:
+                    if (Redux.isAdmin) {
+                        appStatistics(sc, pupilManagement);
+                    } else {
+                        System.out.println("Permission denied. You are not an admin.");
+                    }
+                    break;
+                case 7:
                     Redux.isLoggedIn = false;
+                    Redux.isAdmin = false;
                     break;
                 default:
                     System.out.println("Exited!");
@@ -149,11 +183,13 @@ public class AppHelper {
                 classroomManagement = (ClassroomManagement) managementObject;
             } else if (managementObject instanceof ParentManagement) {
                 parentManagement = (ParentManagement) managementObject;
+            } else if (managementObject instanceof PointManagement) {
+
             }
             // Add more else if blocks for other management objects
         }
 
-        int count = 0;
+        int pupilsOfClassCount = 0;
         int classroomIndex = 0;
         Pupil pupilList[] = pupilManagement.getPupilList();
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
@@ -162,13 +198,49 @@ public class AppHelper {
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
             pupilList[i].setClassroom(classroomList[classroomIndex]);
             pupilList[i].setParents(parentList[i]);
-            count++;
+            // pupilList[i].setSubjectPoints(pointManagement[i]);
+            // pointManagement[i].setPupil(pupilList[i]);
+            pupilsOfClassCount++;
 
-            if (count == 4) {
-                count = 0;
+            if (pupilsOfClassCount == 4) {
+                pupilsOfClassCount = 0;
                 classroomIndex++;
             }
         }
+        for (int i = 1; i <= 5; i++) {
+            Grade.setNumberOfPupilsInGrade(12, i);
+        }
+    }
+
+    public static void connect(Object... managementObjects) {
+        PupilManagement pupilManagement = null;
+        ParentManagement parentManagement = null;
+        // PointManagement pointManagement = null;
+
+        for (Object managementObject : managementObjects) {
+            if (managementObject instanceof PupilManagement) {
+                pupilManagement = (PupilManagement) managementObject;
+            }  else if (managementObject instanceof ParentManagement) {
+                parentManagement = (ParentManagement) managementObject;
+            } else if (managementObject instanceof PointManagement) {
+                // pointManagement = (PointManagement) managementObject;
+            }
+            // Add more else if blocks for other management objects
+        }
+
+        Pupil pupilList[] = pupilManagement.getPupilList();
+        int pupilListLength = pupilManagement.getCurrentIndex();
+        Parent parentList[] = parentManagement.getParentManagement();
+        int parentListLength = parentManagement.getCurrentIndex();
+        if (pupilListLength == parentListLength) {
+            pupilList[pupilListLength - 1].setParents(parentList[parentListLength - 1]);
+        }
+
+        // Point pointList[] = pointManagement.getPointList();
+        // int pointListLength = pointManagement.getCurrentIndex();
+        // if (pupilListLength == pointListLength) {
+        //     pupilList[pupilListLength - 1].setSubjectPoints(pointList[pointListLength - 1]);
+        // }
     }
 
     public static void appDisplay(Scanner sc, Object... managementObjects) {
@@ -191,7 +263,7 @@ public class AppHelper {
             // Add more else if blocks for other management objects
         }
 
-        int option = 0;
+        int option = -1;
         do {
             System.out.println("======================= Display data session =======================");
             System.out.println("1. Display pupils data");
@@ -201,7 +273,24 @@ public class AppHelper {
             System.out.println("5. Display classrooms data");
             System.out.println("0. Exit");
 
-            option = Integer.parseInt(sc.nextLine());
+            boolean isEmptyInput;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+                isEmptyInput = input.isEmpty();
+
+                if (!isEmptyInput) {
+                    try {
+                        option = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                } else {
+                    System.out.println("Please enter your option!");
+                }
+            } while (isEmptyInput || option == -1);
+
             switch (option) {
                 case 1:
                     pupilManagement.display();
@@ -247,7 +336,7 @@ public class AppHelper {
             }
         }
 
-        int option = 0;
+        int option = -1;
         do {
             System.out.println("======================= Create data session =======================");
             System.out.println("1. Create pupils data");
@@ -257,7 +346,24 @@ public class AppHelper {
             System.out.println("5. Create classrooms data");
             System.out.println("0. Exit");
 
-            option = Integer.parseInt(sc.nextLine());
+            boolean isEmptyInput;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+                isEmptyInput = input.isEmpty();
+
+                if (!isEmptyInput) {
+                    try {
+                        option = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                } else {
+                    System.out.println("Please enter your option!");
+                }
+            } while (isEmptyInput || option == -1);
+
             switch (option) {
                 case 1:
                     addPupilsToPupilManagementList(sc, pupilManagement, classroomManagement);
@@ -301,9 +407,9 @@ public class AppHelper {
             }
         }
 
-        int option = 0;
+        int option = -1;
         do {
-            System.out.println("======================= Create data session =======================");
+            System.out.println("======================= Update data session =======================");
             System.out.println("1. Update pupils data");
             System.out.println("2. Update teachers data");
             System.out.println("3. Update parents data");
@@ -311,7 +417,24 @@ public class AppHelper {
             System.out.println("5. Update classroom data");
             System.out.println("0. Exit");
 
-            option = Integer.parseInt(sc.nextLine());
+            boolean isEmptyInput;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+                isEmptyInput = input.isEmpty();
+
+                if (!isEmptyInput) {
+                    try {
+                        option = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                } else {
+                    System.out.println("Please enter your option!");
+                }
+            } while (isEmptyInput || option == -1);
+
             switch (option) {
                 case 1:
                     updatePupilData(pupilManagement, sc);
@@ -355,9 +478,9 @@ public class AppHelper {
             }
         }
 
-        int option = 0;
+        int option = -1;
         do {
-            System.out.println("======================= Create data session =======================");
+            System.out.println("======================= Delete data session =======================");
             System.out.println("1. Delete pupils data");
             System.out.println("2. Delete teachers data");
             System.out.println("3. Delete parents data");
@@ -366,7 +489,24 @@ public class AppHelper {
             System.out.println("6. Recycle Bin");
             System.out.println("0. Exit");
 
-            option = Integer.parseInt(sc.nextLine());
+            boolean isEmptyInput;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+                isEmptyInput = input.isEmpty();
+
+                if (!isEmptyInput) {
+                    try {
+                        option = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                } else {
+                    System.out.println("Please enter your option!");
+                }
+            } while (isEmptyInput || option == -1);
+
             switch (option) {
                 case 1:
                     deletePupilData(pupilManagement, sc);
@@ -422,8 +562,10 @@ public class AppHelper {
             }
         }
 
-        char option = 'y';
-        do {
+        char option = 'x';
+        System.out.println("Do you want to add new pupils ? Yes(Y/y) : No (N/n)");
+        option = scanner.nextLine().charAt(0);
+        while (option == 'y' || option == 'Y') {
             boolean flag;
             String fullName = "";
             System.out.println("Add pupils: ");
@@ -463,14 +605,14 @@ public class AppHelper {
             } while (!flag);
             Address address = new Address(inputAddress);
 
-            String sex = "";
+            String gender = "";
             do {
-                System.out.print("Sex (format: male / female): ");
-                sex = scanner.nextLine();
-                flag = Pupil.isValidSex(sex);
+                System.out.print("Gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Pupil.isValidGender(gender);
 
                 if (!flag) {
-                    System.out.println("Sex is invalid (Wrong format)!");
+                    System.out.println("Gender is invalid (Wrong format)!");
                 }
             } while (!flag);
 
@@ -485,19 +627,27 @@ public class AppHelper {
                     System.out.println("Class is invalid (No class available)!");
                 }
             } while (!flag);
+            
+            Classroom classroomList[] = classroomManagement.getClassroomManagement();
+            Classroom classroom = null;
+            for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
+                if (classroomList[i].getClassName().equalsIgnoreCase(className)) {
+                    classroom = classroomList[i];
+                }
+            }
+            
             int gradeNumber = className.charAt(0) - '0';
-            Grade grade = new Grade(gradeNumber);
-            Classroom classroom = new Classroom(className, grade);
+            Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1, gradeNumber);
 
             String pupilID = createNewID(pupilManagement.getLastPupilID());
-            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, sex, classroom));
+            pupilManagement.add(new Pupil(pupilID, fullName, dob, address, gender, classroom));
 
-            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + sex;
-            pupilManagement.insertIntoDatabase(record);
+            String record = pupilID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + className + "-" + gender;
+            PupilManagement.insertIntoDatabase(record);
 
             System.out.println("Do you want to add more pupils ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
-        } while (option == 'y' || option == 'Y');
+        }
     }
 
     public static void updatePupilData(PupilManagement pupilManagement, Scanner scanner) {
@@ -515,15 +665,25 @@ public class AppHelper {
     public static void addTeachersToTeacherManagementList(TeacherManagement teacherManagement, Scanner scanner) {
         char option = 'y';
         do {
+            boolean flag;
+            String fullName = "";
             System.out.println("Add teachers: ");
-            System.out.print("Fullname (Format: Tran Le Anh Khoi): ");
-            String fullName = scanner.nextLine();
+            do {
+                System.out.print("Fullname (Format: Tran Anh Khoi): ");
+                fullName = scanner.nextLine();
+                flag = Pupil.isValidName(fullName);
+
+                if (!flag) {
+                    System.out.println("Fullname is invalid (Wrong format)!");
+                }
+
+            } while (!flag);
 
             String date = "";
             do {
                 System.out.print("BirthDate: (format: 16/02/2000): ");
                 date = scanner.nextLine();
-                boolean flag = Date.isValidDateAndMonth(date);
+                flag = Date.isValidDateAndMonth(date);
 
                 if (!flag) {
                     System.out.println("BirthDate is invalid (Wrong format)!");
@@ -536,7 +696,7 @@ public class AppHelper {
                 System.out.print(
                         "Address: (format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
                 inputAddress = scanner.nextLine();
-                boolean flag = Address.isValidAddress(inputAddress);
+                flag = Address.isValidAddress(inputAddress);
 
                 if (!flag) {
                     System.out.println("Address is invalid (Wrong format)!");
@@ -544,8 +704,30 @@ public class AppHelper {
             } while (!Address.isValidAddress(inputAddress));
             Address address = new Address(inputAddress);
 
+            String gender = "";
+            do {
+                System.out.print("Gender (format: male / female): ");
+                gender = scanner.nextLine();
+                flag = Pupil.isValidGender(gender);
+
+                if (!flag) {
+                    System.out.println("Gender is invalid (Wrong format)!");
+                }
+            } while (!flag);
+
+            String major = "";
+            do {
+                System.out.print("Major (format: math): ");
+                major = scanner.nextLine();
+                flag = Teacher.isValidMajor(major);
+
+                if (!flag) {
+                    System.out.println("Major is invalid (Wrong format)!");
+                }
+            } while (!flag);
+
             String teacherID = createNewID(teacherManagement.getLastTeacherID());
-            teacherManagement.add(new Teacher(teacherID, fullName, dob, address));
+            teacherManagement.add(new Teacher(teacherID, fullName, dob, address, gender, major));
 
             System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
@@ -583,27 +765,101 @@ public class AppHelper {
             }
         }
 
-        int option = 0;
+        int option = -1;
         do {
             System.out.println("======================= Menu =======================");
             System.out.println("1. Search pupils data by name");
             System.out.println("2. Search pupils data by class");
             System.out.println("0. Exit");
 
-            option = Integer.parseInt(sc.nextLine());
+            boolean isEmptyInput;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+                isEmptyInput = input.isEmpty();
+
+                if (!isEmptyInput) {
+                    try {
+                        option = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                } else {
+                    System.out.println("Please enter your option!");
+                }
+            } while (isEmptyInput || option == -1);
+
             switch (option) {
                 case 1:
                     System.out.print("Enter name: ");
                     String name = sc.nextLine();
-                    pupilManagement.findPupilsBy(name, "getFullname", Pupil.class, null);
+                    if (Redux.isAdmin) {
+                        pupilManagement.findPupilsBy(name, "getFullname", Pupil.class, null, false, true);
+                    } else {
+                        pupilManagement.findPupilsBy(name, "getFullname", Pupil.class, null, false, false);
+                    }
                     pupilManagement.display(pupilManagement.getSearchResultLength());
                     break;
 
                 case 2:
                     System.out.print("Enter ClassName: ");
                     String className = sc.nextLine();
-                    pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class);
+                    if (Redux.isAdmin) {
+                        pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class, false, true);
+                    } else {
+                        pupilManagement.findPupilsBy(className, "getClassName", Pupil.class, Classroom.class, false, false);
+                    }
                     pupilManagement.display(pupilManagement.getSearchResultLength());
+                    break;
+
+                case 3:
+                    boolean found = pupilManagement.hasUninitializedPupil();
+                    if (found) {
+                        System.out.println("Found uninitialized pupil!");
+                    } else {
+                        System.out.println("Not found!");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } while (option != 0);
+    }
+
+    private static void appStatistics(Scanner sc, PupilManagement pupilManagement) {
+        int option = -1;
+        do {
+            System.out.println("======================= Menu =======================");
+            System.out.println("1. Statistics on the number of students by gender");
+            System.out.println("2. Statistics on the number of students by grade");
+            System.out.println("0. Exit");
+
+            boolean isEmptyInput;
+            do {
+                System.out.print("Your option: ");
+                String input = sc.nextLine().trim();
+                isEmptyInput = input.isEmpty();
+
+                if (!isEmptyInput) {
+                    try {
+                        option = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a valid integer.");
+                        option = -1;
+                    }
+                } else {
+                    System.out.println("Please enter your option!");
+                }
+            } while (isEmptyInput || option == -1);
+
+            switch (option) {
+                case 1:
+                    Statistics.statisticsOnTheNumberOfPupilsByGender(pupilManagement);
+                    break;
+
+                case 2:
+                    Statistics.statisticsOnTheNumberOfPupilsByGrade(pupilManagement);
                     break;
 
                 default:
@@ -631,8 +887,6 @@ public class AppHelper {
 
             Grade grade = new Grade(gradeNumber, null);
             classroomManagement.add(new Classroom(className, grade));
-
-            classroomManagement.classroomFormationInitialize();
 
             System.out.println("Do you want to add more classrooms ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);

@@ -2,6 +2,7 @@ package Classes.Teachers;
 
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 import java.io.BufferedReader;
@@ -18,6 +19,7 @@ import java.util.regex.Pattern;
 public class TeacherManagement implements IFileManagement, ICRUD {
     private Teacher teacherManagement[];
     private int currentIndex;
+    private static String inputRelativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
 
     public TeacherManagement() {
         teacherManagement = new Teacher[100];
@@ -34,13 +36,12 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void initialize() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
 
         if (file.exists()) {
             // File exists, you can work with it
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+                    new InputStreamReader(new FileInputStream(inputRelativePath), "UTF-8"))) {
                 String line = "";
                 while ((line = br.readLine()) != null) {
                     String parts[] = line.split("-");
@@ -49,7 +50,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String major = parts[4];
-                        String sex = parts[6];
+                        String gender = parts[6];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -59,8 +60,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                        Pattern pattern = Pattern.compile(addressRegex);
+                        Pattern pattern = Pattern.compile(Address.getAddressRegex());
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
                             String houseNumber = matcher.group(1);
@@ -70,7 +70,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, sex, major);
+                            Teacher teacher = new Teacher(teacherID, fullName, dob, address, gender, major);
                             this.add(teacher);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -89,18 +89,15 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Teacher Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s", "ID", "Fullname", "Sex",
-                        "BirthDate", "Address",
-                        "Major"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-10s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Major"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     writer.write(teacherManagement[i].toString());
@@ -108,7 +105,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -156,8 +153,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             System.out.print("New Address (Format: 16A, To Ky, Phuong Trung My Tay, Quan 12, Thanh pho Ho Chi Minh): ");
             String address = sc.nextLine();
             if (!address.isEmpty()) {
-                String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                Pattern pattern = Pattern.compile(addressRegex);
+                Pattern pattern = Pattern.compile(Address.getAddressRegex());
                 Matcher matcher = pattern.matcher(address);
                 if (matcher.matches()) {
                     String streetNumber = matcher.group(1);

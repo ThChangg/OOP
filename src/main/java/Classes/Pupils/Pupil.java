@@ -18,14 +18,14 @@ public class Pupil extends Person {
     public Pupil() {
     }
 
-    public Pupil(String pupilID, String fullname, Date dob, Address address, String sex) {
-        super(fullname, dob, address, sex);
+    public Pupil(String pupilID, String fullname, Date dob, Address address, String gender) {
+        super(fullname, dob, address, gender);
         this.pupilID = pupilID;
         this.status = true;
     }
 
-    public Pupil(String pupilID, String fullname, Date dob, Address address, String sex, Classroom classroom) {
-        super(fullname, dob, address, sex);
+    public Pupil(String pupilID, String fullname, Date dob, Address address, String gender, Classroom classroom) {
+        super(fullname, dob, address, gender);
         this.pupilID = pupilID;
         this.classroom = classroom;
         this.status = true;
@@ -45,7 +45,7 @@ public class Pupil extends Person {
 
     public void setClassroom(Classroom classroom) {
         this.classroom = new Classroom(); // Assuming Classroom has a default constructor
-    
+
         // Use reflection to copy fields from the parameter object to the current object
         Field[] fields = Classroom.class.getDeclaredFields();
         for (Field field : fields) {
@@ -74,7 +74,6 @@ public class Pupil extends Person {
         this.subjectPoints = subjectPoints;
     }
 
-
     public boolean isStatus() {
         return this.status;
     }
@@ -89,6 +88,6 @@ public class Pupil extends Person {
 
     @Override
     public String toString() {
-        return pupilID + "\t" + super.toString() + "\t" + classroom.getClassName(); 
+        return pupilID + "\t" + super.toString() + "\t" + classroom.getClassName();
     }
 }

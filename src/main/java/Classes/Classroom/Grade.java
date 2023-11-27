@@ -5,6 +5,7 @@ import Classes.Teachers.Teacher;
 public class Grade {
     private int gradeNumber;
     private Teacher gradeManagerID;
+	private static int numberOfPupilsInGrade[];
 	private boolean status;
 
 	public Grade() {
@@ -13,11 +14,13 @@ public class Grade {
 	public Grade(int gradeNumber, Teacher gradeManagerID) {
 		this.gradeNumber = gradeNumber;
 		this.gradeManagerID = gradeManagerID;
+		numberOfPupilsInGrade = new int[]{0, 0, 0, 0 , 0};
 		this.status = true;
 	}
 
 	public Grade(int gradeNumber) {
 		this.gradeNumber = gradeNumber;
+		numberOfPupilsInGrade = new int[]{0, 0, 0, 0 , 0};
 		this.status = true;
 	}
 
@@ -43,6 +46,14 @@ public class Grade {
 	
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+
+	public static int[] getNumberOfPupilsInGrade() {
+		return numberOfPupilsInGrade;
+	}
+
+	public static void setNumberOfPupilsInGrade(int numberOfPupils, int gradeNumber) {
+		numberOfPupilsInGrade[gradeNumber - 1] = numberOfPupils;
 	}
 
 	@Override

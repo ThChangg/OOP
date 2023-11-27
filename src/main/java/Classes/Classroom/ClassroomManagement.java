@@ -12,6 +12,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
 
@@ -20,6 +21,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	private int currentIndex;
 	private static int classCounts[];
 	private static String classroomFormation[];
+	private static String inputRelativePath = System.getProperty("user.dir")
+			+ "\\src\\main\\java\\Data\\classrooms.txt";
 
 	public ClassroomManagement() {
 		this.classroomManagement = new Classroom[100];
@@ -47,13 +50,11 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	@Override
 	public void initialize() {
-		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\classrooms.txt";
-
-		File file = new File(relativePath);
+		File file = new File(inputRelativePath);
 
 		if (file.exists()) {
 			try (BufferedReader bufferedRead = new BufferedReader(
-					new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+					new InputStreamReader(new FileInputStream(inputRelativePath), "UTF-8"))) {
 				String line;
 				while ((line = bufferedRead.readLine()) != null) {
 					String[] data = line.split("-");
@@ -69,7 +70,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			classroomFormationInitialize();
 		} else {
 			System.out.println("File does not exist.");
 		}
@@ -77,11 +77,10 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	@Override
 	public void display() {
-		String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-		File file = new File(relativePath);
+		File file = new File(Redux.getOutputRelativePath());
 
 		if (file.exists()) {
-			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(relativePath, true))) {
+			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
 				bufferedWrite.write("Classroom Management List:");
 				bufferedWrite.newLine();
 				bufferedWrite.write(String.format("%-5s\t%-20s\t%-10s\t%-70s", "className", "classManagerID",
@@ -93,7 +92,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				}
 				bufferedWrite.write("================================================================");
 				bufferedWrite.newLine();
-				System.out.println("Data written to " + relativePath);
+				System.out.println("Data written to " + Redux.getOutputRelativePath());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -170,7 +169,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		} else {
 			System.out.println("Classroom with ID: " + ID + " is not found!");
 		}
-
 	}
 
 	private Classroom getClassNameByID(String iD) {
@@ -181,12 +179,6 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public void delete(String ID) {
 		// TODO Auto-generated method stub
 
-	}
-
-	public void classroomFormationInitialize() {
-		for (int i = 0; i < currentIndex; i++) {
-			classroomFormation[i] = classroomManagement[i].getClassName();
-		}
 	}
 
 	public static void displayClassroomFormation() {

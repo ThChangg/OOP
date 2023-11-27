@@ -5,7 +5,6 @@ import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Person.Person;
 
-
 public class Teacher extends Person {
     private String teacherID;
     private Classroom classroom;
@@ -19,13 +18,14 @@ public class Teacher extends Person {
         this.teacherID = teacherID;
     }
 
-    public Teacher(String teacherID, String fullname, Date birthDate, Address address, String sex, String major) {
-        super(fullname, birthDate, address, sex);
+    public Teacher(String teacherID, String fullname, Date birthDate, Address address, String gender, String major) {
+        super(fullname, birthDate, address, gender);
         this.teacherID = teacherID;
         this.major = major;
     }
 
-    public Teacher(String teacherID, Classroom classroom, String major, String fullname, Date birthDate, Address address) {
+    public Teacher(String teacherID, Classroom classroom, String major, String fullname, Date birthDate,
+            Address address) {
         super(fullname, birthDate, address);
         this.teacherID = teacherID;
         this.classroom = classroom;
@@ -59,6 +59,11 @@ public class Teacher extends Person {
     @Override
     public String toString() {
         return teacherID + "\t" + super.toString() + "\t" + major;
+    }
+
+    public static boolean isValidMajor(String major) {
+        return major.equalsIgnoreCase("Literature") || major.equalsIgnoreCase("Math")
+                || major.equalsIgnoreCase("English") || major.equalsIgnoreCase("PE");
     }
 
 }
