@@ -13,8 +13,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import Classes.Classroom.ClassroomManagement;
-import Classes.Classroom.Grade;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Redux.Redux;
@@ -181,131 +179,13 @@ public class PupilManagement implements IFileManagement, ICRUD {
     public void add(Object obj) {
         if (currentIndex < pupilList.length) {
             pupilList[currentIndex++] = (Pupil) obj;
+
         } else {
             System.out.println("Pupil Management List is full. Cannot add more.");
         }
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Pupil pupil = getPupilByID(ID);
-
-        if (pupil != null) {
-            boolean flag = true;
-            String name = "";
-            do {
-                System.out.println("Old Fullname: " + pupil.getFullname());
-                System.out.print("New Fullname (Format: Tran Duc Canh): ");
-                name = sc.nextLine();
-                if (!name.isEmpty()) {
-                    flag = Pupil.isValidName(name);
-                    if (flag) {
-                        pupil.setFullname(name);
-                    } else {
-                        System.out.println("Fullname is invalid (Wrong format)!");
-                    }
-                } else {
-                    name = pupil.getFullname();
-                    flag = true;
-                }
-
-            } while (!flag);
-
-            String birthDate = "";
-            do {
-                System.out.println("Old BirthDate: " + pupil.getBirthDate());
-                System.out.print("New BirthDate (Format: 02/02/2017): ");
-                birthDate = sc.nextLine();
-
-                if (!birthDate.isEmpty()) {
-                    flag = Date.isValidDateAndMonth(birthDate);
-                    if (flag) {
-                        Date newDob = new Date(birthDate);
-                        pupil.setBirthDate(newDob);
-                    } else {
-                        System.out.println("BirthDate is invalid (Wrong format)!");
-                    }
-
-                } else {
-                    birthDate = pupil.getBirthDate().toString();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String gender = "";
-            do {
-                System.out.println("Old gender: " + pupil.getGender());
-                System.out.print("New gender (Format: male / female): ");
-                gender = sc.nextLine();
-
-                if (!gender.isEmpty()) {
-                    flag = Pupil.isValidGender(gender);
-                    if (flag) {
-                        pupil.setGender(gender);
-                    } else {
-                        System.out.println("gender is invalid (Wrong format)!");
-                    }
-                } else {
-                    gender = pupil.getGender();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String address = "";
-            do {
-                System.out.println("Old Address: " + pupil.getAddress());
-                System.out
-                        .print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
-                address = sc.nextLine();
-                if (!address.isEmpty()) {
-                    flag = Address.isValidAddress(address);
-                    if (flag) {
-                        Address newAddress = new Address(address);
-                        pupil.setAddress(newAddress);
-                    } else {
-                        System.out.println("Address is invalid (Wrong format)!");
-                    }
-                } else {
-                    address = pupil.getAddress().toString();
-                    flag = true;
-                }
-            } while (!flag);
-
-            ClassroomManagement.displayClassroomFormation();
-            String className = "";
-            do {
-                System.out.println("Old Class: " + pupil.getClassroom().getClassName());
-                System.out.print("New Class (Format: 1A1): ");
-                className = sc.nextLine();
-                if (!className.isEmpty()) {
-                    // flag = ClassroomManagement.isValidClassroom(className);
-                    flag = true;
-                    if (flag) {
-                        int gradeNumber = className.charAt(0) - '0';
-                        pupil.getClassroom().getGrade().setGradeNumber(gradeNumber);
-                        pupil.getClassroom().setClassName(className);
-                        Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1,
-                                gradeNumber);
-                    } else {
-                        System.out.println("Classroom is invalid (Wrong format)!");
-                    }
-                } else {
-                    className = pupil.getClassroom().getClassName();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String customizedAddress = pupil.getAddress().toString().replace(" Duong ", " ");
-            String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + customizedAddress + "-"
-                    + className + "-" + gender;
-            PupilManagement.updateRecord(record);
-            System.out.println("Update successfully!");
-        } else {
-            System.out.println("Pupil with ID: " + ID + " is not found!");
-        }
-    }
-
     public void update(Object obj) {
         for (int i = 0; i < currentIndex; i++) {
             if (pupilList[i].getPupilID().equalsIgnoreCase(((Pupil) obj).getPupilID())) {
@@ -332,6 +212,28 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
     }
 
+    public int getNumberOfPupilsByPerformances(String performance) {
+        int numberOfPupils = 0;
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getSubjectPoints().getPerformance().equalsIgnoreCase(performance)) {
+                numberOfPupils++;
+            }
+        }
+        return numberOfPupils;
+    }
+
+    public int getNumberOfPupilsByGradeAndPerformances(String grade, String performance) {
+        int numberOfPupils = 0;
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getSubjectPoints().getPerformance().equalsIgnoreCase(performance)) {
+                if (pupilList[i].getClassroom().getClassName().substring(0, 2).equalsIgnoreCase(grade)) {
+                    numberOfPupils++;
+                }
+            }
+        }
+        return numberOfPupils;
+    }
+
     public String getLastPupilID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
@@ -354,113 +256,58 @@ public class PupilManagement implements IFileManagement, ICRUD {
     }
 
     public void findPupilsBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass,
-            boolean isAccuracy, boolean isAdmin) {
+            boolean isAccuracy) {
         Arrays.fill(searchResult, null);
         searchResultLength = 0;
         Pattern pattern = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE);
+        for (int i = 0; i < currentIndex; i++) {
+            try {
+                if (nestedClass != null) {
+                    // Get the nested object from the main object
+                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
+                            .invoke(pupilList[i]);
 
-        if (isAdmin) {
-            for (int i = 0; i < currentIndex; i++) {
-                try {
-                    if (nestedClass != null) {
-                        // Get the nested object from the main object
-                        Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
-                                .invoke(pupilList[i]);
+                    // Use reflection to get the appropriate method from the nested class
+                    Method getterMethod = nestedClass.getMethod(findBy);
 
-                        // Use reflection to get the appropriate method from the nested class
-                        Method getterMethod = nestedClass.getMethod(findBy);
+                    // Invoke the method on the nested object
+                    String attributeValue = (String) getterMethod.invoke(nestedObject);
 
-                        // Invoke the method on the nested object
-                        String attributeValue = (String) getterMethod.invoke(nestedObject);
-
-                        if (!isAccuracy) {
-                            if (pattern.matcher(attributeValue).find()) {
+                    if (!isAccuracy) {
+                        if (pattern.matcher(attributeValue).find()) {
+                            if (pupilList[i].getStatus()) {
                                 this.searchResult[this.searchResultLength++] = pupilList[i];
-                                // if (pupilList[i].getStatus()) {
-                                // }
-                            }
-                        } else {
-                            if (pattern.matcher(attributeValue).matches()) {
-                                this.searchResult[this.searchResultLength++] = pupilList[i];
-                                // if (pupilList[i].getStatus()) {
-                                // }
                             }
                         }
                     } else {
-                        // No nested class, directly invoke the method on the main class
-                        Method getterMethod = mainClass.getMethod(findBy);
-                        String attributeValue = (String) getterMethod.invoke(pupilList[i]);
-
-                        if (!isAccuracy) {
-                            if (pattern.matcher(attributeValue).find()) {
+                        if (pattern.matcher(attributeValue).matches()) {
+                            if (pupilList[i].getStatus()) {
                                 this.searchResult[this.searchResultLength++] = pupilList[i];
-                                // if (pupilList[i].getStatus()) {
-                                // }
-                            }
-                        } else {
-                            if (pattern.matcher(attributeValue).matches()) {
-                                this.searchResult[this.searchResultLength++] = pupilList[i];
-                                // if (pupilList[i].getStatus()) {
-                                // }
                             }
                         }
                     }
+                } else {
+                    // No nested class, directly invoke the method on the main class
+                    Method getterMethod = mainClass.getMethod(findBy);
+                    String attributeValue = (String) getterMethod.invoke(pupilList[i]);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        } else {
-            for (int i = 0; i < currentIndex; i++) {
-                try {
-                    if (nestedClass != null) {
-                        // Get the nested object from the main object
-                        Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
-                                .invoke(pupilList[i]);
-
-                        // Use reflection to get the appropriate method from the nested class
-                        Method getterMethod = nestedClass.getMethod(findBy);
-
-                        // Invoke the method on the nested object
-                        String attributeValue = (String) getterMethod.invoke(nestedObject);
-
-                        if (!isAccuracy) {
-                            if (pattern.matcher(attributeValue).find()) {
-                                if (pupilList[i].getStatus()) {
-                                    this.searchResult[this.searchResultLength++] = pupilList[i];
-                                }
-                            }
-                        } else {
-                            if (pattern.matcher(attributeValue).matches()) {
-                                if (pupilList[i].getStatus()) {
-                                    this.searchResult[this.searchResultLength++] = pupilList[i];
-                                }
+                    if (!isAccuracy) {
+                        if (pattern.matcher(attributeValue).find()) {
+                            if (pupilList[i].getStatus()) {
+                                this.searchResult[this.searchResultLength++] = pupilList[i];
                             }
                         }
                     } else {
-                        // No nested class, directly invoke the method on the main class
-                        Method getterMethod = mainClass.getMethod(findBy);
-                        String attributeValue = (String) getterMethod.invoke(pupilList[i]);
-
-                        if (!isAccuracy) {
-                            if (pattern.matcher(attributeValue).find()) {
-                                if (pupilList[i].getStatus()) {
-                                    this.searchResult[this.searchResultLength++] = pupilList[i];
-                                }
-                            }
-                        } else {
-                            if (pattern.matcher(attributeValue).matches()) {
-                                if (pupilList[i].getStatus()) {
-                                    this.searchResult[this.searchResultLength++] = pupilList[i];
-                                }
+                        if (pattern.matcher(attributeValue).matches()) {
+                            if (pupilList[i].getStatus()) {
+                                this.searchResult[this.searchResultLength++] = pupilList[i];
                             }
                         }
                     }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -468,7 +315,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
     public boolean hasUninitializedPupil() {
         boolean flag = false;
         for (int i = 0; i < currentIndex; i++) {
-            if (pupilList[i].getParents() == null && pupilList[i].getSubjectPoints() == null) {
+            if (pupilList[i].getParents() == null || pupilList[i].getSubjectPoints() == null) {
                 flag = true;
                 break;
             }

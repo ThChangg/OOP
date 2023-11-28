@@ -78,7 +78,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 				String line;
 				while ((line = bufferedRead.readLine()) != null) {
 					String[] data = line.split("-");
-					if(data.length >= 4) {
+					if (data.length >= 4) {
 						String className = data[0];
 						String classManagerID = data[1];
 						int gradeNumber = Integer.parseInt(data[2]);
@@ -106,7 +106,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		File file = new File(Redux.getOutputRelativePath());
 
 		if (file.exists()) {
-			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
+			try (BufferedWriter bufferedWrite = new BufferedWriter(
+					new FileWriter(Redux.getOutputRelativePath(), true))) {
 				bufferedWrite.write("Classroom Management List:");
 				bufferedWrite.newLine();
 				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager",
@@ -133,7 +134,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		File file = new File(Redux.getOutputRelativePath());
 
 		if (file.exists()) {
-			try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
+			try (BufferedWriter bufferedWrite = new BufferedWriter(
+					new FileWriter(Redux.getOutputRelativePath(), true))) {
 				bufferedWrite.write("Classroom Search List:");
 				bufferedWrite.newLine();
 				bufferedWrite.write(String.format("%-5s\t%-20s\t%-15s\t%-10s", "className", "classManager",
@@ -189,68 +191,22 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	}
 
 	@Override
-	public void update(String ID) {
-		Scanner sc = new Scanner(System.in);
-		Classroom classroom = getClassroomByID(ID);
-
-		if (classroom != null) {
-			boolean flag = true;
-			do {
-				String className = classroom.getClassName();
-
-				String newClassManagerID = "";
-				do {
-					System.out.println("Old ClassManager: " + classroom.getClassManager().getTeacherID());
-					System.out.print("New ClassManager: (format: GV016): ");
-					newClassManagerID = sc.nextLine();
-					if (!newClassManagerID.isEmpty()) {
-						flag = isValidManager(newClassManagerID);
-						if (flag) {
-							classroom.getClassManager().setTeacherID(newClassManagerID);
-						} else {
-							System.out.println("Class manager is invalid!");
-						}
-					} else {
-						flag = true;
-						newClassManagerID = classroom.getClassManager().getTeacherID();
-					}
-				} while (!flag);
-
-				int gradeNumber = className.charAt(0) - '0';
-				classroom.getGrade().setGradeNumber(gradeNumber);
-
-				String newGradeManagerID = "";
-				do {
-					System.out.println("Old GradeManager: " + classroom.getGrade().getGradeManager().getTeacherID());
-					newGradeManagerID = getGradeManagerByGradeNumber(gradeNumber);
-				} while (!flag);
-				
-				String write = className + "-" + newClassManagerID + "-" + gradeNumber + "-" + newGradeManagerID;
-				this.updateRecord(write);
-				System.out.println("Update successfully!");
-			} while (!flag);			
-		}
-		else {
-			System.out.println("Classroom with ID: " + ID + " is not found!");
+	public void update(Object obj) {
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassName().equalsIgnoreCase(((Classroom) obj).getClassName())) {
+				classroomManagement[i] = (Classroom) obj;
+				break;
+			}
 		}
 	}
 
-	public void update(Object obj) {
-        for (int i = 0; i < currentIndex; i++) {
-            if (classroomManagement[i].getClassName().equalsIgnoreCase(((Classroom) obj).getClassName())) {
-                classroomManagement[i] = (Classroom) obj;
-                break;
-            }
-        }
-    }
-
 	@Override
 	public void delete(String ID) {
-		int index = this.getClassroomArrayIndex(ID); 
-        if (index >= 0) {
-            for (int i = 0; i < currentIndex; i++) {
-				if(i == index) {
-            		classroomManagement[i].setStatus(false);
+		int index = this.getClassroomArrayIndex(ID);
+		if (index >= 0) {
+			for (int i = 0; i < currentIndex; i++) {
+				if (i == index) {
+					classroomManagement[i].setStatus(false);
 					Redux.addToRecycleBin(classroomManagement[i]);
 				}
 			}
@@ -315,18 +271,58 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public static void displayClassroomFormation() {
 		int grade = 0;
 		int index = 0;
-	
+
 		for (int i = 0; i < 5; i++) {
 			System.out.print("Grade " + (grade + 1) + ": ");
-	
+
 			for (int j = 0; j < classCounts[grade]; j++) {
 				System.out.print(classroomFormation[index] + "\t");
 				index++;
 			}
-	
+
 			System.out.println();
 			grade++;
 		}
+	}
+
+	public static void removeElementFromClassroomFormation(String className) {
+		int index = -1;
+		for (int i = 0; i < classroomFormation.length; i++) {
+			if (classroomFormation[i].equalsIgnoreCase(className)) {
+				index = i;
+				break;
+			}
+		}
+
+		for (int i = index; i < classroomFormation.length - 1; i++) {
+			classroomFormation[i] = classroomFormation[i + 1];
+		}
+		classroomFormation[classroomFormation.length - 1] = null;
+		classroomFormation = Arrays.copyOf(classroomFormation, classroomFormation.length - 1);
+
+		String classNumber = className.substring(0, 2);
+		switch (classNumber) {
+			case "1A":
+				classCounts[0]--;
+				break;
+
+			case "2A":
+				classCounts[1]--;
+				break;
+
+			case "3A":
+				classCounts[2]--;
+				break;
+
+			case "4A":
+				classCounts[3]--;
+				break;
+
+			case "5A":
+				classCounts[4]--;
+				break;
+		}
+
 	}
 
 	public String getLastClassManagerID() {
@@ -340,10 +336,10 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 	public boolean isValidNewClassroom(String className) {
 		boolean flag = false;
 		String classNameRegex = "([1-5])A([4-9]|[1-9][0-9]+)";
-        Pattern pattern = Pattern.compile(classNameRegex);
+		Pattern pattern = Pattern.compile(classNameRegex);
 		Matcher matcher = pattern.matcher(className);
 
-        if(matcher.matches()) {
+		if (matcher.matches()) {
 			for (int i = 0; i < currentIndex; i++) {
 				if (!classroomManagement[i].getClassName().equalsIgnoreCase(className)) {
 					flag = true;
@@ -352,7 +348,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 					break;
 				}
 			}
-        } 
+		}
 
 		return flag;
 	}
@@ -373,8 +369,8 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		String managerRegex = "^(GV)[0][0-9][0-9]$";
 		Pattern pattern = Pattern.compile(managerRegex);
 		Matcher matcher = pattern.matcher(classManager);
-		
-		if(!matcher.matches()) {
+
+		if (!matcher.matches()) {
 			flag = false;
 		} else {
 			for (int i = 0; i < currentIndex; i++) {
@@ -415,29 +411,29 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		return gradeManager;
 	}
 
-    public static String readDatabase() {
-        StringBuilder records = new StringBuilder();
-        File file = new File(inputRelativePath);
-        try (Scanner sc = new Scanner(new FileReader(file))) {
-            while (sc.hasNextLine()) {
-                records.append(sc.nextLine()).append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return records.toString().trim();
-    }
+	public static String readDatabase() {
+		StringBuilder records = new StringBuilder();
+		File file = new File(inputRelativePath);
+		try (Scanner sc = new Scanner(new FileReader(file))) {
+			while (sc.hasNextLine()) {
+				records.append(sc.nextLine()).append("\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return records.toString().trim();
+	}
 
-    public static void writeDatabase(String records) {
-        File file = new File(inputRelativePath);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(records);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	public static void writeDatabase(String records) {
+		File file = new File(inputRelativePath);
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+			writer.write(records);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-	public void insertIntoDatabase(String record) {
+	public static void insertIntoDatabase(String record) {
 		// Read existing records from the database file
 		String existingRecords = readDatabase();
 
@@ -450,7 +446,7 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		}
 	}
 
-	public void updateRecord(String updatedRecord) {
+	public static void updateRecord(String updatedRecord) {
 		String databaseContent = readDatabase();
 		String records[] = databaseContent.split("\n");
 		String className = updatedRecord.substring(0, 3);

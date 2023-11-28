@@ -184,119 +184,6 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Parent parent = getParentByID(ID);
-
-        if (parent != null) {
-            boolean flag = true;
-            String name = "";
-            do {
-                System.out.println("Old Fullname: " + parent.getFullname());
-                System.out.print("New Fullname (Format: Tran Duc Canh): ");
-                name = sc.nextLine();
-                if (!name.isEmpty()) {
-                    flag = Parent.isValidName(name);
-                    if (flag) {
-                        parent.setFullname(name);
-                    } else {
-                        System.out.println("Fullname is invalid (Wrong format)!");
-                    }
-                } else {
-                    name = parent.getFullname();
-                    flag = true;
-                }
-
-            } while (!flag);
-
-            String birthDate = "";
-            do {
-                System.out.println("Old BirthDate: " + parent.getBirthDate());
-                System.out.print("New BirthDate (Format: 02/02/1976): ");
-                birthDate = sc.nextLine();
-
-                if (!birthDate.isEmpty()) {
-                    flag = Date.isValidDateAndMonth(birthDate);
-                    if (flag) {
-                        Date newDob = new Date(birthDate);
-                        parent.setBirthDate(newDob);
-                    } else {
-                        System.out.println("BirthDate is invalid (Wrong format)!");
-                    }
-
-                } else {
-                    birthDate = parent.getBirthDate().toString();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String gender = "";
-            do {
-                System.out.println("Old gender: " + parent.getGender());
-                System.out.print("New gender (Format: male / female): ");
-                gender = sc.nextLine();
-
-                if (!gender.isEmpty()) {
-                    flag = Parent.isValidGender(gender);
-                    if (flag) {
-                        parent.setGender(gender);
-                    } else {
-                        System.out.println("gender is invalid (Wrong format)!");
-                    }
-                } else {
-                    gender = parent.getGender();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String address = "";
-            do {
-                System.out.println("Old Address: " + parent.getAddress());
-                System.out
-                        .print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
-                address = sc.nextLine();
-                if (!address.isEmpty()) {
-                    flag = Address.isValidAddress(address);
-                    if (flag) {
-                        Address newAddress = new Address(address);
-                        parent.setAddress(newAddress);
-                    } else {
-                        System.out.println("Address is invalid (Wrong format)!");
-                    }
-                } else {
-                    address = parent.getAddress().toString();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String phoneNumber = "";
-            do {
-                System.out.println("Old Phone Number: " + parent.getPhoneNumber());
-                System.out.print("New Phone Number (Format: 0907654321): ");
-                phoneNumber = sc.nextLine();
-                if (!phoneNumber.isEmpty()) {
-                    flag = Parent.isValidPhoneNumber(phoneNumber);
-                    if (flag) {
-                        parent.setPhoneNumber(phoneNumber);
-                    } else {
-                        System.out.println("Phone Number is invalid (Wrong format)!");
-                    }
-                } else {
-                    phoneNumber = parent.getPhoneNumber();
-                    flag = true;
-                }
-            } while (!flag);
-
-            String record = parent.getParentID() + "-" + name + "-" + birthDate + "-" + parent.getAddress()
-                    + "-" + phoneNumber + "-" + gender;
-            this.updateRecord(record);
-            System.out.println("Update successfully!");
-
-        } else {
-            System.out.println("Parent with ID: " + ID + " is not found!");
-        }
-    }
-
     public void update(Object obj) {
         for (int i = 0; i < currentIndex; i++) {
             if (parentList[i].getParentID().equalsIgnoreCase(((Parent) obj).getParentID())) {
@@ -375,7 +262,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
         return index;
     }
 
-    public void insertIntoDatabase(String record) {
+    public static void insertIntoDatabase(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -388,7 +275,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void updateRecord(String updatedRecord) {
+    public static void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
         String records[] = databaseContent.split("\n");
         String parentID = updatedRecord.substring(0, 5);

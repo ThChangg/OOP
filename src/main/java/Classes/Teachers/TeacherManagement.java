@@ -173,116 +173,6 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Teacher teacher = getTeacherByID(ID);
-
-        if (teacher != null) {
-            boolean flag = true;
-            do {
-                String name = "";
-                do {
-                    System.out.println("Old Fullname: " + teacher.getFullname());
-                    System.out.print("New Fullname (Format: Tran Le Anh Khoi): ");
-                    name = sc.nextLine();
-                    if (!name.isEmpty()) {
-                        flag = Teacher.isValidName(name);
-                        if (flag) {
-                            teacher.setFullname(name);
-                        } else {
-                            System.out.println("Fullname is invalid (Wrong format)!");
-                        }
-                    } else {
-                        name = teacher.getFullname();
-                    }
-
-                } while (!flag);
-
-                String birthDate = "";
-                do {
-                    System.out.println("Old BirthDate: " + teacher.getBirthDate());
-                    System.out.print("New BirthDate (Format: 16/02/2000): ");
-                    birthDate = sc.nextLine();
-
-                    if (!birthDate.isEmpty()) {
-                        flag = Date.isValidDateAndMonth(birthDate);
-                        if (flag) {
-                            Date newDob = new Date(birthDate);
-                            teacher.setBirthDate(newDob);
-                        } else {
-                            System.out.println("BirthDate is invalid (Wrong format)!");
-                        }
-
-                    } else {
-                        birthDate = teacher.getBirthDate().toString();
-                    }
-                } while (!flag);
-
-                String gender = "";
-                do {
-                    System.out.println("Old Gender: " + teacher.getGender());
-                    System.out.print("New Gender (Format: male / female): ");
-                    gender = sc.nextLine();
-
-                    if (!gender.isEmpty()) {
-                        flag = Teacher.isValidGender(gender);
-                        if (flag) {
-                            teacher.setGender(gender);
-                        } else {
-                            System.out.println("Gender is invalid (Wrong format)!");
-                        }
-                    } else {
-                        gender = teacher.getGender();
-                    }
-                } while (!flag);
-
-                String address = "";
-                do {
-                    System.out.println("Old Address: " + teacher.getAddress());
-                    System.out.print(
-                            "New Address (Format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
-                    address = sc.nextLine();
-                    if (!address.isEmpty()) {
-                        flag = Address.isValidAddress(address);
-                        if (flag) {
-                            Address newAddress = new Address(address);
-                            teacher.setAddress(newAddress);
-                        } else {
-                            System.out.println("Address is invalid (Wrong format)!");
-                        }
-                    } else {
-                        address = teacher.getAddress().toString();
-                    }
-                } while (!flag);
-
-                String major = "";
-                do {
-                    System.out.println("Old Major: " + teacher.getMajor());
-                    System.out.print("New Major (Format: Math, Literature, English, PE): ");
-                    major = sc.nextLine();
-
-                    if (!major.isEmpty()) {
-                        flag = isValidMajor(major);
-                        if (flag) {
-                            teacher.setMajor(major);
-                        } else {
-                            System.out.println("Major is invalid (Wrong format)!");
-                        }
-                    } else {
-                        major = teacher.getMajor();
-                    }
-                } while (!flag);
-
-                String record = teacher.getTeacherID() + "-" + name + "-" + birthDate + "-" + teacher.getAddress() + "-"
-                        + major + "-" + gender;
-                this.updateRecord(record);
-                System.out.println("Update successfully!");
-            } while (!flag);
-        } else {
-            System.out.println("Teacher with ID: " + ID + " is not found!");
-        }
-    }
-
     public void update(Object obj) {
         for (int i = 0; i < currentIndex; i++) {
             if (teacherManagement[i].getTeacherID().equalsIgnoreCase(((Teacher) obj).getTeacherID())) {
@@ -398,7 +288,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         return flag;
     }
 
-    public void insertIntoDatabase(String record) {
+    public static void insertIntoDatabase(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -411,7 +301,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void updateRecord(String updatedRecord) {
+    public static void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
         String records[] = databaseContent.split("\n");
         String teacherID = updatedRecord.substring(0, 5);
