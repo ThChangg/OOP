@@ -242,8 +242,10 @@ public class ParentManagement implements IFileManagement, ICRUD {
 
         for (int i = 0; i < currentIndex; i++) {
             if (parentList[i].getStatus()) {
-                if (parentList[i].getPupil().getFullname().toLowerCase().contains(searchValue.toLowerCase())) {
-                    searchResult[searchResultLength++] = parentList[i];
+                if (parentList[i].getPupil().getStatus()) {
+                    if (parentList[i].getPupil().getFullname().toLowerCase().contains(searchValue.toLowerCase())) {
+                        searchResult[searchResultLength++] = parentList[i];
+                    }
                 }
             }
         }

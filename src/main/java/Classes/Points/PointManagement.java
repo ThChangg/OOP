@@ -334,8 +334,10 @@ public class PointManagement implements IFileManagement, ICRUD {
     public void findPointByPupilID(String pupilID) {
         for (int i = 0; i < currentIndex; i++) {
             if (listPoint[i].getStatus()) {
-                if (listPoint[i].getPupil().getPupilID().toLowerCase().contains(pupilID.toLowerCase())) {
-                    searchResult[searchResultLength++] = listPoint[i];
+                if (listPoint[i].getPupil().getStatus()) {
+                    if (listPoint[i].getPupil().getPupilID().toLowerCase().contains(pupilID.toLowerCase())) {
+                        searchResult[searchResultLength++] = listPoint[i];
+                    }
                 }
             }
         }

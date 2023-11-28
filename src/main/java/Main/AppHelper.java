@@ -478,6 +478,8 @@ public class AppHelper {
                 parentManagement = (ParentManagement) managementObject;
             } else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
+            } else {
+                classroomManagement = (ClassroomManagement) managementObject;
             }
         }
 
@@ -511,27 +513,22 @@ public class AppHelper {
 
             switch (option) {
                 case 1:
-                    // updatePupilData(pupilManagement, sc);
                     updatePupilData(sc, pupilManagement, classroomManagement, parentManagement);
                     break;
 
                 case 2:
-                    // updateTeacherData(teacherManagement, sc);
                     updateTeacherData(sc, teacherManagement);
                     break;
 
                 case 3:
-                    // updateParentData(parentManagement, sc);
                     updateParentData(sc, pupilManagement, parentManagement);
                     break;
 
                 case 4:
-                    // updatePointData(pointManagement, sc);
                     updatePointData(sc, pupilManagement, pointManagement);
                     break;
 
                 case 5:
-                    // updateClassroomData(classroomManagement, sc);
                     updateClassroomData(sc, classroomManagement, teacherManagement);
                     break;
 
@@ -895,6 +892,7 @@ public class AppHelper {
                             System.out.println("Classroom is invalid (Wrong format or Classroom not existed)!");
                         }
                     } else {
+                        classroom = pupil.getClassroom();
                         className = pupil.getClassroom().getClassName();
                         flag = true;
                     }
@@ -995,7 +993,7 @@ public class AppHelper {
 
                 String phoneNumber = "";
                 do {
-                    System.out.print("Phone Number : (format: 0907123456): ");
+                    System.out.print("Phone Number (format: 0907123456): ");
                     phoneNumber = scanner.nextLine();
                     if (!phoneNumber.isEmpty()) {
                         flag = Parent.isValidPhoneNumber(phoneNumber);
@@ -1439,7 +1437,7 @@ public class AppHelper {
                 System.out.println("Teacher with ID: " + ID + " is not found!");
             }
 
-            System.out.println("Do you want to update more pupils ? Yes(Y) : No(N)");
+            System.out.println("Do you want to update more teachers ? Yes(Y) : No(N)");
             option = sc.nextLine().charAt(0);
         }
 
@@ -1560,7 +1558,6 @@ public class AppHelper {
                     break;
 
                 default:
-
                     break;
             }
         } while (option != 0);
@@ -1854,7 +1851,7 @@ public class AppHelper {
 
                 int conductValue;
                 do {
-                    System.out.print("Conduct: ");
+                    System.out.print("Conduct Point (0 - 100): ");
                     conductValue = Integer.parseInt(scanner.nextLine());
                 } while (conductValue < 0 || conductValue > 100);
 

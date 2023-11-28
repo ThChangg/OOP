@@ -248,10 +248,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		searchListLength = 0;
 		boolean flag = false;
 		for (int i = 0; i < currentIndex; i++) {
-			if (classroomManagement[i].getClassName().contains(className.toUpperCase())) {
-				flag = true;
-				searchList[searchListLength] = classroomManagement[i];
-				searchListLength++;
+			if (classroomManagement[i].getStatus()) {
+				if (classroomManagement[i].getClassName().contains(className.toUpperCase())) {
+					flag = true;
+					searchList[searchListLength] = classroomManagement[i];
+					searchListLength++;
+				}
 			}
 		}
 		if (!flag) {
@@ -374,10 +376,14 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 			flag = false;
 		} else {
 			for (int i = 0; i < currentIndex; i++) {
-				if (classManager.equals(classroomManagement[i].getClassManager().getTeacherID())) {
-					System.out.println("Teacher has already managed a class. Please enter a different one.");
-					flag = false;
-					break;
+				if (classroomManagement[i].getClassManager() != null) {
+					if (classroomManagement[i].getClassManager().getStatus()) {
+						if (classManager.equals(classroomManagement[i].getClassManager().getTeacherID())) {
+							System.out.println("Teacher has already managed a class. Please enter a different one.");
+							flag = false;
+							break;
+						}
+					}
 				}
 			}
 		}
