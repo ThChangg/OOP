@@ -13,18 +13,20 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import Classes.Classroom.ClassroomManagement;
+
+import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
-import Main.Redux;
 
 public class PupilManagement implements IFileManagement, ICRUD {
     private Pupil pupilList[];
-    private Pupil searchResult[];
     private int currentIndex;
+    private Pupil searchResult[];
     private int searchResultLength;
+    private static String inputRelativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
 
     public PupilManagement() {
         pupilList = new Pupil[100];
@@ -68,13 +70,12 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     @Override
     public void initialize() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
 
         if (file.exists()) {
             // File exists, you can work with it
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+                    new InputStreamReader(new FileInputStream(inputRelativePath), "UTF-8"))) {
                 String line = "";
                 while ((line = br.readLine()) != null) {
                     String parts[] = line.split("-");
@@ -82,6 +83,8 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         String pupilID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
+                        String className = parts[4];
+                        Classroom classroom = new Classroom(className);
                         String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
@@ -92,8 +95,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                        Pattern pattern = Pattern.compile(addressRegex);
+                        Pattern pattern = Pattern.compile(Address.getAddressRegex());
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
                             String houseNumber = matcher.group(1);
@@ -103,7 +105,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender);
+                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender, classroom);
                             this.add(pupil);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -122,18 +124,15 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Pupil Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
-                        "BirthDate", "Address",
-                        "Class"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-3s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Class"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     if (pupilList[i].getStatus()) {
@@ -143,7 +142,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -154,18 +153,15 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     // Display method just using for searching
     public void display(int arrayLength) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-3s", "ID", "Fullname", "gender",
-                        "BirthDate", "Address",
-                        "Class"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-3s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Class"));
                 writer.newLine();
                 for (int i = 0; i < arrayLength; i++) {
                     writer.write(searchResult[i].toString());
@@ -174,7 +170,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -194,113 +190,12 @@ public class PupilManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Pupil pupil = getPupilByID(ID);
-
-        if (pupil != null) {
-            boolean flag = true;
-            do {
-                String name = "";
-                do {
-                    System.out.println("Old Fullname: " + pupil.getFullname());
-                    System.out.print("New Fullname (Format: Tran Duc Canh): ");
-                    name = sc.nextLine();
-                    if (!name.isEmpty()) {
-                        flag = Pupil.isValidName(name);
-                        if (flag) {
-                            pupil.setFullname(name);
-                        } else {
-                            System.out.println("Fullname is invalid (Wrong format)!");
-                        }
-                    } else {
-                        name = pupil.getFullname();
-                    }
-
-                } while (!flag);
-
-                String birthDate = "";
-                do {
-                    System.out.println("Old BirthDate: " + pupil.getBirthDate());
-                    System.out.print("New BirthDate (Format: 02/02/2017): ");
-                    birthDate = sc.nextLine();
-
-                    if (!birthDate.isEmpty()) {
-                        flag = Date.isValidDateAndMonth(birthDate);
-                        if (flag) {
-                            Date newDob = new Date(birthDate);
-                            pupil.setBirthDate(newDob);
-                        } else {
-                            System.out.println("BirthDate is invalid (Wrong format)!");
-                        }
-
-                    } else {
-                        birthDate = pupil.getBirthDate().toString();
-                    }
-                } while (!flag);
-
-                String gender = "";
-                do {
-                    System.out.println("Old gender: " + pupil.getGender());
-                    System.out.print("New gender (Format: male / female): ");
-                    gender = sc.nextLine();
-
-                    if (!gender.isEmpty()) {
-                        flag = Pupil.isValidGender(gender);
-                        if (flag) {
-                            pupil.setGender(gender);
-                        } else {
-                            System.out.println("gender is invalid (Wrong format)!");
-                        }
-                    } else {
-                        gender = pupil.getGender();
-                    }
-                } while (!flag);
-
-                String address = "";
-                do {
-                    System.out.println("Old Address: " + pupil.getAddress());
-                    System.out.print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
-                    address = sc.nextLine();
-                    if (!address.isEmpty()) {
-                        flag = Address.isValidAddress(address);
-                        if (flag) {
-                            Address newAddress = new Address(address);
-                            pupil.setAddress(newAddress);
-                        } else {
-                            System.out.println("Address is invalid (Wrong format)!");
-                        }
-                    } else {
-                        address = pupil.getAddress().toString();
-                    }
-                } while (!flag);
-
-                ClassroomManagement.displayClassroomFormation();
-                String className = "";
-                do {
-                    System.out.println("Old Class: " + pupil.getClassroom().getClassName());
-                    System.out.print("New Class (Format: 1A1): ");
-                    className = sc.nextLine();
-                    if (!className.isEmpty()) {
-                        flag = ClassroomManagement.isValidClassroom(className);
-                        if (flag) {
-                            int gradeNumber = className.charAt(0) - '0';
-                            pupil.getClassroom().getGrade().setGradeNumber(gradeNumber);
-                            pupil.getClassroom().setClassName(className);
-                        } else {
-                            System.out.println("Classroom is invalid (Wrong format)!");
-                        }
-                    } else {
-                        className = pupil.getClassroom().getClassName();
-                    }
-                } while (!flag);
-                String record = pupil.getPupilID() + "-" + name + "-" + birthDate + "-" + pupil.getAddress() + "-"
-                        + className + "-" + gender;
-                this.updateRecord(record);
-                System.out.println("Update successfully!");
-            } while (!flag);
-        } else {
-            System.out.println("Pupil with ID: " + ID + " is not found!");
+    public void update(Object obj) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getPupilID().equalsIgnoreCase(((Pupil) obj).getPupilID())) {
+                pupilList[i] = (Pupil) obj;
+                break;
+            }
         }
     }
 
@@ -321,12 +216,32 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
     }
 
+    public int getNumberOfPupilsByPerformances(String performance) {
+        int numberOfPupils = 0;
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getSubjectPoints().getPerformance().equalsIgnoreCase(performance)) {
+                numberOfPupils++;
+            }
+        }
+        return numberOfPupils;
+    }
+
+    public int getNumberOfPupilsByGradeAndPerformances(String grade, String performance) {
+        int numberOfPupils = 0;
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getSubjectPoints().getPerformance().equalsIgnoreCase(performance)) {
+                if (pupilList[i].getClassroom().getClassName().substring(0, 2).equalsIgnoreCase(grade)) {
+                    numberOfPupils++;
+                }
+            }
+        }
+        return numberOfPupils;
+    }
+
     public String getLastPupilID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
-            if (pupilList[i].getStatus()) {
-                ID = pupilList[i].getPupilID();
-            }
+            ID = pupilList[i].getPupilID();
         }
         return ID;
     }
@@ -338,24 +253,23 @@ public class PupilManagement implements IFileManagement, ICRUD {
                 if (pupilList[i].getStatus()) {
                     pupil = pupilList[i];
                     break;
-                } else {
-                    System.out.println("Pupil does not exist!");
                 }
             }
         }
         return pupil;
     }
 
-    public void findPupilsBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass) {
+    public void findPupilsBy(String value, String findBy, Class<?> mainClass, Class<?> nestedClass,
+            boolean isAccuracy) {
         Arrays.fill(searchResult, null);
         searchResultLength = 0;
         Pattern pattern = Pattern.compile(Pattern.quote(value), Pattern.CASE_INSENSITIVE);
-
         for (int i = 0; i < currentIndex; i++) {
             try {
                 if (nestedClass != null) {
                     // Get the nested object from the main object
-                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName()).invoke(pupilList[i]);
+                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
+                            .invoke(pupilList[i]);
 
                     // Use reflection to get the appropriate method from the nested class
                     Method getterMethod = nestedClass.getMethod(findBy);
@@ -363,11 +277,17 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     // Invoke the method on the nested object
                     String attributeValue = (String) getterMethod.invoke(nestedObject);
 
-                    if (pattern.matcher(attributeValue).find()) {
-                        if (pupilList[i].getStatus()) {
-                            this.searchResult[this.searchResultLength++] = pupilList[i];
-                        } else {
-                            System.out.println("Pupil does not exist!");
+                    if (!isAccuracy) {
+                        if (pattern.matcher(attributeValue).find()) {
+                            if (pupilList[i].getStatus()) {
+                                this.searchResult[this.searchResultLength++] = pupilList[i];
+                            }
+                        }
+                    } else {
+                        if (pattern.matcher(attributeValue).matches()) {
+                            if (pupilList[i].getStatus()) {
+                                this.searchResult[this.searchResultLength++] = pupilList[i];
+                            }
                         }
                     }
                 } else {
@@ -375,18 +295,36 @@ public class PupilManagement implements IFileManagement, ICRUD {
                     Method getterMethod = mainClass.getMethod(findBy);
                     String attributeValue = (String) getterMethod.invoke(pupilList[i]);
 
-                    if (pattern.matcher(attributeValue).find()) {
-                        if (pupilList[i].getStatus()) {
-                            this.searchResult[this.searchResultLength++] = pupilList[i];
-                        } else {
-                            System.out.println("Pupil does not exist!");
+                    if (!isAccuracy) {
+                        if (pattern.matcher(attributeValue).find()) {
+                            if (pupilList[i].getStatus()) {
+                                this.searchResult[this.searchResultLength++] = pupilList[i];
+                            }
+                        }
+                    } else {
+                        if (pattern.matcher(attributeValue).matches()) {
+                            if (pupilList[i].getStatus()) {
+                                this.searchResult[this.searchResultLength++] = pupilList[i];
+                            }
                         }
                     }
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean hasUninitializedPupil() {
+        boolean flag = false;
+        for (int i = 0; i < currentIndex; i++) {
+            if (pupilList[i].getParents() == null || pupilList[i].getSubjectPoints() == null) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
     public int getPupilArrayIndex(String ID) {
@@ -402,7 +340,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return index;
     }
 
-    public void insertIntoDatabase(String record) {
+    public static void insertIntoDatabase(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -415,7 +353,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void updateRecord(String updatedRecord) {
+    public static void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
         String records[] = databaseContent.split("\n");
         String pupilID = updatedRecord.substring(0, 5);
@@ -445,7 +383,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
         // Check if the record is present in the existing records
         if (existingRecords.contains(record)) {
             // Remove the record from the existing records
-            String updatedRecords = existingRecords.replace(record, "").trim();
+            String updatedRecords = existingRecords.replaceAll(record + "(\\n|$)", "").trim();
 
             // Update the database with the modified records
             writeDatabase(updatedRecords);
@@ -457,8 +395,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
 
     public static String readDatabase() {
         StringBuilder records = new StringBuilder();
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
                 records.append(scanner.nextLine()).append("\n");
@@ -470,10 +407,8 @@ public class PupilManagement implements IFileManagement, ICRUD {
         return records.toString().trim();
     }
 
-    
-           public static void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\pupils.txt";
-        File file = new File(relativePath);
+    public static void writeDatabase(String records) {
+        File file = new File(inputRelativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(records);
         } catch (IOException e) {

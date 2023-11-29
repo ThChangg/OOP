@@ -1,13 +1,10 @@
 package Classes.Teachers;
 
-import Classes.Classroom.Classroom;
-import Classes.Classroom.ClassroomManagement;
 import Classes.Person.Address;
 import Classes.Person.Date;
-import Classes.Person.Person;
+import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
-import Main.Redux;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -27,6 +24,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     private Teacher teacherManagement[];
     private Teacher searchResult[];
     private int currentIndex;
+    private static String inputRelativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
     private int searchResultLength;
 
     public TeacherManagement() {
@@ -51,16 +49,19 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     public void setCurrentIndex(int currentIndex) {
         this.currentIndex = currentIndex;
     }
-    
+
+    public int getSearchResultLength() {
+        return searchResultLength;
+    }
+
     @Override
     public void initialize() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
 
         if (file.exists()) {
             // File exists, you can work with it
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+                    new InputStreamReader(new FileInputStream(inputRelativePath), "UTF-8"))) {
                 String line = "";
                 while ((line = br.readLine()) != null) {
                     String parts[] = line.split("-");
@@ -69,9 +70,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String major = parts[4];
-                        
-                        String gender = parts[6];
-                        
+                        String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -81,8 +80,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                        Pattern pattern = Pattern.compile(addressRegex);
+                        Pattern pattern = Pattern.compile(Address.getAddressRegex());
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
                             String houseNumber = matcher.group(1);
@@ -112,17 +110,15 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Teacher Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s\t%-3s", "ID", "Fullname", "Gender",
-                        "BirthDate", "Address", "Major", "Class"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-10s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Major"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     if (teacherManagement[i].getStatus()) {
@@ -132,7 +128,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -142,17 +138,15 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     }
 
     public void display(int arrayLength) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-10s\t", "ID", "Fullname", "Gender",
-                        "BirthDate", "Address", "Major", "Class"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-10s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Major"));
                 writer.newLine();
                 for (int i = 0; i < arrayLength; i++) {
                     writer.write(searchResult[i].toString());
@@ -160,7 +154,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -171,7 +165,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     @Override
     public void add(Object obj) {
-       if (currentIndex < teacherManagement.length) {
+        if (currentIndex < teacherManagement.length) {
             teacherManagement[currentIndex++] = (Teacher) obj;
         } else {
             System.out.println("Teacher Management List is full. Cannot add more.");
@@ -179,114 +173,12 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Teacher teacher = getTeacherByID(ID);
-
-        if (teacher != null) {
-            boolean flag = true;
-            do {
-                String name = "";
-                do {
-                    System.out.println("Old Fullname: " + teacher.getFullname());
-                    System.out.print("New Fullname (Format: Tran Le Anh Khoi): ");
-                    name = sc.nextLine();
-                    if (!name.isEmpty()) {
-                        flag = Teacher.isValidName(name);
-                        if (flag) {
-                            teacher.setFullname(name);
-                        } else {
-                            System.out.println("Fullname is invalid (Wrong format)!");
-                        }
-                    } else {
-                        name = teacher.getFullname();
-                    }
-
-                } while (!flag);
-
-                String birthDate = "";
-                do {
-                    System.out.println("Old BirthDate: " + teacher.getBirthDate());
-                    System.out.print("New BirthDate (Format: 16/02/2000): ");
-                    birthDate = sc.nextLine();
-
-                    if (!birthDate.isEmpty()) {
-                        flag = Date.isValidDateAndMonth(birthDate);
-                        if (flag) {
-                            Date newDob = new Date(birthDate);
-                            teacher.setBirthDate(newDob);
-                        } else {
-                            System.out.println("BirthDate is invalid (Wrong format)!");
-                        }
-
-                    } else {
-                        birthDate = teacher.getBirthDate().toString();
-                    }
-                } while (!flag);
-
-                String gender = "";
-                do {
-                    System.out.println("Old Gender: " + teacher.getGender());
-                    System.out.print("New Gender (Format: male / female): ");
-                    gender = sc.nextLine();
-
-                    if (!gender.isEmpty()) {
-                        flag = Teacher.isValidGender(gender);
-                        if (flag) {
-                            teacher.setGender(gender);
-                        } else {
-                            System.out.println("Gender is invalid (Wrong format)!");
-                        }
-                    } else {
-                        gender = teacher.getGender();
-                    }
-                } while (!flag);
-
-                String major = "";
-                do {
-                    System.out.println("Old Major: " + teacher.getMajor());
-                    System.out.print("New Major (Format: Math, Literature, English, PE): ");
-                    major = sc.nextLine();
-
-                    if (!major.isEmpty()) {
-                        flag = isValidMajor(major);
-                        if (flag) {
-                            teacher.setMajor(major);
-                        } else {
-                            System.out.println("Major is invalid (Wrong format)!");
-                        }
-                    } else {
-                        major = teacher.getMajor();
-                    }
-                } while (!flag);
-
-                String address = "";
-                do {
-                    System.out.println("Old Address: " + teacher.getAddress());
-                    System.out.print(
-                            "New Address (Format: 18/29, Nguyen Van Hoan, Phuong 9, Quan Tan Binh, Thanh pho Ho Chi Minh): ");
-                    address = sc.nextLine();
-                    if (!address.isEmpty()) {
-                        flag = Address.isValidAddress(address);
-                        if (flag) {
-                            Address newAddress = new Address(address);
-                            teacher.setAddress(newAddress);
-                        } else {
-                            System.out.println("Address is invalid (Wrong format)!");
-                        }
-                    } else {
-                        address = teacher.getAddress().toString();
-                    }
-                } while (!flag);
-
-                
-                String record = teacher.getTeacherID() + "-" + name + "-" + birthDate + "-" + teacher.getAddress() + "-"
-                        + major + "-" + "null" + "-" + gender;
-                this.updateRecord(record);
-                System.out.println("Update successfully!");
-            } while (!flag);
-        } else {
-            System.out.println("Teacher with ID: " + ID + " is not found!");
+    public void update(Object obj) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (teacherManagement[i].getTeacherID().equalsIgnoreCase(((Teacher) obj).getTeacherID())) {
+                teacherManagement[i] = (Teacher) obj;
+                break;
+            }
         }
     }
 
@@ -305,7 +197,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             System.out.println("Teacher with ID: " + ID + " is not found!");
         }
     }
-    
+
     public String getLastTeacherID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
@@ -345,8 +237,13 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try {
                 if (nestedClass != null) {
                     // Get the nested object from the main object
-                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
-                            .invoke(teacherManagement[i]);
+                    Object nestedObject = null;
+                    Object result = mainClass.getMethod("get" + nestedClass.getSimpleName()).invoke(teacherManagement[i]);
+                    if (result != null) {
+                        nestedObject = result;
+                    } else {
+                        continue;
+                    }
 
                     // Use reflection to get the appropriate method from the nested class
                     Method getterMethod = nestedClass.getMethod(findBy);
@@ -396,7 +293,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         return flag;
     }
 
-    public void insertIntoDatabase(String record) {
+    public static void insertIntoDatabase(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -409,7 +306,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void updateRecord(String updatedRecord) {
+    public static void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
         String records[] = databaseContent.split("\n");
         String teacherID = updatedRecord.substring(0, 5);
@@ -451,8 +348,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
 
     public static String readDatabase() {
         StringBuilder records = new StringBuilder();
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
                 records.append(scanner.nextLine()).append("\n");
@@ -465,8 +361,7 @@ public class TeacherManagement implements IFileManagement, ICRUD {
     }
 
     public static void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\teachers.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(records);
         } catch (IOException e) {
@@ -474,7 +369,6 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             e.printStackTrace();
         }
     }
-
 
     public boolean hasUninitializedClassroom() {
         boolean flag = false;
@@ -486,5 +380,5 @@ public class TeacherManagement implements IFileManagement, ICRUD {
         }
         return flag;
     }
-    
+
 }

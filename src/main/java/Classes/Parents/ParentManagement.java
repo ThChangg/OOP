@@ -8,25 +8,24 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Pupils.Pupil;
+import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
-import Main.Redux;
 
 public class ParentManagement implements IFileManagement, ICRUD {
     private Parent parentList[];
     private Parent searchResult[];
     private int currentIndex;
     private int searchResultLength;
+    private static String inputRelativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
 
     public ParentManagement() {
         parentList = new Parent[100];
@@ -69,22 +68,22 @@ public class ParentManagement implements IFileManagement, ICRUD {
 
     @Override
     public void initialize() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
 
         if (file.exists()) {
             // File exists, you can work with it
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+                    new InputStreamReader(new FileInputStream(inputRelativePath), "UTF-8"))) {
                 String line = "";
                 while ((line = br.readLine()) != null) {
                     String parts[] = line.split("-");
                     if (parts.length >= 5) {
-                        String pupilID = parts[0];
+                        String parentID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String phoneNumber = parts[4];
                         String gender = parts[5];
+                        String pupilID = parts[6];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -94,8 +93,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                         Date dob = new Date(date, month, year);
 
                         String addressPart = parts[3];
-                        String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                        Pattern pattern = Pattern.compile(addressRegex);
+                        Pattern pattern = Pattern.compile(Address.getAddressRegex());
                         Matcher matcher = pattern.matcher(addressPart);
                         if (matcher.matches()) {
                             String houseNumber = matcher.group(1);
@@ -105,7 +103,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Parent parent = new Parent(pupilID, fullName, dob, address, gender, phoneNumber);
+                            Parent parent = new Parent(parentID, fullName, dob, address, gender, phoneNumber, new Pupil(pupilID));
                             this.add(parent);
                         } else {
                             System.out.println("Your address is invalid!");
@@ -124,18 +122,15 @@ public class ParentManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Parent Management List:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s", "ID", "Fullname", "gender",
-                        "BirthDate", "Address",
-                        "Phone Number"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-11s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Phone Number"));
                 writer.newLine();
                 for (int i = 0; i < currentIndex; i++) {
                     if (parentList[i].getStatus()) {
@@ -145,7 +140,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -155,32 +150,24 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     public void display(int arrayLength) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
             // File exists, you can work with it
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Search result:");
                 writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s", "Parent ID",
-                        "Parent Fullname", "gender",
-                        "BirthDate", "Address", "Phone Number", "Pupil ID", "Pupil Fullname"));
+                writer.write(String.format(Redux.personInfoFormat + "\t%-11s", "ID", "Fullname", "Gender",
+                        "BirthDate", "Address", "Phone Number"));
                 writer.newLine();
                 for (int i = 0; i < arrayLength; i++) {
                     Parent parent = searchResult[i];
-                    String pupilInfo = (parent.getPupil() != null)
-                            ? parent.getPupil().getPupilID() + "\t" + parent.getPupil().getFullname()
-                            : "";
-                    writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-80s\t%-11s\t%-5s\t%-20s",
-                            parent.getParentID(), parent.getFullName(), parent.getGender(), parent.getBirthDate(),
-                            parent.getAddress(), parent.getPhoneNumber(), "", pupilInfo));
+                    writer.write(parent.toString());
                     writer.newLine();
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -199,81 +186,11 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Parent parent = getParentByID(ID);
-
-        if (parent != null) {
-            System.out.println("Old Fullname: " + parent.getFullname());
-            System.out.print("New Fullname (Format: Tran Duc Canh): ");
-            String name = sc.nextLine();
-            if (!name.isEmpty()) {
-                parent.setFullname(name);
-            }
-
-            System.out.println("Old BirthDate: " + parent.getBirthDate());
-            System.out.print("New BirthDate (Format: 02/02/2017): ");
-            String birthDate = sc.nextLine();
-            if (!birthDate.isEmpty()) {
-                String dobParts[] = birthDate.split("/");
-                String date = dobParts[0];
-                String month = dobParts[1];
-                String year = dobParts[2];
-
-                Date newDob = new Date(date, month, year);
-                parent.setBirthDate(newDob);
-            }
-
-            System.out.println("Old Address: " + parent.getAddress());
-            System.out.print("New Address (Format: 66, Phan Van Tri, Phuong 9, Quan 3, Thanh pho Thu Duc): ");
-            String address = sc.nextLine();
-            if (!address.isEmpty()) {
-                String addressRegex = "(\\S.*),\\s(.*),\\s(Phuong\\s.*),\\s(Quan\\s.*),\\s(Thanh pho\\s.*$)";
-                Pattern pattern = Pattern.compile(addressRegex);
-                Matcher matcher = pattern.matcher(address);
-                if (matcher.matches()) {
-                    String streetNumber = matcher.group(1);
-                    String streetName = "Duong " + matcher.group(2);
-                    String ward = matcher.group(3);
-                    String district = matcher.group(4);
-                    String city = matcher.group(5);
-
-                    Address newAddress = new Address(streetNumber, streetName, ward, district, city);
-                    parent.setAddress(newAddress);
-                } else {
-                    System.out.println("Your address is invalid!");
-                }
-
-                System.out.println("Old Phone Number: " + parent.getPhoneNumber());
-                System.out.print("New Phone Number (Format: 0907xxxxxx): ");
-                String phoneNumber = sc.nextLine();
-                if (!phoneNumber.isEmpty()) {
-                    if (Parent.isValidPhoneNumber(phoneNumber)) {
-                        parent.setPhoneNumber(phoneNumber);
-                    } else {
-                        System.out.println("Phone Number is invalid (Wrong format)!");
-                    }
-                }
-                System.out.println("Old Gender: " + parent.getGender());
-                System.out.print("New Gender (Format: male / female): ");
-                String gender = sc.nextLine();
-                if (!gender.isEmpty()) {
-                    if (Parent.isValidGender(gender)) {
-                        parent.setGender(gender);
-                    } else {
-                        System.out.println("Gender is invalid (Wrong format)!");
-                    }
-                }
-
-                String record = parent.getParentID() + "-" + name + "-" + birthDate + "-" + parent.getAddress() + "-"
-                        + "-" + phoneNumber + "-"
-                        + "-"
-                        + gender;
-                this.updateRecord(record);
-                System.out.println("Update successfully!");
-
-            } else {
-                System.out.println("Parent with ID: " + ID + " is not found!");
+    public void update(Object obj) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (parentList[i].getParentID().equalsIgnoreCase(((Parent) obj).getParentID())) {
+                parentList[i] = (Parent) obj;
+                break;
             }
         }
     }
@@ -326,13 +243,14 @@ public class ParentManagement implements IFileManagement, ICRUD {
         searchResultLength = 0;
 
         for (int i = 0; i < currentIndex; i++) {
-            if (parentList[i].getStatus())
-                if (parentList[i].getPupil().getFullname().toLowerCase().contains(searchValue)) {
-                    searchResult[searchResultLength++] = parentList[i];
+            if (parentList[i].getStatus()) {
+                if (parentList[i].getPupil().getStatus()) {
+                    if (parentList[i].getPupil().getFullname().toLowerCase().contains(searchValue.toLowerCase())) {
+                        searchResult[searchResultLength++] = parentList[i];
+                    }
                 }
-
+            }
         }
-
     }
 
     public int getParentArrayIndex(String ID) {
@@ -348,7 +266,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
         return index;
     }
 
-    public void insertIntoDatabase(String record) {
+    public static void insertIntoDatabase(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -361,7 +279,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void updateRecord(String updatedRecord) {
+    public static void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
         String records[] = databaseContent.split("\n");
         String parentID = updatedRecord.substring(0, 5);
@@ -402,9 +320,8 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     public static String readDatabase() {
-        StringBuilder records = new StringBuilder();
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
-        File file = new File(relativePath);
+        StringBuilder records = new StringBuilder();;
+        File file = new File(inputRelativePath);
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
                 records.append(scanner.nextLine()).append("\n");
@@ -417,8 +334,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
     }
 
     public static void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\parents.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(records);
         } catch (IOException e) {

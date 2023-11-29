@@ -13,29 +13,20 @@ public class Point {
     private String performance;
     private boolean status;
     private Pupil pupil;
-    private String pupilID;
 
     public Point() {
     }
 
     public Point(String pointID, double literaturePoint, double mathPoint, double physicalEducationPoint,
-            double englishPoint, Conduct conduct) {
+            double englishPoint, Conduct conduct, Pupil pupil) {
         this.pointID = pointID;
         this.literaturePoint = literaturePoint;
         this.mathPoint = mathPoint;
         this.physicalEducationPoint = physicalEducationPoint;
         this.englishPoint = englishPoint;
         this.conduct = conduct;
+        this.pupil = pupil;
         this.status = true;
-
-    }
-
-    public Point(String pupilID) {
-        this.pupilID = pupilID;
-    }
-
-    public String getPupilID() {
-        return pupilID;
     }
 
     public String getPointID() {
@@ -124,8 +115,9 @@ public class Point {
 
     @Override
     public String toString() {
-        return pointID + "-" + literaturePoint + "-" + mathPoint + "-" + physicalEducationPoint + "-" + englishPoint
-                + "-" + conduct;
+        return String.format("%-5s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s", pointID, literaturePoint,
+                mathPoint,
+                physicalEducationPoint, englishPoint, conduct.getPointConduct(), getConduct().getRank(), performance);
     }
 
     public void calculatePerformance() {
@@ -155,42 +147,40 @@ public class Point {
     }
 
     public String calculateAcademicLevel() {
-
+        String academicLevel = "";
         boolean isExcellent = false;
         boolean isGood = false;
         boolean isAverage = false;
-        boolean isWeak = false;
 
-        boolean atLeastOneSubjectAbove8 = getMathPoint() > 8.0 || getLiteraturePoint() > 8.0;
-        boolean atLeastOneSubjectAbove6_5 = getMathPoint() > 6.5 || getLiteraturePoint() > 6.5;
-        boolean atLeastOneSubjectAbove5_0 = getMathPoint() > 5.0 || getLiteraturePoint() > 5.0;
+        boolean atLeastOneSubjectAbove8 = getMathPoint() >= 8.0 || getLiteraturePoint() >= 8.0;
+        boolean atLeastOneSubjectAbove6_5 = getMathPoint() >= 6.5 || getLiteraturePoint() >= 6.5;
+        boolean atLeastOneSubjectAbove5_0 = getMathPoint() >= 5.0 || getLiteraturePoint() >= 5.0;
 
-        if (getPhysicalEducationPoint() > 6.5 && getEnglishPoint() > 6.5 && getMathPoint() > 6.5
-                && getLiteraturePoint() > 6.5) {
+        if (getPhysicalEducationPoint() >= 6.5 && getEnglishPoint() >= 6.5 && getMathPoint() >= 6.5
+                && getLiteraturePoint() >= 6.5) {
             isExcellent = true;
-        } else if (getPhysicalEducationPoint() > 5.0 && getEnglishPoint() > 5.0 && getMathPoint() > 5.0
-                && getLiteraturePoint() > 5.0) {
+        } else if (getPhysicalEducationPoint() >= 5.0 && getEnglishPoint() >= 5.0 && getMathPoint() >= 5.0
+                && getLiteraturePoint() >= 5.0) {
             isGood = true;
-        } else if (getPhysicalEducationPoint() > 3.5 && getEnglishPoint() > 3.5 && getMathPoint() > 3.5
-                && getLiteraturePoint() > 3.5) {
+        } else if (getPhysicalEducationPoint() >= 3.5 && getEnglishPoint() >= 3.5 && getMathPoint() >= 3.5
+                && getLiteraturePoint() >= 3.5) {
             isAverage = true;
-        } else {
-            isWeak = true;
         }
 
         if (isExcellent && atLeastOneSubjectAbove8) {
-            return "Excellent";
+            academicLevel = "Excellent";
         } else if (isExcellent && !atLeastOneSubjectAbove8) {
-            return "Good";
+            academicLevel = "Good";
         } else if (isGood && atLeastOneSubjectAbove6_5) {
-            return "Good";
+            academicLevel = "Good";
         } else if (isGood && !atLeastOneSubjectAbove6_5) {
-            return "Average";
+            academicLevel = "Average";
         } else if (isAverage && atLeastOneSubjectAbove5_0) {
-            return "Average";
+            academicLevel = "Average";
         } else {
-            return "Weak";
+            academicLevel = "Weak";
         }
-    }
 
+        return academicLevel;
+    }
 }

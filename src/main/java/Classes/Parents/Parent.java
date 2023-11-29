@@ -10,7 +10,6 @@ public class Parent extends Person {
     private String phoneNumber;
     private boolean status;
     private Pupil pupil;
-    private String fullName;
 
     public Parent() {
     }
@@ -18,20 +17,15 @@ public class Parent extends Person {
     public Parent(String parentID, String fullname, Date dob, Address address, String gender) {
         super(fullname, dob, address, gender);
         this.parentID = parentID;
-        this.fullName = fullname; // Sửa ở đây
         this.status = true;
     }
 
-    public Parent(String parentID, String fullname, Date dob, Address address, String gender, String phoneNumber) {
+    public Parent(String parentID, String fullname, Date dob, Address address, String gender, String phoneNumber, Pupil pupil) {
         super(fullname, dob, address, gender);
+        this.pupil = pupil;
         this.parentID = parentID;
-        this.fullName = fullname; // Sửa ở đây
         this.phoneNumber = phoneNumber;
         this.status = true;
-    }
-
-    public String getFullName() {
-        return this.fullName;
     }
 
     public String getParentID() {

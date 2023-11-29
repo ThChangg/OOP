@@ -8,20 +8,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import Classes.Pupils.Pupil;
+import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
-import Main.Redux;
 
 public class PointManagement implements IFileManagement, ICRUD {
     private Point listPoint[];
     private Point searchResult[];
     private int currentIndex;
-    private Pupil[] pupilList;
     private int searchResultLength;
+    private static String inputRelativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\points.txt";
 
     public Point[] getListPoint() {
         return this.listPoint;
@@ -31,18 +30,9 @@ public class PointManagement implements IFileManagement, ICRUD {
         this.listPoint = listPoint;
     }
 
-    public void setPupilList(Pupil[] pupilList) {
-        this.pupilList = pupilList;
-    }
-
-    public Pupil[] getPupilList() {
-        return this.pupilList;
-    }
-
     public PointManagement() {
         listPoint = new Point[100];
         currentIndex = 0;
-        this.pupilList = new Pupil[100];
         searchResult = new Point[100];
     }
 
@@ -72,12 +62,11 @@ public class PointManagement implements IFileManagement, ICRUD {
 
     @Override
     public void initialize() {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Data\\points.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
 
         if (file.exists()) {
             try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(relativePath), "UTF-8"))) {
+                    new InputStreamReader(new FileInputStream(inputRelativePath), "UTF-8"))) {
                 String line = "";
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split("-");
@@ -87,11 +76,12 @@ public class PointManagement implements IFileManagement, ICRUD {
                         double mathPoint = Double.parseDouble(parts[2]);
                         double physicalEducationPoint = Double.parseDouble(parts[3]);
                         double englishPoint = Double.parseDouble(parts[4]);
-                        int pointConductValue = Integer.parseInt(parts[5].trim());
+                        int pointConductValue = Integer.parseInt(parts[5]);
+                        String pupilID = parts[6];
 
                         Conduct conduct = new Conduct(pointConductValue);
                         Point point = new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint,
-                                englishPoint, conduct);
+                                englishPoint, conduct, new Pupil(pupilID));
 
                         this.add(point);
                         calculateRank(point);
@@ -112,32 +102,27 @@ public class PointManagement implements IFileManagement, ICRUD {
 
     @Override
     public void display() {
-        String headerFormat = "%-5s\t%-15s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s";
+        String headerFormat = "%-5s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s";
 
-        String relativePath = System.getProperty("user.dir")
-                + "\\src\\main\\java\\Main\\output.txt";
-        File file = new File(relativePath);
+        File file = new File(Redux.getOutputRelativePath());
 
         if (file.exists()) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
                 writer.write("Point Management List:");
                 writer.newLine();
-                writer.write(String.format(headerFormat, "ID", "LiteraturePoint", "MathPoint", "PhysicalEducationPoint",
-                        "EnglishPoint", "PointConduct", "Rank", "Performance"));
+                writer.write(String.format(headerFormat, "ID", "Literature", "Math", "PE",
+                        "English", "Conduct", "Rank", "Performance"));
                 writer.newLine();
 
                 for (int i = 0; i < currentIndex; i++) {
                     if (listPoint[i].getStatus()) {
-                        Point point = listPoint[i];
-
-                        writer.write(
-                                point.toString() + "-" + point.getConduct().getRank() + "-" + point.getPerformance());
+                        writer.write(listPoint[i].toString());
                         writer.newLine();
                     }
                 }
                 writer.write("================================================================");
                 writer.newLine();
-                System.out.println("Data written to " + relativePath);
+                System.out.println("Data written to " + Redux.getOutputRelativePath());
             } catch (IOException e) {
                 System.out.println("An error occurred while writing to the file: " + e.getMessage());
             }
@@ -146,81 +131,29 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public Pupil getPupilByID(String pupilID) {
-        for (int i = 0; i < currentIndex; i++) {
-            if (pupilList[i] != null && pupilList[i].getPupilID() != null
-                    && pupilList[i].getPupilID().equalsIgnoreCase(pupilID)) {
-                if (pupilList[i].getStatus()) {
-                    return pupilList[i];
-                } else {
-                    System.out.println("Pupil does not exist!");
-                    return null; // Return null if the pupil is not found or has been marked as not existing
-                }
-            }
-        }
-        return null; // Return null if the pupil is not found
-    }
-
     // Display method for searching points by pupilID
-    public void displayByPupilID(String pupilID) {
-        String relativePath = System.getProperty("user.dir") + "\\src\\main\\java\\Main\\output.txt";
-
-        File file = new File(relativePath);
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(relativePath, true))) {
-            boolean writeHeader = !file.exists() || file.length() == 0;
-
-            // Write header if necessary
-            if (writeHeader) {
-                writer.write("Search result:");
-                writer.newLine();
-                writer.write(String.format("%-5s\t%-20s\t%-6s\t%-10s\t%-25s\t%-15s\t%-15s\t%-10s\t%-15s", "ID",
-                        "Fullname",
-                        "Literature Point", "Math Point", "Physical Education Point", "English Point", "Point Conduct",
-                        "Rank", "Performance"));
-                writer.newLine();
-                writer.write("================================================================");
-                writer.newLine();
-            }
-            Point searchResult = findPointByPupilIDAndGetPoint(pupilID);
-
-            if (searchResult != null) {
-                Pupil pupil = getPupilByID(searchResult.getPupilID());
-                if (pupil != null) {
-                    // Your existing code to write data to the file
-                    writer.write(String.format("%-5s\t%-20s\t%-6.2f\t%-10.2f\t%-25.2f\t%-15.2f\t%-15.2f\t%-10s\t%-15s",
-                            pupil.getPupilID(), pupil.getFullname(), searchResult.getLiteraturePoint(),
-                            searchResult.getMathPoint(), searchResult.getPhysicalEducationPoint(),
-                            searchResult.getEnglishPoint(), searchResult.getConduct().getpointConduct(),
-                            searchResult.getConduct().getRank(), searchResult.getPerformance()));
-                    writer.newLine();
-
-                    // Handle the found point, e.g., print its information
-                    System.out.println("PupilID: " + pupil.getPupilID());
-                    System.out.println("Fullname: " + pupil.getFullname());
-                    // Add information about other fields if needed
-                }
-            } else {
-                System.out.println("No points found for PupilID: " + pupilID);
-            }
-
-            writer.write("================================================================");
-            writer.newLine();
-            System.out.println("Data written to " + relativePath);
-        } catch (IOException e) {
-            System.err.println("An error occurred while writing to the file: " + e.getMessage());
-        }
-    }
-
-    public Point findPointByPupilIDAndGetPoint(String pupilID) {
-        for (Point point : listPoint) {
-            if (point != null && point.getPupil() != null && point.getPupil().getPupilID().equals(pupilID)) {
-                // Found the point for the specified PupilID
-                return point;
+    public void display(int arrayLength) {
+        File file = new File(Redux.getOutputRelativePath());
+        if (file.exists()) {
+            try (BufferedWriter bufferedWrite = new BufferedWriter(new FileWriter(Redux.getOutputRelativePath(), true))) {
+                bufferedWrite.write("Classroom Search List:");
+				bufferedWrite.newLine();
+				bufferedWrite.write(String.format("%-5s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s", "ID", "Literature", "Math", "PE",
+                        "English", "Conduct", "Rank", "Performance"));
+				bufferedWrite.newLine();
+				for (int i = 0; i < arrayLength; i++) {
+					if (searchResult[i].getStatus()) {
+						bufferedWrite.write(searchResult[i].toString());
+						bufferedWrite.newLine();
+					}
+				}
+				bufferedWrite.write("================================================================");
+				bufferedWrite.newLine();
+				System.out.println("Data written to " + Redux.getOutputRelativePath());
+            } catch (IOException e) {
+                System.err.println("An error occurred while writing to the file: " + e.getMessage());
             }
         }
-        // If no point is found for the specified PupilID, return null
-        return null;
     }
 
     public void calculateRank() {
@@ -229,11 +162,10 @@ public class PointManagement implements IFileManagement, ICRUD {
                 calculateRank(listPoint[i]); // Call the common method to calculate rank
             }
         }
-        System.out.println("Ranks calculated.");
     }
 
     public void calculateRank(Point point) {
-        int pointConductValue = point.getConduct().getpointConduct();
+        int pointConductValue = point.getConduct().getPointConduct();
         String rank;
         if (pointConductValue >= 80) {
             rank = "Very Good";
@@ -264,128 +196,13 @@ public class PointManagement implements IFileManagement, ICRUD {
     }
 
     @Override
-    public void update(String ID) {
-        Scanner sc = new Scanner(System.in);
-        Point point = getPointByID(ID);
-        Conduct conduct = point.getConduct();
-
-        if (point != null) {
-            boolean flag = true;
-            do {
-                Double literaturePoint = 0.0;
-                do {
-                    System.out.println("Old LiteraturePoint: " + point.getLiteraturePoint());
-                    System.out.print("New LiteraturePoint(0-10): ");
-                    String input = sc.nextLine().trim();
-                    if (!input.isEmpty()) {
-                        literaturePoint = Double.parseDouble(input);
-                        flag = Point.isPoint(literaturePoint);
-                        if (flag) {
-                            point.setLiteraturePoint(literaturePoint);
-                        } else {
-                            System.out.println("Point is invalid");
-                        }
-                    } else {
-                        literaturePoint = point.getLiteraturePoint();
-                    }
-                } while (!flag);
-
-                Double mathPoint = 0.0;
-                do {
-                    System.out.println("Old MathPoint: " + point.getMathPoint());
-                    System.out.print("New MathPoint(0-10): ");
-                    String input = sc.nextLine().trim();
-                    if (!input.isEmpty()) {
-                        mathPoint = Double.parseDouble(input);
-                        flag = Point.isPoint(mathPoint);
-                        if (flag) {
-                            point.setMathPoint(mathPoint);
-                        } else {
-                            System.out.println("Point is invalid");
-                        }
-                    } else {
-                        mathPoint = point.getMathPoint();
-                    }
-                } while (!flag);
-
-                Double physicalEducationPoint = 0.0;
-                do {
-                    System.out.println("Old PhysicalEducationPoint: " + point.getPhysicalEducationPoint());
-                    System.out.print("New PhysicalEducationPoint(0-10): ");
-                    String input = sc.nextLine().trim();
-                    if (!input.isEmpty()) {
-                        physicalEducationPoint = Double.parseDouble(input);
-                        flag = Point.isPoint(physicalEducationPoint);
-                        if (flag) {
-                            point.setPhysicalEducationPoint(physicalEducationPoint);
-                        } else {
-                            System.out.println("Point is invalid");
-                        }
-                    } else {
-                        physicalEducationPoint = point.getPhysicalEducationPoint();
-                    }
-                } while (!flag);
-
-                Double englishPoint = 0.0;
-                do {
-                    System.out.println("Old English: " + point.getEnglishPoint());
-                    System.out.print("New English(0-10): ");
-                    String input = sc.nextLine().trim();
-                    if (!input.isEmpty()) {
-                        englishPoint = Double.parseDouble(input);
-                        flag = Point.isPoint(englishPoint);
-                        if (flag) {
-                            point.setEnglishPoint(englishPoint);
-                        } else {
-                            System.out.println("Point is invalid");
-                        }
-                    } else {
-                        englishPoint = point.getEnglishPoint();
-                    }
-                } while (!flag);
-
-                System.out.println("Old PointConduct: " + conduct.getpointConduct());
-                System.out.print("New PointConduct(0-100): ");
-                String conductInput = sc.nextLine().trim();
-
-                if (!conductInput.isEmpty()) {
-                    try {
-                        int newPointConduct = Integer.parseInt(conductInput);
-
-                        if (newPointConduct >= 0 && newPointConduct <= 100) {
-                            point.getConduct().setpointConduct(newPointConduct);
-                        } else {
-                            System.out.println("Invalid input. Please enter an integer value between 0 and 100.");
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid input. Please enter an integer value.");
-                    }
-                }
-
-                // Update record
-                this.updateRecord(point.toString());
-                System.out.println("Update successfully!");
-                calculateRank(point);
-                point.calculatePerformance();
-            } while (!flag);
-        } else {
-            System.out.println("Point ID " + ID + " not found.");
-        }
-    }
-
-    public Point getPointByID(String ID) {
-        Point point = null;
+    public void update(Object obj) {
         for (int i = 0; i < currentIndex; i++) {
-            if (listPoint[i].getPointID().equalsIgnoreCase(ID)) {
-                if (listPoint[i].getStatus()) {
-                    point = listPoint[i];
-                    break;
-                } else {
-                    System.out.println("Point does not exist!");
-                }
+            if (listPoint[i].getPointID().equalsIgnoreCase(((Point) obj).getPointID())) {
+                listPoint[i] = (Point) obj;
+                break;
             }
         }
-        return point;
     }
 
     @Override
@@ -404,31 +221,6 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void findPointByPupilID(String pupilID) {
-        boolean found = false;
-
-        for (Point point : listPoint) {
-            if (point != null && point.getPupil() != null && point.getPupil().getPupilID().equals(pupilID)) {
-
-                System.out.println("PupilID: " + point.getPupil().getPupilID());
-                System.out.println("Fullname: " + point.getPupil().getFullname());
-                System.out.println("Literature Point: " + point.getLiteraturePoint());
-                System.out.println("Math Point: " + point.getMathPoint());
-                System.out.println("Physical Education Point: " + point.getPhysicalEducationPoint());
-                System.out.println("English Point: " + point.getEnglishPoint());
-                System.out.println("Point Conduct: " + point.getConduct());
-                System.out.println("Rank: " + point.getConduct().getRank());
-                System.out.println("Performance: " + point.getPerformance());
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("No points found for PupilID: " + pupilID);
-        }
-    }
-
     public String getLastPointID() {
         String ID = "";
         for (int i = 0; i < currentIndex; i++) {
@@ -437,6 +229,17 @@ public class PointManagement implements IFileManagement, ICRUD {
 
         }
         return ID;
+    }
+
+    public Point getPointByID(String ID) {
+        Point point = null;
+        for (int i = 0; i < currentIndex; i++) {
+            if (listPoint[i].getPointID().equalsIgnoreCase(ID)) {
+                point = listPoint[i];
+                break;
+            }
+        }
+        return point;
     }
 
     public int getPointArrayIndex(String ID) {
@@ -452,7 +255,7 @@ public class PointManagement implements IFileManagement, ICRUD {
         return index;
     }
 
-    public void insertIntoDatabase(String record) {
+    public static void insertIntoDatabase(String record) {
         // Read existing records from the database file
         String existingRecords = readDatabase();
 
@@ -465,7 +268,7 @@ public class PointManagement implements IFileManagement, ICRUD {
         }
     }
 
-    public void updateRecord(String updatedRecord) {
+    public static void updateRecord(String updatedRecord) {
         String databaseContent = readDatabase();
         String[] records = databaseContent.split("\n");
         String pointID = updatedRecord.substring(0, 5);
@@ -476,16 +279,6 @@ public class PointManagement implements IFileManagement, ICRUD {
                 break;
             }
         }
-
-        // Rebuild the content with the updated records
-        // StringBuilder updatedContent = new StringBuilder();
-        // for (String record : records) {
-        // updatedContent.append(record).append("\n");
-        // }
-
-        // // Write the updated content back to the database
-        // writeDatabase(updatedContent.toString().trim());
-        // }
 
         StringBuilder updatedContent = new StringBuilder();
         for (int i = 0; i < records.length; i++) {
@@ -517,9 +310,7 @@ public class PointManagement implements IFileManagement, ICRUD {
 
     public static String readDatabase() {
         StringBuilder records = new StringBuilder();
-        String relativePath = System.getProperty("user.dir")
-                + "\\src\\main\\java\\Data\\points.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
         try (Scanner scanner = new Scanner(new FileReader(file))) {
             while (scanner.hasNextLine()) {
                 records.append(scanner.nextLine()).append("\n");
@@ -533,14 +324,24 @@ public class PointManagement implements IFileManagement, ICRUD {
     }
 
     public static void writeDatabase(String records) {
-        String relativePath = System.getProperty("user.dir")
-                + "\\src\\main\\java\\Data\\points.txt";
-        File file = new File(relativePath);
+        File file = new File(inputRelativePath);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(records);
         } catch (IOException e) {
             // Handle IOException
             e.printStackTrace();
+        }
+    }
+
+    public void findPointByPupilID(String pupilID) {
+        for (int i = 0; i < currentIndex; i++) {
+            if (listPoint[i].getStatus()) {
+                if (listPoint[i].getPupil().getStatus()) {
+                    if (listPoint[i].getPupil().getPupilID().toLowerCase().contains(pupilID.toLowerCase())) {
+                        searchResult[searchResultLength++] = listPoint[i];
+                    }
+                }
+            }
         }
     }
 
