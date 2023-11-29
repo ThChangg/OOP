@@ -231,6 +231,19 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 		return classroom;
 	}
 
+	public Classroom getClassroomByClassManagerID(String ID) {
+		Classroom classroom = null;
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassManager().getTeacherID().equalsIgnoreCase(ID)) {
+				if (classroomManagement[i].getStatus()) {
+					classroom = classroomManagement[i];
+					break;
+				} 
+			}
+		}
+		return classroom;
+	}
+
 	public int getClassroomArrayIndex(String ID) {
 		int index = -1;
 		for (int i = 0; i < currentIndex; i++) {
@@ -368,21 +381,12 @@ public class ClassroomManagement implements IFileManagement, ICRUD {
 
 	public boolean isValidManager(String classManager) {
 		boolean flag = true;
-		String managerRegex = "^(GV)[0][0-9][0-9]$";
-		Pattern pattern = Pattern.compile(managerRegex);
-		Matcher matcher = pattern.matcher(classManager);
-
-		if (!matcher.matches()) {
-			flag = false;
-		} else {
-			for (int i = 0; i < currentIndex; i++) {
-				if (classroomManagement[i].getClassManager() != null) {
-					if (classroomManagement[i].getClassManager().getStatus()) {
-						if (classManager.equals(classroomManagement[i].getClassManager().getTeacherID())) {
-							System.out.println("Teacher has already managed a class. Please enter a different one.");
-							flag = false;
-							break;
-						}
+		for (int i = 0; i < currentIndex; i++) {
+			if (classroomManagement[i].getClassManager() != null) {
+				if (classroomManagement[i].getClassManager().getStatus()) {
+					if (classManager.equals(classroomManagement[i].getClassManager().getTeacherID())) {
+						flag = false;
+						break;
 					}
 				}
 			}

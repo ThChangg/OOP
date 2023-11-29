@@ -3,7 +3,7 @@ package Classes.Points;
 public class Conduct {
     private String rank;
     private int pointConduct;
-    private boolean isDeleted=false;
+    private boolean isDeleted = false;
 
     public Conduct() {
     }
@@ -18,7 +18,7 @@ public class Conduct {
         this.rank = rank;
     }
     public Conduct(int pointConduct){
-        this.pointConduct=pointConduct;
+        this.pointConduct = pointConduct;
     }
 
     public String getRank() {
@@ -43,13 +43,9 @@ public class Conduct {
     public void setIsDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
+
     @Override
     public String toString() {
-        return  pointConduct +"\t";
+        return pointConduct + "\t" + rank;
     }
-
-    public  String getConductValue() {
-        return pointConduct + "\t";
-    }
- 
 }

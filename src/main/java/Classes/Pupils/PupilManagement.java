@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import Classes.Classroom.Classroom;
 import Classes.Person.Address;
 import Classes.Person.Date;
 import Classes.Redux.Redux;
@@ -81,6 +83,8 @@ public class PupilManagement implements IFileManagement, ICRUD {
                         String pupilID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
+                        String className = parts[4];
+                        Classroom classroom = new Classroom(className);
                         String gender = parts[5];
 
                         String dobParts[] = dobString.split("/");
@@ -101,7 +105,7 @@ public class PupilManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender);
+                            Pupil pupil = new Pupil(pupilID, fullName, dob, address, gender, classroom);
                             this.add(pupil);
                         } else {
                             System.out.println("Your address is invalid!");

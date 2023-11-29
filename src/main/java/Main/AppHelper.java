@@ -1,6 +1,8 @@
 package Main;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import Classes.Classroom.Classroom;
 import Classes.Classroom.ClassroomManagement;
@@ -73,11 +75,11 @@ public class AppHelper {
                 System.out.println("Please select: ");
                 System.out.println("1. Print out data");
                 if (Redux.isAdmin) {
-                    System.out.println("2. Adding 1 or n person to");
-                    System.out.println("3. Update person information");
-                    System.out.println("4. Delete person");
+                    System.out.println("2. Adding data");
+                    System.out.println("3. Update data");
+                    System.out.println("4. Delete data");
                 }
-                System.out.println("5. Searching for the person information");
+                System.out.println("5. Searching for data");
                 if (Redux.isAdmin) {
                     System.out.println("6. Statistics");
                 }
@@ -132,7 +134,8 @@ public class AppHelper {
                     }
                     break;
                 case 5:
-                    appSearch(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement, pointManagement);
+                    appSearch(sc, pupilManagement, classroomManagement, teacherManagement, parentManagement,
+                            pointManagement);
                     break;
                 case 6:
                     if (Redux.isAdmin) {
@@ -203,28 +206,40 @@ public class AppHelper {
             }
         }
 
-        int pupilsOfClassCount = 0;
-        int classroomIndex = 0;
         Pupil pupilList[] = pupilManagement.getPupilList();
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
-        Parent parentList[] = parentManagement.getParentList();
-        Point listPoint[] = pointManagement.getListPoint();
 
         for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
-            pupilList[i].setClassroom(classroomList[classroomIndex]);
-            pupilsOfClassCount++;
-
-            pupilList[i].setParents(parentList[i]);
-            parentList[i].setPupil(pupilList[i]);
-
-            pupilList[i].setSubjectPoints(listPoint[i]);
-            listPoint[i].setPupil(pupilList[i]);
-
-            if (pupilsOfClassCount == 4) {
-                pupilsOfClassCount = 0;
-                classroomIndex++;
+            for (int j = 0; j < classroomManagement.getCurrentIndex(); j++) {
+                if (pupilList[i].getClassroom().getClassName().equalsIgnoreCase(classroomList[j].getClassName())) {
+                    pupilList[i].setClassroom(classroomList[j]);
+                    break;
+                }
             }
         }
+
+        Parent parentList[] = parentManagement.getParentList();
+        for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
+            for (int j = 0; j < parentManagement.getCurrentIndex(); j++) {
+                if (pupilList[i].getPupilID().equalsIgnoreCase(parentList[j].getPupil().getPupilID())) {
+                    pupilList[i].setParents(parentList[j]);
+                    parentList[j].setPupil(pupilList[i]);
+                    break;
+                }
+            }
+        }
+
+        Point listPoint[] = pointManagement.getListPoint();
+        for (int i = 0; i < pupilManagement.getCurrentIndex(); i++) {
+            for (int j = 0; j < pointManagement.getCurrentIndex(); j++) {
+                if (pupilList[i].getPupilID().equalsIgnoreCase(listPoint[j].getPupil().getPupilID())) {
+                    pupilList[i].setSubjectPoints(listPoint[i]);
+                    listPoint[i].setPupil(pupilList[i]);
+                    break;
+                }
+            }
+        }
+
         for (int i = 1; i <= 5; i++) {
             Grade.setNumberOfPupilsInGrade(12, i);
         }
@@ -243,7 +258,6 @@ public class AppHelper {
             } else if (managementObject instanceof PointManagement) {
                 pointManagement = (PointManagement) managementObject;
             }
-            // Add more else if blocks for other management objects
         }
 
         Pupil pupilList[] = pupilManagement.getPupilList();
@@ -254,11 +268,16 @@ public class AppHelper {
             int parentListLength = parentManagement.getCurrentIndex();
 
             for (int i = 0; i < pupilListLength; i++) {
-                if (i < parentListLength) {
-                    pupilList[i].setParents(parentList[i]);
-                    parentList[i].setPupil(pupilList[i]);
-                } else {
-                    break;
+                for (int j = 0; j < parentListLength; j++) {
+                    if (pupilList[i] != null) {
+                        if (parentList[j] != null) {
+                            if (pupilList[i].getPupilID().equalsIgnoreCase(parentList[j].getPupil().getPupilID())) {
+                                pupilList[i].setParents(parentList[j]);
+                                parentList[j].setPupil(pupilList[i]);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -268,11 +287,16 @@ public class AppHelper {
             int pointListLength = pointManagement.getCurrentIndex();
 
             for (int i = 0; i < pupilListLength; i++) {
-                if (i < pointListLength) {
-                    pupilList[i].setSubjectPoints(pointList[i]);
-                    pointList[i].setPupil(pupilList[i]);
-                } else {
-                    break;
+                for (int j = 0; j < pointListLength; j++) {
+                    if (pupilList[i] != null) {
+                        if (pointList[j] != null) {
+                            if (pupilList[i].getPupilID().equalsIgnoreCase(pointList[j].getPupil().getPupilID())) {
+                                pupilList[i].setSubjectPoints(pointList[j]);
+                                pointList[j].setPupil(pupilList[i]);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -298,13 +322,12 @@ public class AppHelper {
         int classroomListLength = classroomManagement.getCurrentIndex();
 
         for (int i = 0; i < teacherListLength; i++) {
-            if (i < classroomListLength) {
-                if (classroomList[i].getClassManager() != null) {
-                    teacherList[i].setClassroom(classroomList[i]);
-                    classroomList[i].setClassManager(teacherList[i]);
+            for (int j = 0; j < classroomListLength; j++) {
+                if (teacherList[i].getTeacherID()
+                        .equalsIgnoreCase(classroomList[j].getClassManager().getTeacherID())) {
+                    teacherList[i].setClassroom(classroomList[j]);
+                    classroomList[j].setClassManager(teacherList[i]);
                 }
-            } else {
-                break;
             }
         }
     }
@@ -618,9 +641,9 @@ public class AppHelper {
         } while (option != 0);
     }
 
-    public static String createNewID(String lastID) {
-        String prefix = lastID.substring(0, 2);
-        int number = Integer.parseInt(lastID.substring(2));
+    public static String createNewID(String IDPrefix, int IDSuffix) {
+        String prefix = IDPrefix;
+        int number = IDSuffix;
 
         number++;
 
@@ -741,8 +764,8 @@ public class AppHelper {
             int gradeNumber = className.charAt(0) - '0';
             Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1, gradeNumber);
 
-            String pupilID = createNewID(pupilManagement.getLastPupilID());
-            Pupil newPupil = new Pupil(pupilID, fullName, dob, address, gender);
+            String pupilID = createNewID("HS", Integer.parseInt(pupilManagement.getLastPupilID().substring(2)));
+            Pupil newPupil = new Pupil(pupilID, fullName, dob, address, gender, new Classroom(className));
             newPupil.setClassroom(classroom);
             pupilManagement.add(newPupil);
 
@@ -752,12 +775,6 @@ public class AppHelper {
             System.out.println("Do you want to add more pupils ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
         }
-    }
-
-    public static void updatePupilData(PupilManagement pupilManagement, Scanner scanner) {
-        System.out.print("Enter pupil ID: ");
-        String ID = scanner.nextLine();
-        pupilManagement.update(ID);
     }
 
     public static void updatePupilData(Scanner sc, Object... managementObjects) {
@@ -878,15 +895,22 @@ public class AppHelper {
                     if (!className.isEmpty()) {
                         flag = classroomManagement.isValidClassroom(className);
                         if (flag) {
+                            int newGradeNumber = className.charAt(0) - '0';
+                            int oldGradeNumber = pupil.getClassroom().getClassName().charAt(0) - '0';
+
+                            if (Math.abs(newGradeNumber - oldGradeNumber) > 0) {
+                                Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[newGradeNumber - 1] + 1,
+                                        newGradeNumber);
+                                Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[oldGradeNumber - 1] - 1,
+                                        oldGradeNumber);
+                            } 
+
                             for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
                                 if (classroomList[i].getClassName().equalsIgnoreCase(className)) {
                                     classroom = classroomList[i];
                                     break;
                                 }
                             }
-                            int gradeNumber = className.charAt(0) - '0';
-                            Grade.setNumberOfPupilsInGrade(Grade.getNumberOfPupilsInGrade()[gradeNumber - 1] + 1,
-                                    gradeNumber);
                             System.out.println("New classroom: " + className + " confirmed!");
                         } else {
                             System.out.println("Classroom is invalid (Wrong format or Classroom not existed)!");
@@ -898,7 +922,8 @@ public class AppHelper {
                     }
                 } while (!flag);
 
-                Pupil updatedPupil = new Pupil(pupil.getPupilID(), name, newDob, newAddress, gender);
+                Pupil updatedPupil = new Pupil(pupil.getPupilID(), name, newDob, newAddress, gender,
+                        new Classroom(className));
                 updatedPupil.setClassroom(classroom);
                 pupilManagement.update(updatedPupil);
                 pupilConnection(pupilManagement, parentManagement);
@@ -1021,11 +1046,14 @@ public class AppHelper {
                     }
                 } while (!flag);
 
-                String parentID = createNewID(parentManagement.getLastParentID());
-                parentManagement.add(new Parent(parentID, fullName, dob, address, gender, phoneNumber));
+                String parentID = createNewID("PH", Integer.parseInt(parentManagement.getLastParentID().substring(2)));
+                String pupilID = createNewID("HS", Integer.parseInt(parentManagement.getLastParentID().substring(2)));
+                Parent newParent = new Parent(parentID, fullName, dob, address, gender, phoneNumber,
+                        new Pupil(pupilID));
+                parentManagement.add(newParent);
 
                 String record = parentID + "-" + fullName + "-" + date + "-" + inputAddress + "-" + phoneNumber
-                        + "-" + gender;
+                        + "-" + gender + "-" + newParent.getPupil().getPupilID();
                 ParentManagement.insertIntoDatabase(record);
                 AppHelper.pupilConnection(pupilManagement, parentManagement);
 
@@ -1035,13 +1063,6 @@ public class AppHelper {
         } else {
             System.out.println("Cannot create parent data without creating a new pupil data first!");
         }
-    }
-
-    public static void updateParentData(ParentManagement parentManagement, Scanner scanner) {
-        System.out.print("Enter parent ID: ");
-        String ID = scanner.nextLine();
-
-        parentManagement.update(ID);
     }
 
     public static void updateParentData(Scanner sc, Object... managementObjects) {
@@ -1167,20 +1188,21 @@ public class AppHelper {
                     }
                 } while (!flag);
 
-                Parent updatedParent = new Parent(parent.getParentID(), name, newDob, newAddress, gender, phoneNumber);
+                Parent updatedParent = new Parent(parent.getParentID(), name, newDob, newAddress, gender, phoneNumber,
+                        parent.getPupil());
                 parentManagement.update(updatedParent);
                 pupilConnection(pupilManagement, parentManagement);
 
                 String customizedAddress = updatedParent.getAddress().toString().replace(" Duong ", " ");
                 String record = parent.getParentID() + "-" + name + "-" + birthDate + "-" + customizedAddress
-                        + "-" + phoneNumber + "-" + gender;
+                        + "-" + phoneNumber + "-" + gender + "-" + parent.getPupil().getPupilID();
                 ParentManagement.updateRecord(record);
                 System.out.println("Update successfully!");
 
             } else {
                 System.out.println("Parent with ID: " + ID + " is not found!");
             }
-            System.out.println("Do you want to update parent data ? Yes(Y) : No(N)");
+            System.out.println("Do you want to update parents data ? Yes(Y) : No(N)");
             option = sc.nextLine().charAt(0);
         }
     }
@@ -1285,22 +1307,16 @@ public class AppHelper {
                 }
             } while (!flag);
 
-            String teacherID = createNewID(teacherManagement.getLastTeacherID());
+            String teacherID = createNewID("GV", Integer.parseInt(teacherManagement.getLastTeacherID().substring(2)));
             teacherManagement.add(new Teacher(teacherID, fullName, dob, address, gender, major));
             String record = teacherID + "-" + fullName + "-" + date + "-" + inputAddress + "-"
                     + major + "-" + gender;
             TeacherManagement.insertIntoDatabase(record);
 
-            System.out.println("Do you want to add more teacher ? Yes(Y) : No(N)");
+            System.out.println("Do you want to add more teachers ? Yes(Y) : No(N)");
             option = scanner.nextLine().charAt(0);
         }
 
-    }
-
-    public static void updateTeacherData(TeacherManagement teacherManagement, Scanner scanner) {
-        System.out.print("Enter teacher ID: ");
-        String ID = scanner.nextLine();
-        teacherManagement.update(ID);
     }
 
     public static void updateTeacherData(Scanner sc, Object... managementObjects) {
@@ -1326,7 +1342,7 @@ public class AppHelper {
                 String name = "";
                 do {
                     System.out.println("Old Fullname: " + teacher.getFullname());
-                    System.out.print("New Fullname (Format: Tran Le Anh Khoi): ");
+                    System.out.print("New Fullname (Format: Tran Duy Sang): ");
                     name = sc.nextLine();
                     if (!name.isEmpty()) {
                         flag = Teacher.isValidName(name);
@@ -1339,7 +1355,6 @@ public class AppHelper {
                         name = teacher.getFullname();
                         flag = true;
                     }
-
                 } while (!flag);
 
                 String birthDate = "";
@@ -1473,14 +1488,14 @@ public class AppHelper {
         int option = -1;
         do {
             System.out.println("======================= Menu =======================");
-            System.out.println("1. Search pupils data by name");
+            System.out.println("1. Search pupils data by ID");
             System.out.println("2. Search pupils data by name");
             System.out.println("3. Search pupils data by class");
             System.out.println("4. Search classroom data by class name");
             System.out.println("5. Search teacher data by name");
             System.out.println("6. Search teacher data by class");
             System.out.println("7. Search parents data by pupil's name");
-            System.out.println("8. Search Point data by Point ID");
+            System.out.println("8. Search Point data by Pupil's ID");
             System.out.println("0. Exit");
 
             boolean isEmptyInput;
@@ -1622,36 +1637,43 @@ public class AppHelper {
             // Add more else if blocks for other management objects
         }
 
-        int teacherIndex = 0;
         Classroom classroomList[] = classroomManagement.getClassroomManagement();
         Teacher teacherList[] = teacherManagement.getTeacherManagement();
 
         for (int i = 0; i < classroomManagement.getCurrentIndex(); i++) {
-            // A class will be managed by a teacher
-            classroomList[i].setClassManager(teacherList[teacherIndex]);
-            teacherList[i].setClassroom(classroomList[i]);
-            teacherIndex++;
+            for (int j = 0; j < teacherManagement.getCurrentIndex(); j++) {
+                if (classroomList[i].getClassManager().getTeacherID().equalsIgnoreCase(teacherList[j].getTeacherID())) {
+                    // A class will be managed by a teacher
+                    classroomList[i].setClassManager(teacherList[j]);
+                    teacherList[j].setClassroom(classroomList[i]);
 
-            // Every three classes will form a block and have a teacher managing that block
-            // and the teacher managing that block is the default
-            switch (classroomList[i].getGrade().getGradeNumber()) {
-                case 1:
-                    classroomList[i].getGrade().setGradeManager(teacherList[2]); // GV003
-                    break;
-                case 2:
-                    classroomList[i].getGrade().setGradeManager(teacherList[3]); // GV004
-                    break;
-                case 3:
-                    classroomList[i].getGrade().setGradeManager(teacherList[7]); // GV008
-                    break;
-                case 4:
-                    classroomList[i].getGrade().setGradeManager(teacherList[10]); // GV011
-                    break;
-                case 5:
-                    classroomList[i].getGrade().setGradeManager(teacherList[13]); // GV014
-                    break;
-                default:
-                    break;
+                    // Every three classes will form a block and have a teacher managing that block
+                    // and the teacher managing that block is the default
+                    switch (classroomList[i].getGrade().getGradeNumber()) {
+                        case 1:
+                            classroomList[i].getGrade().setGradeManager(teacherList[2]); // GV003
+                            break;
+
+                        case 2:
+                            classroomList[i].getGrade().setGradeManager(teacherList[3]); // GV004
+                            break;
+
+                        case 3:
+                            classroomList[i].getGrade().setGradeManager(teacherList[7]); // GV008
+                            break;
+
+                        case 4:
+                            classroomList[i].getGrade().setGradeManager(teacherList[10]); // GV011
+                            break;
+
+                        case 5:
+                            classroomList[i].getGrade().setGradeManager(teacherList[13]); // GV014
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
         }
     }
@@ -1689,7 +1711,7 @@ public class AppHelper {
                     }
                 } while (!flag);
 
-                String classManager = null;
+                String classManager = "null";
                 Teacher classTeacher = new Teacher(classManager);
 
                 int gradeNumber = className.charAt(0) - '0';
@@ -1715,12 +1737,6 @@ public class AppHelper {
 
     }
 
-    public static void updateClassroomData(ClassroomManagement classroomManagement, Scanner scanner) {
-        System.out.print("Enter class name: ");
-        String ID = scanner.nextLine();
-        classroomManagement.update(ID);
-    }
-
     public static void updateClassroomData(Scanner sc, Object... managementObjects) {
         ClassroomManagement classroomManagement = null;
         TeacherManagement teacherManagement = null;
@@ -1737,7 +1753,11 @@ public class AppHelper {
         System.out.println("Do you want to update classrooms data? Yes(Y/y) : No (N/n)");
         option = sc.nextLine().charAt(0);
         Classroom classroom = null;
-        Teacher classManager = null;
+        Teacher oldClassManager = null;
+        Teacher newClassManager = null;
+        Classroom updatedClassroom2 = null;
+        boolean isTwoClassroomsAlreadyHadManager = false;
+        String record2 = "";
         while (option == 'Y' || option == 'y') {
             System.out.print("Enter classname: ");
             String className = sc.nextLine();
@@ -1750,30 +1770,82 @@ public class AppHelper {
                     System.out.println("Old ClassManager: " + classroom.getClassManager().getTeacherID());
                     System.out.print("New ClassManager: (format: GV016): ");
                     newClassManagerID = sc.nextLine();
+
+                    String managerRegex = "^(GV)[0][0-9][0-9]$";
+                    Pattern pattern = Pattern.compile(managerRegex);
+                    Matcher matcher = pattern.matcher(newClassManagerID);
+
                     if (!newClassManagerID.isEmpty()) {
-                        flag = classroomManagement.isValidManager(newClassManagerID);
-                        if (flag) {
-                            classManager = teacherManagement.getTeacherByID(newClassManagerID);
-                            System.out.println("New class manager: " + newClassManagerID + " confirmed!");
+                        if (matcher.matches()) {
+                            flag = classroomManagement.isValidManager(newClassManagerID);
+                            if (flag) {
+                                newClassManager = teacherManagement.getTeacherByID(newClassManagerID);
+                                oldClassManager = classroom.getClassManager();
+
+                                // Case classroom has already had a manager but the entered teacher hasn't
+                                // managed a class before
+                                if (oldClassManager != null) {
+                                    oldClassManager.setClassroom(null);
+                                }
+
+                                System.out.println("New class manager: " + newClassManagerID + " confirmed!");
+                            } else {
+                                isTwoClassroomsAlreadyHadManager = true;
+                                // Swap the class manager of 2 classroom if the entered teacherID has already
+                                // managed a class and the being updated classroom also has already had a
+                                // manager
+                                newClassManager = teacherManagement.getTeacherByID(newClassManagerID);
+                                oldClassManager = classroom.getClassManager();
+                                flag = true;
+
+                                // update the classroom that we swap its class manager
+                                updatedClassroom2 = new Classroom(
+                                        classroomManagement.getClassroomByClassManagerID(newClassManagerID)
+                                                .getClassName(),
+                                        oldClassManager,
+                                        classroomManagement.getClassroomByClassManagerID(newClassManagerID).getGrade());
+
+                                record2 = classroomManagement.getClassroomByClassManagerID(newClassManagerID)
+                                        .getClassName()
+                                        + "-" + oldClassManager.getTeacherID() + "-"
+                                        + classroomManagement.getClassroomByClassManagerID(newClassManagerID).getGrade()
+                                                .getGradeNumber()
+                                        + "-"
+                                        + classroomManagement.getClassroomByClassManagerID(newClassManagerID).getGrade()
+                                                .getGradeManager().getTeacherID();
+                            }
                         } else {
+                            flag = false;
                             System.out.println("Class manager is invalid!");
                         }
                     } else {
-                        classManager = teacherManagement.getTeacherByID(className);
+                        newClassManager = teacherManagement.getTeacherByID(className);
                         newClassManagerID = classroom.getClassManager().getTeacherID();
                         flag = true;
                     }
                 } while (!flag);
 
-                Classroom updatedClassroom = new Classroom(classroom.getClassName(), classManager,
+                // update the current on update classroom
+                Classroom updatedClassroom1 = new Classroom(classroom.getClassName(), newClassManager,
                         classroom.getGrade());
-                classroomManagement.update(updatedClassroom);
-                classroomConnection(classroomManagement, teacherManagement);
+                classroomManagement.update(updatedClassroom1);
 
-                String write = classroom.getClassName() + "-" + newClassManagerID + "-"
+                String record1 = classroom.getClassName() + "-" + newClassManagerID + "-"
                         + classroom.getGrade().getGradeNumber() + "-"
                         + classroom.getGrade().getGradeManager().getTeacherID();
-                ClassroomManagement.updateRecord(write);
+                ClassroomManagement.updateRecord(record1);
+
+                if (!isTwoClassroomsAlreadyHadManager) {
+                    classroomManagement.update(updatedClassroom1);
+                    ClassroomManagement.updateRecord(record1);
+                } else {
+                    classroomManagement.update(updatedClassroom1);
+                    ClassroomManagement.updateRecord(record1);
+                    classroomManagement.update(updatedClassroom2);
+                    ClassroomManagement.updateRecord(record2);
+                }
+
+                classroomConnection(classroomManagement, teacherManagement);
                 System.out.println("Update successfully!");
             } else {
                 System.out.println("Classroom with className: " + className + " is not found!");
@@ -1847,8 +1919,6 @@ public class AppHelper {
                     }
                 } while (!flag);
 
-                // scanner.nextLine(); // Consume the newline character
-
                 int conductValue;
                 do {
                     System.out.print("Conduct Point (0 - 100): ");
@@ -1856,13 +1926,15 @@ public class AppHelper {
                 } while (conductValue < 0 || conductValue > 100);
 
                 // Create a new point ID using some logic (createNewID method not provided)
-                String pointID = createNewID(pointManagement.getLastPointID());
-                pointManagement.add(new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint, englishPoint,
-                        new Conduct(conductValue)));
+                String pointID = createNewID("PO", Integer.parseInt(pointManagement.getLastPointID().substring(2)));
+                String pupilID = createNewID("HS", Integer.parseInt(pointManagement.getLastPointID().substring(2)));
+                Point newPoint = new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint, englishPoint,
+                        new Conduct(conductValue), new Pupil(pupilID));
+                pointManagement.add(newPoint);
 
                 // Use the record string and insert into the database
                 String record = pointID + "-" + literaturePoint + "-" + mathPoint + "-" + physicalEducationPoint + "-"
-                        + englishPoint + "-" + conductValue;
+                        + englishPoint + "-" + conductValue + "-" + newPoint.getPupil().getPupilID();
                 PointManagement.insertIntoDatabase(record);
                 AppHelper.pupilConnection(pupilManagement, pointManagement);
 
@@ -1872,13 +1944,6 @@ public class AppHelper {
         } else {
             System.out.println("Cannot create point data without creating a new pupil data first!");
         }
-    }
-
-    public static void updatePointData(PointManagement pointManagement, Scanner scanner) {
-        System.out.print("Enter point ID: ");
-        String ID = scanner.nextLine();
-        pointManagement.update(ID);
-
     }
 
     public static void updatePointData(Scanner sc, Object... managementObjects) {
@@ -1983,7 +2048,7 @@ public class AppHelper {
                 int conductPoint = 0;
                 Conduct conduct = null;
                 do {
-                    System.out.println("Old ConductPoint: " + point.getConduct().getConductValue());
+                    System.out.println("Old ConductPoint: " + point.getConduct().getPointConduct());
                     System.out.print("New ConductPoint (0-100): ");
                     conductInput = sc.nextLine().trim();
 
@@ -2001,22 +2066,22 @@ public class AppHelper {
                         }
                     } else {
                         conduct = point.getConduct();
-                        conductInput = point.getConduct().getConductValue();
+                        conductPoint = point.getConduct().getPointConduct();
                         flag = true;
                     }
                 } while (!flag);
 
                 Point updatedPoint = new Point(point.getPointID(), literaturePoint, mathPoint, physicalEducationPoint,
-                        englishPoint, conduct);
+                        englishPoint, conduct, point.getPupil());
                 pointManagement.update(updatedPoint);
-                pointManagement.calculateRank(point);
-                point.calculatePerformance();
+                pointManagement.calculateRank(updatedPoint);
+                updatedPoint.calculatePerformance();
                 pupilConnection(pupilManagement, pointManagement);
 
                 // Update record
                 String record = point.getPointID() + "-" + literaturePoint + "-" + mathPoint + "-"
                         + physicalEducationPoint + "-"
-                        + englishPoint + "-" + conductInput;
+                        + englishPoint + "-" + conductInput + "-" + point.getPupil().getPupilID();
                 PointManagement.updateRecord(record);
                 System.out.println("Update successfully!");
             } else {
@@ -2032,5 +2097,4 @@ public class AppHelper {
         String ID = scanner.nextLine();
         pointManagement.delete(ID);
     }
-
 }

@@ -237,8 +237,13 @@ public class TeacherManagement implements IFileManagement, ICRUD {
             try {
                 if (nestedClass != null) {
                     // Get the nested object from the main object
-                    Object nestedObject = mainClass.getMethod("get" + nestedClass.getSimpleName())
-                            .invoke(teacherManagement[i]);
+                    Object nestedObject = null;
+                    Object result = mainClass.getMethod("get" + nestedClass.getSimpleName()).invoke(teacherManagement[i]);
+                    if (result != null) {
+                        nestedObject = result;
+                    } else {
+                        continue;
+                    }
 
                     // Use reflection to get the appropriate method from the nested class
                     Method getterMethod = nestedClass.getMethod(findBy);

@@ -19,6 +19,11 @@ public class Pupil extends Person {
     public Pupil() {
     }
 
+    public Pupil(String pupilID) {
+        this.pupilID = pupilID;
+        this.status = true;
+    }
+
     public Pupil(String pupilID, String fullname, Date dob, Address address, String gender) {
         super(fullname, dob, address, gender);
         this.pupilID = pupilID;
@@ -73,10 +78,6 @@ public class Pupil extends Person {
 
     public void setSubjectPoints(Point subjectPoints) {
         this.subjectPoints = subjectPoints;
-    }
-
-    public boolean isStatus() {
-        return this.status;
     }
 
     public boolean getStatus() {

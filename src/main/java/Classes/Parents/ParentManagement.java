@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 import Classes.Person.Address;
 import Classes.Person.Date;
+import Classes.Pupils.Pupil;
 import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
@@ -77,11 +78,12 @@ public class ParentManagement implements IFileManagement, ICRUD {
                 while ((line = br.readLine()) != null) {
                     String parts[] = line.split("-");
                     if (parts.length >= 5) {
-                        String pupilID = parts[0];
+                        String parentID = parts[0];
                         String fullName = parts[1];
                         String dobString = parts[2];
                         String phoneNumber = parts[4];
                         String gender = parts[5];
+                        String pupilID = parts[6];
 
                         String dobParts[] = dobString.split("/");
                         String date = dobParts[0];
@@ -101,7 +103,7 @@ public class ParentManagement implements IFileManagement, ICRUD {
                             String city = matcher.group(5);
 
                             Address address = new Address(houseNumber, streetName, ward, district, city);
-                            Parent parent = new Parent(pupilID, fullName, dob, address, gender, phoneNumber);
+                            Parent parent = new Parent(parentID, fullName, dob, address, gender, phoneNumber, new Pupil(pupilID));
                             this.add(parent);
                         } else {
                             System.out.println("Your address is invalid!");

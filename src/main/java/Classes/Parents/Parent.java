@@ -20,8 +20,9 @@ public class Parent extends Person {
         this.status = true;
     }
 
-    public Parent(String parentID, String fullname, Date dob, Address address, String gender, String phoneNumber) {
+    public Parent(String parentID, String fullname, Date dob, Address address, String gender, String phoneNumber, Pupil pupil) {
         super(fullname, dob, address, gender);
+        this.pupil = pupil;
         this.parentID = parentID;
         this.phoneNumber = phoneNumber;
         this.status = true;

@@ -18,15 +18,15 @@ public class Point {
     }
 
     public Point(String pointID, double literaturePoint, double mathPoint, double physicalEducationPoint,
-            double englishPoint, Conduct conduct) {
+            double englishPoint, Conduct conduct, Pupil pupil) {
         this.pointID = pointID;
         this.literaturePoint = literaturePoint;
         this.mathPoint = mathPoint;
         this.physicalEducationPoint = physicalEducationPoint;
         this.englishPoint = englishPoint;
         this.conduct = conduct;
+        this.pupil = pupil;
         this.status = true;
-
     }
 
     public String getPointID() {
@@ -115,8 +115,9 @@ public class Point {
 
     @Override
     public String toString() {
-        return String.format("%-5s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s", pointID, literaturePoint, mathPoint,
-                physicalEducationPoint, englishPoint, conduct, getConduct().getRank(), performance);
+        return String.format("%-5s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s", pointID, literaturePoint,
+                mathPoint,
+                physicalEducationPoint, englishPoint, conduct.getPointConduct(), getConduct().getRank(), performance);
     }
 
     public void calculatePerformance() {
@@ -182,5 +183,4 @@ public class Point {
 
         return academicLevel;
     }
-
 }

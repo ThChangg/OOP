@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import Classes.Pupils.Pupil;
 import Classes.Redux.Redux;
 import Interfaces.ICRUD;
 import Interfaces.IFileManagement;
@@ -75,11 +76,12 @@ public class PointManagement implements IFileManagement, ICRUD {
                         double mathPoint = Double.parseDouble(parts[2]);
                         double physicalEducationPoint = Double.parseDouble(parts[3]);
                         double englishPoint = Double.parseDouble(parts[4]);
-                        int pointConductValue = Integer.parseInt(parts[5].trim());
+                        int pointConductValue = Integer.parseInt(parts[5]);
+                        String pupilID = parts[6];
 
                         Conduct conduct = new Conduct(pointConductValue);
                         Point point = new Point(pointID, literaturePoint, mathPoint, physicalEducationPoint,
-                                englishPoint, conduct);
+                                englishPoint, conduct, new Pupil(pupilID));
 
                         this.add(point);
                         calculateRank(point);
